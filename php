@@ -1,4 +1,11 @@
- yum  search php* ;     ## yum search instead of list
+#####################
+#                   #
+#   p h p           #
+#                   #
+#####################
+
+
+yum  search php* ;     ## yum search instead of list
 
 DONT USE WEBTATIC!
 
@@ -28,6 +35,7 @@ php-mbstring  \
 php-mcrypt \
 php-mysql  \
 php-pdo  \
+php-pdo_mysql \
 php-pear  \
 php-pecl-jsonc-devel  \
 php-pecl-jsonc  \
@@ -39,10 +47,6 @@ php-xml  \
 php-xmlrpc \
 php-zip \
 ;
-
-
-
-
 
 
 ======php setup =============
