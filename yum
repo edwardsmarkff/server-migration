@@ -1,0 +1,98 @@
+# ! /bin/bash
+
+## 2013-10-17 - added   logcheck
+## 2015-05-07 - changed mysql for mariadb, added httpd, gd, etc
+## 2015-07-01 - added stuff for centOS7
+## 2015-10-07 - ran on a test installation
+## 2015-10-13 - added flac back in since yum now has latest version
+## 2015-12-11 - ran successfully, added flac & flac-devel
+## 2016-12-31  - added yum clean all, and reworked MariaDB
+
+
+yum clean all ;  ## 2016-12-31 - required for MariaDB
+
+yum   --assumeyes  update   ;
+yum    --assumeyes   install  yum-utils  ;    ## 2013-05-15
+yum  --assumeyes   install   iptables-services   net-tools  ;   ## 2015-07-01
+
+yum clean all   ;    ## 2013-05-15
+/usr/sbin/yum-complete-transaction --cleanup-only   ;    ## 2013-05-15
+
+yum  --assumeyes  install	\
+    ant\
+    automake\
+    autoconf\
+    bc\
+    bind-utils\
+    bzip2-devel\
+    expat-devel\
+    file\
+    freetype-devel\
+    ftp\
+    gcc     gcc-c++\
+    gd      gd-devel     \
+    git\
+    httpd\
+    kernel-devel  \
+    libgcc\
+    libjpeg-devel\
+    libpng-devel\
+    libtiff-devel\
+    libtool\
+    libungif-devel\
+    logcheck\
+    lsof\
+    mailx\
+    make\
+    mod_qos\
+    openssl-devel\
+    popt.i686\
+    xz\
+    zlib-devel\
+;
+exit  ;    ## DONT GO ANY FARTHER IN THIS SCRIPT!
+
+    ## blank line goes here, or line above looses the backslash….
+####do
+ ####           echo ‘ processing  ‘$yummers ;
+#####	yum   --assumeyes  install $yummers || echo 'problem with: ' $yummers  	;
+#####done;
+      #####flac\    ## had trouble linking in with the library so now i build it myself  ;-(
+    #####mysql\
+    #####mysql-devel\
+    #####mysql-server\
+
+
+service httpd restart  ;   ## for gd  2015-05-07
+service  httpd  start ;   ## if the one above didnt work
+
+perl -e  'use GD;'    ## test the GD installation.
+
+yum --assumeyes  install clamav   clamav-server-systemd;  ##  2016-02-06
+
+
+##2015-07-01 - added for centOS7 to block/remove the new firewall firewalld (per interserver)
+
+systemctl stop firewalld
+systemctl mask firewalld
+yum -y install iptables-services
+systemctl enable iptables
+systemctl stop iptables
+
+
+
+
+MariaDB installation:   2017-12-31:
+
+Grab new repo:  (watch version, obviously….) https://downloads.mariadb.org/mariadb/repositories/#mirror=nodesdirect&distro=CentOS&distro_release=centos7-amd64--centos7&version=10.2
+
+save as:
+
+cat  >   /etc/yum.repos.d/MariaDB.repo;
+
+yum clean all ;  ## 2016-12-31 - required for MariaDB
+
+yum -y  install MariaDB-server MariaDB-client ;
+
+
+
