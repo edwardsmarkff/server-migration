@@ -1,0 +1,277 @@
+#### initial setup
+
+1) yum  (separate script)
+2) opus-ffmpeg  (separate script)
+3)  UNNEEDED  ?????????  imagemagick
+########################4) davfs2
+5) perl/CPAN
+6) php
+7) mysql
+8) apache
+9) webmin/virtualmin
+
+10) node.js
+11) visudo
+
+## new 2016-02-28
+mkdir  /home/comptonpeslonline.com/tmpVoiceSpiceFile
+chmod 755  ./tmpVoiceSpiceFile/
+chown  comptonpeslonline.com:comptonpeslonline.com  ./tmpVoiceSpiceFile/
+
+
+## ddos-deflate installation  2016-04-20
+wget http://www.inetbase.com/scripts/ddos/install.sh
+chmod 0700 install.sh
+./install.sh
+
+
+
+## wordpress:
+1) dont forget to update the wordpress network IP number ! ! 
+2)  chmod  -R  777      /home/comptonpesltrainers.com/public_html/wp-content/blogs.dir
+
+
+## ftp   -  START OUT WITH A WORKING DOMAIN NAME   (2013-07-03)
+https://www.digitalocean.com/community/articles/how-to-set-up-proftpd-on-centos-6
+
+rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm  ;
+yum   install  ftp ;
+yum  install   proftpd ;
+hostname   edwardsmark.com  ;
+echo  <<END   >> /etc/hosts   ;
+199.231.184.26   server
+END
+sed -i  -e  "s/ServerName  whatever/ServerName myNewDomainName.com"  /etc/proftpd  ;
+service proftpd restart   ;
+##mkdir  /home/mark ;
+useradd  mark ;
+passwd  mark ;
+ftp  myNewDomainName.com  ;   ## test login
+sftp mark@127.0.0.1 ; ## 2016-02-09- notice sftp since regular ftp may not be an option anymore.
+
+
+
+
+
+
+
+## vim defaults
+
+cat  <<END   >~/.vimrc  ;
+set showmode             “   2016-02-19 from ‘initial setup’
+set showmatch           “   2016-02-19 from ‘initial setup’
+set tabstop=8           “   2016-02-19 from ‘initial setup’
+set shiftwidth=8        “   2016-02-19 from ‘initial setup’
+set history=10000     “   2016-02-19 from ‘initial setup’
+syntax enable;           “   2016-02-19 from ‘initial setup’
+
+END
+cat ~/.vimrc ;
+
+cat  <<END >>  ~/.bashrc  ;
+echo ‘setting vi as your default editor’;  ## 2016-02-19 from ‘initial setup’
+set  -o  vi;                                              ## 2016-02-19  from ‘initial setup’
+alias vi='/usr/local/bin/vim';                   ## 2016-02-19   from ‘initial setup’
+END
+cat  ~/.bashrc ;
+
+
+###  .bash_profile
+cat  <<END   >> ~/.bash_profile ;
+HISTFILESIZE=250000            ## 2016-02-19 from ‘initial setup’
+HISTSIZE=200000                   ## 2016-02-19 from ‘initial setup’
+END
+cat  ~/.bash_profile ;
+
+ chkconfig dovecot off  ;   ### disable dovecot from starting
+
+
+==  install csf firewall
+mkdir  ~/csf  && cd   ~/csf  ;
+wget   http://www.configserver.com/free/csf.tgz  ;
+tar -xzf csf.tgz  ;
+cd  csf  ;
+sh  install.sh ;
+perl  /etc/csf/csftest.pl ;
+sh /etc/csf/remove_apf_bfd.sh  ;
+
+#####clamav #######   -- 2016-02-06
+ mkdir   /var/log/clamav/    ;   ### need this to start the log directory !
+cat  <<END  >  /etc/cron.daily/manual_clamscan ;
+#!/bin/bash                    
+#     written from ‘initial setup’ 2016-02-19   
+echo 'starting clam scan';
+SCAN_DIR="/home"
+LOG_FILE="/var/log/clamav/manual_clamscan.log"
+LOG_FILE_TMP="/var/log/clamav/manual_clamscan_tmp.log"
+/usr/bin/clamscan --infected --recursive \$SCAN_DIR > \$LOG_FILE_TMP      ;
+cat \$LOG_FILE_TMP |  mailx -r 'edwardsmarkf@gmail.com'  -s 'clamav results!'  \
+mark@edwardsmark.com  ;
+cat \$LOG_FILE_TMP >> \$LOG_FILE ;
+#     written from ‘initial setup’ 2016-02-19       
+END
+chmod  755    /etc/cron.daily/manual_clamscan ;
+cat    /etc/cron.daily/manual_clamscan ;  # display the results
+#####end clamav ###############
+
+2013-03-01  -- to supress messages from emailing:
+echo "/usr/bin/php-cgi"   >>  /etc/csf/csf.pignore  ;
+
+## written from    http://configserver.com/free/csf/install.txt
+
+
+
+/etc/resolv.conf :
+nameserver 66.45.228.250
+nameserver 127.0.0.1
+
+
+
+
+
+(php pear???  do we need it ???)
+
+
+====  bcc mail
+
+to always bcc mail:  (2014-10-17)
+
+/etc/postfix/main.cf  -- add this line:
+always_bcc = edwardsmarkf@gmail.com
+
+
+
+
+====  httpd.conf
+
+add this:
+
+    AddType audio/ogg .ogg .ogv
+    AddType audio/speex .spx
+
+
+
+systemctl   start   mariadb;    ## replacement for mysql  2015-12-18
+
+
+
+
+
+
+below stuff may be obsolete:
+
+
+
+
+## 2014-01-05 added by mark - test to make sure that mysql started, if not, remove
+##              the sock file and try again
+if  [  $(/etc/init.d/mysqld status  |  grep  'mysqld (pid .*) is running'  |  wc --lines) -gt 0 ];
+then
+        echo 'mysql successfully started -- no action taken';
+else
+        echo $0 'mysql did *NOT* start successfully -- removing the sock and restarting.....';
+        [ -e /var/lib/mysql/mysql.sock ] && rm /var/lib/mysql/mysql.sock;
+        /etc/init.d/mysqld start;
+        /bin/mail -v -r info@edwardsmarkf.info -s 'mysql start failure notice' mark@edwardsmark.com  <<END
+        $(/bin/date)
+        $0 mysql did not start on reboot -- removing sock and trying again
+        please see  /var/log/boot.log file for more details
+END
+fi;
+
+
+====   comptonpesltrainers.com mu-wordpress:
+
+change dashboard--->settings--->DomainMapping IP number (not sure if this is totally necessary)
+
+
+
+## important misc php archive files:
+ rsync --verbose --archive  --rsh=ssh  /usr/local/lib/php/   root@199.231.184.26:/usr/local/lib/php/
+
+## dont forget jQuery ! (?)
+ rsync --verbose --archive  --rsh=ssh  /usr/local/jquery/   root@edwardsmarkf.info:/usr/local/jquery/
+
+&
+/etc/init.d/morphboxNode  start  &              ## 2014-06-10 - start the morphboxNode
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=====  create a remote mariadb user ===
+DROP DATABASE IF EXISTS  `yasser`                               ;
+
+GRANT ALL ON `yasser`.* TO 'yasser'@'%'                 ;
+        -- make sure we have a name to delete!
+--DROP USER 'yasser'@'*'                                ;
+CREATE USER 'yasser'@'%' IDENTIFIED BY 'wolframhempel';
+
+GRANT ALL ON `yasser`.* TO 'yasser'@'%'                 \
+IDENTIFIED BY 'wolframhempel' WITH MAX_QUERIES_PER_HOUR 0               \
+MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0                ;
+
+# DROP DATABASE `yasser`                                        ;
+CREATE DATABASE IF NOT EXISTS `yasser`                  ;
+
+GRANT ALL PRIVILEGES ON `yasser`.* TO 'yasser'@'%'      ;
+
+# mysql  --host=162.216.114.36 --user=yasser  --password=wolframhempel    yasser    ;
+=================================
+
+====   (OBSOLETE
+ ftp auto-login:  (2013-05-10)
+echo 'machine ftp.adrive.com   login  mark@edwardsmark.com  password JABBERWOLKY'    >>  ~/.netrc ;
+chmod 600    ~/.netrc ;
+=== 
+
+
+=== two ways to manage dns records ===============
+
+A: using interserver name server
+1) log into the my.interserver.net control panel
+2) Domains---->DNS-Manager   (domains is next to "home" second from left)
+3) "Add New DNS Entry" - enter clients domain name and interserver.net ip address 69.10.48.25
+4) click on the little wrench on the far right
+5) create 5 new mx records 
+
+B: using our own customized name server and virtualmin:
+1) create ns1/2.XXXX.com subdomains and point "A" records to 69.10.48.25
+2) use nameserver from step one for given domain
+3) log into virtualmin and select(or create) new virtual-server (new website)
+4) ServerConfiguration--->DNS_Records
+5) enter 5 new mx records using "Create Record of Type" button at bottom (be sure to select MX)
+
+
+======== authorized dns ===================
+Primary DNS - cdns1.interserver.net 209.159.155.28
+Secondary DNS - cdns2.interserver.net 66.45.228.248
+
+
+
+
+OBSOLETE
+
+## flvar admin files  -   THIS MIGHT NOT WORK PROPERLY......
+rsync --verbose --archive  --rsh=ssh  /usr/share/red5/webapps/   root@199.231.184.26:/usr/share/red5/webapps/
+
+==== /etc/init.d/rc.local: (2014-11-02)
+
+mount -a ;                      ##   2013-05-14 mounts up the stuff in the fstab file
+/etc/init.d/red5  start   >/usr/share/red5/red5.log  2>&1       
