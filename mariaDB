@@ -1,0 +1,58 @@
+MariaDB  -- 2019-02-23
+
+### written from  https://www.tecmint.com/install-mariadb-in-centos-7/
+
+
+cat  > /etc/yum.repos.d/MariaDB.repo  <<END_OF_MARIA_DB_REPO ;
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.1/centos7-amd64
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+END_OF_MARIA_DB_REPO
+
+yum --assumeyes   install   MariaDB-server   MariaDB-client ;
+
+
+systemctl start mariadb  ;
+systemctl enable mariadb  ;
+systemctl status mariadb  ;
+
+
+mysql_secure_installation  ;
+
+mysql -V  ;
+mysqld --print-defaults  ;
+mysql -u root -p   ;
+
+####yum --assumeyes install \
+####     perl-DBD-mysql \
+####     php-pdo_mysql \
+####      ;
+
+
+
+=== mysql setup
+
+/etc/my.cnf - add the following:
+
+max_allowed_packet = 64M         #   2016-02-19 from ‘initial setup’
+open-files-limit = 1600                   #   2016-02-19 from ‘initial setup’
+
+
+echo <<END   >>/root/.my.cnf  ;
+[client]                                #   2016-02-19 from ‘initial setup’
+user=root                          #   2016-02-19 from ‘initial setup’
+pass=mysqlPassword      #   2016-02-19 from ‘initial setup’
+END
+
+
+CREATE  USER  'mark'@'%'   IDENTIFIED BY  'jabberwolky' ;
+
+GRANT USAGE ON *.* TO   'mark'@'%' IDENTIFIED BY   'jabberwolky ' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+
+GRANT  ALL   PRIVILEGES  ON   *.*   TO  'mark'@'%'  ;
+
+
+
+
