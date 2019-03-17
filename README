@@ -4,9 +4,9 @@
 2) opus-ffmpeg  (separate script)
 3)  UNNEEDED  ?????????  imagemagick
 ########################4) davfs2
+Mariadb (do before perl and php)
 5) perl/CPAN
 6) php
-7) mysql
 8) apache
 9) webmin/virtualmin
 
