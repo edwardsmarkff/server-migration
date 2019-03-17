@@ -1,0 +1,938 @@
+##   2017-07-03 - Opus-ffmpeg running and upgrading  -- last updated on: 2019-02-20
+
+## 2019-02-22 - speex RC2 did not work, but no apparent need to upgrade, maybe no 
+##			need to support speex at all anymore(?)
+
+## NOTE - several of these require something weird in the download, like having to click, wait, 
+##           etc etc so they may need to be done manually!
+
+
+##from scratch centOS on my windows-10 amd box:
+
+first, grab a CentOS iso file:
+##http://mirror.teklinks.com/centos/6.3/isos/x86_64/CentOS-6.3-x86_64-LiveDVD.iso??
+http://centos-distro.1gservers.com/7.6.1810/isos/x86_64/CentOS-7-x86_64-DVD-1810.iso
+
+next, download and install virtualbox:
+http://virtualbox.org
+
+when after creating the new virtual machine, go into settings and point the CD device to the iso file from step one.
+
+vi /etc/sysconfig/network-scripts/ifcfg-eth0
+change ONBOOT=no
+to:   ONBOOT=yes    ## or do it when you first install virtualbox.
+
+N-O-T-E - the latest version of virtualbox requires you to change the pointing device (mouse) device to tablet in SYSTEM-->>MOTHERBOARD
+
+##yum --assumeyes  update ;
+##yum  --assumeyes install gcc ;
+##yum  --assumeyes  install libtool ;
+##yum   --assumeyes  install git ;
+##yum  --assumeyes   install bc  ;   ## basic calculator might not be present (or needed)
+
+###################
+#                                 #
+# ONE :   i n i t i a l     #
+#                                 #
+###################
+
+##  2019-02-23 -- added openssl and openssl-devel
+
+# run these from either the command line or this entire script.
+###  .   export.bsh  ##  notice the DOT at the beginning of the line, not ‘bash’
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/  ;
+export LIBPATH=/usr/local/lib/   ;
+export LD_LIBRARY_PATH=/usr/local/lib/  ;
+
+yum  --assumeyes  update ;
+
+yum  --assumeyes  install gcc                  \
+                                         gcc-c++           \
+                                         git                    \
+                                         kernel-devel     \
+                                         libgcc               \
+                                         libtool               \
+                                         make                \
+                                         openssl            \
+                                         openssl-devel   \
+                                          xz                     \
+                                          ;
+
+###################
+#                                 #
+# END :   i n i t i a l     #
+#                                 #
+###################
+
+
+###########################
+#                                                 #
+# TWO:  d i r e c t o r i e s         #
+#                                              #
+########################
+
+rm -Rf               ~/INSTALL_FFmpeg/                          ;
+mkdir --verbose  --parent  ~/INSTALL_FFmpeg/INSTALL_bzip/   ;
+mkdir  --verbose             ~/INSTALL_FFmpeg/INSTALL_yasm/ ;
+mkdir  --verbose              ~/INSTALL_FFmpeg/INSTALL_flac/  ;
+mkdir  --verbose              ~/INSTALL_FFmpeg/INSTALL_libogg/   ;
+mkdir  --verbose              ~/INSTALL_FFmpeg/INSTALL_vorbis/   ;
+mkdir  --verbose              ~/INSTALL_FFmpeg/INSTALL_opus/   ;
+mkdir  --verbose              ~/INSTALL_FFmpeg/INSTALL_libopusenc/   ;
+mkdir  --verbose              ~/INSTALL_FFmpeg/INSTALL_opusfile/   ;
+mkdir  --verbose              ~/INSTALL_FFmpeg/INSTALL_opustool/  ;
+mkdir  --verbose               ~/INSTALL_FFmpeg/INSTALL_lame/  ;
+mkdir  --verbose               ~/INSTALL_FFmpeg/INSTALL_x264/ ;
+mkdir  --verbose               ~/INSTALL_FFmpeg/INSTALL_fFmpeg/   ; 
+mkdir  --verbose                ~/INSTALL_FFmpeg/test/   ; 
+
+###########################
+#                                                 #
+# END:  d i r e c t o r i e s         #
+#                                              #
+########################
+
+###########################
+#                                                 #
+# THREE:  G e t   F i l e s         #
+#                                              #
+########################
+
+curl https://managedway.dl.sourceforge.net/project/bzip2/bzip2-1.0.6.tar.gz    \
+        >                       ~/INSTALL_FFmpeg/INSTALL_bzip/bzip2-1.0.6.tar.gz;
+git clone https://github.com/yasm/yasm.git   \
+    ~/INSTALL_FFmpeg/INSTALL_yasm/yasm ;  
+
+curl https://ftp.osuosl.org/pub/xiph/releases/flac/flac-1.3.2.tar.xz  \
+      >           ~/INSTALL_FFmpeg/INSTALL_flac/flac-1.3.2.tar.xz ;
+curl https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-1.3.3.tar.gz \
+    >         ~/INSTALL_FFmpeg/INSTALL_libogg/libogg-1.3.3.tar.gz ;
+curl  https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-1.3.6.tar.xz  \
+    >              ~/INSTALL_FFmpeg/INSTALL_vorbis/libvorbis-1.3.6.tar.xz ;
+curl https://archive.mozilla.org/pub/opus/opus-1.3.tar.gz  \
+  > ~/INSTALL_FFmpeg/INSTALL_opus/opus-1.3.tar.gz   ;
+curl   https://archive.mozilla.org/pub/libopusenc/libopusenc-0.2.1.tar.gz \
+   >  ~/INSTALL_FFmpeg/INSTALL_libopusenc/libopusenc-0.2.1.tar.gz   ;
+curl       https://archive.mozilla.org/pub/opus/opusfile-0.9.tar.gz  \
+    > ~/INSTALL_FFmpeg/INSTALL_opusfile/opusfile-0.9.tar.gz;
+curl         https://archive.mozilla.org/pub/opus/opus-tools-0.2.tar.gz   \
+    >  ~/INSTALL_FFmpeg/INSTALL_opustool/opus-tools-0.2.tar.gz  ;
+curl   https://sourceforge.net/projects/lame/files/latest/download  \
+    > ~/INSTALL_FFmpeg/INSTALL_lame/lame-latest.tar.gz       ;
+curl ftp://ftp.videolan.org/pub/x264/snapshots/last_x264.tar.bz2      \
+      >     ~/INSTALL_FFmpeg/INSTALL_x264/last_x264.tar.bz2 ;
+
+curl              https://www.ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2      \
+      > ~/INSTALL_FFmpeg/INSTALL_fFmpeg/ffmpeg-snapshot.tar.bz2  ;
+
+curl  http://www.music.helsinki.fi/tmt/opetus/uusmedia/esim/a2002011001-e02.wav \
+    >    ~/INSTALL_FFmpeg/test/bat-guano.wav ; 
+curl  https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg \
+   >     ~/INSTALL_FFmpeg/test/example.ogg  ;
+curl  https://people.xiph.org/~giles/2012/opus/detodos.opus   \
+   > ~/INSTALL_FFmpeg/test/detodos.opus ;
+
+
+###########################
+#                                                 #
+# END:  G e t   F i l e s         #
+#                                              #
+########################
+
+
+###########################
+#                                                 #
+#  FOUR: f i l e   s i z e s         #
+#                                              #
+########################
+
+
+echo  look for any non-audio file UNDER 50k.....
+
+echo  libogg should be  ~~568
+echo  libopusenc shoudl be ~~380
+echo  lame-latest should be ~~1492
+
+find ~/INSTALL_FFmpeg/                               \
+  -type f                                                            \
+  -regex  '.*\(gz\|xz\|bz2\|opus\|ogg\|wav\)$'    \
+  -printf    '%k\t%p \n'                                       \
+   ;
+
+###########################
+#                                                 #
+# END:     f i l e   s i z e s         #
+#                                              #
+########################
+
+
+#######################
+#                                        #
+# FIVE:   b z i p 2           #
+#                                   #
+###################
+
+##UPDATE - the location may be moved, so this one might have to be processed manually.
+
+cd     ~/INSTALL_FFmpeg/INSTALL_bzip/   ;
+gzip -d   ./bzip2-*.tar.gz              ;
+tar -xvf   ./bzip2-*.tar                  ;
+cd          ./bzip2-*/                      ;
+##########################################./configure ;  -- 2017-07-03
+make &&  make  install ;
+which bzip2  ;   ## should show /usr/local/bin/bzip2
+/usr/local/bin/bzip2    -version ;   ## one dash not two…!  
+/usr/local/bin/bzip2    --version ;   ##   two dash not one….. ????
+
+
+
+####rm -Rf               ~/INSTALL_FFmpeg/INSTALL_bzip/   ;  
+####mkdir --parent  ~/INSTALL_FFmpeg/INSTALL_bzip/   ;
+
+####curl  http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz   >  bzip2-1.0.6.tar.gz ;
+#curl https://sourceforge.net/projects/bzip2/files/bzip2-1.0.6.tar.gz/download >bzip2-1.0.6.tar.gz;
+######curl https://managedway.dl.sourceforge.net/project/bzip2/bzip2-1.0.6.tar.gz  ######;
+
+####################
+#                                   #
+# END: b z i p 2           #
+#                                  #
+###################
+
+#################
+#                             #
+# SIX:      yasm     #
+#                            #
+################
+
+cd   ~/INSTALL_FFmpeg/INSTALL_yasm/yasm/ ;
+
+./autogen.sh ;
+
+./configure ;
+make  && make check ;   ## run make install separately
+make install ;
+which yasm ;    ### should display  /usr/local/bin/yasm
+/usr/local/bin/yasm  --version ;    ##  yasm 1.3.0.41.g80bc   (2018-02-18)
+
+
+##rm -Rf               ~/INSTALL_FFmpeg/INSTALL_yasm/ ; 
+##mkdir --parent  ~/INSTALL_FFmpeg/INSTALL_yasm/ ;
+####git clone https://github.com/yasm/yasm.git   yasm ;   // changed git: to https:  2016-03-01
+
+#################
+#                             #
+# END:      yasm   #
+#                            #
+################
+
+#####################
+#                                    #
+# SEVEN:    f l a c         #
+#                                 #
+#################
+
+## note -- this one takes time!  TIME TIME TIME!
+
+##   2017-07-03  -- 1.3.1   to   1.3.2
+##   2018-02-18  -- flac 1.3.2 has moved 
+##   2019-02-20  -- for whatever reason, /usr/local/bin/ is no longer in PATH
+
+    # (optional)
+    ####yum  --assumeyes install flac  ;  ## installs 1.3.0, but i think we need 1.3.+ (??)
+    ####yum  --assumeyes  remove flac  ;  ## in case yum has already installed it
+
+export PATH=$PATH:/usr/local/bin; 
+
+cd    ~/INSTALL_FFmpeg/INSTALL_flac/  ;
+xz -d       ./flac-*.tar.xz ;
+tar -xvf    ./flac-*.tar     ;
+cd           ./flac-*/         ;
+./configure 
+make  &&  make  --ignore-error  check ;  
+####  flac has some weird rule about not running as root 2015-10-09
+make install ;
+which flac;   ## hopefully /usr/local/bin/flac  2019-02-20
+/usr/local/bin/flac   --version ;   ## 1.3.2 as of 2018-02-18
+
+
+####rm -Rf                  ~/INSTALL_FFmpeg/INSTALL_flac/   ;
+####mkdir     --parent  ~/INSTALL_FFmpeg/INSTALL_flac/  ;
+
+##curl http://downloads.xiph.org/releases/flac/flac-1.3.2.tar.xz  > flac-1.3.2.tar.xz ;  2018-02-18
+#####curl https://ftp.osuosl.org/pub/xiph/releases/flac/flac-1.3.2.tar.xz   > flac-1.3.2.tar.xz ;
+
+#################
+#                              #
+# END:    f l a c       #
+#                             #
+#################
+
+#############################
+#                                                     #
+# EIGHT:    l i b o g g                   #
+#                                                  #
+##########################
+
+## 2018-02-18  -- updated 1.3.2 to 1.3.3 and included new file location
+
+cd      ~/INSTALL_FFmpeg/INSTALL_libogg/   ;
+tar -z -x -f  ./libogg-*.tar.gz   ;
+cd             ./libogg-*/            ;
+./configure;
+make && make check ;
+make install ;
+
+#rm  -Rf              ~/INSTALL_FFmpeg/INSTALL_libogg/   ;   
+#mkdir  --parent ~/INSTALL_FFmpeg/INSTALL_libogg/   ;
+
+##curl  http://downloads.xiph.org/releases/ogg/libogg-1.3.2.tar.gz  > libogg-1.3.2.tar.gz ;
+#curl https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-1.3.3.tar.gz > libogg-1.3.3.tar.gz ;
+
+
+##########################
+#                                                #
+# END:    l i b o g g                   #
+#                                               #
+##########################
+
+###############################
+#                                                        #
+# NINE:     l i b v o r b i s                  #
+#                                                     #
+############################
+
+##  2018-02-18  --  changed tarball location
+##  2019-02-20 -- changed 1.3.5 to 1.3.6
+
+cd  ~/INSTALL_FFmpeg/INSTALL_vorbis/   ;
+
+xz   -d       ./libvorbis-*.tar.xz ;
+tar    -x -f  ./libvorbis-*.tar      ;
+cd             ./libvorbis-*/          ;
+./configure;
+make   &&   make check   &&   make install ;
+
+
+##rm -Rf                 ~/INSTALL_FFmpeg/INSTALL_vorbis/   ;  
+##mkdir   --parent  ~/INSTALL_FFmpeg/INSTALL_vorbis/   ;
+##curl  http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.6.tar.xz  >  libvorbis-1.3.6.tar.gz ;
+
+
+###########################
+#                                                  #
+# END:   l i b v o r b i s                #
+#                                                  #
+###########################
+########################
+#                                           #
+# TEN:      o p u s                #
+#                                         #
+######################
+
+## 2019-02-20 - upgraded from 1.2.1 to 1.3
+
+export  |  grep   LD_LIBRARY_PATH  ; 
+
+cd  ~/INSTALL_FFmpeg/INSTALL_opus/   ;
+
+gzip -d   ./opus*.gz    ;
+tar -xvf   ./opus*.tar    ;
+cd          ./opus*/        ;
+./configure  ;   ##  2015-05-07 removed the disable-flac option  ## --disable-flac  ;
+make &&  make check  &&  make install;
+
+
+###rm -Rf               ~/INSTALL_FFmpeg/INSTALL_opus/   ; 
+###mkdir  --parent  ~/INSTALL_FFmpeg/INSTALL_opus/   ;
+###wget  https://archive.mozilla.org/pub/opus/opus-1.2.1.tar.gz  ;   ##2017-07-03
+####wget  https://archive.mozilla.org/pub/opus/opus-1.3.tar.gz  ;
+
+
+########################
+#                                           #
+# END:    o p u s                  #
+#                                           #
+########################
+
+
+#####################################
+#                                                                    	#
+# ELEVEN:   l i b o p u s                                #
+#                                                                    #
+###################################
+
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/  ;
+export LIBPATH=/usr/local/lib/   ;
+export LD_LIBRARY_PATH=/usr/local/lib/  ;
+
+cd  ~/INSTALL_FFmpeg/INSTALL_libopusenc/   ;
+
+gzip -d   ./libopusenc*.gz    ;
+tar -xvf   ./libopusenc*.tar    ;
+cd          ./libopusenc*/        ;
+./configure  ;   
+make &&   make install;
+
+
+
+###########################
+#                                                #
+# END:    l i b o p u s                #
+#                                             #
+########################
+
+
+
+#########################################
+#                                                                            #
+# TWELVE:	    o p u s f i l e                             #
+#                                                                      #
+####################################
+
+## added 2019-02-22, now required for the latest opus tools
+
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/  ;
+export LIBPATH=/usr/local/lib/   ;
+export LD_LIBRARY_PATH=/usr/local/lib/  ;
+
+cd   ~/INSTALL_FFmpeg/INSTALL_opusfile/   ;
+
+gzip -d   ./opus*.gz    ;
+tar -xvf   ./opus*         ;
+cd          ./opus*/         ;
+
+./configure ;
+
+make 	&& 	make check   ;  make install ;
+
+##rm -Rf               ~/INSTALL_FFmpeg/INSTALL_opusfile/   ; 
+##mkdir  --parent  ~/INSTALL_FFmpeg/INSTALL_opusfile/   ;
+#####wget  https://archive.mozilla.org/pub/opus/opusfile-0.9.tar.gz   ;  ## 2019-02-22
+
+
+####################################
+#                                                                    	#
+# END:    	o p u s f i l e                            #
+#                                                                    	#
+####################################
+
+
+#########################################
+#                                                                            #
+# THIRTEEN:    o p u s    t o o l s                         #
+#                                                                          #
+######################################
+
+# upgraded from 0.1.10 to 0.2  2019-02-20
+
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/  ;
+export LIBPATH=/usr/local/lib/   ;
+export LD_LIBRARY_PATH=/usr/local/lib/  ;
+
+cd   ~/INSTALL_FFmpeg/INSTALL_opustool/  ;
+
+gzip -d  ./opus*.gz    ;
+tar -xvf   ./opus*.tar   ; 
+cd          ./opus*/       ;
+./configure ;
+make     &&     make check   ;  make install ;
+
+/usr/local/bin/opusenc  --version ;  ## 2015-05-07
+
+/usr/local/bin/opusdec  --version ;  ## 2015-05-07
+
+curl  https://people.xiph.org/~giles/2012/opus/detodos.opus > detodos.opus ;   
+
+##  opus example
+/usr/local/bin/opusdec  detodos.opus   detodos.wav ;
+/usr/local/bin/opusenc  detodos.wav  detodos2.opus ;  ## test step repeated at the end
+
+######rm  -Rf                ~/INSTALL_FFmpeg/INSTALL_opustool/  ; 
+######mkdir   --parent   ~/INSTALL_FFmpeg/INSTALL_opustool/  ;
+######wget https://archive.mozilla.org/pub/opus/opus-tools-0.1.10.tar.gz ;  ## 2017-07-03
+######wget  https://archive.mozilla.org/pub/opus/opus-tools-0.2.tar.gz   ;  ## 2019-02-20
+
+#######################################
+#                                                                          #
+# END:        o p u s    t o o l s                              #
+#                                                                          #
+#######################################
+
+
+###########################
+#                                               #
+# FOURTEEN:     l a m e       #
+#                                         #
+######################
+
+##  2018-02-18  --  v3.99.5 to v3.100
+
+cd   ~/INSTALL_FFmpeg/INSTALL_lame/  ;
+gzip -d   ./lame-*.tar.gz  ;
+tar -x -f   ./lame-*.tar       ;
+cd          ./lame-*/            ;
+./configure;
+make  && make check && make install ;
+
+
+###wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm;
+############################rpm -ivh rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm ;
+################################yum  --assumeyes   install    lame     lame-devel ;    
+######rm -Rf              ~/INSTALL_FFmpeg/INSTALL_lame/   ;  
+######mkdir  --parent  ~/INSTALL_FFmpeg/INSTALL_lame/  ;
+#####wget             \
+#####     --output-document=lame-3.99.5.tar.gz      \
+#####      http://sourceforge.net/projects/lame/files/lame/3.99/lame-3.99.5.tar.gz/download  ;
+######wget           \
+######    --output-document=lame-3.100.tar.gz       \
+######    https://sourceforge.net/projects/lame/files/lame/3.100/lame-3.100.tar.gz/download    ;
+
+###################
+#                                 #
+# END:     l a m e       #
+#                                #
+###################
+
+#########################
+#                                             # 
+# FIFTEEN:    x 2 6 4           #
+#                                          #
+######################
+
+cd            ~/INSTALL_FFmpeg/INSTALL_x264/ ;
+
+bzip2 -d  ./last_x264.tar.bz2 ;
+tar -x -f    ./last_x264.tar      ;
+cd            ./x264*/                 ;
+./configure  --enable-shared   --disable-asm ;
+make && make install  ;
+
+####rm -Rf               ~/INSTALL_FFmpeg/INSTALL_x264/  ; 
+####mkdir  --parent  ~/INSTALL_FFmpeg/INSTALL_x264/ ;
+#####curl ftp://ftp.videolan.org/pub/x264/snapshots/last_x264.tar.bz2  >  last_x264.tar.bz2 ;
+
+
+
+#######################
+#                                         # 
+# END:         x 2 6 4          #
+#                                        #
+######################
+
+##############################
+#                                                      #
+# SIXTEEN  :  f f m p e g             #
+#                                                  #
+##########################
+
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/  ;
+export LIBPATH=/usr/local/lib/   ;
+export LD_LIBRARY_PATH=/usr/local/lib/  ;
+export PATH=$PATH:/usr/local/bin;     ## 2019-02-20
+
+cd      ~/INSTALL_FFmpeg/INSTALL_fFmpeg/    ;
+bzip2  --decompress  ./ffmpeg-snapshot.tar.bz2  ;
+tar -xvf                        ./ffmpeg-snapshot.tar        ;
+cd                               ./ffmpeg/                             ;
+
+./configure --disable-shared       \
+                 --enable-static           \
+                  --enable-libopus       \
+                    --enable-libvorbis   \
+                     --enable-gpl           \
+                   --enable-libx264      \
+                   --enable-libmp3lame ;
+make    V=1            1>make-results.txt          2>make-results.error.txt  ;
+                                   ### csf  --stop  ;   #### make sure firewall is down!
+make fate-rsync SAMPLES=fate-suite/   ;  
+make fate       SAMPLES=fate-suite/      ;  
+                                   ### csf --start ;  ## put firewall back up !
+make  install ;
+which ffmpeg;   ##  /usr/local/bin/ffmpeg
+/usr/local/bin/ffmpeg  -version ;
+
+##### 2019-03-07 removed         --enable-libspeex    \
+####rm -Rf               ~/INSTALL_FFmpeg/INSTALL_fFmpeg/  ;  
+####mkdir --parent  ~/INSTALL_FFmpeg/INSTALL_fFmpeg/   ; 
+## 2016-01-27 - changed from github to ffmpeg.org site
+####curl  https://www.ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2  > ffmpeg-snapshot.tar.bz2  ;
+
+##########################
+#                                                #
+# END:         f f m p e g             #
+#                                                #
+##########################
+#############################
+#                                                  #
+# LAST:    t e s t                        #
+#                                               #
+#########################
+
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/  ;
+export LIBPATH=/usr/local/lib/   ;
+export LD_LIBRARY_PATH=/usr/local/lib/  ;
+
+cd           ~/INSTALL_FFmpeg/test/  ;
+
+/usr/local/bin/ffmpeg -i ./bat-guano.wav -c:a libopus -b:a 64k -ar 48000 -ac 2 ./bat-guano.opus   ;
+
+/usr/local/bin/ffmpeg -i ./bat-guano.wav -acodec libopus -ab 64k -ar 48000 -ac 2 ./bat-guano2.opus  ;
+
+/usr/local/bin/ffmpeg -i  ./example.ogg   ./example.wav ;
+
+/usr/local/bin/opusdec  detodos.opus   detodos.wav ;
+/usr/local/bin/opusenc  detodos.wav  detodos2.opus ;
+
+###rm -Rf               ~/INSTALL_FFmpeg/test/  ;  
+###mkdir --parent  ~/INSTALL_FFmpeg/test/   ; 
+###curl   \
+###http://www.music.helsinki.fi/tmt/opetus/uusmedia/esim/a2002011001-e02.wav \
+###>bat-guano.wav ;    ##  get a test file...
+### curl  https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg  >example.ogg  ;
+### curl  https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg  >example.ogg  ;
+###curl  https://people.xiph.org/~giles/2012/opus/detodos.opus   > detodos.opus ;
+
+
+
+##########################
+#                                                #
+# END:    t e s t                        #
+#                                                #
+##########################
+
+
+# # # # # # #            D O N E ! ! ! !
+
+
+
+
+
+##OBSOLETE - we are no longer supporting speex files
+############################
+#####                                           #
+##### XXX ::     s p e e x             #
+#####                                           #
+############################
+
+##############  2018-02-18 -- tarball was moved
+
+#######rm -Rf               ~/INSTALL_FFmpeg/INSTALL_speex/   ;
+######mkdir  --parent  ~/INSTALL_FFmpeg/INSTALL_speex/    ;
+######cd                      ~/INSTALL_FFmpeg/INSTALL_speex/  ;
+
+######curl https://ftp.osuosl.org/pub/xiph/releases/speex/speex-1.2rc1.tar.gz >  ######speex-1.2rc1.tar.gz;
+
+##########tar -z -x -f  speex-1.2rc1.tar.gz    ;
+#########cd ./speex-1.2rc1  ;
+##########./configure;
+#########make   &&   make check   &&   make install ;
+
+########/usr/local/bin/speexdec  --version ;   ## 2015-05-07
+##########/usr/local/bin/speexenc  --version ; ## 2015-05-07
+
+########################
+#                                           #
+# END:     s p e e x             #
+#                                           #
+########################
+
+
+
+
+
+
+
+### MERGE WITH OPUS !
+
+revised a bit on 2015-04-27 (still need to update the links a bit)
+2015-10-08 - “make check” does not seem to run as root
+here are the steps i went through to install the opus tools in a new environment:
+
+1) download appropriate minimalist centOS iso file:
+ftp://mirror.5ninesolutions.com/pub/mirror/centos/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso
+
+2) download and install virtualbox:
+https://www.virtualbox.org/wiki/Downloads
+
+3) create a centOS virtual-machine using the ISO file from the previous step.   Before doing the install, point the CD device to the ISO file.
+
+reference:  http://architects.dzone.com/articles/centos-minimal-installation
+4) [optional] modify the ifcfg-etho file:
+
+vi /etc/sysconfig/network-scripts/ifcfg-eth0
+change ONBOOT=no
+to:   ONBOOT=yes
+
+5) manually start the network:
+
+ /etc/init.d/network restart
+
+6) get this virtual-machine current:
+
+   yum  --assumeyes  update ;    ## have patience while this runs
+   yum  --assumeyes  install yum-utils;
+   yum  clean all ;
+
+7) install the components:
+
+   yum  --assumeyes  install gcc   ;
+   yum  --assumeyes  install gcc-c++   ;
+   yum  --assumeyes  install libgcc   ;
+   yum  --assumeyes  install libtool ;
+   yum  --assumeyes  install make ;
+   yum  --assumeyes  install xz  ;
+   yum  --assumeyes  install kernel-devel   ;
+   #############yum  --assumeyes  install flac ;
+
+
+8) set up the environment:
+
+
+9) create a work area:
+
+   mkdir  ./opus-install ;
+   cd  ./opus-install;
+
+10) get the files  (there is probably a git option that is better than curl ?)
+
+
+
+
+
+
+
+##  2013-05-03 - create ffmpeg with opus, speex, ogg/vorbis
+##  2015-10-11 - ran on centOS-7
+##  2015-12-11 - re-ran on centOS-7
+
+## MERGE WITH OGG
+
+
+from scratch centOS:
+
+on my windows-7 amd box:
+
+first, grab a CentOS iso file:
+http://mirror.teklinks.com/centos/6.3/isos/x86_64/CentOS-6.3-x86_64-LiveDVD.iso
+
+next, download and install virtualbox:
+http://virtualbox.org
+
+when after creating the new virtual machine, go into settings and point the CD device to the iso file from step one.
+
+##yum --assumeyes  update ;
+yum  install lame  lame-devel ;    ## ! ! ! make SURE this one gets done ! ! !   2015-12-11
+##yum  --assumeyes install gcc ;
+##yum  --assumeyes  install libtool ;
+##yum   --assumeyes  install git ;
+##yum  --assumeyes   install bc  ;   ## basic calculator might not be present (or needed)
+
+export  PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/  ;
+export LIBPATH=/usr/local/lib/   ;
+export LD_LIBRARY_PATH=/usr/local/lib/  ;
+
+
+## ONE:
+##### bzip2  ########################
+mkdir  ~/bzip  && cd  ~/bzip ;
+curl  http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz   >  bzip2-1.0.6.tar.gz ;
+gzip -d   *.gz  ;
+tar -xvf  bzip2-1.0.6.tar   ;
+cd  ~/bzip/bzip2-1.0.6/   ;
+./configure ;
+make &&  make  install ;
+which bzip2  ;   ## should show /usr/local/bin/bzip2
+/usr/local/bin/bzip2  --version ;
+
+## TWO:
+#######   y a s m  #######
+cd  ~  ;
+rm -Rf  ./yasm ;
+git clone git://github.com/yasm/yasm.git   yasm ;
+cd    ./yasm;
+./autogen.sh ;
+./configure ;
+make  && make check ;   ## run make install separately
+make install ;
+which yasm ;    ### should display  /usr/local/bin/yasm
+/usr/local/bin/yasm  --version ;
+
+
+## THREE:
+###### ogg   ###########
+rm -Rf  ./ogg ;
+mkdir  ~/ogg && cd ~/ogg ;
+curl  http://downloads.xiph.org/releases/ogg/libogg-1.3.2.tar.gz  > libogg-1.3.2.tar.gz ;
+tar -z -x -f  libogg-1.3.2.tar.gz ;
+cd ./libogg-1.3.2 ;
+./configure;
+make && make check ;
+make install ;
+##   oggenc and oggdec not built here so WHY are you testing ?????????
+###  ???   /usr/bin/oggenc  --version ;   ## 2015-05-10   ????????????????????
+###  ???   /usr/bin/oggdec  --version ;   ## 2015-05-10   ????????????????????
+###  ????????????????????????????????????????????
+
+
+
+## FOUR:
+###### vorbis   ###########
+rm -Rf  ./vorbis ;
+mkdir ./vorbis && cd ./vorbis ;
+##curl http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.3.tar.gz  >  libvorbis-1.3.3.tar.gz ;
+curl http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.5.tar.gz  >  libvorbis-1.3.5.tar.gz ;
+tar -z -x -f  libvorbis-1.3.5.tar.gz  ;
+cd ./libvorbis-1.3.5 ;
+./configure;
+make && make check && make install ;
+
+
+## FIVE:
+###### speex ###########
+mkdir   ~/speex/   &&  cd ~/speex/  ;
+rm -Rf  ./speex  ;
+mkdir ./speex  && cd ./speex ;
+curl http://downloads.xiph.org/releases/speex/speex-1.2rc1.tar.gz   >  speex-1.2rc1.tar.gz   ;
+tar -z -x -f  speex-1.2rc1.tar.gz    ;
+cd ./speex-1.2rc1  ;
+./configure;
+make && make check && make install ;
+/usr/local/bin/speexdec  --version ;   ## 2015-05-07
+/usr/local/bin/speexenc  --version ; ## 2015-05-07
+
+
+## SEVEN:
+##### o p u s    ######
+mkdir  ~/opus  &&  cd  ~/opus  ;
+wget http://downloads.xiph.org/releases/opus/opus-1.1.1.tar.gz ;  ## 2015-12-11
+         ####wget  http://downloads.xiph.org/releases/opus/opus-1.0.2.tar.gz    ; #2015-05-07
+gzip -d  opus*  &&   tar -xvf   opus*  &&   cd  opus*  ;
+./configure  ;   ##  2015-05-07 removed the disable-flac option  ## --disable-flac  ;
+make &&  make check  &&  make install;
+#### o p u s    t o o l s  ########
+mkdir  ~/opustools  &&  cd  ~/opustools ;
+wget  https://ftp.mozilla.org/pub/mozilla.org/opus/opus-tools-0.1.9.tar.gz
+gzip -d  opus*  &&   tar -xvf   opus*  &&   cd  opus*  ;
+./configure ;
+make  && make test && make install ;
+/usr/local/bin/opusenc  --version ;  ## 2015-05-07
+/usr/local/bin/opusdec  --version ;  ## 2015-05-07
+curl  http://people.xiph.org/~giles/2012/opus/detodos.opus   > detodos.opus ;
+/usr/local/bin/opusdec  detodos.opus   detodos.wav ;
+/usr/local/bin/opusenc  detodos.wav  detodos2.opus ;
+
+
+#################git clone git://git.opus-codec.org/opus.git  opus  ;
+#####./autogen.sh   ;    removed 2013-05-14
+#####./configure --disable-flac ;
+
+
+## EIGHT:
+###### lame  ################
+mkdir ~/lame/	&&  cd ~/lame/ ;
+wget             \
+     --output-document=lame-3.99.5.tar.gz      \
+      http://sourceforge.net/projects/lame/files/lame/3.99/lame-3.99.5.tar.gz/download  ;
+gzip -d   lame-3.99.5.tar.gz  ;
+tar -x -f   lame-3.99.5.tar ;
+cd  ./lame-3.99.5 ;
+./configure && make  && make check && make install ;
+
+## NINE:
+###### x264  ########
+mkdir ~/x264 &&  cd  ~/x264 ;
+curl ftp://ftp.videolan.org/pub/x264/snapshots/last_x264.tar.bz2  >  last_x264.tar.bz2 ;
+bzip2 -d  last_x264.tar.bz2 ;
+tar -x -f last_x264.tar;
+cd    ./x264*  ;
+./configure  --enable-shared  && make && make install  ;
+
+## TEN:
+######  f f m p e g  ######    version 2.8.3   2015-12-11
+cd ~  ;
+rm -Rf  ./FFmpeg ;
+git clone  https://github.com/FFmpeg/FFmpeg.git   ;
+cd  FFmpeg ;
+./configure --disable-shared   --enable-static  --enable-libopus  --enable-libspeex  --enable-libvorbis    --enable-gpl --enable-libx264 --enable-libmp3lame ;
+
+make    V=1            1>make-results.txt          2>make-results.error.txt  ;
+                                                  ### csf  --stop  ;   #### make sure firewall is down!
+make fate-rsync SAMPLES=fate-suite/   ;   #
+make fate       SAMPLES=fate-suite/      ;   #
+                                                  ### csf --start ;  ## put firewall back up !
+make  install ;
+which ffmpeg;   ##  /usr/local/bin/ffmpeg
+/usr/local/bin/ffmpeg  -version ;
+
+
+cd ~;
+
+curl  http://download.wavetlan.com/SVV/Media/HTTP/WAV/Media-Convert/Media-Convert_test1_Alaw_Mono_VBR_8SS_16000Hz.wav     >bat-guano.wav ;    ##  get a test file...
+/usr/local/bin/ffmpeg -i   ./bat-guano.wav   -c:a libopus -b:a 64k -ar 48000 -ac 2   ./bat-guano.opus   ;
+/usr/local/bin/ffmpeg -i   ./bat-guano.wav -acodec libopus -ab 64k -ar 48000 -ac 2 ./bat-guano2.opus  ;
+
+ curl  http://www.vorbis.com/music/Epoq-Lepidoptera.ogg   >example.ogg  ;
+/usr/local/bin/ffmpeg -i  ./example.ogg   ./example.wav ;
+
+# # # # # # # D O N E ! ! ! !
+######/usr/local/bin
+
+
+
+
+
+
+
+
+
+
+
+### OLD OPUS STUFF ###
+
+###to mass-convert files:
+
+#!  /bin/bash
+
+for filename in $(find  /home/comptonpeslonline.com/public_html/voicefiles -type f  -name  '*.spx'; ) ; do
+   if  [ !   -f  ${filename/.spx/.opus} ]; then
+        echo    ' ';
+        echo    $filename;
+        echo    ' ';
+        echo    /usr/local/bin/speexdec ${filename}  ${filename/.spx/.wav}      ;
+        if  [ $? -eq 0 ];
+        then
+            echo    /usr/local/bin/opusenc  --comp 4  --bitrate  16   \
+                           ${filename/.spx/.wav}   ${filename/.spx/.opus}  ;
+            echo    rm  --verbose   ${filename/.spx/.wav}   ;
+            echo    ' ';
+        else
+             echo ‘bad speex status!’;
+        fi
+    else
+         ## echo ‘skipping ‘ ${filename/.spx/.opus} ;
+    fi
+done
+
+##  http://wiki.centos.org/AdditionalResources/Repositories/RPMForge
+yum  install wget ;
+wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.i686.rpm  ;
+rpm --import http://apt.sw.be/RPM-GPG-KEY.dag.txt;
+rpm -K rpmforge-release-0.5.3-1.el6.rf.*.rpm;
+rpm -i rpmforge-release-0.5.3-1.el6.rf.*.rpm;
+yum  -y install htop;   ## optional test
+##http://wiki.centos.org/HowTos/Virtualization/VirtualBox
+yum -y --enablerepo rpmforge install dkms ;
+yum -y install VirtualBox-4.3 ;
+mkdir /mnt/cdrom;
+mount -o ro -t iso9660 /dev/cdrom /mnt/cdrom;
+sh /mnt/cdrom/VBoxLinuxAdditions.run
+
+
+
+
+
+
+
+
+
