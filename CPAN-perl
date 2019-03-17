@@ -2,18 +2,19 @@
 
 
 ################
-#                           #
-#   C P A N           #
-#                           #
+#              #
+#   C P A N    #
+#              #
 ###############
 
 yum --assumeyes install perl-CPAN \
     perl-GD\
     perl-Time-HiRes\
     perl-libxml-perl\
+    perl-DBD-mysql\
 ;
-
 yum   --assumeyes   install 'perl(IO::Socket::SSL)'    ;    ##  2015-07-01
+
 
 cpan ;   ## run once for initialize and testing, hit return over and over
 
