@@ -1,0 +1,19 @@
+
+#####################
+#                   #
+#    visudo         #
+#                   #
+##################### 
+
+using the command “visudo” add the following:
+
+## 2016-02-28 Defaults    requiretty   COMMENT THIS OUT ! ! ! 
+
+## 2016-02-19
+comptonpeslonline.com   ALL=(ALL)         NOPASSWD: /bin/mkdir,/bin/chown,/bin/mv,/usr/bin/file
+
+## 2016-02-19
+comptonpeslonline.com   ALL=(ALL:ALL)   NOPASSWD:       /usr/sbin/csf
+comptonpeslonline.com   ALL=(ALL:ALL)   NOPASSWD:       /bin/sh
+
+
