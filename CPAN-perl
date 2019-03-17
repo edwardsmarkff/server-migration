@@ -1,0 +1,140 @@
+####  BE SURE TO RUN THE FIRST PART OF interServer setup !
+
+
+################
+#                           #
+#   C P A N           #
+#                           #
+###############
+
+yum --assumeyes install perl-CPAN \
+    perl-GD\
+    perl-Time-HiRes\
+    perl-libxml-perl\
+;
+
+yum   --assumeyes   install 'perl(IO::Socket::SSL)'    ;    ##  2015-07-01
+
+cpan ;   ## run once for initialize and testing, hit return over and over
+
+perl -MCPAN -e shell ;   #run once for initialization and testing 
+perl -MCPAN -e shell  'o conf prerequisites_policy follow;  '   ;
+perl -MCPAN -e shell  'o conf commit'      ;
+
+/usr/bin/cpan    -i       DBI                            ;   ## 2016-07-24
+/usr/bin/cpan    -i       DBD::mysql               ;   ## 2016-07-24
+
+/usr/bin/cpan    -i       Template::Stash::XS       ;             ## prompts for a ‘y’
+/usr/bin/cpan    -i       Net:SSLeay              ;            ## prompts for a ‘y’
+
+
+###    if URL complaints, enter    http://www.cpan.org    o conf commit
+### o conf prerequisites_policy follow   ## stop prompting for answers!
+### o conf prerequisites_policy ask      ## go back to prompting for answers!
+
+
+/usr/bin/cpan    -i       YAML                           ;
+/usr/bin/cpan    -i       Test::More                    ;
+/usr/bin/cpan    -i       Exporter                       ;       
+/usr/bin/cpan    -i       FCGI                            ;
+/usr/bin/cpan    -i       CGI                            ;
+/usr/bin/cpan    -i       Cwd                            ;
+/usr/bin/cpan    -i       Crypt::Lite                    ;       
+/usr/bin/cpan    -i       DBI                            ;
+/usr/bin/cpan    -i       Data::Dumper                   ;       
+/usr/bin/cpan    -i       Data::JavaScript               ;               
+/usr/bin/cpan    -i       URI::Escape::JavaScript        ;                       
+/usr/bin/cpan    -i       File                           ;
+/usr/bin/cpan    -i       JSON                           ;
+/usr/bin/cpan    -i       LWP                            ;
+/usr/bin/cpan    -i       Mail::Sendmail                 ;       
+/usr/bin/cpan    -i       Spreadsheet::ParseExcel        ;
+/usr/bin/cpan    -i       Template                       ;       
+/usr/bin/cpan    -i       URI                            ;
+/usr/bin/cpan    -i       XML::TreeBuilder               ;               
+/usr/bin/cpan    -i       XML::Writer                    ;       
+                                                    
+perl -e  'use   XML::Writer; '   ## to test
+
+
+
+
+
+
+perl -MCPAN -e shell ;   #run once for initialization and testing
+#
+perl -MCPAN -e    'install YAML'   ;
+perl -MCPAN -e    'install Exporter'   ;
+perl -MCPAN -e    'install CGI'  ;
+perl -MCPAN -e    'install Cwd'  ;
+perl -MCPAN -e    'install Crypt::Lite' ; ##   (this one was not detected by grep methods because its in a different library)
+perl -MCPAN -e    'install DBI' ;
+perl -MCPAN -e    'install Data::Dumper' ;
+perl -MCPAN -e    'install Data::JavaScript' ;
+perl -MCPAN -e    'install URI::Escape::JavaScript'  ;  ##   (this one was not detected)
+perl -MCPAN -e    'install File'   ;
+###  GD installed from above ###
+perl -MCPAN -e    'install  JSON'  ;
+perl -MCPAN -e    'install  LWP'  ;
+perl -MCPAN -e    'install  Mail::Sendmail'  ;
+perl -MCPAN -e    'install  Spreadsheet::ParseExcel'  ;
+
+perl -MCPAN -e    'install  Template'   ;
+perl -MCPAN -e    'install URI'  ;
+perl -MCPAN -e    'install XML::TreeBuilder'  ;
+perl -MCPAN -e    'install XML::Writer'  ;
+
+perl -e  'use   XML::Writer; '   ## to test
+
+
+##yum --assumeyes  install perl-Time-HiRes ;  ## 2013-05-10
+##yum --assumeyes  install expat-devel  ;       ## 2013-05-10
+##yum --assumeyes  install perl-libxml-perl;     ## 2013-05-10
+##yum  --assumeyes  install  perl-GD ;    ## easiest way to install the perl-gd interface
+
+
+#########yum --assumeyes   install perl-CPAN;   ### might replace all of below!
+###mkdir  ~/cpan;
+###cd  ~/cpan;
+###wget  http://search.cpan.org/CPAN/authors/id/A/AN/ANDK/CPAN-1.9800.tar.gz   ;
+###gzip -d *, 
+###tar -xvf *;
+###cd CPAN*;
+###perl Makefile.PL;
+###make  &&  make test &&   make install ;   #make test failed but that does not seem to matter
+
+--
+
+from westhost server:
+
+require Exporter;
+use CGI qw(:standard);$
+use CGI::Carp;$
+use Cwd;$
+use DBI;$
+use Data::Dumper;$
+use Data::JavaScript;$
+use Fcntl qw(:seek);$
+use File::Basename;$
+use File::Temp qw/tempfile/;;$
+use File::stat;$
+use GD;$
+use HandleDbError;$
+use JSON;$
+use LWP;$
+use Mail::Sendmail;$
+use MainLoginScreen;$
+use POSIX ":sys_wait_h";$
+use Spreadsheet::ParseExcel::Simple;$
+use Spreadsheet::ParseExcel;$
+use Template;$
+use Tie::Handle;$
+use Time::localtime;$
+use URI::Escape::JavaScript$
+use ValidateUser;$
+use XML::TreeBuilder ;$
+use XML::Writer;$
+
+chown  -R   comptonpeslonline:comptonpeslonline    *
+chmod  -R  755   *
+
