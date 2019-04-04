@@ -1,5 +1,6 @@
 #!  /bin/bash -w
 
+## note that this will install a slightly older version of CPAN, hopefully perl/CPAN will be gone soon.
 
 ####  BE SURE TO RUN THE FIRST PART OF interServer setup !
 
