@@ -1,4 +1,12 @@
-MariaDB  -- 2019-02-23
+#! /bin/bash -w
+
+#   #########################
+#   #                       # 
+#   # MariaDB.bsh           #
+#   #                       #
+#   #########################
+
+#       moved to github 2019-02-23
 
 ### written from  https://www.tecmint.com/install-mariadb-in-centos-7/
 
@@ -24,6 +32,8 @@ mysql_secure_installation  ;
 mysql -V  ;
 mysqld --print-defaults  ;
 mysql -u root -p   ;
+
+exit 1;
 
 ####yum --assumeyes install \
 ####     perl-DBD-mysql \
