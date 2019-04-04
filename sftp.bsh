@@ -30,7 +30,7 @@ rsa_private_key_file=/etc/vsftpd/vsftpd.pem\\
 ssl_enable=YES
 END_OF_SED_VSFTPD_CONF
 
-set --in-place --file=-  /etc/ssh/sshd_config  <<END_OF_SSHD_CONFIG ;
+sed --in-place --file=-  /etc/ssh/sshd_config  <<END_OF_SSHD_CONFIG ;
 s/#PasswordAuthentication yes/PasswordAuthentication yes/;
 END_OF_SSHD_CONFIG
 
