@@ -1,4 +1,9 @@
-https://linuxize.com/post/how-to-setup-ftp-server-with-vsftpd-on-centos-7/
+#
+#  sftp.bsh    2019-04-04
+#
+# 
+## written from:  https://linuxize.com/post/how-to-setup-ftp-server-with-vsftpd-on-centos-7/
+#
 
 yum  --assumeyes  update;
 
