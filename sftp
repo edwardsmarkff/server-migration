@@ -1,0 +1,53 @@
+https://linuxize.com/post/how-to-setup-ftp-server-with-vsftpd-on-centos-7/
+
+yum  -y  update;
+
+yum  -y  install  vsftpd  ;
+systemctl  start  vsftpd   ;
+systemctl  enable  vsftpd   ;
+systemctl  status  vsftpd   ;
+ 
+
+
+firewall-cmd --permanent --add-port=20-21/tcp   ;
+firewall-cmd --permanent --add-port=30000-31000/tcp  ;
+firewall-cmd --reload   ;
+
+adduser ftpuser ;
+passwd  ftpuser ;
+
+
+echo "test test"  >  /home/ftpuser/tester.txt ;
+chown ftpuser:ftpuser  /home/ftpuser/tester.txt ;
+
+ls  -l  /home/ftpuser  ;
+
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/vsftpd/vsftpd.pem -out /etc/vsftpd/vsftpd.pem  ;
+
+vi  /etc/vsftpd/vsftpd.conf  ;
+
+sed --in-place  --file=-  /etc/vsftpd/vsftpd.conf  <<END_OF_SED_VSFTPD_CONF ;
+
+s/anonymous_enable=YES/anonymous_enable=NO/;
+s/#chroot_local_user=YES/chroot_local_user=YES/;
+$a \
+allow_writeable_chroot=YES                   \
+pasv_min_port=30000                          \ 
+pasv_max_port=31000                          \
+rsa_cert_file=/etc/vsftpd/vsftpd.pem         \
+rsa_private_key_file=/etc/vsftpd/vsftpd.pem  \
+ssl_enable=YES
+END_OF_SED_VSFTPD_CONF
+
+
+   
+
+
+set --in-place --file=-/etc/ssh/sshd_config  <<END_OF_SSHD_CONFIG ;
+s/#PasswordAuthentication yes/PasswordAuthentication yes/;
+END_OF_SSHD_CONFIG
+
+systemctl  restart  sshd    ;
+systemctl  status  sshd      ;
+systemctl  restart  vsftpd   ;
+ 
