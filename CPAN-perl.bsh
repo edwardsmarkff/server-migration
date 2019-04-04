@@ -24,26 +24,8 @@ yum --assumeyes install \
             ;
 yum   --assumeyes   install 'perl(IO::Socket::SSL)'    ;    ##  2015-07-01
 
-#mkdir  ~/cpan ; cd  ~/cpan;
-#wget wget  https://cpan.metacpan.org/authors/id/A/AN/ANDK/CPAN-2.26.tar.gz  ;
-#gzip -d * ;
-#tar -xvf *;
-#cd CPAN*;
-#perl Makefile.PL;
-#make  &&   make install ;   #make test failed but that does not seem to matter
-#
-#mkdir  ~/datadumper ; cd  ~/datadumper ;
-#wget http://www.cpan.org/modules/by-module/Data/Data-Dumper-2.173.tar.gz  ;
-#tar xvzf Data-Dumper-*.tar.gz  ;
-#cd Data-Dumper-*    ;
-#perl Makefile.PL   ;
-#make && make install  ;
 
-
-perl -MCPAN -e shell ; ## optional??    CPAN is up to date (2.26).
-install CPAN   
-reload cpan
-
+perl -MCPAN -e shell ; 
 
 cpan ;   ## run once for initialize and testing, hit return over and over
 
@@ -61,7 +43,6 @@ perl -MCPAN -e shell  'o conf commit'      ;
 ###    if URL complaints, enter    http://www.cpan.org    o conf commit
 ### o conf prerequisites_policy follow   ## stop prompting for answers!
 ### o conf prerequisites_policy ask      ## go back to prompting for answers!
-
 
 /usr/bin/cpan    -i       YAML                           ;
 /usr/bin/cpan    -i       Test::More                    ;
@@ -117,6 +98,22 @@ perl -MCPAN -e    'install XML::Writer'  ;
 perl -e  'use XML::TreeBuilder;  use XML::Writer; '   ## to test
 
 exit 1;
+
+
+#mkdir  ~/cpan ; cd  ~/cpan;
+#wget wget  https://cpan.metacpan.org/authors/id/A/AN/ANDK/CPAN-2.26.tar.gz  ;
+#gzip -d * ;
+#tar -xvf *;
+#cd CPAN*;
+#perl Makefile.PL;
+#make  &&   make install ;   #make test failed but that does not seem to matter
+#
+#mkdir  ~/datadumper ; cd  ~/datadumper ;
+#wget http://www.cpan.org/modules/by-module/Data/Data-Dumper-2.173.tar.gz  ;
+#tar xvzf Data-Dumper-*.tar.gz  ;
+#cd Data-Dumper-*    ;
+#perl Makefile.PL   ;
+#make && make install  ;
 
 
 ##yum --assumeyes  install perl-Time-HiRes ;  ## 2013-05-10
