@@ -9,6 +9,8 @@
 #                   #
 #####################
 
+#   2019-04-04  - moved from googledocs
+
 yum --assumeyes install perl-CPAN \
     perl-GD\
     perl-Time-HiRes\
@@ -17,6 +19,11 @@ yum --assumeyes install perl-CPAN \
     ;
     
 yum   --assumeyes   install 'perl(IO::Socket::SSL)'    ;    ##  2015-07-01
+
+
+perl -MCPAN -e shell ; ## optional??
+install CPAN   
+reload cpan
 
 
 cpan ;   ## run once for initialize and testing, hit return over and over
