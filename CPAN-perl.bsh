@@ -11,17 +11,37 @@
 
 #   2019-04-04  - moved from googledocs
 
-yum --assumeyes install perl-CPAN \
-    perl-GD\
-    perl-Time-HiRes\
-    perl-libxml-perl\
-    perl-DBD-mysql\
-    ;
-    
+####yum --assumeyes install perl-CPAN \  ## installed and OLD version of CPAN
+
+yum --assumeyes install \
+            perl-GD\
+            perl-Time-HiRes\
+            perl-libxml-perl\
+            perl-DBD-mysql\
+            perl-devel \
+            gcc\
+            gcc-c++\
+            wget\
+            ;
 yum   --assumeyes   install 'perl(IO::Socket::SSL)'    ;    ##  2015-07-01
 
+mkdir  ~/cpan ; cd  ~/cpan;
+wget wget  https://cpan.metacpan.org/authors/id/A/AN/ANDK/CPAN-2.26.tar.gz  ;
+gzip -d * ;
+tar -xvf *;
+cd CPAN*;
+perl Makefile.PL;
+make  &&   make install ;   #make test failed but that does not seem to matter
 
-perl -MCPAN -e shell ; ## optional??
+mkdir  ~/datadumper ; cd  ~/datadumper ;
+wget http://www.cpan.org/modules/by-module/Data/Data-Dumper-2.173.tar.gz  ;
+tar xvzf Data-Dumper-*.tar.gz  ;
+cd Data-Dumper-*    ;
+perl Makefile.PL   ;
+make && make install  ;
+
+
+perl -MCPAN -e shell ; ## optional??    CPAN is up to date (2.26).
 install CPAN   
 reload cpan
 
@@ -110,11 +130,13 @@ exit 1;
 ###mkdir  ~/cpan;
 ###cd  ~/cpan;
 ###wget  http://search.cpan.org/CPAN/authors/id/A/AN/ANDK/CPAN-1.9800.tar.gz   ;
+###wget  https://cpan.metacpan.org/authors/id/A/AN/ANDK/CPAN-2.26.tar.gz  ;
+
 ###gzip -d *, 
 ###tar -xvf *;
 ###cd CPAN*;
 ###perl Makefile.PL;
-###make  &&  make test &&   make install ;   #make test failed but that does not seem to matter
+###make  &&   make install ;   #make test failed but that does not seem to matter
 
 
 
