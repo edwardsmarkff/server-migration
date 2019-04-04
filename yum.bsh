@@ -1,12 +1,14 @@
 # ! /bin/bash
 
-## 2013-10-17 - added   logcheck
-## 2015-05-07 - changed mysql for mariadb, added httpd, gd, etc
-## 2015-07-01 - added stuff for centOS7
-## 2015-10-07 - ran on a test installation
-## 2015-10-13 - added flac back in since yum now has latest version
-## 2015-12-11 - ran successfully, added flac & flac-devel
-## 2016-12-31  - added yum clean all, and reworked MariaDB
+#     ###################
+#     #                 #
+#     # yum.bsh         #
+#     #                 #
+#     ###################
+
+
+
+##  2019-04-04  - migrated from googledocs
 
 
 yum clean all ;  ## 2016-12-31 - required for MariaDB
