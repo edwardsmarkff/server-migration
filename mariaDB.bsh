@@ -36,8 +36,8 @@ mysql -u root -p   ;
 exit 1;
 
 ####yum --assumeyes install \
-####     perl-DBD-mysql \
-####     php-pdo_mysql \
+####     perl-DBD-mysql \  now done in the php.bsh script
+####     php-pdo_mysql \    now done in the CPAN-perl.bsh script
 ####      ;
 
 
