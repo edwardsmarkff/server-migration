@@ -1,13 +1,12 @@
 #####################
 #                   #
-#   p h p           #
+#   p h p . b s h   #
 #                   #
 #####################
 
 #  entered in github 2019-04-01
 
 ##   DONT EVER USE WEBTATIC!
-
 
 yum  search php* ;     ## yum search instead of list
 
@@ -17,7 +16,6 @@ yum --assumeyes install http://rpms.remirepo.net/enterprise/remi-release-7.rpm ;
 yum   --assumeyes  install yum-utils  ;
 
 yum-config-manager --enable remi-php73   [Install PHP 7.3]  ;
-
 
 yum  --assumeyes  install  \
 php  \
@@ -45,29 +43,19 @@ php-xmlrpc \
 php-zip \
 ;
 
-
-####  ======php setup =============
-
-vi /etc/php.ini
-date.timezone ='America/New_York'       ;    2016-02-19 from ‘initial setup’
-
-; upload_max_filesize = 2M      ;    2016-02-19 from ‘initial setup’
-
-upload_max_filesize = 64M      ;    2016-02-19 from ‘initial setup’
-
-short_open_tag = On               ;    2016-02-19 from ‘initial setup’ allows  <?   ?>
-memory_limit = 256M          ;       2016-02-19 from ‘initial setup’  changed from 128
-
-include_path = "/usr/local/lib/php"
-
-
 yum  list installed | grep php ;    ## list everything associated with php
 
-
-==  initial ==
-
+sed --in-place  --file=-  /etc/php.ini  <<END_OF_SED_VSFTPD_CONF ;
+s/;date.timezone =/date.timezone ='America/New_York' ;  2019-04-04 from github php.txt/
+s/upload_max_filesize = 2M/upload_max_filesize = 64M ;  2019-04-03 from github php.txt/
+s/short_open_tag = Off/short_open_tag = On           ;  2019-04-03 from github php.txt, allows  <?   ?>/
+s/memory_limit = 128M/memory_limit = 512M            ;  2019-04-03 from github php.txt, changed from 128/
+s/;include_path = ".:/php/includes"/include_path = "/usr/local/lib/php" ; 2019-04-03 from github php.txt/
+END_OF_SED_VSFTPD_CONF
 
 php --version ;
+
+exit 1;
 
 #### OBSOLETE BELOW ####
 
