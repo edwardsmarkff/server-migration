@@ -1,6 +1,7 @@
 #!  /bin/bash -w
 
 ## note that this will install a slightly older version of CPAN, hopefully perl/CPAN will be gone soon.
+## note too this procedure uses LOTS of memory, so dont ever try this on a "small" server.
 
 ####  BE SURE TO RUN THE FIRST PART OF interServer setup !
 
@@ -41,6 +42,9 @@ perl -MCPAN -e shell  'o conf commit'      ;
 
 /usr/bin/cpan    -i       Template::Stash::XS       ;             ## prompts for a ‘y’
 /usr/bin/cpan    -i       Net:SSLeay              ;            ## prompts for a ‘y’
+
+perl -e  'use Template::Stash::XS ; ' ;
+perl -e  'use Net::SSLeay; ' ;
 
 
 ###    if URL complaints, enter    http://www.cpan.org    o conf commit
