@@ -6,7 +6,7 @@
 
 #  entered in github 2019-04-01
 
-##   DONT EVER USE WEBTATIC!
+##   DONT EVER USE WEBTATIC!  use remi/epel instead
 
 yum  search php* ;     ## yum search instead of list
 
