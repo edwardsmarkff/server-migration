@@ -4,12 +4,12 @@
 #                   #
 #####################
 
+#  entered in github 2019-04-01
+
+##   DONT EVER USE WEBTATIC!
+
 
 yum  search php* ;     ## yum search instead of list
-
-DONT USE WEBTATIC!
-
-##############  2019-02-19 - installing php 7.3
 
 yum --assumeyes install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm ;
 yum --assumeyes install http://rpms.remirepo.net/enterprise/remi-release-7.rpm ;
@@ -49,7 +49,7 @@ php-zip \
 ;
 
 
-======php setup =============
+####  ======php setup =============
 
 vi /etc/php.ini
 date.timezone ='America/New_York'       ;    2016-02-19 from ‘initial setup’
@@ -64,10 +64,6 @@ memory_limit = 256M          ;       2016-02-19 from ‘initial setup’  change
 include_path = "/usr/local/lib/php"
 
 
-
-############ 2019-02-01  - converting php5.4 to php5.6:  
-###################        (this seemed to cause issues with virtualmin)
-
 yum  list installed | grep php ;    ## list everything associated with php
 
 
@@ -76,6 +72,7 @@ yum  list installed | grep php ;    ## list everything associated with php
 
 php --version ;
 
+#### OBSOLETE BELOW ####
 
 == newer 5.6 version ==
 
