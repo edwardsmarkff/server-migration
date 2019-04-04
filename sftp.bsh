@@ -42,4 +42,5 @@ END_OF_SSHD_CONFIG
 systemctl  restart  sshd        ;
 systemctl  status   sshd        ;
 systemctl  restart  vsftpd      ;
- 
+
+exit 1;
