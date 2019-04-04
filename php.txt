@@ -11,13 +11,10 @@
 
 yum  search php* ;     ## yum search instead of list
 
-yum --assumeyes install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm ;
+yum --assumeyes install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm ; ## unnecessary?
 yum --assumeyes install http://rpms.remirepo.net/enterprise/remi-release-7.rpm ;
 
 yum   --assumeyes  install yum-utils  ;
-
-#####    yum-config-manager --enable remi-php71   [Install PHP 7.1]  ;
-#####    yum-config-manager --enable remi-php72   [Install PHP 7.2]  ;
 
 yum-config-manager --enable remi-php73   [Install PHP 7.3]  ;
 
@@ -73,6 +70,9 @@ yum  list installed | grep php ;    ## list everything associated with php
 php --version ;
 
 #### OBSOLETE BELOW ####
+
+#####    yum-config-manager --enable remi-php71   [Install PHP 7.1]  ;
+#####    yum-config-manager --enable remi-php72   [Install PHP 7.2]  ;
 
 == newer 5.6 version ==
 
