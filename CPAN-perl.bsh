@@ -11,9 +11,8 @@
 
 #   2019-04-04  - moved from googledocs
 
-####yum --assumeyes install perl-CPAN \  ## installed and OLD version of CPAN
-
 yum --assumeyes install \
+            perl-CPAN \
             perl-GD\
             perl-Time-HiRes\
             perl-libxml-perl\
@@ -25,20 +24,20 @@ yum --assumeyes install \
             ;
 yum   --assumeyes   install 'perl(IO::Socket::SSL)'    ;    ##  2015-07-01
 
-mkdir  ~/cpan ; cd  ~/cpan;
-wget wget  https://cpan.metacpan.org/authors/id/A/AN/ANDK/CPAN-2.26.tar.gz  ;
-gzip -d * ;
-tar -xvf *;
-cd CPAN*;
-perl Makefile.PL;
-make  &&   make install ;   #make test failed but that does not seem to matter
-
-mkdir  ~/datadumper ; cd  ~/datadumper ;
-wget http://www.cpan.org/modules/by-module/Data/Data-Dumper-2.173.tar.gz  ;
-tar xvzf Data-Dumper-*.tar.gz  ;
-cd Data-Dumper-*    ;
-perl Makefile.PL   ;
-make && make install  ;
+#mkdir  ~/cpan ; cd  ~/cpan;
+#wget wget  https://cpan.metacpan.org/authors/id/A/AN/ANDK/CPAN-2.26.tar.gz  ;
+#gzip -d * ;
+#tar -xvf *;
+#cd CPAN*;
+#perl Makefile.PL;
+#make  &&   make install ;   #make test failed but that does not seem to matter
+#
+#mkdir  ~/datadumper ; cd  ~/datadumper ;
+#wget http://www.cpan.org/modules/by-module/Data/Data-Dumper-2.173.tar.gz  ;
+#tar xvzf Data-Dumper-*.tar.gz  ;
+#cd Data-Dumper-*    ;
+#perl Makefile.PL   ;
+#make && make install  ;
 
 
 perl -MCPAN -e shell ; ## optional??    CPAN is up to date (2.26).
