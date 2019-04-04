@@ -1,5 +1,12 @@
+#!  /bin/bash -w
 #
-#  sftp.bsh    2019-04-04
+#     ###########################
+#     #                         #
+#     # sftp.bsh                #
+#     #                         #
+#     ###########################
+
+#   2019-04-04  -- moved to github
 #
 # 
 ## written from:  https://linuxize.com/post/how-to-setup-ftp-server-with-vsftpd-on-centos-7/
