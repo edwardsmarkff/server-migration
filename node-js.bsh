@@ -1,0 +1,69 @@
+#! /bin/bash -w
+
+#   #####################
+#   #                   #
+#   # node-js.bsh       #
+#   #                   #
+#   #####################
+
+
+
+yum  --assumeyes  install  nodejs  ;
+
+which node;
+node --version ;
+npm  --version ;   ## not sure where this is installed, except at root
+
+##  ===== pm2 === ==  2019-02-19
+npm  remove  pm2@latest  --global;   ## just in case
+npm  install pm2@latest --global ;
+pm2  completion install  ;
+pm2  startup  centos ;   ## reboot stuff
+#pm2  start  \ /home/comptonpeslonline.com/public_html/html5Audio/html5AudioNodeSSH/nodeWaveFormPlayer.js  --   --port 8001   ;
+#pm2   start  /usr/local/bash/monitorProcess.php  --  15 40 30 20 1     ;
+#pm2  start  \ /home/comptonpeslonline.com/public_html/voiceSpiceNode/voiceSpiceNodeServer/voiceSpiceNodeServer.js    --   --port 8000  ;
+#pm2 save ;   ## save to reboot autostart
+
+
+
+#######   D  O   N  E   ###############
+
+exit 1;
+
+######npm  install npm -g ;
+######npm  -v  ;
+
+
+
+##  Node installation - 2015-05-07
+
+
+## we probably should not use this, but instead just copy the bins over:
+
+## now cd  to correct wave-surfer directory
+npm install  express \
+                    fs   \
+                    mstring   \
+                    url   \
+                    waveform-util  \
+                    underscore  \
+                    --save ;
+         ## --save will manage the package.json file for us
+
+## cd to the recorder directory
+npm  install  \
+      express \
+     fs         \
+     http      \
+     MD5    \
+     mkdirp \
+     moment \
+     mstring \
+     request \
+     socket.io \
+     url \
+     utl \
+     underscore 
+     --save ;
+
+
