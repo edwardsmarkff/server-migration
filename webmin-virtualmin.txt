@@ -12,7 +12,6 @@ ulimit -u 10               ## maximum number of processes
 ulimit -v 34816          ##   Maximum size per process   (this example 34 megabytes)
 
 
-
 ##           ! ! ! ! see customization notes here:   ! ! ! ! !
 ##http://www.edwardsmark.com/textpattern/articles/133/virtualmin-customizations
 
@@ -21,13 +20,18 @@ Dont forget to install   ddos-deflate……….  2016-04-20
 ###=====  virtualmin/webmin installation ==============
 ###install webmin:
 mkdir   ~/webmin  &&  cd  ~/webmin ;
-##wget http://prdownloads.sourceforge.net/webadmin/webmin-1.780.tar.gz  ;
-####wget  http://iweb.dl.sourceforge.net/project/webadmin/webmin/1.780/webmin-1.780.tar.gz
 wget  https://prdownloads.sourceforge.net/webadmin/webmin-1.900.tar.gz
 gzip -d  ./webmin*  &&   tar -xvf  ./webmin*  &&  cd  ./webmin* ;
 ./setup.sh ;
 
 ##install virtualmin:
+
+curl  http://software.virtualmin.com/gpl/scripts/install.sh  >  install.sh  ;
+chmod 755   ./install.sh  ;
+./install.sh  ; 
+
+exit 1;
+
 (note - we may not need “sed: if the symbolic links are set from the php7 install section)
 curl  http://software.virtualmin.com/gpl/scripts/install.sh                               \
 | sed -e  's/ php-/ php70w-/g; s/ php / php-70w /g; s/ php5/ php70w/g; '   	\
