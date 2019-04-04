@@ -19,6 +19,8 @@ yum --assumeyes install \
             perl-libxml-perl\
             perl-DBD-mysql\
             perl-devel \
+            openssl\
+            openssl-devel\
             gcc\
             gcc-c++\
             wget\
