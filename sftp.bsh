@@ -22,11 +22,11 @@ sed --in-place  --file=-  /etc/vsftpd/vsftpd.conf  <<END_OF_SED_VSFTPD_CONF ;
 s/anonymous_enable=YES/anonymous_enable=NO/;
 s/#chroot_local_user=YES/chroot_local_user=YES/;
 \$a\
-allow_writeable_chroot=YES                   \\
-pasv_min_port=30000                          \\
-pasv_max_port=31000                          \\
-rsa_cert_file=/etc/vsftpd/vsftpd.pem         \\
-rsa_private_key_file=/etc/vsftpd/vsftpd.pem  \\
+allow_writeable_chroot=YES\\
+pasv_min_port=30000\\
+pasv_max_port=31000\\
+rsa_cert_file=/etc/vsftpd/vsftpd.pem\\
+rsa_private_key_file=/etc/vsftpd/vsftpd.pem\\
 ssl_enable=YES
 END_OF_SED_VSFTPD_CONF
 
