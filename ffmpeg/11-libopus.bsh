@@ -1,3 +1,5 @@
+#! /bin/bash -w
+
 ###################################
 #                                 #
 # ELEVEN:   l i b o p u s         #
@@ -15,8 +17,6 @@ tar -xvf   ./libopusenc*.tar    ;
 cd          ./libopusenc*/        ;
 ./configure  ;   
 make &&   make install;
-
-
 
 #############################
 #                           #
