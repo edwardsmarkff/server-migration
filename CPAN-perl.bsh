@@ -92,7 +92,7 @@ perl <<EOP2
     use  Devel::CheckLib            ;
     use  DBD::mysql                 ;
     use  Template::Stash::XS        ;
-    use  Net:SSLeay                 ;
+    use  Net::SSLeay                ;
     use  YAML                       ;
     use  Test::More                 ;
     use  Exporter                   ;
