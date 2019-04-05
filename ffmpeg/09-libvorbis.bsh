@@ -1,0 +1,28 @@
+#################################
+#                               #
+# NINE:     l i b v o r b i s   #
+#                               #
+#################################
+
+##  2018-02-18  --  changed tarball location
+##  2019-02-20 -- changed 1.3.5 to 1.3.6
+
+cd  ~/INSTALL_FFmpeg/INSTALL_vorbis/   ;
+
+xz   -d       ./libvorbis-*.tar.xz ;
+tar    -x -f  ./libvorbis-*.tar      ;
+cd             ./libvorbis-*/          ;
+./configure;
+make   &&   make check   &&   make install ;
+
+
+##rm -Rf                 ~/INSTALL_FFmpeg/INSTALL_vorbis/   ;  
+##mkdir   --parent  ~/INSTALL_FFmpeg/INSTALL_vorbis/   ;
+##curl  http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.6.tar.xz  >  libvorbis-1.3.6.tar.gz ;
+
+
+###############################
+#                             #
+# END:   l i b v o r b i s    #
+#                             #
+###############################
