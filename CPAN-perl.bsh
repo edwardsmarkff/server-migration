@@ -37,14 +37,21 @@ perl -MCPAN -e shell ;   #run once for initialization and testing
 perl -MCPAN -e shell  'o conf prerequisites_policy follow;  '   ;
 perl -MCPAN -e shell  'o conf commit'      ;
 
-/usr/bin/cpan    -i       DBI                            ;   ## 2016-07-24
+/usr/bin/cpan    -i       DBI                      ;   ## 2016-07-24
 /usr/bin/cpan    -i       DBD::mysql               ;   ## 2016-07-24
 
-/usr/bin/cpan    -i       Template::Stash::XS       ;             ## prompts for a ‘y’
-/usr/bin/cpan    -i       Net:SSLeay              ;            ## prompts for a ‘y’
+/usr/bin/cpan    -i       Template::Stash::XS      ;             ## prompts for a ‘y’
+/usr/bin/cpan    -i       Net:SSLeay               ;            ## prompts for a ‘y’
 
 perl -e  'use Template::Stash::XS ; ' ;
 perl -e  'use Net::SSLeay; ' ;
+
+perl <<EOP1;
+    use  DBI                        ;
+    use  DBD::mysql                 ;
+    use  Template::Stash::XS        ;
+    use  Net::SSLeay                ;
+EOP1
 
 
 ###    if URL complaints, enter    http://www.cpan.org    o conf commit
@@ -73,7 +80,7 @@ perl -e  'use Net::SSLeay; ' ;
 /usr/bin/cpan    -i       XML::TreeBuilder               ;               
 /usr/bin/cpan    -i       XML::Writer                    ;       
                                                     
-perl <<EOP
+perl <<EOP2
     use  YAML                       ;
     use  Test::More                 ;
     use  Exporter                   ;
@@ -95,7 +102,7 @@ perl <<EOP
     use  HTML::Element              ;
     use  XML::TreeBuilder           ;
     use  XML::Writer                ;
-EOP
+EOP2
 
 perl -e  'use   XML::Writer; '   ## to test
 
