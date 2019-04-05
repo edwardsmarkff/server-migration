@@ -55,8 +55,6 @@ su mark -c "perl -e  'use Devel::CheckLib ; ' ;"
 su mark -c "perl -e  'use DBD::mysql ; ' ;"
 
 
-
-
 sudo /usr/bin/cpan    -i       Net::SSLeay               ;            ## prompts for a ‘n’
 su mark -c "perl -e  'use Net::SSLeay; ' ;  "
 
