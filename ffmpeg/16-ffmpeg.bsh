@@ -11,7 +11,7 @@ export LIBPATH=/usr/local/lib/                    ;
 export LD_LIBRARY_PATH=/usr/local/lib/            ;
 export PATH=$PATH:/usr/local/bin                  ;     ## 2019-02-20
 
-cd      ~/INSTALL_FFmpeg/INSTALL_fFmpeg/    ;
+cd      ~/INSTALL_FFmpeg/INSTALL_FFmpeg/    ;
 bzip2  --decompress  ./ffmpeg-snapshot.tar.bz2  ;
 tar -xvf            ./ffmpeg-snapshot.tar        ;
 cd      ./ffmpeg/                             ;
