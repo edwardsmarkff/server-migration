@@ -52,9 +52,9 @@ perl -e  'use Net::SSLeay; ' ;
 ### o conf prerequisites_policy ask      ## go back to prompting for answers!
 
 /usr/bin/cpan    -i       YAML                           ;
-/usr/bin/cpan    -i       Test::More                    ;
+/usr/bin/cpan    -i       Test::More                     ;
 /usr/bin/cpan    -i       Exporter                       ;       
-/usr/bin/cpan    -i       FCGI                            ;
+/usr/bin/cpan    -i       FCGI                           ;
 /usr/bin/cpan    -i       CGI                            ;
 /usr/bin/cpan    -i       Cwd                            ;
 /usr/bin/cpan    -i       Crypt::Lite                    ;       
@@ -69,11 +69,34 @@ perl -e  'use Net::SSLeay; ' ;
 /usr/bin/cpan    -i       Spreadsheet::ParseExcel        ;
 /usr/bin/cpan    -i       Template                       ;       
 /usr/bin/cpan    -i       URI                            ;
+/usr/bin/cpan    -i       HTML::Element                  ;
 /usr/bin/cpan    -i       XML::TreeBuilder               ;               
 /usr/bin/cpan    -i       XML::Writer                    ;       
                                                     
-perl -e  'use   XML::Writer; '   ## to test
+perl <<EOF
+    use  YAML           ;
+    use  Test::More     ;
+    use  Exporter       ;
+    use  FCGI           ;
+    use  CGI            ;
+    use  Cwd            ;
+    use  Crypt::Lite    ;
+    use  DBI            ;
+    use  Data::Dumper   ;
+    use  Data::JavaScript;
+    use  URI::Escape::Javascript;
+    use  File           ;
+    use  JSON           ;
+    use  LWP            ;
+    use  Mail::Sendmail ;
+    use  Template       ;
+    use  URI            ;
+    use  HTML::Element  ;
+    use  XML::TreeBuilder;
+    use  XML::Writer    ;
+EOF
 
+perl -e  'use   XML::Writer; '   ## to test
 
 
 
@@ -99,6 +122,7 @@ perl -MCPAN -e    'install  Spreadsheet::ParseExcel'  ;
 
 perl -MCPAN -e    'install  Template'   ;
 perl -MCPAN -e    'install URI'  ;
+perl -MCPAN -e    'install HTML::ELement'  ;
 perl -MCPAN -e    'install XML::TreeBuilder'  ;
 perl -MCPAN -e    'install XML::Writer'  ;
 
