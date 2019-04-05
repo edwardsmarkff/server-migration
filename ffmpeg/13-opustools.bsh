@@ -1,0 +1,42 @@
+#! /bin/bash -w
+
+#########################################
+#                                       #
+# THIRTEEN:    o p u s    t o o l s     #
+#                                       #
+#########################################
+
+# upgraded from 0.1.10 to 0.2  2019-02-20
+
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/  ;
+export LIBPATH=/usr/local/lib/   ;
+export LD_LIBRARY_PATH=/usr/local/lib/  ;
+
+cd   ~/INSTALL_FFmpeg/INSTALL_opustool/  ;
+
+gzip -d  ./opus*.gz    ;
+tar -xvf   ./opus*.tar   ; 
+cd          ./opus*/       ;
+./configure ;
+make     &&     make check   ;  make install ;
+
+/usr/local/bin/opusenc  --version ;  ## 2015-05-07
+
+/usr/local/bin/opusdec  --version ;  ## 2015-05-07
+
+curl  https://people.xiph.org/~giles/2012/opus/detodos.opus > detodos.opus ;   
+
+##  opus example
+/usr/local/bin/opusdec  detodos.opus   detodos.wav ;
+/usr/local/bin/opusenc  detodos.wav  detodos2.opus ;  ## test step repeated at the end
+
+######rm  -Rf                ~/INSTALL_FFmpeg/INSTALL_opustool/  ; 
+######mkdir   --parent   ~/INSTALL_FFmpeg/INSTALL_opustool/  ;
+######wget https://archive.mozilla.org/pub/opus/opus-tools-0.1.10.tar.gz ;  ## 2017-07-03
+######wget  https://archive.mozilla.org/pub/opus/opus-tools-0.2.tar.gz   ;  ## 2019-02-20
+
+###########################################
+#                                         #
+# END:        o p u s    t o o l s        #
+#                                         #
+###########################################
