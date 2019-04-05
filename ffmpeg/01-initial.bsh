@@ -1,0 +1,33 @@
+###########################
+#                         #
+# ONE :   i n i t i a l   #
+#                         #
+###########################
+
+##  2019-02-23 -- added openssl and openssl-devel
+
+# run these from either the command line or this entire script.
+###  .   export.bsh  ##  notice the DOT at the beginning of the line, not ‘bash’
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/  ;
+export LIBPATH=/usr/local/lib/   ;
+export LD_LIBRARY_PATH=/usr/local/lib/  ;
+
+yum  --assumeyes  update ;
+
+yum  --assumeyes  install gcc             \
+                          gcc-c++         \
+                          git             \
+                          kernel-devel    \
+                          libgcc          \
+                          libtool         \
+                          make            \
+                          openssl         \
+                          openssl-devel   \
+                          xz              \
+                          ;
+
+###########################
+#                         #
+# END :   i n i t i a l   #
+#                         #
+###########################
