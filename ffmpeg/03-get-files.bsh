@@ -32,7 +32,7 @@ curl ftp://ftp.videolan.org/pub/x264/snapshots/last_x264.tar.bz2      \
       >     ~/INSTALL_FFmpeg/INSTALL_x264/last_x264.tar.bz2 ;
 
 curl              https://www.ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2      \
-      > ~/INSTALL_FFmpeg/INSTALL_fFmpeg/ffmpeg-snapshot.tar.bz2  ;
+      > ~/INSTALL_FFmpeg/INSTALL_FFmpeg/ffmpeg-snapshot.tar.bz2  ;
 
 curl  http://www.music.helsinki.fi/tmt/opetus/uusmedia/esim/a2002011001-e02.wav \
     >    ~/INSTALL_FFmpeg/test/bat-guano.wav ; 
