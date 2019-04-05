@@ -18,7 +18,7 @@ mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_opusfile/    ;
 mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_opustool/    ;
 mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_lame         ;
 mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_x264/        ;
-mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_fFmpeg/      ; 
+mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_FFmpeg/      ; 
 mkdir  --verbose            ~/INSTALL_FFmpeg/test/              ; 
 
 ###################################
