@@ -1,0 +1,27 @@
+#################################
+#                               #
+# TWO:  d i r e c t o r i e s   #
+#                               #
+#################################
+
+rm -Rf               ~/INSTALL_FFmpeg/  ;
+mkdir --verbose  --parent  ~/INSTALL_FFmpeg/INSTALL_bzip/         ;
+mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_yasm/        ;
+mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_flac/        ;
+mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_libogg/      ;
+mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_vorbis/      ;
+mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_opus/        ;
+mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_libopusenc/  ;
+mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_opusfile/    ;
+mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_opustool/    ;
+mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_lame         ;
+mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_x264/        ;
+mkdir  --verbose            ~/INSTALL_FFmpeg/INSTALL_fFmpeg/      ; 
+mkdir  --verbose            ~/INSTALL_FFmpeg/test/              ; 
+
+###################################
+#                                 #
+# END:  d i r e c t o r i e s     #
+#                                 #
+###################################
+
