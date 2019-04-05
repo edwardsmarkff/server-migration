@@ -52,7 +52,7 @@ su mark -c "perl -e  'use DBD::mysql ; ' ;"
 
 
 /usr/bin/cpan    -i       Template::Stash::XS      ;             ## prompts for a ‘y’
-su mark -c "perl -e  'use Template::Stash:XS ; ' ;"
+su mark -c "perl -e  'use Template::Stash::XS ; ' ;"
 
 
 sudo /usr/bin/cpan    -i       Net::SSLeay               ;            ## prompts for a ‘n’
