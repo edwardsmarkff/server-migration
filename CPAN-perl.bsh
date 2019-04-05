@@ -38,6 +38,10 @@ perl -MCPAN -e shell ;   #run once for initialization and testing
 perl -MCPAN -e shell  'o conf prerequisites_policy follow;  '   ;
 perl -MCPAN -e shell  'o conf commit'      ;
 
+/usr/bin/cpan    -i       Template::Stash::XS      ;             ## prompts for several "y" replies
+/usr/bin/cpan    -i   -f  Template::Stash::XS      ;             ## note -f if the next one FAILS!
+su mark -c "perl -e  'use Template::Stash::XS ; ' ;"
+
 
 /usr/bin/cpan    -i       DBI                      ;   ## 2016-07-24
 su mark -c "perl -e  'use DBI ; ' ;"
@@ -51,8 +55,6 @@ su mark -c "perl -e  'use Devel::CheckLib ; ' ;"
 su mark -c "perl -e  'use DBD::mysql ; ' ;"
 
 
-/usr/bin/cpan    -i       Template::Stash::XS      ;             ## prompts for several "y" replies
-su mark -c "perl -e  'use Template::Stash::XS ; ' ;"
 
 
 sudo /usr/bin/cpan    -i       Net::SSLeay               ;            ## prompts for a ‘n’
