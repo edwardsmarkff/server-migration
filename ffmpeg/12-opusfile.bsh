@@ -22,11 +22,6 @@ cd          ./opus*/         ;
 
 make 	&& 	make check   ;  make install ;
 
-##rm -Rf               ~/INSTALL_FFmpeg/INSTALL_opusfile/   ; 
-##mkdir  --parent  ~/INSTALL_FFmpeg/INSTALL_opusfile/   ;
-#####wget  https://archive.mozilla.org/pub/opus/opusfile-0.9.tar.gz   ;  ## 2019-02-22
-
-
 ###################################
 #                                 #
 # END:      o p u s f i l e       #
