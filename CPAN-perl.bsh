@@ -5,7 +5,7 @@
 
 ####  BE SURE TO RUN THE FIRST PART OF interServer setup !
 
-### might need MariaDB installed first to properly test.
+###  maybe need MariaDB installed first to properly test DBD::mysql?
 
 #####################
 #                   #
@@ -15,74 +15,84 @@
 
 #   2019-04-04  - moved from googledocs
 
-yum --assumeyes install \
-            perl-CPAN \
-            perl-GD\
-            perl-Time-HiRes\
-            perl-libxml-perl\
-            perl-DBD-mysql\
-            perl-devel \
-            openssl\
-            openssl-devel\
-            gcc\
-            gcc-c++\
-            wget\
+sudo yum --assumeyes install        \
+            perl-CPAN               \
+            perl-GD                 \
+            perl-Time-HiRes         \
+            perl-libxml-perl        \
+            perl-DBD-mysql          \
+            perl-devel              \
+            openssl                 \
+            openssl-devel           \
+            gcc                     \
+            gcc-c++                 \
+            wget                    \
             ;
-yum   --assumeyes   install 'perl(IO::Socket::SSL)'    ;    ##  2015-07-01
+sudo yum   --assumeyes   install 'perl(IO::Socket::SSL)'    ;    ##  2015-07-01
 
 
-perl -MCPAN -e shell ; 
+sudo perl -MCPAN -e shell ; 
 
-cpan ;   ## run once for initialize and testing, hit return over and over
+sudo cpan ;   ## run once for initialize and testing, hit return over and over
 
-perl -MCPAN -e shell ;   #run once for initialization and testing 
-perl -MCPAN -e shell  'o conf prerequisites_policy follow;  '   ;
-perl -MCPAN -e shell  'o conf commit'      ;
+sudo perl -MCPAN -e shell ;   #run once for initialization and testing 
+sudo perl -MCPAN -e shell  'o conf prerequisites_policy follow;  '   ;
+sudo perl -MCPAN -e shell  'o conf commit'      ;
 
-/usr/bin/cpan    -i       DBI                      ;   ## 2016-07-24
-/usr/bin/cpan    -i       DBD::mysql               ;   ## 2016-07-24
 
-/usr/bin/cpan    -i       Template::Stash::XS      ;             ## prompts for a ‘y’
-/usr/bin/cpan    -i       Net:SSLeay               ;            ## prompts for a ‘y’
+sudo /usr/bin/cpan    -i       DBI                      ;   ## 2016-07-24
+perl -e  'use DBI ; ' ;
 
+
+sudo /usr/bin/cpan    -i       Devel::CheckLib          ;   ## 2019-04-05 - added for DBD::mysql
+perl -e  'use Devel::CheckLib ; ' ;
+
+
+sudo /usr/bin/cpan    -i       DBD::mysql               ;   ## 2016-07-24
+perl -e  'use DBD::mysql ; ' ;
+
+
+sudo /usr/bin/cpan    -i       Template::Stash::XS      ;             ## prompts for a ‘y’
 perl -e  'use Template::Stash::XS ; ' ;
+
+
+sudo /usr/bin/cpan    -i       Net:SSLeay               ;            ## prompts for a ‘n’
 perl -e  'use Net::SSLeay; ' ;
 
-perl <<EOP1;
-    use  DBI                        ;
-    use  DBD::mysql                 ;
-    use  Template::Stash::XS        ;
-    use  Net::SSLeay                ;
-EOP1
 
 
 ###    if URL complaints, enter    http://www.cpan.org    o conf commit
 ### o conf prerequisites_policy follow   ## stop prompting for answers!
 ### o conf prerequisites_policy ask      ## go back to prompting for answers!
 
-/usr/bin/cpan    -i       YAML                           ;
-/usr/bin/cpan    -i       Test::More                     ;
-/usr/bin/cpan    -i       Exporter                       ;       
-/usr/bin/cpan    -i       FCGI                           ;
-/usr/bin/cpan    -i       CGI                            ;
-/usr/bin/cpan    -i       Cwd                            ;
-/usr/bin/cpan    -i       Crypt::Lite                    ;       
-/usr/bin/cpan    -i       DBI                            ;
-/usr/bin/cpan    -i       Data::Dumper                   ;       
-/usr/bin/cpan    -i       Data::JavaScript               ;               
-/usr/bin/cpan    -i       URI::Escape::JavaScript        ;                       
-/usr/bin/cpan    -i       File                           ;
-/usr/bin/cpan    -i       JSON                           ;
-/usr/bin/cpan    -i       LWP                            ;
-/usr/bin/cpan    -i       Mail::Sendmail                 ;       
-/usr/bin/cpan    -i       Spreadsheet::ParseExcel        ;
-/usr/bin/cpan    -i       Template                       ;       
-/usr/bin/cpan    -i       URI                            ;
-/usr/bin/cpan    -i       HTML::Element                  ;
-/usr/bin/cpan    -i       XML::TreeBuilder               ;               
-/usr/bin/cpan    -i       XML::Writer                    ;       
+sudo        /usr/bin/cpan    -i       YAML                           ;
+sudo        /usr/bin/cpan    -i       Test::More                     ;
+sudo        /usr/bin/cpan    -i       Exporter                       ;       
+sudo        /usr/bin/cpan    -i       FCGI                           ;
+sudo        /usr/bin/cpan    -i       CGI                            ;
+sudo        /usr/bin/cpan    -i       Cwd                            ;
+sudo        /usr/bin/cpan    -i       Crypt::Lite                    ;       
+sudo        /usr/bin/cpan    -i       DBI                            ;
+sudo        /usr/bin/cpan    -i       Data::Dumper                   ;       
+sudo        /usr/bin/cpan    -i       Data::JavaScript               ;               
+sudo        /usr/bin/cpan    -i       URI::Escape::JavaScript        ;                       
+sudo        /usr/bin/cpan    -i       File                           ;
+sudo        /usr/bin/cpan    -i       JSON                           ;
+sudo        /usr/bin/cpan    -i       LWP                            ;
+sudo        /usr/bin/cpan    -i       Mail::Sendmail                 ;       
+sudo        /usr/bin/cpan    -i       Spreadsheet::ParseExcel        ;
+sudo        /usr/bin/cpan    -i       Template                       ;       
+sudo        /usr/bin/cpan    -i       URI                            ;
+sudo        /usr/bin/cpan    -i       HTML::Element                  ;
+sudo        /usr/bin/cpan    -i       XML::TreeBuilder               ;               
+sudo        /usr/bin/cpan    -i       XML::Writer                    ;       
                                                     
 perl <<EOP2
+    use  DBI                        ;
+    use  Devel::CheckLib            ;
+    use  DBD::mysql                 ;
+    use  Template::Stash::XS        ;
+    use  Net:SSLeay                 ;
     use  YAML                       ;
     use  Test::More                 ;
     use  Exporter                   ;
