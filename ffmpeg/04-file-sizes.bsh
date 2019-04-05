@@ -1,0 +1,24 @@
+#################################
+#                               #
+#  FOUR: f i l e   s i z e s    #
+#                               #
+#################################
+
+
+echo  look for any non-audio file UNDER 50k.....
+
+echo  libogg should be  ~~568
+echo  libopusenc shoudl be ~~380
+echo  lame-latest should be ~~1492
+
+find ~/INSTALL_FFmpeg/                          \
+  -type f                                       \
+  -regex  '.*\(gz\|xz\|bz2\|opus\|ogg\|wav\)$'  \
+  -printf    '%k\t%p \n'                        \
+   ;
+
+###################################
+#                                 #
+# END:     f i l e   s i z e s    #
+#                                 #
+###################################
