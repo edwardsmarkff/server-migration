@@ -1,0 +1,41 @@
+#######################
+#                     #
+# SEVEN:    f l a c   #
+#                     #
+#######################
+
+## note -- this one takes time!  TIME TIME TIME!
+
+##   2017-07-03  -- 1.3.1   to   1.3.2
+##   2018-02-18  -- flac 1.3.2 has moved 
+##   2019-02-20  -- for whatever reason, /usr/local/bin/ is no longer in PATH
+
+    # (optional)
+    ####yum  --assumeyes install flac  ;  ## installs 1.3.0, but i think we need 1.3.+ (??)
+    ####yum  --assumeyes  remove flac  ;  ## in case yum has already installed it
+
+export PATH=$PATH:/usr/local/bin; 
+
+cd    ~/INSTALL_FFmpeg/INSTALL_flac/  ;
+xz -d       ./flac-*.tar.xz ;
+tar -xvf    ./flac-*.tar     ;
+cd           ./flac-*/         ;
+./configure 
+make  &&  make  --ignore-error  check ;  
+####  flac has some weird rule about not running as root 2015-10-09
+make install ;
+which flac;   ## hopefully /usr/local/bin/flac  2019-02-20
+/usr/local/bin/flac   --version ;   ## 1.3.2 as of 2018-02-18
+
+
+####rm -Rf                  ~/INSTALL_FFmpeg/INSTALL_flac/   ;
+####mkdir     --parent  ~/INSTALL_FFmpeg/INSTALL_flac/  ;
+
+##curl http://downloads.xiph.org/releases/flac/flac-1.3.2.tar.xz  > flac-1.3.2.tar.xz ;  2018-02-18
+#####curl https://ftp.osuosl.org/pub/xiph/releases/flac/flac-1.3.2.tar.xz   > flac-1.3.2.tar.xz ;
+
+#########################
+#                       #
+# END:    f l a c       #
+#                       #
+#########################
