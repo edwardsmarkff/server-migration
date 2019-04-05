@@ -55,7 +55,7 @@ sudo /usr/bin/cpan    -i       Template::Stash::XS      ;             ## prompts
 perl -e  'use Template::Stash ; ' ;                                     ## notice missing "XS", or dont notice it...
 
 
-sudo /usr/bin/cpan    -i       Net:SSLeay               ;            ## prompts for a ‘n’
+sudo /usr/bin/cpan    -i       Net::SSLeay               ;            ## prompts for a ‘n’
 perl -e  'use Net::SSLeay; ' ;
 
 
