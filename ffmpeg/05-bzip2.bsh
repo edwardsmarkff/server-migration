@@ -1,0 +1,32 @@
+#######################
+#                     #
+# FIVE:   b z i p 2   #
+#                     #
+#######################
+
+##UPDATE - the location may be moved, so this one might have to be processed manually.
+
+cd     ~/INSTALL_FFmpeg/INSTALL_bzip/   ;
+gzip -d   ./bzip2-*.tar.gz              ;
+tar -xvf   ./bzip2-*.tar                  ;
+cd          ./bzip2-*/                      ;
+
+make &&  make  install ;
+which bzip2  ;   ## should show /usr/local/bin/bzip2
+/usr/local/bin/bzip2    -version ;   ## one dash not two…!  
+/usr/local/bin/bzip2    --version ;   ##   two dash not one….. ????
+
+
+##########################################./configure ;  -- 2017-07-03
+####rm -Rf               ~/INSTALL_FFmpeg/INSTALL_bzip/   ;  
+####mkdir --parent  ~/INSTALL_FFmpeg/INSTALL_bzip/   ;
+
+####curl  http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz   >  bzip2-1.0.6.tar.gz ;
+#####curl https://sourceforge.net/projects/bzip2/files/bzip2-1.0.6.tar.gz/download >bzip2-1.0.6.tar.gz;
+######curl https://managedway.dl.sourceforge.net/project/bzip2/bzip2-1.0.6.tar.gz  ######;
+
+#####################
+#                   #
+# END: b z i p 2    #
+#                   #
+####################
