@@ -67,24 +67,24 @@ perl -e  'use Net::SSLeay; ' ;
 
 sudo        /usr/bin/cpan    -i       YAML                           ;
 sudo        /usr/bin/cpan    -i       Test::More                     ;
-sudo        /usr/bin/cpan    -i       Exporter                       ;       
+sudo        /usr/bin/cpan    -i       Exporter                       ;
 sudo        /usr/bin/cpan    -i       FCGI                           ;
 sudo        /usr/bin/cpan    -i       CGI                            ;
 sudo        /usr/bin/cpan    -i       Cwd                            ;
-sudo        /usr/bin/cpan    -i       Crypt::Lite                    ;       
+sudo        /usr/bin/cpan    -i       Crypt::Lite                    ;
 sudo        /usr/bin/cpan    -i       DBI                            ;
-sudo        /usr/bin/cpan    -i       Data::Dumper                   ;       
-sudo        /usr/bin/cpan    -i       Data::JavaScript               ;               
-sudo        /usr/bin/cpan    -i       URI::Escape::JavaScript        ;                       
+sudo        /usr/bin/cpan    -i       Data::Dumper                   ;
+sudo        /usr/bin/cpan    -i       Data::JavaScript               ;
+sudo        /usr/bin/cpan    -i       URI::Escape::JavaScript        ;
 sudo        /usr/bin/cpan    -i       File                           ;
 sudo        /usr/bin/cpan    -i       JSON                           ;
 sudo        /usr/bin/cpan    -i       LWP                            ;
-sudo        /usr/bin/cpan    -i       Mail::Sendmail                 ;       
+sudo        /usr/bin/cpan    -i       Mail::Sendmail                 ;
 sudo        /usr/bin/cpan    -i       Spreadsheet::ParseExcel        ;
-sudo        /usr/bin/cpan    -i       Template                       ;       
+sudo        /usr/bin/cpan    -i       Template                       ;
 sudo        /usr/bin/cpan    -i       URI                            ;
 sudo        /usr/bin/cpan    -i       HTML::Element                  ;
-sudo        /usr/bin/cpan    -i       XML::TreeBuilder               ;               
+sudo        /usr/bin/cpan    -i       XML::TreeBuilder               ;      
 sudo        /usr/bin/cpan    -i       XML::Writer                    ;       
                                                     
 perl <<EOP2
