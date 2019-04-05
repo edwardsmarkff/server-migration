@@ -84,8 +84,8 @@ sudo        /usr/bin/cpan    -i       Spreadsheet::ParseExcel        ;
 sudo        /usr/bin/cpan    -i       Template                       ;
 sudo        /usr/bin/cpan    -i       URI                            ;
 sudo        /usr/bin/cpan    -i       HTML::Element                  ;
-sudo        /usr/bin/cpan    -i       XML::TreeBuilder               ;      
-sudo        /usr/bin/cpan    -i       XML::Writer                    ;       
+sudo        /usr/bin/cpan    -i       XML::TreeBuilder               ;
+sudo        /usr/bin/cpan    -i       XML::Writer                    ;
                                                     
 perl <<EOP2
     use  DBI                        ;
