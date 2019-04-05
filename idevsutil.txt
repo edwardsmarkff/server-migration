@@ -1,0 +1,42 @@
+2016-01-26 - original writing
+
+document written from this
+
+##get zip file from idrive idevsutil and unzip it
+curl  http://evs.idrive.com/download/download-for-linux/idevsutil_linux.zip   >   idevsutil.zip ;
+unzip  -v  idevsutil.zip  ;
+cd  idevsutil_linux  ;
+chmod 700  idevsutil;
+ cp  ./idevsutil   /usr/local/bin/idevsutil ;
+which idevsutil ;       ##   /usr/local/bin/idevsutil
+
+idevsutil   --config-account --enc-type=DEFAULT \
+          --user=mark@edwardsmark.com                \
+          --password-file=MYPASSWORD                ;
+
+idevsutil   --getServerAddress  mark@edwardsmark.com \
+                                       --password-file=MARKsPssWd ;
+<tree message="SUCCESS" cmdUtilityServer="evs207.idrive.com" cmdUtilityServerIP="173.255.14.94" webApiServer="evsweb207.idrive.com" webApiServerIP="173.255.14.95"/>
+
+notice:   evs207.idrive.com
+
+create a file with filenames:
+
+
+idevsutil --xml-output    --password-file=MarKSPassWorDed     \
+ --files-from=/tmp/filelist.txt   \ /mark@edwardsmark.com@evs207.idrive.com::home/interserver-archives/TEST   ;
+
+in the idrive account, this will create /home/interserver-archives/TEST/tmp/
+
+
+TO DISPLAY A FILE/DIRECTORY CONTENTS:   2016-02-11:
+
+idevsutil --xml-output    --password-file=pASSSWoRDD  --auth-list mark@edwardsmark.com@evs207.idrive.com::home/interserver-archives/"red5 1.0 RC 1"/"red5-1.0.0-RC1.zip"   ;
+
+TO RECOVER A FILE:   2016-02-11
+
+echo  'red5-1.0.0-RC1.zip' > recover.txt  ;
+#idevsutil --xml-output    --password-file=pASsWOrD   --files-from=recover.txt                        \  mark@edwardsmark.com@evs207.idrive.com::home/interserver-archives/"red5 1.0 RC 1"/   \
+     ./              ;    ## can be recovered anywhere but in this example its in the current directory.
+
+
