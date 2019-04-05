@@ -1,0 +1,41 @@
+## 2015-05-09:  (see domain n
+to migrate virtualmin without data:
+virtualmin  backup-domain                  \
+    --domain  edwardsmark.com          \
+    --dest   /tmp/x.tgz                            \
+    --all-features --except-feature  dir   ;
+https://www.virtualmin.com/documentation/developer/cli/backup_domain
+https://www.virtualmin.com/documentation/developer/cli/restore_domain
+
+
+virtualmin backup-domain   [--test]   --dest /tmp/virtualmin/xx.tgz      --all-domains   --all-features  --except-feature dir                    --all-virtualmin ;
+virtualmin  restore-domain  [--test]  --source /tmp/virtualmin/xx.tgz   --all-virtualmin --all-features  --all-domains ;
+
+
+*BACKUP*
+
+to backup a virtualmin (domain) server:
+
+virtualmin backup-domain --domain englishwithoutaccent.com --dest /tmp/virtualmin/   --newformat   --all-features --all-virtualmin --exclude *.al ;
+
+
+backup only virtualmin files:
+
+virtualmin backup-domain --dest /tmp/virtualmin/                    --all-features --newformat                     --all-virtualmin ;
+virtualmin backup-domain --dest /tmp/virtualmin/x.tgz       --all-domains   --all-features  --except-feature dir                    --all-virtualmin ;
+
+
+=== did not work:  ===
+backup to old format  (notice file name and directory in --dest  x.tgz )
+
+ virtualmin backup-domain --all-domains --dest /tmp/virtualmin/x.tgz  --all-features --all-virtualmin --exclude *.al --exclude *.avi --exclude *.cgi --exclude *.com_web_alog --exclude *.css --exclude *.flv --exclude *.divx --exclude *.exe --exclude *.gif   ;
+
+back to new format   --new-format:   (notice no file name in --dest, only directory)
+
+ virtualmin backup-domain --all-domains --dest /tmp/virtualmin/   --new-format  --all-features --all-virtualmin --exclude *.al --exclude *.avi --exclude *.cgi --exclude *.com_web_alog --exclude *.css --exclude *.flv --exclude *.divx --exclude *.exe --exclude *.gif
+
+
+RESTORE:
+
+virtualmin  restore-domain  --test  --source /tmp/virtualmin  --all-virtualmin --all-features  --all-domains ;
+
