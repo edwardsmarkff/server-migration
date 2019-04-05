@@ -19,13 +19,15 @@ Dont forget to install   ddos-deflate……….  2016-04-20
 
 ###=====  virtualmin/webmin installation ==============
 ###install webmin:
-mkdir   ~/webmin  &&  cd  ~/webmin ;
+mkdir   ~/webmin/  &&  cd  ~/webmin/ ;
 wget  https://prdownloads.sourceforge.net/webadmin/webmin-1.900.tar.gz
 gzip -d  ./webmin*  &&   tar -xvf  ./webmin*  &&  cd  ./webmin* ;
 ./setup.sh ;
 
 ##install virtualmin:
 
+cd ~ ;
+mkdir   ~/virtualmin/  &&  cd  ~/virtualmin/ ;
 curl  http://software.virtualmin.com/gpl/scripts/install.sh  >  install.sh  ;
 chmod 755   ./install.sh  ;
 ./install.sh  ; 
