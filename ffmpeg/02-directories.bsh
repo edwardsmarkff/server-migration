@@ -26,4 +26,5 @@ mkdir  --verbose            ~/INSTALL_FFmpeg/test/              ;
 # END:  d i r e c t o r i e s     #
 #                                 #
 ###################################
-
+
+exit 1;
