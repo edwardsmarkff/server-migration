@@ -1,0 +1,23 @@
+#! /bin/bash -w
+
+#############################
+#                           #
+# FOURTEEN:     l a m e     #
+#                           #
+#############################
+
+##  2018-02-18  --  v3.99.5 to v3.100
+
+cd   ~/INSTALL_FFmpeg/INSTALL_lame/  ;
+gzip -d   ./lame-*.tar.gz  ;
+tar -x -f   ./lame-*.tar       ;
+cd          ./lame-*/            ;
+./configure;
+make  && make check && make install ;
+
+
+#######################
+#                     #
+# END:     l a m e    #
+#                     #
+#######################
