@@ -30,10 +30,6 @@ curl  https://people.xiph.org/~giles/2012/opus/detodos.opus > detodos.opus ;
 /usr/local/bin/opusdec  detodos.opus   detodos.wav ;
 /usr/local/bin/opusenc  detodos.wav  detodos2.opus ;  ## test step repeated at the end
 
-######rm  -Rf                ~/INSTALL_FFmpeg/INSTALL_opustool/  ; 
-######mkdir   --parent   ~/INSTALL_FFmpeg/INSTALL_opustool/  ;
-######wget https://archive.mozilla.org/pub/opus/opus-tools-0.1.10.tar.gz ;  ## 2017-07-03
-######wget  https://archive.mozilla.org/pub/opus/opus-tools-0.2.tar.gz   ;  ## 2019-02-20
 
 ###########################################
 #                                         #
