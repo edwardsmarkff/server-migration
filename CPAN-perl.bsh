@@ -109,6 +109,7 @@ perl <<EOP2
     use  JSON                       ;
     use  LWP                        ;
     use  Mail::Sendmail             ;
+    use  Spreadsheet::ParseExcel    ;
     use  Template                   ;
     use  URI                        ;
     use  HTML::Element              ;
