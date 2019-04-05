@@ -103,7 +103,7 @@ perl <<EOP2
     use  DBI                        ;
     use  Data::Dumper               ;
     use  Data::JavaScript           ;
-    use  URI::Escape::Javascript    ;
+    use  URI::Escape                ;
     use  File::Basename             ;
     use  File::stat                 ;
     use  JSON                       ;
