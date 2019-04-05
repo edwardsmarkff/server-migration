@@ -5,6 +5,8 @@
 
 ####  BE SURE TO RUN THE FIRST PART OF interServer setup !
 
+### might need MariaDB installed first to properly test.
+
 #####################
 #                   #
 #   CPAN-perl.bsh   #
