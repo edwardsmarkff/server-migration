@@ -52,7 +52,7 @@ perl -e  'use DBD::mysql ; ' ;
 
 
 sudo /usr/bin/cpan    -i       Template::Stash::XS      ;             ## prompts for a ‘y’
-perl -e  'use Template::Stash::XS ; ' ;
+perl -e  'use Template::Stash ; ' ;                                     ## notice missing "XS", or dont notice it...
 
 
 sudo /usr/bin/cpan    -i       Net:SSLeay               ;            ## prompts for a ‘n’
