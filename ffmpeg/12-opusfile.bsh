@@ -1,0 +1,32 @@
+#######################################
+#                                     #
+# TWELVE:	    o p u s f i l e         #
+#                                     #
+#######################################
+
+## added 2019-02-22, now required for the latest opus tools
+
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/  ;
+export LIBPATH=/usr/local/lib/   ;
+export LD_LIBRARY_PATH=/usr/local/lib/  ;
+
+cd   ~/INSTALL_FFmpeg/INSTALL_opusfile/   ;
+
+gzip -d   ./opus*.gz    ;
+tar -xvf   ./opus*         ;
+cd          ./opus*/         ;
+
+./configure ;
+
+make 	&& 	make check   ;  make install ;
+
+##rm -Rf               ~/INSTALL_FFmpeg/INSTALL_opusfile/   ; 
+##mkdir  --parent  ~/INSTALL_FFmpeg/INSTALL_opusfile/   ;
+#####wget  https://archive.mozilla.org/pub/opus/opusfile-0.9.tar.gz   ;  ## 2019-02-22
+
+
+###################################
+#                                 #
+# END:    	o p u s f i l e       #
+#                                 #
+####################################
