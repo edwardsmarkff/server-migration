@@ -1,0 +1,26 @@
+#####################
+#                   #
+# SIX:      yasm    #
+#                   #
+#####################
+
+cd   ~/INSTALL_FFmpeg/INSTALL_yasm/yasm/ ;
+
+./autogen.sh ;
+
+./configure ;
+make  && make check ;   ## run make install separately
+make install ;
+which yasm ;    ### should display  /usr/local/bin/yasm
+/usr/local/bin/yasm  --version ;    ##  yasm 1.3.0.41.g80bc   (2018-02-18)
+
+
+##rm -Rf               ~/INSTALL_FFmpeg/INSTALL_yasm/ ; 
+##mkdir --parent  ~/INSTALL_FFmpeg/INSTALL_yasm/ ;
+####git clone https://github.com/yasm/yasm.git   yasm ;   // changed git: to https:  2016-03-01
+
+#####################
+#                   #
+# END:      yasm    #
+#                   #
+#####################
