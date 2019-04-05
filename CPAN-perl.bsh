@@ -15,7 +15,7 @@
 
 #   2019-04-04  - moved from googledocs
 
-sudo yum --assumeyes install        \
+yum --assumeyes install             \
             perl-CPAN               \
             perl-GD                 \
             perl-Time-HiRes         \
@@ -28,35 +28,35 @@ sudo yum --assumeyes install        \
             gcc-c++                 \
             wget                    \
             ;
-sudo yum   --assumeyes   install 'perl(IO::Socket::SSL)'    ;    ##  2015-07-01
+yum   --assumeyes   install 'perl(IO::Socket::SSL)'    ;    ##  2015-07-01
  
-sudo perl -MCPAN -e shell ; 
+perl -MCPAN -e shell ; 
     ## does this need to be done twice?
-sudo cpan ;   ## run once for initialize and testing, hit return over and over
+cpan ;   ## run once for initialize and testing, hit return over and over
 
-sudo perl -MCPAN -e shell ;   #run once for initialization and testing 
-sudo perl -MCPAN -e shell  'o conf prerequisites_policy follow;  '   ;
-sudo perl -MCPAN -e shell  'o conf commit'      ;
-
-
-sudo /usr/bin/cpan    -i       DBI                      ;   ## 2016-07-24
-perl -e  'use DBI ; ' ;
+perl -MCPAN -e shell ;   #run once for initialization and testing 
+perl -MCPAN -e shell  'o conf prerequisites_policy follow;  '   ;
+perl -MCPAN -e shell  'o conf commit'      ;
 
 
-sudo /usr/bin/cpan    -i       Devel::CheckLib          ;   ## 2019-04-05 - added for DBD::mysql
-perl -e  'use Devel::CheckLib ; ' ;
+/usr/bin/cpan    -i       DBI                      ;   ## 2016-07-24
+su mark -c "perl -e  'use DBI ; ' ;"
 
 
-sudo /usr/bin/cpan    -i       DBD::mysql               ;   ## 2016-07-24
-perl -e  'use DBD::mysql ; ' ;
+/usr/bin/cpan    -i       Devel::CheckLib          ;   ## 2019-04-05 - added for DBD::mysql
+su mark -c "perl -e  'use Devel::CheckLib ; ' ;"
 
 
-sudo /usr/bin/cpan    -i       Template::Stash::XS      ;             ## prompts for a ‘y’
-perl -e  'use Template::Stash ; ' ;                                     ## notice missing "XS", or dont notice it...
+/usr/bin/cpan    -i       DBD::mysql               ;   ## 2016-07-24
+su mark -c "perl -e  'use DBD::mysql ; ' ;"
+
+
+/usr/bin/cpan    -i       Template::Stash::XS      ;             ## prompts for a ‘y’
+su mark -c "perl -e  'use Template::Stash:XS ; ' ;"
 
 
 sudo /usr/bin/cpan    -i       Net::SSLeay               ;            ## prompts for a ‘n’
-perl -e  'use Net::SSLeay; ' ;
+su mark -c "perl -e  'use Net::SSLeay; ' ;  "
 
 
 
@@ -64,28 +64,29 @@ perl -e  'use Net::SSLeay; ' ;
 ### o conf prerequisites_policy follow   ## stop prompting for answers!
 ### o conf prerequisites_policy ask      ## go back to prompting for answers!
 
-sudo        /usr/bin/cpan    -i       YAML                           ;
-sudo        /usr/bin/cpan    -i       Test::More                     ;
-sudo        /usr/bin/cpan    -i       Exporter                       ;
-sudo        /usr/bin/cpan    -i       FCGI                           ;
-sudo        /usr/bin/cpan    -i       CGI                            ;
-sudo        /usr/bin/cpan    -i       Cwd                            ;
-sudo        /usr/bin/cpan    -i       Crypt::Lite                    ;
-sudo        /usr/bin/cpan    -i       DBI                            ;
-sudo        /usr/bin/cpan    -i       Data::Dumper                   ;
-sudo        /usr/bin/cpan    -i       Data::JavaScript               ;
-sudo        /usr/bin/cpan    -i       URI::Escape::JavaScript        ;
-sudo        /usr/bin/cpan    -i       File                           ;
-sudo        /usr/bin/cpan    -i       JSON                           ;
-sudo        /usr/bin/cpan    -i       LWP                            ;
-sudo        /usr/bin/cpan    -i       Mail::Sendmail                 ;
-sudo        /usr/bin/cpan    -i       Spreadsheet::ParseExcel        ;
-sudo        /usr/bin/cpan    -i       Template                       ;
-sudo        /usr/bin/cpan    -i       URI                            ;
-sudo        /usr/bin/cpan    -i       HTML::Element                  ;
-sudo        /usr/bin/cpan    -i       XML::TreeBuilder               ;
-sudo        /usr/bin/cpan    -i       XML::Writer                    ;
-                                                    
+/usr/bin/cpan    -i       YAML                           ;
+/usr/bin/cpan    -i       Test::More                     ;
+/usr/bin/cpan    -i       Exporter                       ;
+/usr/bin/cpan    -i       FCGI                           ;
+/usr/bin/cpan    -i       CGI                            ;
+/usr/bin/cpan    -i       Cwd                            ;
+/usr/bin/cpan    -i       Crypt::Lite                    ;
+/usr/bin/cpan    -i       DBI                            ;
+/usr/bin/cpan    -i       Data::Dumper                   ;
+/usr/bin/cpan    -i       Data::JavaScript               ;
+/usr/bin/cpan    -i       URI::Escape::JavaScript        ;
+/usr/bin/cpan    -i       File                           ;
+/usr/bin/cpan    -i       JSON                           ;
+/usr/bin/cpan    -i       LWP                            ;
+/usr/bin/cpan    -i       Mail::Sendmail                 ;
+/usr/bin/cpan    -i       Spreadsheet::ParseExcel        ;
+/usr/bin/cpan    -i       Template                       ;
+/usr/bin/cpan    -i       URI                            ;
+/usr/bin/cpan    -i       HTML::Element                  ;
+/usr/bin/cpan    -i       XML::TreeBuilder               ;
+/usr/bin/cpan    -i       XML::Writer                    ;
+
+## run this NOT as root:
 perl <<EOP2
     use  DBI                        ;
     use  Devel::CheckLib            ;
