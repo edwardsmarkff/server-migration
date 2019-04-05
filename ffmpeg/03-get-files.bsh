@@ -1,0 +1,47 @@
+###############################
+#                             #
+# THREE:  G e t   F i l e s   #
+#                             #
+###############################
+
+curl https://managedway.dl.sourceforge.net/project/bzip2/bzip2-1.0.6.tar.gz    \
+        >                       ~/INSTALL_FFmpeg/INSTALL_bzip/bzip2-1.0.6.tar.gz;
+
+git clone https://github.com/yasm/yasm.git   \
+    ~/INSTALL_FFmpeg/INSTALL_yasm/yasm ;  
+
+curl https://ftp.osuosl.org/pub/xiph/releases/flac/flac-1.3.2.tar.xz  \
+      >           ~/INSTALL_FFmpeg/INSTALL_flac/flac-1.3.2.tar.xz ;
+curl https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-1.3.3.tar.gz \
+    >         ~/INSTALL_FFmpeg/INSTALL_libogg/libogg-1.3.3.tar.gz ;
+curl  https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-1.3.6.tar.xz  \
+    >              ~/INSTALL_FFmpeg/INSTALL_vorbis/libvorbis-1.3.6.tar.xz ;
+curl https://archive.mozilla.org/pub/opus/opus-1.3.tar.gz  \
+  > ~/INSTALL_FFmpeg/INSTALL_opus/opus-1.3.tar.gz   ;
+curl   https://archive.mozilla.org/pub/libopusenc/libopusenc-0.2.1.tar.gz \
+   >  ~/INSTALL_FFmpeg/INSTALL_libopusenc/libopusenc-0.2.1.tar.gz   ;
+curl       https://archive.mozilla.org/pub/opus/opusfile-0.9.tar.gz  \
+    > ~/INSTALL_FFmpeg/INSTALL_opusfile/opusfile-0.9.tar.gz;
+curl         https://archive.mozilla.org/pub/opus/opus-tools-0.2.tar.gz   \
+    >  ~/INSTALL_FFmpeg/INSTALL_opustool/opus-tools-0.2.tar.gz  ;
+curl   https://sourceforge.net/projects/lame/files/latest/download  \
+    > ~/INSTALL_FFmpeg/INSTALL_lame/lame-latest.tar.gz       ;
+curl ftp://ftp.videolan.org/pub/x264/snapshots/last_x264.tar.bz2      \
+      >     ~/INSTALL_FFmpeg/INSTALL_x264/last_x264.tar.bz2 ;
+
+curl              https://www.ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2      \
+      > ~/INSTALL_FFmpeg/INSTALL_fFmpeg/ffmpeg-snapshot.tar.bz2  ;
+
+curl  http://www.music.helsinki.fi/tmt/opetus/uusmedia/esim/a2002011001-e02.wav \
+    >    ~/INSTALL_FFmpeg/test/bat-guano.wav ; 
+curl  https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg \
+   >     ~/INSTALL_FFmpeg/test/example.ogg  ;
+curl  https://people.xiph.org/~giles/2012/opus/detodos.opus   \
+   > ~/INSTALL_FFmpeg/test/detodos.opus ;
+
+
+###############################
+#                             #
+# END:  G e t   F i l e s     #
+#                             #
+###############################
