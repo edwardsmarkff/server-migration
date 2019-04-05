@@ -1,0 +1,25 @@
+###################################
+#                                 #
+# ELEVEN:   l i b o p u s         #
+#                                 #
+###################################
+
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/  ;
+export LIBPATH=/usr/local/lib/   ;
+export LD_LIBRARY_PATH=/usr/local/lib/  ;
+
+cd  ~/INSTALL_FFmpeg/INSTALL_libopusenc/   ;
+
+gzip -d   ./libopusenc*.gz    ;
+tar -xvf   ./libopusenc*.tar    ;
+cd          ./libopusenc*/        ;
+./configure  ;   
+make &&   make install;
+
+
+
+#############################
+#                           #
+# END:    l i b o p u s     #
+#                           #
+#############################
