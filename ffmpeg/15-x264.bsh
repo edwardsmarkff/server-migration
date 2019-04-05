@@ -1,0 +1,22 @@
+#! /bin/bash -w
+
+###########################
+#                         # 
+# FIFTEEN:    x 2 6 4     #
+#                         #
+###########################
+
+cd            ~/INSTALL_FFmpeg/INSTALL_x264/ ;
+
+bzip2 -d  ./last_x264.tar.bz2 ;
+tar -x -f    ./last_x264.tar      ;
+cd            ./x264*/                 ;
+./configure  --enable-shared   --disable-asm ;
+make && make install  ;
+
+
+###########################
+#                         # 
+# END:         x 2 6 4    #
+#                         #
+###########################
