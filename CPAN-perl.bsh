@@ -73,28 +73,29 @@ perl -e  'use Net::SSLeay; ' ;
 /usr/bin/cpan    -i       XML::TreeBuilder               ;               
 /usr/bin/cpan    -i       XML::Writer                    ;       
                                                     
-perl <<EOF
-    use  YAML           ;
-    use  Test::More     ;
-    use  Exporter       ;
-    use  FCGI           ;
-    use  CGI            ;
-    use  Cwd            ;
-    use  Crypt::Lite    ;
-    use  DBI            ;
-    use  Data::Dumper   ;
-    use  Data::JavaScript;
-    use  URI::Escape::Javascript;
-    use  File           ;
-    use  JSON           ;
-    use  LWP            ;
-    use  Mail::Sendmail ;
-    use  Template       ;
-    use  URI            ;
-    use  HTML::Element  ;
-    use  XML::TreeBuilder;
-    use  XML::Writer    ;
-EOF
+perl <<EOP
+    use  YAML                       ;
+    use  Test::More                 ;
+    use  Exporter                   ;
+    use  FCGI                       ;
+    use  CGI                        ;
+    use  Cwd                        ;
+    use  Crypt::Lite                ;
+    use  DBI                        ;
+    use  Data::Dumper               ;
+    use  Data::JavaScript           ;
+    use  URI::Escape::Javascript    ;
+    use  File::Basename             ;
+    use  File::stat                 ;
+    use  JSON                       ;
+    use  LWP                        ;
+    use  Mail::Sendmail             ;
+    use  Template                   ;
+    use  URI                        ;
+    use  HTML::Element              ;
+    use  XML::TreeBuilder           ;
+    use  XML::Writer                ;
+EOP
 
 perl -e  'use   XML::Writer; '   ## to test
 
