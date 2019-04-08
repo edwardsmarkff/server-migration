@@ -30,7 +30,7 @@ yum --assumeyes install             \
             ;
 yum   --assumeyes   install 'perl(IO::Socket::SSL)'    ;    ##  2015-07-01
  
-perl -MCPAN -e shell ;     ## click several times, twice at first, then again a couple of times.
+perl -MCPAN -e shell ;     ## click several times, twice at first, then ONCE again after a couple of minutes (updates .bashrc) 
     ##  this need to be done twice...!
 cpan ;   ## run once for initialize and testing, hit return over and over
 
