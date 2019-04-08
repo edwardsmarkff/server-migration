@@ -3,7 +3,13 @@
 ## note that this will install a slightly older version of CPAN, hopefully perl/CPAN will be gone soon.
 ## note too this procedure uses LOTS of memory, so dont ever try this on a "small" server.
 
-####  BE SURE TO RUN THE FIRST PART OF interServer setup !
+## runs best as cut-paste since several steps may FAIL along the way, just run them again (and again)
+
+####  BE SURE TO RUN THE FIRST PART OF interServer setup !  (2019-04-08 - runs standalone)
+
+
+#           2019-04-08  -- successfully moved from google-docs to github
+
 
 ###  maybe need MariaDB installed first to properly test DBD::mysql?
 
