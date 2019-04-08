@@ -40,7 +40,7 @@ perl -MCPAN -e shell  'o conf commit'      ;
 
 /usr/bin/cpan    -i       Template::Stash::XS      ;             ## prompts for *TWO* "y" replies
 /usr/bin/cpan    -i   -f  Template::Stash::XS      ;             ## note -f if the next one FAILS!
-su mark -c "perl -e  'use Template::Stash::XS ; ' ;"
+su mark -c "perl -e  'use Template::Stash::XS ; ' ;"             ## TEST TEST TEST TEST TEST TEST TEST ! ! 
 
 
 /usr/bin/cpan    -i       DBI                      ;   ## 2016-07-24
