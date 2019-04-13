@@ -1,5 +1,7 @@
 #! /bin/bash -w
 
+## 2019-04-12 - upgraded opus to 1.3.1
+
 ###############################
 #                             #
 # THREE:  G e t   F i l e s   #
@@ -18,8 +20,8 @@ curl https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-1.3.3.tar.gz \
     >         ~/INSTALL_FFmpeg/INSTALL_libogg/libogg-1.3.3.tar.gz ;
 curl  https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-1.3.6.tar.xz  \
     >              ~/INSTALL_FFmpeg/INSTALL_vorbis/libvorbis-1.3.6.tar.xz ;
-curl https://archive.mozilla.org/pub/opus/opus-1.3.tar.gz  \
-  > ~/INSTALL_FFmpeg/INSTALL_opus/opus-1.3.tar.gz   ;
+curl https://archive.mozilla.org/pub/opus/opus-1.3.1.tar.gz  \
+  > ~/INSTALL_FFmpeg/INSTALL_opus/opus-1.3.1.tar.gz   ;
 curl   https://archive.mozilla.org/pub/opus/libopusenc-0.2.1.tar.gz \
    >  ~/INSTALL_FFmpeg/INSTALL_libopusenc/libopusenc-0.2.1.tar.gz   ;
 curl       https://archive.mozilla.org/pub/opus/opusfile-0.9.tar.gz  \
