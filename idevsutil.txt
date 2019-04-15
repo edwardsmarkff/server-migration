@@ -24,8 +24,20 @@ idevsutil   --getServerAddress  mark@edwardsmark.com \
 
 notice:   evs207.idrive.com
 
-create a file with filenames:
+TO TEST:  (2019-04-15)
 
+echo 'This Is Marks Test' > /tmp/marksTesterFile.txt ;
+echo '/tmp/marksTesterFile.txt' > /tmp/FileList.txt ;
+idevsutil --xml-output                                        \
+            --password-file=MarKSPassWorDed                   \
+            --files-from=/tmp/FileList.txt                    \
+            /                                                 \
+            mark@edwardsmark.com@evs207.idrive.com::home/interserver-archives/TEST   ;
+
+
+
+
+create a file with filenames:
 
 idevsutil --xml-output    --password-file=MarKSPassWorDed     \
  --files-from=/tmp/filelist.txt   \ /mark@edwardsmark.com@evs207.idrive.com::home/interserver-archives/TEST   ;
