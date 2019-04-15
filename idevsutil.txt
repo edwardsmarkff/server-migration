@@ -6,10 +6,13 @@ document written from this
 #####curl  http://evs.idrive.com/download/download-for-linux/idevsutil_linux.zip   >   idevsutil.zip ;
 grab from here:  https://www.idrivesync.com/evs/download.htm 
 unzip  -v  idevsutil.zip  ;
-cd  idevsutil_linux  ;
+cd  ./IDrive_linux_64bit/
+
 chmod 700  idevsutil;
  cp  ./idevsutil   /usr/local/bin/idevsutil ;
 which idevsutil ;       ##   /usr/local/bin/idevsutil
+
+idevsutil  --client-version ;
 
 idevsutil   --config-account --enc-type=DEFAULT \
           --user=mark@edwardsmark.com                \
