@@ -3,7 +3,8 @@
 document written from this
 
 ##get zip file from idrive idevsutil and unzip it
-curl  http://evs.idrive.com/download/download-for-linux/idevsutil_linux.zip   >   idevsutil.zip ;
+#####curl  http://evs.idrive.com/download/download-for-linux/idevsutil_linux.zip   >   idevsutil.zip ;
+grab from here:  https://www.idrivesync.com/evs/download.htm 
 unzip  -v  idevsutil.zip  ;
 cd  idevsutil_linux  ;
 chmod 700  idevsutil;
