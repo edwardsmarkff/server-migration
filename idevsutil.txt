@@ -12,7 +12,7 @@ chmod 700  idevsutil;
  cp  ./idevsutil   /usr/local/bin/idevsutil ;
 which idevsutil ;       ##   /usr/local/bin/idevsutil
 
-idevsutil  --client-version ;
+idevsutil  --client-version ;     ## 2019-04-15
 
 idevsutil   --config-account --enc-type=DEFAULT \
           --user=mark@edwardsmark.com                \
