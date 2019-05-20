@@ -61,6 +61,9 @@ pass=mysqlPassword      #   2016-02-19 from ‘initial setup’
 END
 
 
+vi  /etc/csf/csf.conf ; TCP_IN contains  3306  (??????)
+csf -f ; csf -r ;  systemctl stop  csf.service  ;  systemctl stop  lfd.service  ;  systemctl  start  csf.service ;  systemctl  start  lfd.service ;
+
 
 L O C A L H O S T :
 
