@@ -57,13 +57,31 @@ pass=mysqlPassword      #   2016-02-19 from ‘initial setup’
 END
 
 
-I N S E C U R E :
 
-GRANT ALL ON *.* TO 'mark'@'localhost'			;  
+L O C A L H O S T :
+
+GRANT ALL ON *.* TO 'mark'@'localhost'			;
 	-- make sure we have a name to delete!
 DROP USER 'mark'@'localhost'				;
+CREATE USER 'mark'@'localhost' IDENTIFIED BY 'jabberwolky';
+
+GRANT ALL ON *.* TO 'mark'@'localhost'			\
+IDENTIFIED BY 'jabberwolky' WITH MAX_QUERIES_PER_HOUR 0		\
+MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0		;
+FLUSH PRIVILEGES;
+
+ mysql     --host=localhost     --user=mark  --password=jabberwolky    ;
+
+
+I N S E C U R E :
+
+GRANT ALL ON *.* TO 'mark'@'%'			;  
+	-- make sure we have a name to delete!
+DROP USER 'mark'@'loc%alhost'				;
 CREATE  USER  'mark'@'%'   IDENTIFIED BY  'jabberwolky' ;
-GRANT USAGE ON *.* TO   'mark'@'%' IDENTIFIED BY   'jabberwolky ' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+GRANT USAGE ON *.* TO   'mark'@'%'            \
+IDENTIFIED BY   'jabberwolky '                         \
+WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
 GRANT  ALL   PRIVILEGES  ON   *.*   TO  'mark'@'%'  ;
 DROP USER 'mark'@'%' ;
 
