@@ -83,7 +83,7 @@ GRANT USAGE ON *.* TO   'mark'@'%'  IDENTIFIED BY   'jabberwolky '              
 GRANT  ALL   PRIVILEGES  ON   *.*   TO  'mark'@'%'  ;
 FLUSH PRIVILEGES;
 
-S E C U R E :
+S E C U R E :  (note that 71.209.212.220 is centurylink cottonwood)
 
 GRANT ALL ON *.* TO 'mark'@'71.209.212.220'		;  
 	-- make sure we have a name to delete!
