@@ -77,7 +77,7 @@ I N S E C U R E :
 
 GRANT ALL ON *.* TO 'mark'@'%'			;  
 	-- make sure we have a name to delete!
-DROP USER 'mark'@'loc%alhost'				;
+DROP USER 'mark'@'%'				;
 CREATE  USER  'mark'@'%'   IDENTIFIED BY  'jabberwolky' ;
 GRANT USAGE ON *.* TO   'mark'@'%'            \
 IDENTIFIED BY   'jabberwolky '                         \
