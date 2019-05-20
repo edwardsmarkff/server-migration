@@ -48,6 +48,9 @@ exit 1;
 
 max_allowed_packet = 64M         #   2016-02-19 from ‘initial setup’
 open-files-limit = 1600                   #   2016-02-19 from ‘initial setup’
+skip-networking=0                ## 2019-05-20 - turns on or off networking
+
+systemctl daemon-reload  ;   systemctl  restart  mariadb.service  ;   ## restart mariadb
 
 
 echo <<END   >>/root/.my.cnf  ;
@@ -72,16 +75,7 @@ FLUSH PRIVILEGES;
  mysql     --host=localhost     --user=mark  --password=jabberwolky    ;
 
 
-I N S E C U R E :
 
-GRANT ALL ON *.* TO 'mark'@'%'			;  
-	-- make sure we have a name to delete!
-DROP USER 'mark'@'%'				;
-CREATE  USER  'mark'@'%'   IDENTIFIED BY  'jabberwolky' ;
-GRANT USAGE ON *.* TO   'mark'@'%'  IDENTIFIED BY   'jabberwolky '                         \
-        WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
-GRANT  ALL   PRIVILEGES  ON   *.*   TO  'mark'@'%'  ;
-FLUSH PRIVILEGES;
 
 S E C U R E :  (note that 71.209.212.220 is centurylink cottonwood)
 
@@ -92,4 +86,16 @@ CREATE  USER  'mark'@'71.209.212.220'   IDENTIFIED BY  'MYPASSWORD' ;
 GRANT USAGE ON *.* TO   'mark'@'71.209.212.220' IDENTIFIED BY   'MYPASSWORD' \
     WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
 GRANT  ALL   PRIVILEGES  ON   *.*   TO  'mark'@'71.209.212.220' ;
+FLUSH PRIVILEGES;
+
+
+I N S E C U R E :  (stopped working 2019-05-20)
+
+GRANT ALL ON *.* TO 'mark'@'%'			;  
+	-- make sure we have a name to delete!
+DROP USER 'mark'@'%'				;
+CREATE  USER  'mark'@'%'   IDENTIFIED BY  'jabberwolky' ;
+GRANT USAGE ON *.* TO   'mark'@'%'  IDENTIFIED BY   'jabberwolky '                         \
+        WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+GRANT  ALL   PRIVILEGES  ON   *.*   TO  'mark'@'%'  ;
 FLUSH PRIVILEGES;
