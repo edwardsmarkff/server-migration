@@ -65,9 +65,8 @@ GRANT ALL ON *.* TO 'mark'@'localhost'			;
 DROP USER 'mark'@'localhost'				;
 CREATE USER 'mark'@'localhost' IDENTIFIED BY 'jabberwolky';
 
-GRANT ALL ON *.* TO 'mark'@'localhost'			\
-IDENTIFIED BY 'jabberwolky' WITH MAX_QUERIES_PER_HOUR 0		\
-MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0		;
+GRANT ALL ON *.* TO 'mark'@'localhost'  IDENTIFIED BY 'jabberwolky' \
+    WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0		;
 FLUSH PRIVILEGES;
 
  mysql     --host=localhost     --user=mark  --password=jabberwolky    ;
@@ -79,15 +78,18 @@ GRANT ALL ON *.* TO 'mark'@'%'			;
 	-- make sure we have a name to delete!
 DROP USER 'mark'@'%'				;
 CREATE  USER  'mark'@'%'   IDENTIFIED BY  'jabberwolky' ;
-GRANT USAGE ON *.* TO   'mark'@'%'            \
-IDENTIFIED BY   'jabberwolky '                         \
-WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+GRANT USAGE ON *.* TO   'mark'@'%'  IDENTIFIED BY   'jabberwolky '                         \
+        WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
 GRANT  ALL   PRIVILEGES  ON   *.*   TO  'mark'@'%'  ;
-DROP USER 'mark'@'%' ;
+FLUSH PRIVILEGES;
 
 S E C U R E :
 
+GRANT ALL ON *.* TO 'mark'@'71.209.212.220'		;  
+	-- make sure we have a name to delete!
+DROP USER 'mark'@'71.209.212.220'			;
 CREATE  USER  'mark'@'71.209.212.220'   IDENTIFIED BY  'MYPASSWORD' ;
-GRANT USAGE ON *.* TO   'mark'@'71.209.212.220' IDENTIFIED BY   'MYPASSWORD' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+GRANT USAGE ON *.* TO   'mark'@'71.209.212.220' IDENTIFIED BY   'MYPASSWORD' \
+    WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
 GRANT  ALL   PRIVILEGES  ON   *.*   TO  'mark'@'71.209.212.220' ;
-DROP USER 'mark'@'71.209.212.220' ;
+FLUSH PRIVILEGES;
