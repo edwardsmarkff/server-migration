@@ -48,7 +48,8 @@ exit 1;
 
 max_allowed_packet = 64M         #   2016-02-19 from ‘initial setup’
 open-files-limit = 1600                   #   2016-02-19 from ‘initial setup’
-skip-networking=0                ## 2019-05-20 - turns on or off networking  --DOES THIS EVEN DO ANYTHING??
+skip-networking=0                ## 2019-05-20 - turns ON networking 
+skip-networking=1                ## 2019-05-20 - turns OFF networking 
 
 systemctl daemon-reload  ;   systemctl  restart  mariadb.service  ;   ## restart mariadb
 
