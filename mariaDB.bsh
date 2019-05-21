@@ -103,3 +103,5 @@ GRANT USAGE ON *.* TO   'mark'@'%'  IDENTIFIED BY   'jabberwolky '              
         WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
 GRANT  ALL   PRIVILEGES  ON   *.*   TO  'mark'@'%'  ;
 FLUSH PRIVILEGES;
+
+ grep  'DPT=3306'  /var/log/messages  | grep -v  71.209.212.220  |  sed -e 's/^.* SRC=//' | sed -e 's/ DST=.*$//'  | sort -u  | sed -e 's/^/csf --tempdeny 999999 /'  | sed -e 's/$/ ;/'   ;
