@@ -120,6 +120,8 @@ SET GLOBAL server_audit_file_rotate_size  =  100000000 ;
 SET GLOBAL server_audit_file_rotations    =  99 ;
 SHOW GLOBAL VARIABLES LIKE 'server_audit%';
 
+SET GLOBAL server_audit_file_rotate_now = ON;
+
  grep  DROP    /var/lib/mysql/server_audit.log ;
  tail -f    /var/lib/mysql/server_audit.log ;
  
