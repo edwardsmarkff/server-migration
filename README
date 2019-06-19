@@ -32,8 +32,9 @@ chmod 0700 install.sh
 2)  chmod  -R  777      /home/comptonpesltrainers.com/public_html/wp-content/blogs.dir
 
 
-## ftp   -  START OUT WITH A WORKING DOMAIN NAME   (2013-07-03)
-https://www.digitalocean.com/community/articles/how-to-set-up-proftpd-on-centos-6
+######### ftp   -  START OUT WITH A WORKING DOMAIN NAME   (2013-07-03)
+#####################https://www.digitalocean.com/community/articles/how-to-set-up-proftpd-on-centos-6
+moved to  sftp.bsh  February 2019
 
 rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm  ;
 yum   install  ftp ;
