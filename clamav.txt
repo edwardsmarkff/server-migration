@@ -1,0 +1,27 @@
+#####clamav #######   -- 2016-02-06  -- moved from README 2019-06-19
+
+ mkdir   /var/log/clamav/    ;   ### need this to start the log directory !
+cat  <<END  >  /etc/cron.daily/manual_clamscan ;
+#!/bin/bash                    
+#     written from ‘initial setup’ 2016-02-19   
+echo 'starting clam scan';
+SCAN_DIR="/home"
+LOG_FILE="/var/log/clamav/manual_clamscan.log"
+LOG_FILE_TMP="/var/log/clamav/manual_clamscan_tmp.log"
+/usr/bin/clamscan --infected --recursive \$SCAN_DIR > \$LOG_FILE_TMP      ;
+cat \$LOG_FILE_TMP |  mailx -r 'edwardsmarkf@gmail.com'  -s 'clamav results!'  \
+mark@edwardsmark.com  ;
+cat \$LOG_FILE_TMP >> \$LOG_FILE ;
+#     written from ‘initial setup’ 2016-02-19       
+END
+chmod  755    /etc/cron.daily/manual_clamscan ;
+cat    /etc/cron.daily/manual_clamscan ;  # display the results
+
+ vi  /etc/freshclam.conf ;  ###  2019-06-19 - add theses:
+DatabaseCustomURL http://sigs.interserver.net/interserver256.hdb
+DatabaseCustomURL http://sigs.interserver.net/interservertopline.db
+DatabaseCustomURL http://sigs.interserver.net/shell.ldb
+DatabaseCustomURL http://sigs.interserver.net/whitelist.fp
+
+
+#####end clamav ###############
