@@ -11,6 +11,8 @@
 # 
 ## written from:  https://linuxize.com/post/how-to-setup-ftp-server-with-vsftpd-on-centos-7/
 #
+#   2019-06-26 - SERIOUSLY consider PureFTPd:
+#   https://systembash.com/evaluating-ftp-servers-proftpd-vs-pureftpd-vs-vsftpd/
 
 yum  --assumeyes  update;
 
