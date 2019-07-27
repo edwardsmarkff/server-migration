@@ -7,7 +7,12 @@
 #################################
 
 ##  2018-02-18  --  changed tarball location
-##  2019-02-20 -- changed 1.3.5 to 1.3.6
+##  2019-02-20  -- changed 1.3.5 to 1.3.6
+##  2019-07-26  -- added the exports for filepath (why needed?)
+
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/  ;
+export LIBPATH=/usr/local/lib/   ;
+export LD_LIBRARY_PATH=/usr/local/lib/  ;
 
 cd  ~/INSTALL_FFmpeg/INSTALL_vorbis/   ;
 
