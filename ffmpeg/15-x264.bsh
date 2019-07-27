@@ -6,9 +6,11 @@
 #                         #
 ###########################
 
+##  2019-07-26 - bzip2 path confused, using long file name instead (??)
+
 cd            ~/INSTALL_FFmpeg/INSTALL_x264/ ;
 
-bzip2 -d  ./last_x264.tar.bz2 ;
+/usr/local/bin/bzip2 -d  ./last_x264.tar.bz2 ;
 tar -x -f    ./last_x264.tar      ;
 cd            ./x264*/                 ;
 ./configure  --enable-shared   --disable-asm ;
