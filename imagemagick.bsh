@@ -52,6 +52,8 @@ cd   ./ImageMagick*  ;
       --with-magick_plus_plus  ;   ##    !!!  2015-08-18- added without-pango (whatever that is)
 make && make check && make install ;    ## VERY TIME CONSUMING!
 
+/opt/imagemagick/bin/magick  -version  ;  ## mandatory !
+
 /opt/imagemagick/bin/convert -version ;   ## optional but do it anyways
 if [[ $? != 0 ]]; then 
         echo ‘bad result of convert version!’; exit $?; 
