@@ -1,5 +1,7 @@
 #centOS installation
 
+## MAKE SURE CORRECT PHP VERSION IS INSTALLED   F-I-R-S-T ! ! ! ! !
+
 #  http://forum.directadmin.com/showthread.php?t=44449
 
 
@@ -12,8 +14,8 @@ yum remove ImageMagick
 yum remove ImageMagick-devel
 
 yum --assumeyes update; ## start with everything up-2-date
-yum  --assumeyes  install  php   php-devel  ;
-yum  --assumeyes  install php-pear  ;
+#####yum  --assumeyes  install  php   php-devel  ;
+#####yum  --assumeyes  install php-pear  ;
 yum --assumeyes  install  gcc gcc-c++ bzip2-devel freetype-devel libjpeg-devel ;
 yum --assumeyes install  libpng-devel libtiff-devel libungif-devel zlib-devel freetype-devel ;
 yum --assumeyes install automake autoconf libtool  ;
@@ -38,8 +40,8 @@ cd ./ImageMagick/ ;
 ###  download from here:  http://www.imagemagick.org/download/releases/    2015-05-09
 ##curl  http://www.imagemagick.org/download/ImageMagick-6.9.2-4.tar.gz  (2015-12-11)
 ##curl  http://www.imagemagick.org/download/ImageMagick-6.9.2-8.tar.gz  | tar -xzf  -;  (2019-08-01)
-curl http://www.imagemagick.org/download/ImageMagick-7.0.8-58.tar.gz   | tar -xzf  -;  ;
-wget http://www.imagemagick.org/download/ImageMagick-7.0.8-58.tar.gz
+curl http://www.imagemagick.org/download/ImageMagick-7.0.8-58.tar.gz   | tar -xzf  -   ;
+##wget http://www.imagemagick.org/download/ImageMagick-7.0.8-58.tar.gz   ;
 
 cd   ./ImageMagick*  ;
 ./configure --prefix=/opt/imagemagick \
