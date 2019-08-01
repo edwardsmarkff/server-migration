@@ -78,7 +78,7 @@ echo ‘#                                                                       
 echo ‘###############################################’
 
 
-yum install ImageMagick ImageMagick-devel pcre-devel   ## ??????
+########################  2019-08-01  yum install ImageMagick ImageMagick-devel pcre-devel   ## ??????
 cd ~;
 mkdir ./magicwand;
 cd ./magicwand;
