@@ -39,6 +39,7 @@ cd ./ImageMagick/ ;
 ##curl  http://www.imagemagick.org/download/ImageMagick-6.9.2-4.tar.gz  (2015-12-11)
 ##curl  http://www.imagemagick.org/download/ImageMagick-6.9.2-8.tar.gz  | tar -xzf  -;  (2019-08-01)
 curl http://www.imagemagick.org/download/ImageMagick-7.0.8-58.tar.gz   | tar -xzf  -;  ;
+wget http://www.imagemagick.org/download/ImageMagick-7.0.8-58.tar.gz
 
 cd   ./ImageMagick*  ;
 ./configure --prefix=/opt/imagemagick \
@@ -47,7 +48,7 @@ cd   ./ImageMagick*  ;
       --without-pango\
        --with-threads \
       --with-magick_plus_plus  ;   ##    !!!  2015-08-18- added without-pango (whatever that is)
-make && make check && make install ;
+make && make check && make install ;    ## VERY TIME CONSUMING!
 
 /opt/imagemagick/bin/convert -version ;   ## optional but do it anyways
 if [[ $? != 0 ]]; then 
