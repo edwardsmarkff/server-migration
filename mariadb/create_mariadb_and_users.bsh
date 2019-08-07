@@ -1,0 +1,57 @@
+#! /bin/bash -w
+
+#       echo Hi | openssl enc -aes-128-cbc -a -salt -pass pass:wtf      ;
+#####   U2FsdGVkX18qAdhqop1SffsewHue6EOPNKv9dXc/0rI=
+#       echo U2FsdGVkX18qAdhqop1SffsewHue6EOPNKv9dXc/0rI= | openssl enc -aes-128-cbc -a -d -salt -pass pass:wtf ;
+###     Hi
+
+password='MARKS SECRET PASSWORD'   ;
+
+process_db () {
+
+
+
+        username=$(     echo $1 | openssl enc -aes-128-cbc -a -d -salt -pass pass:${password} ; ) ;
+        unencrypted=$(  echo $2 | openssl enc -aes-128-cbc -a -d -salt -pass pass:${password} ; ) ;
+        database=$(     echo $3 | openssl enc -aes-128-cbc -a -d -salt -pass pass:${password} ; ) ;
+        
+        printf "\n\n### Creating a new database named ${database} for user ${username} with password ${unencrypted}!\n"       ;
+
+        cat << EOF ;
+
+                DROP DATABASE IF EXISTS  \`${database}\`                                        ;
+
+                GRANT ALL ON *.* TO '${username}'@'localhost'                                   ;
+                        -- make sure we have a name to delete!
+                DROP USER '${username}'@'localhost'                                             ;
+                CREATE USER '${username}'@'localhost' IDENTIFIED BY '${unencrypted}'            ;
+
+                GRANT ALL ON \`${database}\`.* TO '${username}'@'localhost'                     \\
+                IDENTIFIED BY '${unencrypted}' WITH MAX_QUERIES_PER_HOUR 0                      \\
+                MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0        ;
+
+                # DROP DATABASE \`${database}\`                                                 ;
+                CREATE DATABASE IF NOT EXISTS \`${database}\`                                   ;
+
+                GRANT ALL PRIVILEGES ON \`${database}\`.* TO '${username}'@'localhost'          ;
+
+                # mysql  --host=localhost --user=${username}  --password=${unencrypted}    ${database}          ;
+EOF
+}
+
+process_db  U2FsdGVkX19VLtt6qm+hfj0abYFbRAyuy7Uh6rXPY1bKo+VtXD0NfDKz4LAszJYq    U2FsdGVkX18IDRtbW3ZZayK4br7Hsa7UtiyzgRElMkE=            U2FsdGVkX18keNVk5FNDR4VaE9WHS5f1wVYwef7TiKBxufKFmHDPB5KirHNz8vqD ;
+process_db  U2FsdGVkX1+/YYDT4Bd+T+PlUZlAVR/Cl5CLy46x6w083Iq6FPF8SJyaC8I/w+gK    U2FsdGVkX1+pcmihnE0scLQd+axnFQ+TJyjt0Jex3Ng=            U2FsdGVkX1+jRO53Uj1ux7hbwAUNcRvaPVunwQrTiWQ= ;
+process_db  U2FsdGVkX1+6DBBWPim2Syq+UTObNe6ZTyrxOYuLW88=                        U2FsdGVkX1/Oq8jsS42v/UWrgDd3omiJNbGy0Vg68kg=            U2FsdGVkX18dqxOAiHp0anDyTNRHheZjIztFKpHLFFs= ;
+process_db  U2FsdGVkX18VPZPi4VlS23atr/iJ7rpStau12GGFXmx5JbzQrXGIBOg36IELnIuk    U2FsdGVkX19RtzJjcN3FgJIzHq6s43GcElzvKACA+c4=            U2FsdGVkX18qS3wPp15ZHmOdyQvXk2TdMTsJFZf4823WoqVug443Ju5E5XomJkYm ;
+process_db  U2FsdGVkX1+zMcKgJNX8ia/SvF20vL3a/Q75hSCUNJrj3YlVfRuDjyENpOOyv5HM    U2FsdGVkX19JAEw8D75J3kqNgWO1Dtp8aKWAJA4LQwo=            U2FsdGVkX19qiYwDrdqxeYd5vZVrIPVSwlYHRQ21LjFh5PeqshE4BK0xJBA/4Z1M ;
+process_db  U2FsdGVkX1/Uzn0JSIpuI84lB81Nuq/gMFh2SJ6WAJyoGwyoFKVVm/BHG3g9sxHk    U2FsdGVkX18w3c7LjxgptyLiDkBDW1A7tmT9ff4sIbc=            U2FsdGVkX1938mb22sxU73ZNhwGmBI59v7b1V3tJfWi/QfR8h4WFKrTF70kOQs7F ;
+process_db  U2FsdGVkX1879lHN633kEF7cwYsil46agasi/6bMBOslbD+02EXvx/a1bZtPG/UW    U2FsdGVkX192vslcMRiO4edpLkDWgZST/35qdZ58OEM=            U2FsdGVkX1/gNmnj4ouKGurZFVI91irD9CzLvdgSwk2bagGrNcMBVC45LB7KWmSL ;
+process_db  U2FsdGVkX18Lw2lqJz27QtTy0rwJ2j90a3O81CO7TVo=            U2FsdGVkX18mbCWc+lpwZuc8fF9EUKZWICRKgX6cN5U=            U2FsdGVkX1/cOjd3OiZ4/6t331q/bcpN77kMXdt8tDGJiky0faSt6ObBeZoAag+f ;
+process_db  U2FsdGVkX1+ywB+FmnPCQh8PGA9fhyridCzQHHKG28M=            U2FsdGVkX18ImQ7JcF3RvOUc8EVXBOYKHUWdZ65vcAY=            U2FsdGVkX1+BYpjSrUlYaJGxnOD9Q31s2AMNJRZObwc= ;
+process_db  U2FsdGVkX19523PTbhLkDz1ABnsycrEO44WbaOr53/c=            U2FsdGVkX1+KhUZ5ETuxwIzsqoXYO0Yk6JLkt/AdsRA=            U2FsdGVkX1/b+pxpFF+h6pSOPbQngv/dMLmLfIeSmCg= ;
+process_db  U2FsdGVkX19uRC4lFo9HBzh7jbfUDVhUbGpppnYOMyI=            U2FsdGVkX1+KpqBFgkM8qn02T53oeQ5l5N9roRXS3+8=            U2FsdGVkX18NFMn+WDLaon6udSi2Z3ugVJTzwj0voFM= ;
+process_db  U2FsdGVkX19Wb0OSN0t9KYM9P2QJK94hYxjdmPmRvKs=            U2FsdGVkX18NXhdwPgxP4h3NvlfJWtABvGGlJXyu60k=            U2FsdGVkX18xPxtIjNDaAlhB5JdIQzD4GVg4RaRexF4= ;
+process_db  U2FsdGVkX19seY07qKrZw0fVl5WiH9YHJZzLSFmzsIk=            U2FsdGVkX1/jioLyGpN19hC3GggtHSwDDkCfOd6I64c=            U2FsdGVkX1+gQTWSnk7Gvu0S3IA4BAn40ftbyrOHzUw= ;
+process_db  U2FsdGVkX1+Iaja/I28Mzn8WGiwqaLHYHnbFMDM8JEw=            U2FsdGVkX1/gPh/CNk08fH7xUEOwlom80x3uAR+DSMc=            U2FsdGVkX1/2qcZh3hW6bYKpI58fVl+nnlrZWcc/IaM= ;
+
+
