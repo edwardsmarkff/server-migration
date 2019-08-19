@@ -31,7 +31,7 @@ curl   https://archive.mozilla.org/pub/opus/libopusenc-0.2.1.tar.gz \
    >  ~/INSTALL_FFmpeg/INSTALL_libopusenc/libopusenc-0.2.1.tar.gz   ;
 ##curl       https://archive.mozilla.org/pub/opus/opusfile-0.9.tar.gz  \
 ##    > ~/INSTALL_FFmpeg/INSTALL_opusfile/opusfile-0.9.tar.gz;
-curl  https://ftp.osuosl.org/pub/xiph/releases/opus/opusfile-0.11.tar.gz  >
+curl  https://ftp.osuosl.org/pub/xiph/releases/opus/opusfile-0.11.tar.gz  \
         > ~/INSTALL_FFmpeg/INSTALL_opusfile/opusfile-0.11.tar.gz;
 curl         https://archive.mozilla.org/pub/opus/opus-tools-0.2.tar.gz   \
     >  ~/INSTALL_FFmpeg/INSTALL_opustool/opus-tools-0.2.tar.gz  ;
