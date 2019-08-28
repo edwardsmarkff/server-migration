@@ -7,6 +7,8 @@
 #   #########################
 
 #   2019-02-23 -    moved to github 
+#
+#   2019-08-28 - 10.4.1 to 10.4.7
 
 ### written from  https://www.tecmint.com/install-mariadb-in-centos-7/
 
@@ -14,7 +16,7 @@
 cat  > /etc/yum.repos.d/MariaDB.repo  <<END_OF_MARIA_DB_REPO ;
 [mariadb]
 name = MariaDB
-baseurl = http://yum.mariadb.org/10.1/centos7-amd64
+baseurl = http://yum.mariadb.org/10.4.7/centos7-amd64/
 gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 END_OF_MARIA_DB_REPO
