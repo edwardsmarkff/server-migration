@@ -7,24 +7,37 @@
 
 ##verified 2016-01-29
 
-2016-07-18 - “ulimit” can be manually added to php5.fcgi  (probably php5.cgi as well)
-ulimit -u 10               ## maximum number of processes
-ulimit -v 34816          ##   Maximum size per process   (this example 34 megabytes)
+## 2019-08-28 - updated to webmin 1.930
+
+### 2016-07-18 - “ulimit” can be manually added to php5.fcgi  (probably php5.cgi as well)
+###            ulimit -u 10               ## maximum number of processes
+###            ulimit -v 34816          ##   Maximum size per process   (this example 34 megabytes)
 
 
 ##           ! ! ! ! see customization notes here:   ! ! ! ! !
 ##http://www.edwardsmark.com/textpattern/articles/133/virtualmin-customizations
 
-Dont forget to install   ddos-deflate……….  2016-04-20
+###    Dont forget to install   ddos-deflate……….  2016-04-20
 
 ###=====  virtualmin/webmin installation ==============
-###install webmin:
+
+#############
+#           #
+#  webmin   #
+#           #
+#############
+
 mkdir   ~/webmin/  &&  cd  ~/webmin/ ;
-wget  https://prdownloads.sourceforge.net/webadmin/webmin-1.900.tar.gz
+wget   https://prdownloads.sourceforge.net/webadmin/webmin-1.930.tar.gz
 gzip -d  ./webmin*  &&   tar -xvf  ./webmin*  &&  cd  ./webmin* ;
 ./setup.sh ;
 
-##install virtualmin:
+
+#################
+#               #
+#  virtualmin   #
+#               #
+#################
 
 cd ~ ;
 mkdir   ~/virtualmin/  &&  cd  ~/virtualmin/ ;
