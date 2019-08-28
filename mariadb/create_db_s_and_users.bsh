@@ -54,4 +54,6 @@ process_db  U2FsdGVkX19Wb0OSN0t9KYM9P2QJK94hYxjdmPmRvKs=            U2FsdGVkX18N
 process_db  U2FsdGVkX19seY07qKrZw0fVl5WiH9YHJZzLSFmzsIk=            U2FsdGVkX1/jioLyGpN19hC3GggtHSwDDkCfOd6I64c=            U2FsdGVkX1+gQTWSnk7Gvu0S3IA4BAn40ftbyrOHzUw= ;
 process_db  U2FsdGVkX1+Iaja/I28Mzn8WGiwqaLHYHnbFMDM8JEw=            U2FsdGVkX1/gPh/CNk08fH7xUEOwlom80x3uAR+DSMc=            U2FsdGVkX1/2qcZh3hW6bYKpI58fVl+nnlrZWcc/IaM= ;
 
+echo  'SHOW DATABASES;              '  ;
+echo  'SELECT User FROM mysql.user; '  ;
 
