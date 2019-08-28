@@ -7,9 +7,14 @@
 #   #####################
 
 #   2019-04-04  -- migrated from googledocs
+#   2019-08-28  -- upgraded to version 10.x
 
 
-yum  --assumeyes  install  nodejs  ;
+
+############      https://tecadmin.net/install-latest-nodejs-and-npm-on-centos/
+yum --assumeyes   install   gcc-c++   make  ;  
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -  ;
+yum  --assumeyes  install  nodejs  ; 
 
 which node;
 node --version ;
