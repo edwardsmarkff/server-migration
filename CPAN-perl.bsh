@@ -84,7 +84,7 @@ su mark -c "perl -e  'use Net::SSLeay; ' ;  "
 /usr/bin/cpan    -i       File                           ;
 /usr/bin/cpan    -i       JSON                           ;
 /usr/bin/cpan    -i       LWP                            ;
-/usr/bin/cpan    -i       Mail::Sendmail                 ;
+/usr/bin/cpan    -i       Mail::Sendmail                 ;   ## time consuming.....
 /usr/bin/cpan    -i       Spreadsheet::ParseExcel        ;
 /usr/bin/cpan    -i       Template                       ;
 /usr/bin/cpan    -i       URI                            ;
