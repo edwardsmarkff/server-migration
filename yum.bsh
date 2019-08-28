@@ -49,6 +49,7 @@ yum  --assumeyes  install	\
     mod_qos\
     openssl-devel\
     popt.i686\
+    wget\
     xz\
     zlib-devel\
 ;
