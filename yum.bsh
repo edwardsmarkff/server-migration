@@ -55,22 +55,12 @@ yum  --assumeyes  install	\
 exit  ;    ## DONT GO ANY FARTHER IN THIS SCRIPT!
 
     ## blank line goes here, or line above looses the backslash….
-####do
- ####           echo ‘ processing  ‘$yummers ;
-#####	yum   --assumeyes  install $yummers || echo 'problem with: ' $yummers  	;
-#####done;
-      #####flac\    ## had trouble linking in with the library so now i build it myself  ;-(
-    #####mysql\
-    #####mysql-devel\
-    #####mysql-server\
 
 
 service httpd restart  ;   ## for gd  2015-05-07
 service  httpd  start ;   ## if the one above didnt work
 
 perl -e  'use GD;'    ## test the GD installation.
-
-yum --assumeyes  install clamav   clamav-server-systemd;  ##  2016-02-06
 
 
 ##2015-07-01 - added for centOS7 to block/remove the new firewall firewalld (per interserver)
@@ -82,19 +72,6 @@ systemctl enable iptables
 systemctl stop iptables
 
 
-
-
-MariaDB installation:   2017-12-31:
-
-Grab new repo:  (watch version, obviously….) https://downloads.mariadb.org/mariadb/repositories/#mirror=nodesdirect&distro=CentOS&distro_release=centos7-amd64--centos7&version=10.2
-
-save as:
-
-cat  >   /etc/yum.repos.d/MariaDB.repo;
-
-yum clean all ;  ## 2016-12-31 - required for MariaDB
-
-yum -y  install MariaDB-server MariaDB-client ;
 
 
 
