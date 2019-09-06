@@ -1,0 +1,14 @@
+#!  /bin/bash
+
+#   2019-09-04
+
+#   written from  https://tecadmin.net/install-php-composer-on-centos/
+
+yum --assumeyes  install  curl ;
+
+curl -sS https://getcomposer.org/installer | php ;
+
+mv -v composer.phar /usr/local/bin/composer  ;
+chmod +x /usr/local/bin/composer ;
+
+/usr/local/bin/composer -V ;
