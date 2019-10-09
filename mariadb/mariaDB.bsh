@@ -31,14 +31,13 @@ systemctl status mariadb  ;
 
 mysql_secure_installation  ;
 
-mysql -V  ;
-mysqld --print-defaults  ;
-mysql -u root -p   ;
+mysql -V  ;			## version number
+mysqld --print-defaults  ;	## print what the starting arguments at startup
+mysql --user=root -p   ;	## prompt for password
 
-#####show global variables like 'log_error';
-
-sudo touch   /var/log/mariadb.err.log;
-sudo chown  mysql:mysql    /var/log/mariadb.err.log;
+#####show global variables like 'log_error';		##  2019-10-09
+sudo touch   /var/log/mariadb.err.log;			### 2019-10-09
+sudo chown  mysql:mysql    /var/log/mariadb.err.log;	### 2019-10-09
 
 exit 1;
 
