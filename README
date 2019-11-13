@@ -1,6 +1,6 @@
 #### initial setup
 
-## 2019-11-13 - ran on centos-7 successfully.
+## 2019-11-13 - ran on centos-7/8 successfully.
 
 1) yum  (separate script)
 2) opus-ffmpeg  (separate script)
