@@ -9,6 +9,7 @@
 
 
 ##  2019-04-04  - migrated from googledocs
+##  2019-11-13  - removed  yum libungif-devel for centos-8
 
 
 yum clean all ;  ## 2016-12-31 - required for MariaDB
@@ -41,7 +42,6 @@ yum  --assumeyes  install	\
     libpng-devel\
     libtiff-devel\
     libtool\
-    libungif-devel\
     logcheck\
     lsof\
     mailx\
