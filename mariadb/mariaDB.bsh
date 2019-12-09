@@ -10,18 +10,26 @@
 #
 #   2019-08-28 - 10.4.1 to 10.4.7
 
+
+
+
 ### written from  https://www.tecmint.com/install-mariadb-in-centos-7/
+##  written from  https://kifarunix.com/install-mariadb-10-4-on-centos-8/
 
 
-cat  > /etc/yum.repos.d/MariaDB.repo  <<END_OF_MARIA_DB_REPO ;
+cat << EOF > /etc/yum.repos.d/mariadb.repo
 [mariadb]
-name = MariaDB
-baseurl = http://yum.mariadb.org/10.4.7/centos7-amd64/
+name = MariaDB-10.4
+baseurl=http://yum.mariadb.org/10.4/centos8-amd64
 gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
-END_OF_MARIA_DB_REPO
+EOF
 
-yum --assumeyes   install   MariaDB-server   MariaDB-client ;
+rpm --import https://yum.mariadb.org/RPM-GPG-KEY-MariaDB;
+
+dnf update;
+
+yum --disablerepo=AppStream install MariaDB-server MariaDB-client ;
 
 systemctl daemon-reload  ; 
 systemctl start mariadb  ;
