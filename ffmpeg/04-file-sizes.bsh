@@ -1,5 +1,7 @@
 #! /bin/bash -w
 
+# 2019-12-09 - changed file size notice
+
 #################################
 #                               #
 #  FOUR: f i l e   s i z e s    #
@@ -9,7 +11,7 @@
 
 echo  look for any non-audio file UNDER 50k.....
 
-echo  libogg should be  ~~568
+echo  libogg should be  ~~576
 echo  libopusenc shoudl be ~~380
 echo  lame-latest should be ~~1492
 
