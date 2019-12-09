@@ -37,10 +37,11 @@ curl  https://ftp.osuosl.org/pub/xiph/releases/opus/opusfile-0.11.tar.gz  \
         > ~/INSTALL_FFmpeg/INSTALL_opusfile/opusfile-0.11.tar.gz;
 curl         https://archive.mozilla.org/pub/opus/opus-tools-0.2.tar.gz   \
     >  ~/INSTALL_FFmpeg/INSTALL_opustool/opus-tools-0.2.tar.gz  ;
-curl   https://sourceforge.net/projects/lame/files/latest/download  \
-    > ~/INSTALL_FFmpeg/INSTALL_lame/lame-latest.tar.gz       ;
 curl    https://managedway.dl.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz   \
+    > ~/INSTALL_FFmpeg/INSTALL_lame/lame-latest.tar.gz       ;
+curl   https://sourceforge.net/projects/lame/files/latest/download  \
     > ~/INSTALL_FFmpeg/INSTALL_lame/lame-latestALTERNATIVE.tar.gz       ;
+
 curl --ftp-method nocwd ftp://ftp.videolan.org/pub/x264/snapshots/last_x264.tar.bz2      \
       >     ~/INSTALL_FFmpeg/INSTALL_x264/last_x264.tar.bz2 ;
 
