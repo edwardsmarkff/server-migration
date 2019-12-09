@@ -13,7 +13,7 @@
 
 
 
-### written from  https://www.tecmint.com/install-mariadb-in-centos-7/
+						### written from  https://www.tecmint.com/install-mariadb-in-centos-7/
 ##  written from  https://tecadmin.net/install-mariadb-centos8/
 
 cat << EOF > /etc/yum.repos.d/mariadb.repo  ;
