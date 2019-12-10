@@ -23,7 +23,6 @@
 
 yum --assumeyes install             \
             perl-CPAN               \
-            perl-GD                 \
             perl-Time-HiRes         \
             perl-libxml-perl        \
             perl-DBD-mysql          \
@@ -70,6 +69,7 @@ su mark -c "perl -e  'use Net::SSLeay; ' ;  "
 ### o conf prerequisites_policy follow   ## stop prompting for answers!
 ### o conf prerequisites_policy ask      ## go back to prompting for answers!
 
+/usr/bin/cpan    -i       GD                             ;   ## 2019-12-10
 /usr/bin/cpan    -i       YAML                           ;
 /usr/bin/cpan    -i       Test::More                     ;
 /usr/bin/cpan    -i       Exporter                       ;
@@ -92,7 +92,10 @@ su mark -c "perl -e  'use Net::SSLeay; ' ;  "
 /usr/bin/cpan    -i       XML::TreeBuilder               ;
 /usr/bin/cpan    -i       XML::Writer                    ;
 
+exit; 
+
 ## run this NOT as root:
+
 perl <<EOP2
     use  DBI                        ;
     use  Devel::CheckLib            ;
@@ -124,10 +127,6 @@ perl <<EOP2
 EOP2
 
 perl -e  'use   XML::Writer; '   ## to test
-
-
-
-
 
 perl -MCPAN -e shell ;   #run once for initialization and testing
 #
