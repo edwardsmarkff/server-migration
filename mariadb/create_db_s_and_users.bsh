@@ -11,11 +11,15 @@ echo U2FsdGVkX18qAdhqop1SffsewHue6EOPNKv9dXc/0rI= | openssl enc -aes-256-cbc -md
 ###     Hi
 
 
-password='??? ??? ???'   ;  ## the stuffed animals last name (lowercase) and the first name (camelCase) and the kitty no spaces
+password=''   ;  ## the stuffed animals last name (lowercase) and the first name (camelCase) and the kitty no spaces
+
+if [ -z "$password" ]
+then
+      echo "Password \$var is blank!";
+      exit;
+fi
 
 process_db () {
-
-
 
         username=$(     echo $1 | openssl enc -aes-256-cbc -md sha512 -pbkdf2  -a -d -salt -pass pass:${password} ; ) ;
         unencrypted=$(  echo $2 | openssl enc -aes-256-cbc -md sha512 -pbkdf2  -a -d -salt -pass pass:${password} ; ) ;
@@ -58,7 +62,10 @@ process_db  U2FsdGVkX1+4H4ViXUDOxcjhg/MVFKFhkfUbWbky8aM= U2FsdGVkX1/Cy+sdjotAs5b
 process_db  U2FsdGVkX18K0vEaRH6X0F1P80ccfAm+QaawziyWLA0= U2FsdGVkX1+eP/ZobfoyzWs+Lpc+fcSQwd17eJhDjXo= U2FsdGVkX1+Tm5+prfSGV3WzewCi6gzw1jmzxedQL8U= ;
 process_db  U2FsdGVkX18mUJmL2MaReD3DfDkwm12oJAxD0OSh/lA= U2FsdGVkX18wPSdnGQHrgB50b2A7siuCwy1slwCJFYM= U2FsdGVkX18FBdnNy0dlan9DLi2PmYNaTpd9LHHWa+Y= ;
 process_db  U2FsdGVkX19oyaPg+jIGSkSse3U2Wb8DdCRp+WYZbf0= U2FsdGVkX1/iCcGwvnHKOsYio+oKtzFhf0AJ/0aH62Q= U2FsdGVkX1/ov0AoQ2UssL8VYm+rLhFBk4ZliapIogM= ;
-process_db  U2FsdGVkX19tIkXKi/xeOV5WpJdL5kImlY44QEWey54= U2FsdGVkX1+KAdDpnmQ8ZhD8/ELgUn56BYeATIuJeLg= U2FsdGVkX1/ClZidUY9gwQwPTwnR56YJM7QwmD0AZ+4= ;
+
+process_db      U2FsdGVkX19tIkXKi/xeOV5WpJdL5kImlY44QEWey54=    \
+                U2FsdGVkX1+KAdDpnmQ8ZhD8/ELgUn56BYeATIuJeLg=    \
+                U2FsdGVkX1/ClZidUY9gwQwPTwnR56YJM7QwmD0AZ+4=    ;
 
 echo  'SHOW DATABASES;              '  ;
 echo  'SELECT User FROM mysql.user; '  ;
