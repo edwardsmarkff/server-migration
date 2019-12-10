@@ -6,10 +6,10 @@
 #  https://askubuntu.com/questions/1093591/how-should-i-change-encryption-according-to-warning-deprecated-key-derivat
 
 echo Hi | openssl enc -aes-256-cbc -md sha512 -pbkdf2  -a -salt -pass pass:wtf      ;
-#####   U2FsdGVkX18qAdhqop1SffsewHue6EOPNKv9dXc/0rI=
-echo U2FsdGVkX18qAdhqop1SffsewHue6EOPNKv9dXc/0rI= | openssl enc -aes-256-cbc -md sha512 -pbkdf2  -a -d -salt -pass pass:wtf ;
-###     Hi
+#####   U2FsdGVkX1/unoGIGeEzOB+iGM8uLLH0rQzQ3r748es=
 
+echo U2FsdGVkX1/unoGIGeEzOB+iGM8uLLH0rQzQ3r748es= | openssl enc -aes-256-cbc -md sha512 -pbkdf2  -a -d -salt -pass pass:wtf ;
+###     Hi
 
 password=''   ;  ## the stuffed animals last name (lowercase) and the first name (camelCase) and the kitty no spaces
 
