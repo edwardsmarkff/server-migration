@@ -93,8 +93,7 @@ exit;
 
 ## run this NOT as root:
 
-
-perl <<EOP2
+su mark --command "perl <<EOP2  ;
     use  DBI                        ;
     use  Devel::CheckLib            ;
     use  DBD::mysql                 ;
@@ -115,14 +114,16 @@ perl <<EOP2
     use  File::stat                 ;
     use  JSON                       ;
     use  LWP                        ;
-    use  Mail::Sendmail             ;
+    ################################use  Mail::Sendmail             ;
     use  Spreadsheet::ParseExcel    ;
     use  Template                   ;
     use  URI                        ;
     use  HTML::Element              ;
     use  XML::TreeBuilder           ;
     use  XML::Writer                ;
+    print  'Test script executes successfully!';
 EOP2
+"
 
 perl -e  'use   XML::Writer; '   ## to test
 
