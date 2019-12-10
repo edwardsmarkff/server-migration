@@ -49,23 +49,48 @@ process_db () {
 EOF
 }
 
-process_db  U2FsdGVkX19CcMPYmd4jL0FcGPgJwphTv1OPCgb29QwrHdjhOLvf7Pntzc0fGaAf U2FsdGVkX1+ouTfMA8FwO/wABC6vsuOHWpBYcOQBXxY= U2FsdGVkX18zzgtaUkxtLlHohc6JhOTGUUZi6egVVokWZh+VW9vWKw/6xCTZQG+9 ;
-process_db  U2FsdGVkX1/FoYLAlRVUozJsPHzXFoL1rlph+jbsP/hxtFXFNTfzvuTVOnY3CgeV U2FsdGVkX18ksi+rFGFT7e4J651Z0gF4TtUYzhjLdK0= U2FsdGVkX187BlNyFtqU9Dy+lXixzxJbVhGlm2duFK4= ;
-process_db  U2FsdGVkX1+RkIqiQEhYPUqcqxxqlSc5Jqc5Io0E/QU= U2FsdGVkX1/3wFHSdex+hqEIMj1p7cgHno5eEB9nZ50= U2FsdGVkX19vt0jE/lESDBsUGUQRg4pw4vb2GpSVVK8= ;
-process_db  U2FsdGVkX19QN/a4LKSDhIrWUdhzQkkEGEmbHs/qJeHUluFEJUf0r/9hW4jgaol1 U2FsdGVkX1/gSqfvbH0DMr9VpQ2HZ+iulQwh/9fo+so= U2FsdGVkX1/OkqWhgZxS73oVIel0Iw9Fjj1S6bIu/VrncYEzbZsPP9X/A0TEhcV0 ;
-process_db  U2FsdGVkX18+R+mmOw0zEmTN3N9sYGWHVPDp/XIQkENLUITX8RH1tTzc8hlgsIhD U2FsdGVkX1+aPPia5Z3hDDSWDDS3QSHRQzp7t/Q/z18= U2FsdGVkX1+8GcR0fq7m8t5263uw9ona9vVNN4xMlI9t0Xhw4nSxASJX9bQFuB1E ;
-process_db  U2FsdGVkX19DfmY4lu+N9o3yLwDBEiL2S1pNLL9r1C/G8YHxFkFfuK7sqRLVEf2B U2FsdGVkX1+xoVGZvhiTFvWjavkgiIMb9G0nrvsj2u4= U2FsdGVkX18x7B5LekeuMP+uDf7w0FUerHCvERn4kbIKV1rmxXr3z13HTy9IP9Ay ;
-process_db  U2FsdGVkX1/MM+NMgNBWh77MdCOmA6iZ+Ykzo3hN9evfLz9nwu0RumLu5JNpBWvW U2FsdGVkX1+IaxtDw6KnkcHOKWCenkb6NsmP2nG3aPw= U2FsdGVkX193HoUMZI00qYu9cm8cxvtu3j5sEWgvBM3q7TEY0c8H7B9wqsoQSgR+ ;
-process_db  U2FsdGVkX1/zrjI68zE1ehg2kfK1IFr+970rx+7Tzoo= U2FsdGVkX19t9zcFwlyM3dDxLK7VE7vIOXVanMsrqSg= U2FsdGVkX19f+FviXAwIRFw1Vkb6yiTgenip0jowbGk4GC9GaORHefXOaRE30LjE ;
-process_db  U2FsdGVkX19ghboqibJMwQOlKHDI4YlZwITfafKWXZg= U2FsdGVkX18NfBZOp68b0UA4u1kdpGx8BvtbbbCQ8+Y= U2FsdGVkX196dBixo2kE5oL6Qx/CQogFb4Uelu4TccI= ;
-process_db  U2FsdGVkX1+4H4ViXUDOxcjhg/MVFKFhkfUbWbky8aM= U2FsdGVkX1/Cy+sdjotAs5bukPTTf+sE+rg6ZCk55tY= U2FsdGVkX1+BWaTvWONbBUbPgQXQVwtBkbR7CLR/xNM= ;
-process_db  U2FsdGVkX18K0vEaRH6X0F1P80ccfAm+QaawziyWLA0= U2FsdGVkX1+eP/ZobfoyzWs+Lpc+fcSQwd17eJhDjXo= U2FsdGVkX1+Tm5+prfSGV3WzewCi6gzw1jmzxedQL8U= ;
-process_db  U2FsdGVkX18mUJmL2MaReD3DfDkwm12oJAxD0OSh/lA= U2FsdGVkX18wPSdnGQHrgB50b2A7siuCwy1slwCJFYM= U2FsdGVkX18FBdnNy0dlan9DLi2PmYNaTpd9LHHWa+Y= ;
-process_db  U2FsdGVkX19oyaPg+jIGSkSse3U2Wb8DdCRp+WYZbf0= U2FsdGVkX1/iCcGwvnHKOsYio+oKtzFhf0AJ/0aH62Q= U2FsdGVkX1/ov0AoQ2UssL8VYm+rLhFBk4ZliapIogM= ;
-
-process_db      U2FsdGVkX19tIkXKi/xeOV5WpJdL5kImlY44QEWey54=    \
-                U2FsdGVkX1+KAdDpnmQ8ZhD8/ELgUn56BYeATIuJeLg=    \
-                U2FsdGVkX1/ClZidUY9gwQwPTwnR56YJM7QwmD0AZ+4=    ;
+process_db  U2FsdGVkX19CcMPYmd4jL0FcGPgJwphTv1OPCgb29QwrHdjhOLvf7Pntzc0fGaAf  \
+            U2FsdGVkX1+ouTfMA8FwO/wABC6vsuOHWpBYcOQBXxY=                      \
+            U2FsdGVkX18zzgtaUkxtLlHohc6JhOTGUUZi6egVVokWZh+VW9vWKw/6xCTZQG+9  ;
+process_db  U2FsdGVkX1/FoYLAlRVUozJsPHzXFoL1rlph+jbsP/hxtFXFNTfzvuTVOnY3CgeV  \
+            U2FsdGVkX18ksi+rFGFT7e4J651Z0gF4TtUYzhjLdK0=                      \
+            U2FsdGVkX187BlNyFtqU9Dy+lXixzxJbVhGlm2duFK4=                      ;
+process_db  U2FsdGVkX1+RkIqiQEhYPUqcqxxqlSc5Jqc5Io0E/QU=                      \
+            U2FsdGVkX1/3wFHSdex+hqEIMj1p7cgHno5eEB9nZ50=                      \
+            U2FsdGVkX19vt0jE/lESDBsUGUQRg4pw4vb2GpSVVK8=                      ;
+process_db  U2FsdGVkX19QN/a4LKSDhIrWUdhzQkkEGEmbHs/qJeHUluFEJUf0r/9hW4jgaol1  \
+            U2FsdGVkX1/gSqfvbH0DMr9VpQ2HZ+iulQwh/9fo+so=                      \
+            U2FsdGVkX1/OkqWhgZxS73oVIel0Iw9Fjj1S6bIu/VrncYEzbZsPP9X/A0TEhcV0  ;
+process_db  U2FsdGVkX18+R+mmOw0zEmTN3N9sYGWHVPDp/XIQkENLUITX8RH1tTzc8hlgsIhD  \
+            U2FsdGVkX1+aPPia5Z3hDDSWDDS3QSHRQzp7t/Q/z18=                      \
+            U2FsdGVkX1+8GcR0fq7m8t5263uw9ona9vVNN4xMlI9t0Xhw4nSxASJX9bQFuB1E  ;
+process_db  U2FsdGVkX19DfmY4lu+N9o3yLwDBEiL2S1pNLL9r1C/G8YHxFkFfuK7sqRLVEf2B  \
+            U2FsdGVkX1+xoVGZvhiTFvWjavkgiIMb9G0nrvsj2u4=                      \
+            U2FsdGVkX18x7B5LekeuMP+uDf7w0FUerHCvERn4kbIKV1rmxXr3z13HTy9IP9Ay  ;
+process_db  U2FsdGVkX1/MM+NMgNBWh77MdCOmA6iZ+Ykzo3hN9evfLz9nwu0RumLu5JNpBWvW  \
+            U2FsdGVkX1+IaxtDw6KnkcHOKWCenkb6NsmP2nG3aPw=                      \
+            U2FsdGVkX193HoUMZI00qYu9cm8cxvtu3j5sEWgvBM3q7TEY0c8H7B9wqsoQSgR+  ;
+process_db  U2FsdGVkX1/zrjI68zE1ehg2kfK1IFr+970rx+7Tzoo=                      \
+            U2FsdGVkX19t9zcFwlyM3dDxLK7VE7vIOXVanMsrqSg=                      \
+            U2FsdGVkX19f+FviXAwIRFw1Vkb6yiTgenip0jowbGk4GC9GaORHefXOaRE30LjE  ;
+process_db  U2FsdGVkX19ghboqibJMwQOlKHDI4YlZwITfafKWXZg=                      \
+            U2FsdGVkX18NfBZOp68b0UA4u1kdpGx8BvtbbbCQ8+Y=                      \
+            U2FsdGVkX196dBixo2kE5oL6Qx/CQogFb4Uelu4TccI=                      ;
+process_db  U2FsdGVkX1+4H4ViXUDOxcjhg/MVFKFhkfUbWbky8aM=                      \
+            U2FsdGVkX1/Cy+sdjotAs5bukPTTf+sE+rg6ZCk55tY=                      \
+            U2FsdGVkX1+BWaTvWONbBUbPgQXQVwtBkbR7CLR/xNM=                      ;
+process_db  U2FsdGVkX18K0vEaRH6X0F1P80ccfAm+QaawziyWLA0=                      \
+            U2FsdGVkX1+eP/ZobfoyzWs+Lpc+fcSQwd17eJhDjXo=                      \
+            U2FsdGVkX1+Tm5+prfSGV3WzewCi6gzw1jmzxedQL8U=                      ;
+process_db  U2FsdGVkX18mUJmL2MaReD3DfDkwm12oJAxD0OSh/lA=                      \
+            U2FsdGVkX18wPSdnGQHrgB50b2A7siuCwy1slwCJFYM=                      \
+            U2FsdGVkX18FBdnNy0dlan9DLi2PmYNaTpd9LHHWa+Y=                      ;
+process_db  U2FsdGVkX19oyaPg+jIGSkSse3U2Wb8DdCRp+WYZbf0=                      \
+            U2FsdGVkX1/iCcGwvnHKOsYio+oKtzFhf0AJ/0aH62Q=                      \
+            U2FsdGVkX1/ov0AoQ2UssL8VYm+rLhFBk4ZliapIogM=                      ;
+process_db  U2FsdGVkX19tIkXKi/xeOV5WpJdL5kImlY44QEWey54=                      \
+            U2FsdGVkX1+KAdDpnmQ8ZhD8/ELgUn56BYeATIuJeLg=                      \
+            U2FsdGVkX1/ClZidUY9gwQwPTwnR56YJM7QwmD0AZ+4=                      ;
 
 echo  'SHOW DATABASES;              '  ;
 echo  'SELECT User FROM mysql.user; '  ;
