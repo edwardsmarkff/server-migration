@@ -8,6 +8,19 @@
 
 #   2019-04-04  -- migrated from googledocs
 #   2019-08-28  -- upgraded to version 10.x
+#   2019-12-10  -- migrated to centos-8
+
+#######   https://linuxconfig.org/how-to-install-node-js-on-redhat-8-linux
+
+dnf  --assumeyes  module install nodejs:10  ;
+dnf               module list    nodejs     ;
+node -v
+
+exit;
+
+
+
+
 
 
 
