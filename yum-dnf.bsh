@@ -11,6 +11,8 @@
 ##  2019-04-04  - migrated from googledocs
 ##  2019-11-13  - removed  yum libungif-devel     mod_qos for centos-8
 
+##  2019-12-11  - added dnf postfix and maix    -- NOTICE THAT dnf is replacing yum!
+
 
 yum clean all ;  ## 2016-12-31 - required for MariaDB
 
@@ -52,6 +54,15 @@ yum  --assumeyes  install	\
     xz\
     zlib-devel\
 ;
+
+    ##  2019-12-11 https://linuxconfig.org/how-to-install-postfix-on-redhat-8
+dnf --assumeyes  install postfix mailx  ; ## 2019-12-11
+systemctl enable postfix                ; ## 2019-12-11
+systemctl start postfix                 ; ## 2019-12-11
+
+    
+
+
 exit  ;    ## DONT GO ANY FARTHER IN THIS SCRIPT!
 
     ## blank line goes here, or line above looses the backslash….
