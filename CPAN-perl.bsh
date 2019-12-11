@@ -9,6 +9,9 @@
 
 
 #           2019-04-08  -- successfully moved from google-docs to github
+#           2019-12-11  -- it seems that postfix and mailx are no longer installed by default for use with Mail::Sendmail
+#                       https://linuxconfig.org/how-to-install-postfix-on-redhat-8
+#                       dnf --assumeyes install postfix mailx ;
 
 
 ###  maybe need MariaDB installed first to properly test DBD::mysql?
