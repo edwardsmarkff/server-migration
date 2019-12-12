@@ -41,13 +41,9 @@ php-fpm \
 php-gd  \
 php-ldap \
 php-mbstring  \
-php-mysql  \
 php-pdo  \
 php-pdo_mysql \
 php-pear  \
-php-pecl-jsonc-devel  \
-php-pecl-jsonc  \
-php-pecl-propro  \
 php-pecl-raphf  \
 php-process  \
 php-runtime  \
@@ -55,6 +51,11 @@ php-xml  \
 php-xmlrpc \
 php-zip \
 ;
+
+###php-pecl-propro  \
+###php-mysql  \
+###php-pecl-jsonc-devel  \
+###php-pecl-jsonc  \
 
 yum  list installed | grep php ;    ## list everything associated with php
 
@@ -73,8 +74,12 @@ yum -y  install epel-release ;
 yum  -y  install php-devel ;
 yum  -y  install libmcrypt ;
 yum  -y  install libmcrypt-devel ;
-
 pecl  install mcrypt-1.0.1 ;
+
+
+yum  install php-json ;
+
+pecl install propro
 
 
 ##########yum  -y   install    php-pear ;  ????????????????????????????????????????????  for phpize
