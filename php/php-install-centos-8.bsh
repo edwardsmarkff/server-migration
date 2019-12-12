@@ -41,7 +41,6 @@ php-fpm \
 php-gd  \
 php-ldap \
 php-mbstring  \
-php-mcrypt \
 php-mysql  \
 php-pdo  \
 php-pdo_mysql \
@@ -68,6 +67,15 @@ s?;include_path = ".:/php/includes"?include_path = "/usr/local/lib/php" ; 2019-0
 END_OF_SED_VSFTPD_CONF
 
 php --version ;
+
+ ##  2019-12-11 -- install mcrypt:
+yum -y  install epel-release ;
+yum  -y  install php-devel ;
+yum  -y  install libmcrypt ;
+yum  -y  install libmcrypt-devel ;
+
+pecl  install mcrypt-1.0.1 ;
+
 
 ##########yum  -y   install    php-pear ;  ????????????????????????????????????????????  for phpize
 
