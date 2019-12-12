@@ -37,6 +37,7 @@ php-common  \
 php-curl \
 php-devel  \
 php-fileinfo \
+php-fpm \
 php-gd  \
 php-ldap \
 php-mbstring  \
