@@ -7,11 +7,13 @@
 ###########################
 
 ##  2019-07-26 - bzip2 path confused, using long file name instead (??)
+##  2020-01-07 - now loads with git clone, no need for bzip/tar
 
 cd            ~/INSTALL_FFmpeg/INSTALL_x264/ ;
 
-/usr/local/bin/bzip2 -d  ./last_x264.tar.bz2 ;
-tar -x -f    ./last_x264.tar      ;
+#######################3/usr/local/bin/bzip2 -d  ./last_x264.tar.bz2 ;   ## 2020-01-07
+#######################tar -x -f    ./last_x264.tar      ;               ## 2020-01-07
+
 cd            ./x264*/                 ;
 ./configure  --enable-shared   --disable-asm ;
 make && make install  ;
