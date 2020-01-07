@@ -1,6 +1,7 @@
 #! /bin/bash -w
 
 # 2019-12-09 - changed file size notice
+# 2020-01-07 - x264 is now a git clone
 
 #################################
 #                               #
@@ -20,6 +21,7 @@ find ~/INSTALL_FFmpeg/                          \
   -regex  '.*\(gz\|xz\|bz2\|opus\|ogg\|wav\)$'  \
   -printf    '%k\t%p \n'                        \
    ;
+du -s  /root/INSTALL_FFmpeg/INSTALL_x264 ;
 
 ###################################
 #                                 #
