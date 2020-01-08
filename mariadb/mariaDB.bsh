@@ -41,7 +41,6 @@ cat  <<END >> /etc/my.cnf   ;
 ## the following was added from mariaDB.bsh installation script 2020-01-08
 [server]
 max_allowed_packet = 64M         #   2016-02-19 from ‘initial setup’
-open-files-limit = 1600  
 skip-networking = 1              ## 2019-05-20 - turns OFF networking 
 ##skip-networking = 0                ## 2019-05-20 - turns ON networking 
 
@@ -50,7 +49,6 @@ END
 
 echo 'be sure to run  mysql_secure_installation and set root password as well!
 
-
 exit 1;
 
 mysql_secure_installation  ;
@@ -58,6 +56,8 @@ mysql_secure_installation  ;
 mysql ;
 ALTER USER 'root'@'localhost' IDENTIFIED BY '${mysqlPassword}';
 FLUSH PRIVILEDGES ;
+SHOW VARIABLES LIKE 'skip_networking' ;
+SHOW VARIABLES LIKE 'max_allowed_packet' ;
 
 
 ##to test:
