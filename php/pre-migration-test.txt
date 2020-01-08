@@ -1,6 +1,7 @@
 
 
- nice  nohup  find  /usr/local/lib/php   /home/  -name  '*.php'   -type f  > ~/list-of-php-scripts.txt   &
- tar -vcf phpTar.tar -T  list-of-php-scripts.txt ;
+nice  nohup  find  /usr/local/lib/php   /home/  -name  '*.php'   -type f  > ~/list-of-php-scripts.txt   &
+
+tar -vcf phpTar.tar --list  list-of-php-scripts.txt ;
 
 find .  -name  '*.php'  -exec  php -l  {}  \;
