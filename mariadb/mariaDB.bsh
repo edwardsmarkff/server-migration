@@ -72,8 +72,8 @@ sudo chown  mysql:mysql    /var/log/mariadb.err.log;	### 2019-10-09
 cat  <<END >> /etc/my.cnf   ;
 ## the following was added from mariaDB.bsh installation script 2020-01-08
 max_allowed_packet = 64M         #   2016-02-19 from ‘initial setup’
-########open-files-limit = 1600    ## 2020-01-08 - no longer done in /etc/my.cnf
-########skip-networking=0          ## 2020-01-08 - no longer done in /etc/my.cnf
+########open-files-limit = 1600    ## 2020-01-08 - no longer necessary (?)
+skip-networking=0                  ## 2019-05-20 - turns ON networking 
 ##skip-networking=1                ## 2019-05-20 - turns OFF networking 
 
 END
