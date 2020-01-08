@@ -9,8 +9,10 @@
 #   2019-02-23 -    moved to github 
 #
 #   2019-08-28 - 10.4.1 to 10.4.7
+#   2020-01-08 -- minor changes, added back in the my.cnf files and password
 
 
+export mysqlPassword='mysqlPassword';
 
 
 						### written from  https://www.tecmint.com/install-mariadb-in-centos-7/
@@ -41,6 +43,23 @@ mysql --user=root -p   ;	## prompt for password
 #####show global variables like 'log_error';		##  2019-10-09
 sudo touch   /var/log/mariadb.err.log;			### 2019-10-09
 sudo chown  mysql:mysql    /var/log/mariadb.err.log;	### 2019-10-09
+
+
+cat  <<END >> /etc/my.cnf   ;
+max_allowed_packet = 64M         #   2016-02-19 from ‘initial setup’
+open-files-limit = 1600                   #   2016-02-19 from ‘initial setup’
+skip-networking=0                ## 2019-05-20 - turns ON networking 
+##skip-networking=1                ## 2019-05-20 - turns OFF networking 
+
+END
+
+echo <<END   >>/root/.my.cnf  ;
+[client]                           #   2016-02-19 from ‘initial setup’
+user=root                          #   2016-02-19 from ‘initial setup’
+pass=${mysqlPassword}              #   2016-02-19 from ‘initial setup’
+END
+
+
 
 exit 1;
 
