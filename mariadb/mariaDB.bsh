@@ -34,11 +34,35 @@ systemctl start mariadb  ;
 systemctl enable mariadb  ;
 systemctl status mariadb  ;
 
-mysql_secure_installation  ;
-
 mysql -V  ;			## version number
 mysqld --print-defaults  ;	## print what the starting arguments at startup
-mysql --user=root -p   ;	## prompt for password
+
+cat  <<END >> /etc/my.cnf   ;
+## the following was added from mariaDB.bsh installation script 2020-01-08
+[server]
+max_allowed_packet = 64M         #   2016-02-19 from ‘initial setup’
+open-files-limit = 1600  
+skip-networking = 1              ## 2019-05-20 - turns OFF networking 
+##skip-networking = 0                ## 2019-05-20 - turns ON networking 
+
+END
+
+
+echo 'be sure to run  mysql_secure_installation and set root password as well!
+
+
+exit 1;
+
+mysql_secure_installation  ;
+
+mysql ;
+ALTER USER 'root'@'localhost' IDENTIFIED BY '${mysqlPassword}';
+FLUSH PRIVILEDGES ;
+
+
+##to test:
+
+mysql --user=root --password   ;	## prompt for password
 
 #####show global variables like 'log_error';		##  2019-10-09
 sudo touch   /var/log/mariadb.err.log;			### 2019-10-09
@@ -54,15 +78,15 @@ max_allowed_packet = 64M         #   2016-02-19 from ‘initial setup’
 
 END
 
-cat <<END   >>/root/.my.cnf  ;
-[client]                           #   2016-02-19 from ‘initial setup’
-user=root                          #   2016-02-19 from ‘initial setup’
-password=${mysqlPassword}              #   2016-02-19 from ‘initial setup’
-END
-
 
 
 exit 1;
+
+### https://www.techgalery.com/2019/09/error-1348-column-password-is-not.html
+
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY '${mysqlPassword}';
+FLUSH PRIVILEDGES ;
 
 ####yum --assumeyes install \
 ####     perl-DBD-mysql \  now done in the php.bsh script
