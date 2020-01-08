@@ -3,7 +3,7 @@
 ## 2019-11-13 - ran on centos-7/8 successfully.
 
 1) yum  (separate script)
-2) opus-ffmpeg  (separate script)
+2) ffmpeg  (separate script)
 3) Mariadb (do before perl and php)
 5) perl/CPAN
 6) php
