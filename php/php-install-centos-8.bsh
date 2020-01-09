@@ -41,14 +41,15 @@ dnf --assumeyes  install     \
               php-pdo        \
               php-pdo_mysql  \
               php-pear       \
-              php-pecl-raphf \
               php-process    \
-              php-runtime    \
               php-xml        \
               php-xmlrpc     \
               php-zip        \
               ;
               
+#########                php-pecl-raphf \
+#########              php-runtime    \
+
 
 sed --in-place  --file=-  /etc/php.ini  <<END_OF_PHP_DOT_INI ;
 s?;date.timezone =?date.timezone ='America/New_York' ;  2019-04-04 from github php.txt -- added time-zone      ?;
