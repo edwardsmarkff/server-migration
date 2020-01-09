@@ -11,11 +11,6 @@
 #   2019-08-28 - 10.4.1 to 10.4.7
 #   2020-01-08 -- minor changes, added back in the my.cnf files and password
 
-
-export mysqlPassword='mysqlPassword';
-
-
-						### written from  https://www.tecmint.com/install-mariadb-in-centos-7/
 ##  written from  https://tecadmin.net/install-mariadb-centos8/
 
 cat << EOF > /etc/yum.repos.d/mariadb.repo  ;
@@ -40,8 +35,8 @@ cat  <<END >> /etc/my.cnf   ;
 [server]
 sql_mode=NO_ENGINE_SUBSTITUTION
 table_open_cache = 4096                 ## 2019-10-16
-innodb_log_file_size = 64M              # 2019-10-14
-max_allowed_packet = 64M                #   2019-10-14
+innodb_log_file_size = 64M              ## 2019-10-14
+max_allowed_packet = 64M                ## 2019-10-14
 skip-name-resolve                       ## 2019-10-16
 query_cache_type = 1                    ## 2019-10-16
 innodb_buffer_pool_size = 512M
@@ -65,6 +60,9 @@ mysql --execute="SHOW VARIABLES LIKE 'skip_networking'      ;   "  ;
 mysql --execute="SHOW VARIABLES LIKE 'max_allowed_packet'   ;   "  ;
 mysql --execute="SHOW VARIABLES LIKE 'log_error'            ;   "  ;
 
+sudo touch   /var/log/mariadb.err.log;			### 2019-10-09
+sudo chown  mysql:mysql    /var/log/mariadb.err.log;	### 2019-10-09
+
 echo 'be sure to run  mysql_secure_installation and set root password as well!
 
 exit 1;
@@ -86,15 +84,7 @@ FLUSH PRIVILEDGES ;
 
 
 
-#####show global variables like 'log_error';		##  2019-10-09
-sudo touch   /var/log/mariadb.err.log;			### 2019-10-09
-sudo chown  mysql:mysql    /var/log/mariadb.err.log;	### 2019-10-09
 
-
-
-
-
-### https://www.techgalery.com/2019/09/error-1348-column-password-is-not.html
 
 
 
@@ -107,14 +97,7 @@ sudo chown  mysql:mysql    /var/log/mariadb.err.log;	### 2019-10-09
 
 === mysql setup
 
-/etc/my.cnf - add the following:
 
-max_allowed_packet = 64M         #   2016-02-19 from ‘initial setup’
-open-files-limit = 1600                   #   2016-02-19 from ‘initial setup’
-skip-networking=0                ## 2019-05-20 - turns ON networking 
-skip-networking=1                ## 2019-05-20 - turns OFF networking 
-
-systemctl daemon-reload  ;   systemctl  restart  mariadb.service  ;   ## restart mariadb
 
 
 echo <<END   >>/root/.my.cnf  ;
