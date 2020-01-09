@@ -68,17 +68,23 @@ php --version ;
 
 exit 1;
 
+############################  raphf 
 pecl install raphf;
 cat <<END >> /etc/php.ini  ;
 
 extension=raphf.so
 END
 
+
+########################### propro
+pecl install propro ;  ## 
+cat <<END >> /etc/php.ini  ;
+
+extension=propro
+END
+
+
 yum  install php-json ;   ##  ???
-
-pecl install propro ;  ## ???
-
-
 
 
 
