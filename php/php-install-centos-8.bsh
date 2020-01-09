@@ -15,13 +15,13 @@
 ############################  rewritten from https://www.cloudbooklet.com/install-php-7-4-on-centos-8-or-rhel-8/
 #  rewritten from https://www.tecmint.com/install-php-on-centos-8/
 
-dnf -y install dnf-utils ;
+dnf  --assumeyes  install dnf-utils ;
 
-dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm ;
+dnf  --assumeyes  install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm ;
 
 rpm -qa | grep epel ;
 
-dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm ;
+dnf  --assumeyes  install https://rpms.remirepo.net/enterprise/remi-release-8.rpm ;
 
 rpm -qa | grep remi ;
  
