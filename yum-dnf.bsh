@@ -12,6 +12,7 @@
 ##  2019-11-13  - removed  yum libungif-devel     mod_qos for centos-8
 
 ##  2019-12-11  - added dnf postfix and maix    -- NOTICE THAT dnf is replacing yum!
+##  2020-01-08  - added a few new dnf commands
 
 
 yum clean all ;  ## 2016-12-31 - required for MariaDB
@@ -22,9 +23,12 @@ dnf   --assumeyes  install  dnf-utils  ;    ## 2020-01-08
 yum   --assumeyes  install  iptables-services   net-tools  ;   ## 2015-07-01
 
 yum clean all   ;    ## 2013-05-15
+
 /usr/sbin/yum-complete-transaction --cleanup-only   ;    ## 2013-05-15
 
-yum  --assumeyes  install	\
+dnf config-manager --set-enabled PowerTools ;  ## 2020-01-08
+
+dnf  --assumeyes  install	\
     ant\
     automake\
     autoconf\
