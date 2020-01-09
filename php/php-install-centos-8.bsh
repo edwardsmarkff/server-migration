@@ -10,14 +10,67 @@
 #   2019-04-01  migrated from googledocs
 #   2019-11-14 - rewrote for centos 8 php 7.4
 
-#  rewritten from https://www.cloudbooklet.com/install-php-7-4-on-centos-8-or-rhel-8/
-
 ##   DONT EVER USE WEBTATIC!  use remi/epel instead
 
-yum  search php* ;     ## yum search instead of list
+############################  rewritten from https://www.cloudbooklet.com/install-php-7-4-on-centos-8-or-rhel-8/
+#  rewritten from https://www.tecmint.com/install-php-on-centos-8/
 
-############## unnecessary?yum --assumeyes install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm ; ## unnecessary?
-############yum --assumeyes install http://rpms.remirepo.net/enterprise/remi-release-7.rpm ;
+dnf -y install dnf-utils ;
+
+dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm ;
+
+rpm -qa | grep epel ;
+
+dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm ;
+
+rpm -qa | grep remi ;
+ 
+dnf module enable php:remi-7.4 ;
+
+dnf --assumeyes  install     \
+              php            \
+              php-cli        \
+              php-common     \
+              php-curl       \
+              php-devel      \
+              php-fileinfo   \
+              php-fpm        \
+              php-gd         \
+              php-ldap       \
+              php-mbstring   \
+              php-pdo        \
+              php-pdo_mysql  \
+              php-pear       \
+              php-pecl-raphf \
+              php-process    \
+              php-runtime    \
+              php-xml        \
+              php-xmlrpc     \
+              php-zip        \
+              ;
+              
+
+sed --in-place  --file=-  /etc/php.ini  <<END_OF_PHP_DOT_INI ;
+s?;date.timezone =?date.timezone ='America/New_York' ;  2019-04-04 from github php.txt -- added time-zone      ?;
+s/upload_max_filesize = 2M/upload_max_filesize = 64M ;  2019-04-03 from github php.txt -- changed from 2M      /;
+s/short_open_tag = Off/short_open_tag = On           ;  2019-04-03 from github php.txt -- now allows  <?   ?>  /;
+s/memory_limit = 128M/memory_limit = 512M            ;  2019-04-03 from github php.txt -- changed from 128<    /;
+s?;include_path = ".:/php/includes"?include_path = "/usr/local/lib/php" ; 2019-04-03 from github php.txt       ?;
+END_OF_PHP_DOT_INI
+
+php --version ;
+
+exit 1;
+
+yum  install php-json ;   ##  ???
+
+pecl install propro ;  ## ???
+
+
+
+
+
+yum  search php* ;     ## yum search instead of list
 
 yum   --assumeyes  install yum-utils  ;
 
