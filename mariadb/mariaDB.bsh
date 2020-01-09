@@ -38,13 +38,25 @@ mysql -V  ;			## version number
 mysqld --print-defaults  ;	## print what the starting arguments at startup
 
 cat  <<END >> /etc/my.cnf   ;
-## the following was added from mariaDB.bsh installation script 2020-01-08
+## the following was added from mariaDB.bsh installation script 2020-01-09
 [server]
-max_allowed_packet = 64M         #   2016-02-19 from ‘initial setup’
-skip-networking = 1              ## 2019-05-20 - turns OFF networking 
-##skip-networking = 0                ## 2019-05-20 - turns ON networking 
-
+sql_mode=NO_ENGINE_SUBSTITUTION
+table_open_cache = 4096                 ## 2019-10-16
+innodb_log_file_size = 64M              # 2019-10-14
+max_allowed_packet = 64M                #   2019-10-14
+skip-name-resolve                       ## 2019-10-16
+query_cache_type = 1                    ## 2019-10-16
+innodb_buffer_pool_size = 512M
+table_definition_cache = 1000000        # 2019-10-14 - changed from 400 (default)
+skip-networking = 1                     ## 2019-05-20 - turns OFF networking 
+##skip-networking = 0                   ## 2019-05-20 - turns ON networking 
+plugin_load_add = server_audit          ## added 2019-05-09
+log_error=/var/log/mariadb.err.log      ## added 2019-06-13
+## the preceeding was added from mariaDB.bsh installation script 2020-01-09
 END
+
+mysql --execute="SHOW VARIABLES LIKE 'skip_networking';    "  ;
+mysql --execute="SHOW VARIABLES LIKE 'max_allowed_packet'; "  ;
 
 echo 'be sure to run  mysql_secure_installation and set root password as well!
 
@@ -52,19 +64,20 @@ exit 1;
 
 mysql_secure_installation  ;   ## note that root no longer needs any password to use CLI!
 
-mysql ;
-
-SHOW VARIABLES LIKE 'skip_networking' ;
-SHOW VARIABLES LIKE 'max_allowed_packet' ;
-
-
 ##to test:
-
 mysql --user=root --password   ;	## prompt for password - use with a non-root user!
 
+### https://mariadb.org/authentication-in-mariadb-10-4/
+## to change root password:
+ALTER USER 'root'@'localhost' IDENTIFIED VIA mysql_native_password USING PASSWORD('${mysqlPassword}');
+FLUSH PRIVILEDGES ;
 
-#######  ALTER USER 'root'@'localhost' IDENTIFIED BY '${mysqlPassword}';  Not permanent!
-######  FLUSH PRIVILEDGES ;     
+
+
+
+
+
+
 
 #####show global variables like 'log_error';		##  2019-10-09
 sudo touch   /var/log/mariadb.err.log;			### 2019-10-09
@@ -76,10 +89,7 @@ sudo chown  mysql:mysql    /var/log/mariadb.err.log;	### 2019-10-09
 
 ### https://www.techgalery.com/2019/09/error-1348-column-password-is-not.html
 
-### https://mariadb.org/authentication-in-mariadb-10-4/
-to change root password:
-ALTER USER 'root'@'localhost' IDENTIFIED VIA mysql_native_password USING PASSWORD('${mysqlPassword}');
-FLUSH PRIVILEDGES ;
+
 
 ####yum --assumeyes install \
 ####     perl-DBD-mysql \  now done in the php.bsh script
