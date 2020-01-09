@@ -116,7 +116,7 @@ php-zip \
 
 yum  list installed | grep php ;    ## list everything associated with php
 
-sed --in-place  --file=-  /etc/php.ini  <<END_OF_SED_VSFTPD_CONF ;
+sed --debug --in-place  --file=-  /etc/php.ini  <<END_OF_SED_VSFTPD_CONF ;
 s?;date.timezone =?date.timezone ='America/New_York' ;  2019-04-04 from github php.txt -- added time-zone      ?;
 s/upload_max_filesize = 2M/upload_max_filesize = 64M ;  2019-04-03 from github php.txt -- changed from 2M      /;
 s/short_open_tag = Off/short_open_tag = On           ;  2019-04-03 from github php.txt -- now allows  <?   ?>  /;
