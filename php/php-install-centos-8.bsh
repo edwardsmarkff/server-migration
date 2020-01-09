@@ -15,15 +15,16 @@
 ############################  rewritten from https://www.cloudbooklet.com/install-php-7-4-on-centos-8-or-rhel-8/
 #  rewritten from https://www.tecmint.com/install-php-on-centos-8/
 
-dnf  --assumeyes  install dnf-utils ;
+dnf config-manager --set-enabled PowerTools ;    ## these are repeated from dns-yum.bsh
+dnf  --assumeyes  install dnf-utils ;            ## these are repeated from dns-yum.bsh
 
 dnf  --assumeyes  install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm ;
 
-rpm -qa | grep epel ;
+rpm --query --all | grep epel ;
 
 dnf  --assumeyes  install https://rpms.remirepo.net/enterprise/remi-release-8.rpm ;
 
-rpm -qa | grep remi ;
+rpm --query --all  | grep remi ;
  
 dnf   --assumeyes  module enable php:remi-7.4 ;
 
