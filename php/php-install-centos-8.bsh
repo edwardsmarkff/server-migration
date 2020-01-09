@@ -15,8 +15,8 @@
 ############################  rewritten from https://www.cloudbooklet.com/install-php-7-4-on-centos-8-or-rhel-8/
 #  rewritten from https://www.tecmint.com/install-php-on-centos-8/
 
-dnf config-manager --set-enabled PowerTools ;    ## these are repeated from dns-yum.bsh
-dnf  --assumeyes  install dnf-utils ;            ## these are repeated from dns-yum.bsh
+dnf config-manager --set-enabled PowerTools ;    ## these are repeated from dnf-yum.bsh
+dnf  --assumeyes  install dnf-utils ;            ## these are repeated from dnf-yum.bsh
 
 dnf  --assumeyes  install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm ;
 
