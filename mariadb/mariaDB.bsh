@@ -29,9 +29,7 @@ EOF
 sudo dnf makecache ;
 sudo dnf --assumeyes install MariaDB-server MariaDB-client --disablerepo=AppStream ;
 
-systemctl daemon-reload  ; 
-systemctl start mariadb  ;
-systemctl enable mariadb  ;
+
 systemctl status mariadb  ;
 
 mysql -V  ;			## version number
@@ -55,8 +53,17 @@ log_error=/var/log/mariadb.err.log      ## added 2019-06-13
 ## the preceeding was added from mariaDB.bsh installation script 2020-01-09
 END
 
-mysql --execute="SHOW VARIABLES LIKE 'skip_networking';    "  ;
-mysql --execute="SHOW VARIABLES LIKE 'max_allowed_packet'; "  ;
+systemctl daemon-reload  ; 
+systemctl start mariadb  ;
+systemctl enable mariadb  ;
+
+mysql --execute="SHOW VARIABLES LIKE 'sql_mode'             ;   "  ;
+mysql --execute="SHOW VARIABLES LIKE 'table_open_cache'     ;   "  ;
+mysql --execute="SHOW VARIABLES LIKE 'innodb_log_file_size' ;   "  ;
+mysql --execute="SHOW VARIABLES LIKE 'max_allowed_packet'   ;   "  ;
+mysql --execute="SHOW VARIABLES LIKE 'skip_networking'      ;   "  ;
+mysql --execute="SHOW VARIABLES LIKE 'max_allowed_packet'   ;   "  ;
+mysql --execute="SHOW VARIABLES LIKE 'log_error'            ;   "  ;
 
 echo 'be sure to run  mysql_secure_installation and set root password as well!
 
