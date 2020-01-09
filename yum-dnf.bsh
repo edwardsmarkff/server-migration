@@ -17,8 +17,9 @@
 yum clean all ;  ## 2016-12-31 - required for MariaDB
 
 yum   --assumeyes  update   ;
-yum    --assumeyes   install  yum-utils  ;    ## 2013-05-15
-yum  --assumeyes   install   iptables-services   net-tools  ;   ## 2015-07-01
+yum   --assumeyes  install  yum-utils  ;    ## 2013-05-15
+dnf   --assumeyes  install  dnf-utils  ;    ## 2020-01-08
+yum   --assumeyes  install  iptables-services   net-tools  ;   ## 2015-07-01
 
 yum clean all   ;    ## 2013-05-15
 /usr/sbin/yum-complete-transaction --cleanup-only   ;    ## 2013-05-15
