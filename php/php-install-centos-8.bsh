@@ -66,7 +66,18 @@ END_OF_PHP_DOT_INI
 
 php --version ;
 
+for peclName in \
+      raphf     \
+      propro    \
+do
+    echo "Installing ${peclName}!"  ;
+    pecl install  ${peclName}       ;
+    cat   <<END >> /etc/php.ini     ;
+extension=${peclName}
+END
+
 exit 1;
+
 
 ############################  raphf 
 pecl install raphf;
@@ -84,8 +95,10 @@ extension=propro
 END
 
 
-yum  install php-json ;   ##  ???
 
+
+
+########################### OBSOLETE AS OF 5.2  yum  install php-json ;   ##  ???
 
 
 yum  search php* ;     ## yum search instead of list
@@ -130,15 +143,7 @@ php-zip \
 
 yum  list installed | grep php ;    ## list everything associated with php
 
-sed --debug --in-place  --file=-  /etc/php.ini  <<END_OF_SED_VSFTPD_CONF ;
-s?;date.timezone =?date.timezone ='America/New_York' ;  2019-04-04 from github php.txt -- added time-zone      ?;
-s/upload_max_filesize = 2M/upload_max_filesize = 64M ;  2019-04-03 from github php.txt -- changed from 2M      /;
-s/short_open_tag = Off/short_open_tag = On           ;  2019-04-03 from github php.txt -- now allows  <?   ?>  /;
-s/memory_limit = 128M/memory_limit = 512M            ;  2019-04-03 from github php.txt -- changed from 128<    /;
-s?;include_path = ".:/php/includes"?include_path = "/usr/local/lib/php" ; 2019-04-03 from github php.txt       ?;
-END_OF_SED_VSFTPD_CONF
 
-php --version ;
 
  ##  2019-12-11 -- install mcrypt:
 yum -y  install epel-release ;
@@ -148,14 +153,9 @@ yum  -y  install libmcrypt-devel ;
 pecl  install mcrypt-1.0.1 ;
 
 
-yum  install php-json ;
-
-pecl install propro
+  php-pear ;  ????????????????????????????????????????????  for phpize
 
 
-##########yum  -y   install    php-pear ;  ????????????????????????????????????????????  for phpize
-
-exit 1;
 
 #### OBSOLETE BELOW ####
 #### OBSOLETE BELOW ####
