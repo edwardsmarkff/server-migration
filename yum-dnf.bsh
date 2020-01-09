@@ -50,7 +50,6 @@ dnf  --assumeyes  install    libjpeg-devel    ;
 dnf  --assumeyes  install    libpng-devel     ;
 dnf  --assumeyes  install    libtiff-devel    ;
 dnf  --assumeyes  install    libtool          ;
-###dnf  --assumeyes  install    logcheck
 dnf  --assumeyes  install    lsof             ;
 dnf  --assumeyes  install    mailx            ;
 dnf  --assumeyes  install    make             ;
@@ -59,6 +58,8 @@ dnf  --assumeyes  install    popt.i686        ;
 dnf  --assumeyes  install    wget             ;
 dnf  --assumeyes  install    xz               ;
 dnf  --assumeyes  install    zlib-devel       ;
+
+###dnf  --assumeyes  install    logcheck
 
     ##  2019-12-11 https://linuxconfig.org/how-to-install-postfix-on-redhat-8
 dnf --assumeyes  install postfix mailx  ; ## 2019-12-11
