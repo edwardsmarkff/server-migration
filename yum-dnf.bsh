@@ -28,36 +28,42 @@ yum clean all   ;    ## 2013-05-15
 
 dnf config-manager --set-enabled PowerTools ;  ## 2020-01-08
 
-dnf  --assumeyes  install    ant              ;
-dnf  --assumeyes  install    automake         ;
-dnf  --assumeyes  install    autoconf         ;
-dnf  --assumeyes  install    bc               ;
-dnf  --assumeyes  install    bind-utils       ;
-dnf  --assumeyes  install    bzip2-devel      ;
-dnf  --assumeyes  install    expat-devel      ;
-dnf  --assumeyes  install    file             ;
-dnf  --assumeyes  install    freetype-devel   ;
-dnf  --assumeyes  install    ftp              ;
-dnf  --assumeyes  install    gcc              ;
-dnf  --assumeyes  install    gcc-c++          ;
-dnf  --assumeyes  install    gd               ;
-dnf  --assumeyes  install    gd-devel         ;
-dnf  --assumeyes  install    git              ;
-dnf  --assumeyes  install    httpd            ;
-dnf  --assumeyes  install    kernel-devel     ;
-dnf  --assumeyes  install    libgcc           ;
-dnf  --assumeyes  install    libjpeg-devel    ;
-dnf  --assumeyes  install    libpng-devel     ;
-dnf  --assumeyes  install    libtiff-devel    ;
-dnf  --assumeyes  install    libtool          ;
-dnf  --assumeyes  install    lsof             ;
-dnf  --assumeyes  install    mailx            ;
-dnf  --assumeyes  install    make             ;
-dnf  --assumeyes  install    openssl-devel    ;
-dnf  --assumeyes  install    popt.i686        ;
-dnf  --assumeyes  install    wget             ;
-dnf  --assumeyes  install    xz               ;
-dnf  --assumeyes  install    zlib-devel       ;
+for installName in    \
+     ant              \
+     automake         \
+     autoconf         \
+     bc               \
+     bind-utils       \
+     bzip2-devel      \
+     expat-devel      \
+     file             \
+     freetype-devel   \
+     ftp              \
+     gcc              \
+     gcc-c++          \
+     gd               \
+     gd-devel         \
+     git              \
+     httpd            \
+     kernel-devel     \
+     libgcc           \
+     libjpeg-devel    \
+     libpng-devel     \
+     libtiff-devel    \
+     libtool          \
+     lsof             \
+     mailx            \
+     make             \
+     openssl-devel    \
+     popt.i686        \
+     wget             \
+     xz               \
+     zlib-devel       \
+     
+do
+    echo "Installing ${installName}" ;
+    dnf  --assumeyes  install ${installName} ;
+done;
 
 ###dnf  --assumeyes  install    logcheck
 
