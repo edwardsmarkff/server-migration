@@ -63,6 +63,8 @@ php --version ;
 
 exit 1;
 
+pecl install raphf;
+
 yum  install php-json ;   ##  ???
 
 pecl install propro ;  ## ???
