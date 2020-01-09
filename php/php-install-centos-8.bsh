@@ -25,7 +25,7 @@ dnf  --assumeyes  install https://rpms.remirepo.net/enterprise/remi-release-8.rp
 
 rpm -qa | grep remi ;
  
-dnf module enable php:remi-7.4 ;
+dnf   --assumeyes  module enable php:remi-7.4 ;
 
 dnf --assumeyes  install     \
               php            \
