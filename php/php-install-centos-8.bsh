@@ -28,7 +28,7 @@ rpm --query --all  | grep remi ;
  
 dnf   --assumeyes  module enable php:remi-7.4 ;
 
-dnf --assumeyes  install     \
+for installName in          \
               php            \
               php-cli        \
               php-common     \
@@ -46,13 +46,17 @@ dnf --assumeyes  install     \
               php-xml        \
               php-xmlrpc     \
               php-zip        \
-              ;
+              
+do
+    echo "Installing ${installName}" ;
+    dnf  --assumeyes  install ${installName} ;
+done;
               
 #########                php-pecl-raphf \
 #########              php-runtime    \
 
 
-sed --in-place  --file=-  /etc/php.ini  <<END_OF_PHP_DOT_INI ;
+sed --debug  --in-place  --file=-  /etc/php.ini  <<END_OF_PHP_DOT_INI ;
 s?;date.timezone =?date.timezone ='America/New_York' ;  2019-04-04 from github php.txt -- added time-zone      ?;
 s/upload_max_filesize = 2M/upload_max_filesize = 64M ;  2019-04-03 from github php.txt -- changed from 2M      /;
 s/short_open_tag = Off/short_open_tag = On           ;  2019-04-03 from github php.txt -- now allows  <?   ?>  /;
@@ -65,6 +69,9 @@ php --version ;
 exit 1;
 
 pecl install raphf;
+cat <<END >> /etc/php.ini  ;
+extension=raphf.so
+END
 
 yum  install php-json ;   ##  ???
 
