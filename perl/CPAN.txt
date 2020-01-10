@@ -9,11 +9,12 @@ perl -MCPAN -e shell ;     ## click several times, twice at first, then ONCE aga
     ##  this need to be done twice...!
 cpan ;   ## run once for initialize and testing, hit return over and over
 
-## these below can all be ran at the same time:
-
 perl -MCPAN -e shell ;   #run once for initialization and testing 
 perl -MCPAN -e shell  'o conf prerequisites_policy follow;  '   ;
 perl -MCPAN -e shell  'o conf commit'      ;
+
+## these below can all be ran at the same time:
+
 
 /usr/bin/cpan    -i   -f  Template::Stash::XS      ;             ## prompts for *TWO* "y" replies (?)
 su mark --command "perl -e  'use Template::Stash::XS ; ' ;"             ## TEST TEST TEST TEST TEST TEST TEST ! ! 
