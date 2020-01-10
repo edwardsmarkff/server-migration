@@ -61,7 +61,9 @@ for installName in    \
      zlib-devel       \
      
 do
-    echo "Installing ${installName}" ;
+    echo '####################################';
+    echo "Now installing ${installName} !!" ;
+    echo '####################################';
     dnf  --assumeyes  install ${installName} ;
 done;
 
