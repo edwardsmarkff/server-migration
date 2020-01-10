@@ -8,6 +8,7 @@
 
 #   2020-01-01   - extracted from  php.bsh (?)
 
+pear version ;
 
 for peclName in \
       raphf     \
