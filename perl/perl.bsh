@@ -37,6 +37,10 @@ yum --assumeyes install             \
             wget                    \
             ;
 yum   --assumeyes   install 'perl(IO::Socket::SSL)'    ;    ##  2015-07-01
+
+exit 1;
+
+###########################################################################################
  
 perl -MCPAN -e shell ;     ## click several times, twice at first, then ONCE again after a couple of minutes (updates .bashrc) 
     ##  this need to be done twice...!
