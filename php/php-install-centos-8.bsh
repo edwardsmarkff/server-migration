@@ -1,16 +1,16 @@
 #! /bin/bash -w
 #
 #
-#   #####################
-#   #                   #
-#   #   p h p . b s h   #
-#   #                   #
-#   #####################
+#   #####################################################
+#   #                                                   #
+#   #   p h p - i n s t a l l - c e n t o s 8 . b s h   #
+#   #                                                   #
+#   #####################################################
 
 #   2019-04-01  migrated from googledocs
 #   2019-11-14 - rewrote for centos 8 php 7.4
 
-##   DONT EVER USE WEBTATIC!  use remi/epel instead
+##   DONT EVER USE WEBTATIC!  use remi/epel instead   ! ! ! 
 
 ############################  rewritten from https://www.cloudbooklet.com/install-php-7-4-on-centos-8-or-rhel-8/
 #  rewritten from https://www.tecmint.com/install-php-on-centos-8/
@@ -51,9 +51,6 @@ do
     echo "Installing ${installName}" ;
     dnf  --assumeyes  install ${installName} ;
 done;
-              
-#########                php-pecl-raphf \
-#########              php-runtime    \
 
 
 sed --debug  --in-place  --file=-  /etc/php.ini  <<END_OF_PHP_DOT_INI ;
@@ -66,25 +63,7 @@ END_OF_PHP_DOT_INI
 
 php --version ;
 
-
-
-############################  raphf 
-pecl install raphf;
-cat <<END >> /etc/php.ini  ;
-
-extension=raphf.so
-END
-
-
-########################### propro
-pecl install propro ;  ## 
-cat <<END >> /etc/php.ini  ;
-
-extension=propro
-END
-
-
-
+exit 1 ;
 
 
 ########################### OBSOLETE AS OF 5.2  yum  install php-json ;   ##  ???
