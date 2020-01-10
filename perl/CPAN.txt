@@ -1,0 +1,64 @@
+
+##############################
+#   CPAN.txt                 #
+##############################
+
+#### these command need to be ran MANUALLY (could not get tcl-expect to work properly)
+
+perl -MCPAN -e shell ;     ## click several times, twice at first, then ONCE again after a couple of minutes (updates .bashrc) 
+    ##  this need to be done twice...!
+cpan ;   ## run once for initialize and testing, hit return over and over
+
+## these below can all be ran at the same time:
+
+perl -MCPAN -e shell ;   #run once for initialization and testing 
+perl -MCPAN -e shell  'o conf prerequisites_policy follow;  '   ;
+perl -MCPAN -e shell  'o conf commit'      ;
+
+/usr/bin/cpan    -i   -f  Template::Stash::XS      ;             ## prompts for *TWO* "y" replies (?)
+su mark --command "perl -e  'use Template::Stash::XS ; ' ;"             ## TEST TEST TEST TEST TEST TEST TEST ! ! 
+
+
+/usr/bin/cpan    -i       DBI                      ;   ## 2016-07-24
+su mark --command "perl -e  'use DBI ; ' ;"
+
+
+/usr/bin/cpan    -i       Devel::CheckLib          ;   ## 2019-04-05 - added for DBD::mysql
+su mark --command "perl -e  'use Devel::CheckLib ; ' ;"
+
+
+/usr/bin/cpan    -i       DBD::mysql               ;   ## 2016-07-24
+su mark --command "perl -e  'use DBD::mysql ; ' ;"
+
+
+sudo /usr/bin/cpan    -i       Net::SSLeay               ;            ## prompts for a ‘n’
+su mark --command "perl -e  'use Net::SSLeay; ' ;  "
+
+### if URL complains, enter   perl -MCPAN -e shell   o conf commit   ;
+### o conf prerequisites_policy follow   ## stop prompting for answers!
+### o conf prerequisites_policy ask      ## go back to prompting for answers!
+
+/usr/bin/cpan    -i       GD                             ;   ## 2019-12-10
+/usr/bin/cpan    -i       YAML                           ;
+/usr/bin/cpan    -i       Test::More                     ;
+/usr/bin/cpan    -i       Exporter                       ;
+/usr/bin/cpan    -i       FCGI                           ;
+/usr/bin/cpan    -i       CGI                            ;
+/usr/bin/cpan    -i       Cwd                            ;
+/usr/bin/cpan    -i       Crypt::Lite                    ;
+/usr/bin/cpan    -i       DBI                            ;
+/usr/bin/cpan    -i       Data::Dumper                   ;
+/usr/bin/cpan    -i       Data::JavaScript               ;
+/usr/bin/cpan    -i       URI::Escape::JavaScript        ;
+/usr/bin/cpan    -i       File                           ;
+/usr/bin/cpan    -i       JSON                           ;
+/usr/bin/cpan    -i       LWP                            ;
+/usr/bin/cpan    -i       Mail::Sendmail                 ;   ## time consuming.....
+/usr/bin/cpan    -i       Spreadsheet::ParseExcel        ;
+/usr/bin/cpan    -i       Template                       ;
+/usr/bin/cpan    -i       URI                            ;
+/usr/bin/cpan    -i       HTML::Element                  ;
+/usr/bin/cpan    -i       XML::TreeBuilder               ;
+/usr/bin/cpan    -i       XML::Writer                    ;
+
+exit 1; 
