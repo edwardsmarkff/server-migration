@@ -1,0 +1,11 @@
+for peclName in \
+      raphf     \
+      propro    \
+do
+    echo "Installing ${peclName}!"  ;
+    pecl install  ${peclName}       ;
+    cat   <<END >> /etc/php.ini     ;
+extension=${peclName}
+END
+
+exit 1;
