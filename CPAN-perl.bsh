@@ -92,7 +92,7 @@ su mark --command "perl -e  'use Net::SSLeay; ' ;  "
 /usr/bin/cpan    -i       XML::TreeBuilder               ;
 /usr/bin/cpan    -i       XML::Writer                    ;
 
-exit; 
+exit 1; 
 
 ## run this NOT as root:
 
