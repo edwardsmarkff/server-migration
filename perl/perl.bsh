@@ -12,6 +12,7 @@
 #           2019-12-11  -- it seems that postfix and mailx are no longer installed by default for use with Mail::Sendmail
 #                       https://linuxconfig.org/how-to-install-postfix-on-redhat-8
 #                       dnf --assumeyes install postfix mailx ;
+#           2020-01-10  -- added perl-Module-Load-Conditional per: https://github.com/openssl/openssl/issues/4417
 
 
 ###  maybe need MariaDB installed first to properly test DBD::mysql?
@@ -24,18 +25,21 @@
 
 #   2019-04-04  - moved from googledocs
 
-yum --assumeyes install             \
-            perl-CPAN               \
-            perl-Time-HiRes         \
-            perl-libxml-perl        \
-            perl-DBD-mysql          \
-            perl-devel              \
-            openssl                 \
-            openssl-devel           \
-            gcc                     \
-            gcc-c++                 \
-            wget                    \
+yum --assumeyes install                  \
+            perl-core                    \
+            perl-CPAN                    \
+            perl-DBD-mysql               \
+            perl-devel                   \
+            perl-libxml-perl             \
+            perl-Module-Load-Conditional \
+            perl-Time-HiRes              \
+            gcc                          \
+            gcc-c++                      \
+            openssl                      \
+            openssl-devel                \
+            wget                         \
             ;
+            
 yum   --assumeyes   install 'perl(IO::Socket::SSL)'    ;    ##  2015-07-01
 
 exit 1;
