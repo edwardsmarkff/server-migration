@@ -63,6 +63,6 @@ done;
 /usr/bin/cpan    -i     Mail::Sendmail                 ;   ## time consuming.....    
 su fakeperluser --command "perl -e  'use Mail::Sendmail; ' ;  "
 
-useradd fakeperluser ;
+userdel fakeperluser ;
 
 exit 1; 
