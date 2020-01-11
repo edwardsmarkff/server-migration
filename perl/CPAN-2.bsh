@@ -62,6 +62,7 @@ do
     /usr/bin/cpan    -i     ${installName} ;
 done;
 
-/usr/bin/cpan    -i     Mail::Sendmail                 ;   ## time consuming.....      
+/usr/bin/cpan    -i     Mail::Sendmail                 ;   ## time consuming.....    
+su mark --command "perl -e  'use Mail::Sendmail; ' ;  "
 
 exit 1; 
