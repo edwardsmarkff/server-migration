@@ -10,10 +10,6 @@
 
 useradd fakeperluser ;
 
-
-su fakeperluser --command "perl -e  'use Template::Stash::XS ; ' ;"             ## TEST TEST TEST TEST TEST TEST TEST ! ! 
-
-
 /usr/bin/cpan    -i       DBI                      ;   ## 2016-07-24
 su fakeperluser --command "perl -e  'use DBI ; ' ;"
 
