@@ -159,12 +159,12 @@ AUDIT:  (2019-06-13 while in Mexico)
 ......................................
 plugin_load_add = server_audit
 
-INSTALL SONAME 'server_audit';
-SET GLOBAL  server_audit_events          = 'CONNECT,QUERY,TABLE'  ;
-SET GLOBAL  server_audit_logging          = 'ON'  ;
-SET GLOBAL server_audit_file_rotate_size  =  100000000 ;
-SET GLOBAL server_audit_file_rotations    =  99 ;
-SHOW GLOBAL VARIABLES LIKE 'server_audit%';
+### INSTALL SONAME 'server_audit';
+### SET GLOBAL  server_audit_events          = 'CONNECT,QUERY,TABLE'  ;
+### SET GLOBAL  server_audit_logging          = 'ON'  ;
+### SET GLOBAL server_audit_file_rotate_size  =  100000000 ;
+### SET GLOBAL server_audit_file_rotations    =  99 ;
+### SHOW GLOBAL VARIABLES LIKE 'server_audit%';
 
 SET GLOBAL server_audit_file_rotate_now = ON;
 
