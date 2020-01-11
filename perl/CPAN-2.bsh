@@ -8,25 +8,26 @@
 
 ##  2020-01-10 -- moved away from the original perl.bsh
 
+useradd fakeperluser ;
 
 /usr/bin/cpan    -i   -f  Template::Stash::XS      ;             ## prompts for *TWO* "y" replies (?)
-su mark --command "perl -e  'use Template::Stash::XS ; ' ;"             ## TEST TEST TEST TEST TEST TEST TEST ! ! 
+su fakeperluser --command "perl -e  'use Template::Stash::XS ; ' ;"             ## TEST TEST TEST TEST TEST TEST TEST ! ! 
 
 
 /usr/bin/cpan    -i       DBI                      ;   ## 2016-07-24
-su mark --command "perl -e  'use DBI ; ' ;"
+su fakeperluser --command "perl -e  'use DBI ; ' ;"
 
 
 /usr/bin/cpan    -i       Devel::CheckLib          ;   ## 2019-04-05 - added for DBD::mysql
-su mark --command "perl -e  'use Devel::CheckLib ; ' ;"
+su fakeperluser --command "perl -e  'use Devel::CheckLib ; ' ;"
 
 
 /usr/bin/cpan    -i       DBD::mysql               ;   ## 2016-07-24
-su mark --command "perl -e  'use DBD::mysql ; ' ;"
+su fakeperluser --command "perl -e  'use DBD::mysql ; ' ;"
 
 
 sudo /usr/bin/cpan    -i       Net::SSLeay               ;            ## prompts for a ‘n’
-su mark --command "perl -e  'use Net::SSLeay; ' ;  "
+su fakeperluser --command "perl -e  'use Net::SSLeay; ' ;  "
 
 ### if URL complains, enter   perl -MCPAN -e shell   o conf commit   ;
 ### o conf prerequisites_policy follow   ## stop prompting for answers!
@@ -60,9 +61,12 @@ do
     echo "Now CPAN installing ${cpanName} !!" ;
     echo '######################################';
     /usr/bin/cpan    -i     ${cpanName} ;
+    su fakeperluser --command "perl -e  '${cpanName}; ' ;  "
 done;
 
 /usr/bin/cpan    -i     Mail::Sendmail                 ;   ## time consuming.....    
-su mark --command "perl -e  'use Mail::Sendmail; ' ;  "
+su fakeperluser --command "perl -e  'use Mail::Sendmail; ' ;  "
+
+useradd fakeperluser ;
 
 exit 1; 
