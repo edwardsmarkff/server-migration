@@ -10,7 +10,7 @@
 
 useradd fakeperluser ;
 
-/usr/bin/cpan    -i   -f  Template::Stash::XS      ;             ## prompts for *TWO* "y" replies (?)
+
 su fakeperluser --command "perl -e  'use Template::Stash::XS ; ' ;"             ## TEST TEST TEST TEST TEST TEST TEST ! ! 
 
 
