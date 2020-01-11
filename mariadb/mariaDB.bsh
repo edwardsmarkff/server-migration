@@ -60,8 +60,9 @@ mysql --execute="SHOW VARIABLES LIKE 'skip_networking'      ;   "  ;
 mysql --execute="SHOW VARIABLES LIKE 'max_allowed_packet'   ;   "  ;
 mysql --execute="SHOW VARIABLES LIKE 'log_error'            ;   "  ;
 
-sudo touch   /var/log/mariadb.err.log;			### 2019-10-09
-sudo chown  mysql:mysql    /var/log/mariadb.err.log;	### 2019-10-09
+sudo touch                             /var/log/mariadb.err.log;	## 2019-10-09
+sudo chown  --verbose   mysql:mysql    /var/log/mariadb.err.log;	## 2019-10-09
+ls -l                                  /var/log/mariadb.err.log;        ## 2020-01-10
 
 echo 'be sure to run  mysql_secure_installation and set root password as well!
 
