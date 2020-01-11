@@ -3,7 +3,7 @@
 #   CPAN.txt                 #
 ##############################
 
-#### these command need to be ran MANUALLY (could not get tcl-expect to work properly)
+#### these command need to be ran MANUALLY (could not get tcl-expect to work properly)  (did not bother to get it working properly)
 
 perl -MCPAN -e shell ;     ## click several times, twice at first, then ONCE again after a couple of minutes (updates .bashrc) 
     ##  this need to be done twice...!
@@ -12,4 +12,6 @@ cpan ;   ## run once for initialize and testing, hit return over and over
 perl -MCPAN -e shell ;   #run once for initialization and testing 
 perl -MCPAN -e shell  'o conf prerequisites_policy follow;  '   ;
 perl -MCPAN -e shell  'o conf commit'      ;
+
+/usr/bin/cpan    -i   -f  Template::Stash::XS      ;             ## prompts for *TWO* "y" replies (?)
 
