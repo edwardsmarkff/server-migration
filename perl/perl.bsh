@@ -1,6 +1,12 @@
 #!  /bin/bash -w
 
-## note that this will install a slightly older version of CPAN, hopefully perl/CPAN will be gone soon.
+################
+#              #
+#   perl.bsh   #
+#              #
+################
+
+
 ## note too this procedure uses LOTS of memory, so dont ever try this on a "small" server.
 
 ## runs best as cut-paste since several steps may FAIL along the way, just run them again (and again)
@@ -17,15 +23,10 @@
 
 ###  maybe need MariaDB installed first to properly test DBD::mysql?
 
-#####################
-#                   #
-#   CPAN-perl.bsh   #
-#                   #
-#####################
 
 #   2019-04-04  - moved from googledocs
 
-yum --assumeyes install                  \
+for installName in                       \
             perl-core                    \
             perl-CPAN                    \
             perl-DBD-mysql               \
@@ -38,9 +39,15 @@ yum --assumeyes install                  \
             openssl                      \
             openssl-devel                \
             wget                         \
-            ;
             
-yum   --assumeyes   install 'perl(IO::Socket::SSL)'    ;    ##  2015-07-01
+ do
+    echo '####################################';
+    echo "Now installing Perl:  ${installName} !!" ;
+    echo '####################################';
+    dnf  --assumeyes  install ${installName} ;
+done;
+         
+dnf   --assumeyes   install 'perl(IO::Socket::SSL)'    ;    ##  2015-07-01
 
 exit 1;
 
