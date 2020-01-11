@@ -15,3 +15,5 @@ perl -MCPAN -e shell  'o conf commit'      ;
 
 /usr/bin/cpan    -i   -f  Template::Stash::XS      ;             ## prompts for *TWO* "y" replies (?)
 
+perl -e  'use Template::Stash::XS ; '         ## TEST TEST TEST TEST TEST TEST TEST ! ! 
+
