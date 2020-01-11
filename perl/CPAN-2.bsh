@@ -53,11 +53,11 @@ for cpanName in                      \
       ML::Writer                     \
 
 do
-    echo '######################################';
-    echo "Now CPAN installing ${cpanName} !!" ;
-    echo '######################################';
-    /usr/bin/cpan    -i     ${cpanName} ;
-    su fakeperluser --command "perl -W  -e  '${cpanName}; ' ;  "
+    echo '######################################'                ;
+    echo "Now CPAN installing ${cpanName} !!"                    ;
+    echo '######################################'                ;
+    /usr/bin/cpan    -i     ${cpanName}                          ;
+    su fakeperluser --command "perl -W -M${cpanName} -e 1 ; "   ;
 done;
 
 /usr/bin/cpan -i     Mail::Sendmail                 ;   ## time consuming.....    
