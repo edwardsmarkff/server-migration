@@ -57,9 +57,9 @@ for cpanName in                      \
 
 do
     echo '######################################';
-    echo "Now CPAN installing ${installName} !!" ;
+    echo "Now CPAN installing ${cpanName} !!" ;
     echo '######################################';
-    /usr/bin/cpan    -i     ${installName} ;
+    /usr/bin/cpan    -i     ${cpanName} ;
 done;
 
 /usr/bin/cpan    -i     Mail::Sendmail                 ;   ## time consuming.....    
