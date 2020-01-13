@@ -17,9 +17,13 @@ for peclName in \
 do
     echo "Installing ${peclName}!"  ;
     pecl install  ${peclName}       ;
-    cat   <<END >> /etc/php.ini     ;
+    cat   <<END_OF_PHP_INI >> /etc/php.ini     ;
+
+; added by pear-pecl.bsh script 2020-01-13
 extension=${peclName}
-END
+;
+
+END_OF_PHP_INI
 
 done
 
