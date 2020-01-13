@@ -4,10 +4,13 @@
 nice  nohup  find  /usr/local/lib/php   /home/  -name  '*.php'   -type f  > ~/list-of-php-scripts.txt   &
 nice  nohup  find  /usr/local/lib/php   /home/  -name  '*.php'   -type f  > ~/list-of-php-scripts.txt   &
 
-tar -vcf phpTar.tar --list  list-of-php-scripts.txt ;    ## did not work for some reason
-tar -cf phpTar.tar -T      list-of-php-scripts.txt ;
+tar -vcf /mark/phpTar.tar --list  list-of-php-scripts.txt ;    ## did not work for some reason
+tar -cf  /mark/phpTar.tar -T      list-of-php-scripts.txt ;
 
 ## on new box:
+sftp  -P  12345   marky@edwardsmarky.com  ;
+
+tar -x -c -f   ./phpTar.tar  ;
 
 find  . -name '*.php'  -type f  -exec php -l  {}  \;   ;
 
