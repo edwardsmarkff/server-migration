@@ -14,19 +14,20 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/  ;
 export LIBPATH=/usr/local/lib/   ;
 export LD_LIBRARY_PATH=/usr/local/lib/  ;
 
-yum  --assumeyes  update ;
+dnf  --assumeyes  update ;
 
-yum  --assumeyes  install gcc             \
-                          gcc-c++         \
-                          git             \
-                          kernel-devel    \
-                          libgcc          \
-                          libtool         \
-                          make            \
-                          openssl         \
-                          openssl-devel   \
-                          xz              \
-                          ;
+dnf  --assumeyes  install   \
+    gcc                     \
+    gcc-c++                 \
+    git                     \
+    kernel-devel            \
+    libgcc                  \
+    libtool                 \
+    make                    \
+    openssl                 \
+    openssl-devel           \
+    xz                      \
+    ;
 
 ###########################
 #                         #
