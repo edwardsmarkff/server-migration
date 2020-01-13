@@ -13,6 +13,7 @@ pear version ;
 for peclName in \
       raphf     \
       propro    \
+
 do
     echo "Installing ${peclName}!"  ;
     pecl install  ${peclName}       ;
