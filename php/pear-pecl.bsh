@@ -21,4 +21,6 @@ do
 extension=${peclName}
 END
 
+done
+
 exit 1;
