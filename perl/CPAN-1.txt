@@ -3,6 +3,8 @@
 #   CPAN.txt                 #
 ##############################
 
+###     installs CPAN 2.18 as of 2020-01-13
+
 ###     2020-01-13  -- extracted from perl.bsh into its own module
 
 #### these command need to be ran MANUALLY (could not get tcl-expect to work properly)  (did not bother to get it working properly)
