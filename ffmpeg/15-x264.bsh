@@ -12,9 +12,8 @@
 cd            ~/INSTALL_FFmpeg/INSTALL_x264/ ;
 
 #######################3/usr/local/bin/bzip2 -d  ./last_x264.tar.bz2 ;   ## 2020-01-07
-#######################tar -x -f    ./last_x264.tar      ;               ## 2020-01-07
-
-cd            ./x264*/                 ;
+#######################tar -x -f    ./last_x264.tar            ;         ## 2020-01-07
+########################cd            ./x264*/                 ;         ## 2020-01-07
 ./configure  --enable-shared   --disable-asm ;
 make && make install  ;
 
