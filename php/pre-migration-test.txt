@@ -12,10 +12,4 @@ sftp  -P  12345   marky@edwardsmarky.com  ;
 
 tar -x -v -f   ./phpTar.tar  ;
 
-find  . -name '*.php'  -type f  -exec php -l  {}  \;   ;
-
-
-
-  
-
-  
+find  . -name '*.php'  -type f  -exec php -l  {}  \;   ;    ## php lint test (note '-l' option)
