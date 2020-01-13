@@ -8,7 +8,7 @@
 #   #####################################################
 
 #   2019-04-01  migrated from googledocs
-#   2019-11-14 - rewrote for centos 8 php 7.4
+#   2019-11-14 - rewrote for centos 8 php 7.4.1
 
 ##   DONT EVER USE WEBTATIC!  use remi/epel instead   ! ! ! 
 
