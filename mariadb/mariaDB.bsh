@@ -64,7 +64,10 @@ sudo touch                             /var/log/mariadb.err.log;	## 2019-10-09
 sudo chown  --verbose   mysql:mysql    /var/log/mariadb.err.log;	## 2019-10-09
 ls -l                                  /var/log/mariadb.err.log;        ## 2020-01-10
 
-echo 'be sure to run  mysql_secure_installation and set root password as well!
+echo '';
+echo 'be sure to run  mysql_secure_installation and set root password as well!'
+echo '';
+echo '';
 
 exit 1;
 
