@@ -13,3 +13,8 @@ sftp  -P  12345   marky@edwardsmarky.com  ;
 tar -x -v -f   ./phpTar.tar  ;
 
 find  . -name '*.php'  -type f  -exec php -l  {}  \;   ;    ## php lint test (note '-l' option)
+
+
+###  php7mar test:     ## 2020-01-13
+git clone https://github.com/Alexia/php7mar  ;
+find  . -name '*.php'  -type f  -exec php ~/php7mar/mar.php -f='{};  \;   ;   
