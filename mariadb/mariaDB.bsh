@@ -23,8 +23,8 @@ EOF
 
 sudo dnf makecache ;
 
-##  MAYBE REQUIRED:
-# sudo dnf  --assumeyes  install galera-4 ;   ## 2020-01-14
+##  MAYBE REQUIRED:     https://kifarunix.com/install-mariadb-10-4-on-centos-8/
+# sudo dnf  --assumeyes  install galera-4 ;   ## 2020-01-14   
 sudo dnf --assumeyes install MariaDB-server MariaDB-client --disablerepo=AppStream ;
 
 
