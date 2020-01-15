@@ -2,15 +2,16 @@
 
 ## 2019-11-13 - ran on centos-7/8 successfully.
 
-1) yum-dnf  (separate script)
+0) /bash-misc/root-init.bsh
+1) /bash-misc/yum-dnf  (separate script)
 2) ffmpeg  (separate script)
 3) Mariadb (do before perl and php)
 5) perl/CPAN
 6) php
-7) imagemagick
+7) /bash-misc/imagemagick
 8) apache
 9) webmin/virtualmin
-10) csf
+10) /bash-misc/csf
 11) clamav
 
 11) node.js
