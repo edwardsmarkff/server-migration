@@ -3,21 +3,25 @@
 ## 2019-11-13 - ran on centos-7/8 successfully.
 
 0) /bash-misc/root-init.bsh
-1) /bash-misc/yum-dnf  (separate script)
-2) ffmpeg  (separate script)
+1) /bash-misc/yum-dnf.bsh 
+2) ffmpeg 
 3) Mariadb (do before perl and php)
 5) perl/CPAN
 6) php
 7) /bash-misc/imagemagick
 8) apache
 9) webmin/virtualmin
-10) /bash-misc/csf
+10) /bash-misc/csf.bsh
 11) clamav
+12) /bash-init/rc.local.bsh
+13) /bash-init/node-js.bsh
+14) visudo
 
-11) node.js
-12) visudo
+50) /bash-init/imagemagick.bsh
+99) /bash-init/sftp.bsh   (do we even need this??)
 
-## new 2016-02-28
+
+## new 2016-02-28   -- THIS IS COPIED IN WHEN DIRECTORY IS MOVED!
 mkdir  /home/comptonpeslonline.com/tmpVoiceSpiceFile
 chmod 755  ./tmpVoiceSpiceFile/
 chown  comptonpeslonline.com:comptonpeslonline.com  ./tmpVoiceSpiceFile/
