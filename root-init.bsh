@@ -1,0 +1,90 @@
+#!  /bin/bash -v
+
+####################################
+#                                  #
+#   r o o t - i n i t . b s h      #
+#                                  #
+####################################
+
+#   2020-01-15 - initial writing, moved from README
+
+
+###################
+#                 #
+#  . v i m r c    #
+#                 #
+###################
+
+### added by /server-migration/root-init.bsh
+cat  <<END_OF_VIMRC   >~/.vimrc  ;
+set showmode             “   2016-02-19 from ‘initial setup’
+set showmatch           “   2016-02-19 from ‘initial setup’
+set tabstop=8           “   2016-02-19 from ‘initial setup’
+set shiftwidth=8        “   2016-02-19 from ‘initial setup’
+set history=10000     “   2016-02-19 from ‘initial setup’
+syntax enable;           “   2016-02-19 from ‘initial setup’
+### end added by /server-migration/root-init.bsh
+
+END_OF_VIMRC
+cat ~/.vimrc ;
+
+
+
+########################
+#                      #
+#   . b a s h r c      #
+#                      #
+########################
+
+cat  <<END_OF_BASHRC >>  ~/.bashrc  ;
+
+### added by /server-migration/root-init.bsh
+
+echo ‘welcome to kvm50 -- setting vi as your default editor’;
+echo "setting custom values in .bashrc" ## 2018-02-21
+
+export LD_LIBRARY_PATH="/usr/local/lib/"                       ;      ## 2016-04-24
+export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:/root/perl5"  ;
+export PERL_MB_OPT="--install_base /root/perl5"                ;
+export PERL_MM_OPT="INSTALL_BASE=/root/perl5"                  ;
+export PERL5LIB="/root/perl5/lib/perl5:$PERL5LIB"              ;
+export PATH="/root/perl5/bin:$PATH"                            ;
+
+set  -o  vi;
+alias vi='/usr/bin/vim';  ## 2016-02-19
+
+PATH=$PATH:$HOME/bin    ## added by mark 2018-02-21
+
+export PATH
+HISTFILESIZE=250000     ## added by mark 2018-02-21
+HISTSIZE=200000         ## added by mark 2018-02-21
+
+### end added by /server-migration/root-init.bsh
+
+END_OF_BASHRC
+cat  ~/.bashrc ;
+
+
+
+####################################
+#                                  #
+#     . b a s h _ p r o f i l e    #
+#                                  #
+####################################
+
+cat  <<END_OF_BASH_PROFILE   >> ~/.bash_profile ;
+
+### added by /server-migration/root-init.bsh
+PATH=$PATH:$HOME/bin
+export PATH
+HISTFILESIZE=250000     ## added by mark 2013-01-06
+HISTSIZE=200000         ## added by mark 2012-01-10
+### end added by /server-migration/root-init.bsh
+
+END_OF_BASH_PROFILE
+
+cat  ~/.bash_profile ;
+
+
+#
+#
