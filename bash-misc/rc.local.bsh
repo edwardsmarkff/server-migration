@@ -16,6 +16,8 @@ fi
 
 END_OF_RC_LOCAL
 
+chmod +x  /etc/rc.d/rc.local ;   ## is this required in centos-8 ??  2020-01-15
+
 systemctl reload  rc-local ;
 systemctl start   rc-local ;
 systemctl restart rc-local ;
