@@ -27,11 +27,11 @@ service httpd  start;
 echo '<?php phpinfo(); ?>' > /var/www/html/phpinfo.php ;
 echo 'please try  http://127.0.0.1/phpinfo.php   in your browser!';
 
-echo ‘###############################################’
-echo ‘#                                                                                         #’
-echo ‘#        ImageMagick                                                           #’
-echo ‘#                                                                                         #’
-echo ‘###############################################’
+echo ‘###################’
+echo ‘#                 #’
+echo ‘#   ImageMagick   #’
+echo ‘#                 #’
+echo ‘###################’
 
 cd ~;
 mkdir ./ImageMagick/ ;
@@ -73,11 +73,11 @@ fi
 
 
 
-echo ‘###############################################’
-echo ‘#                                                                                         #’
-echo ‘#        MagicWandForPhp                                                  #’
-echo ‘#                                                                                         #’
-echo ‘###############################################’
+echo ‘#####################################’
+echo ‘#                                   #’
+echo ‘#      MagicWandForPhp              #’
+echo ‘#                                   #’
+echo ‘#####################################’
 
 
 ########################  2019-08-01  yum install ImageMagick ImageMagick-devel pcre-devel   ## ??????
@@ -120,11 +120,12 @@ make && make test && make install ;
 
 
 
-echo ‘###############################################’
-echo ‘#                                                                                         #’
-echo ‘#        php  imagick                                                            #’
-echo ‘#             warning!  be careful which version you choose!  #’
-echo ‘###############################################’
+echo ‘################################################################’
+echo ‘#                                                              #’
+echo ‘#        php  imagick                                          #’
+echo ‘#             warning!  be careful which version you choose!   #’
+echo ‘#                                                              #’
+echo ‘################################################################’
 
 cd ~
 mkdir  imagick ;
@@ -167,11 +168,11 @@ make && make test && make install ;
 
 
 
-echo ‘###############################################’
-echo ‘#                                                                                         #’
-echo ‘#       final setup                                                                 #’
-echo ‘#                                                                                         #’
-echo ‘###############################################’
+echo ‘##################################’
+echo ‘#                                #’
+echo ‘#       final setup              #’
+echo ‘#                                #’
+echo ‘##################################’
 
 cat >> /etc/php.d/imagick.ini  <<END ;
 extension=imagick.so
