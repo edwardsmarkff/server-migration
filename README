@@ -10,7 +10,8 @@
 7) imagemagick
 8) apache
 9) webmin/virtualmin
-10) clamav
+10) csf
+11) clamav
 
 11) node.js
 12) visudo
@@ -58,45 +59,8 @@ sftp mark@127.0.0.1 ; ## 2016-02-09- notice sftp since regular ftp may not be an
 
 
 
-## vim defaults
-
-cat  <<END   >~/.vimrc  ;
-set showmode             “   2016-02-19 from ‘initial setup’
-set showmatch           “   2016-02-19 from ‘initial setup’
-set tabstop=8           “   2016-02-19 from ‘initial setup’
-set shiftwidth=8        “   2016-02-19 from ‘initial setup’
-set history=10000     “   2016-02-19 from ‘initial setup’
-syntax enable;           “   2016-02-19 from ‘initial setup’
-
-END
-cat ~/.vimrc ;
-
-cat  <<END >>  ~/.bashrc  ;
-echo ‘setting vi as your default editor’;  ## 2016-02-19 from ‘initial setup’
-set  -o  vi;                                              ## 2016-02-19  from ‘initial setup’
-alias vi='/usr/local/bin/vim';                   ## 2016-02-19   from ‘initial setup’
-END
-cat  ~/.bashrc ;
-
-
-###  .bash_profile
-cat  <<END   >> ~/.bash_profile ;
-HISTFILESIZE=250000            ## 2016-02-19 from ‘initial setup’
-HISTSIZE=200000                   ## 2016-02-19 from ‘initial setup’
-END
-cat  ~/.bash_profile ;
 
  chkconfig dovecot off  ;   ### disable dovecot from starting
-
-
-==  install csf firewall
-mkdir  ~/csf  && cd   ~/csf  ;
-wget   http://www.configserver.com/free/csf.tgz  ;
-tar -xzf csf.tgz  ;
-cd  csf  ;
-sh  install.sh ;
-perl  /etc/csf/csftest.pl ;
-sh /etc/csf/remove_apf_bfd.sh  ;
 
 
 2013-03-01  -- to supress messages from emailing:
