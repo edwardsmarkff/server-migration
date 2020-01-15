@@ -1,0 +1,22 @@
+
+#! /bin/bash  -w
+
+###################################
+#                                 #
+#   c s f   f i r e w a l l       #
+#                                 #
+###################################
+
+##    2020-01-15    - moved from README to its own script
+
+mkdir  ~/csf  && cd   ~/csf  ;
+wget   http://www.configserver.com/free/csf.tgz  ;
+tar -xzf csf.tgz  ;
+cd  csf  ;
+sh  install.sh ;
+perl  /etc/csf/csftest.pl ;
+sh /etc/csf/remove_apf_bfd.sh  ;
+
+exit 1;
+
+#
