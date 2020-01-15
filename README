@@ -17,6 +17,8 @@
 13) /node/node.bsh  &  /node/pm2.bsh
 14) visudo
 
+20) install fail2ban  (??)
+
 50) /bash-init/imagemagick.bsh
 99) /bash-init/sftp.bsh   (do we even need this??)
 
