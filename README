@@ -14,7 +14,7 @@
 10) /bash-misc/csf.bsh
 11) clamav
 12) /bash-init/rc.local.bsh
-13) /bash-init/node-js.bsh
+13) /node/node.bsh  &  /node/pm2.bsh
 14) visudo
 
 50) /bash-init/imagemagick.bsh
