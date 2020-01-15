@@ -1,0 +1,25 @@
+#!  /bin/bash  -w
+
+#########################
+#                       #
+#   rc.local.bsh        #
+#                       #
+#########################
+
+cat <<END_OF_RC_LOCAL  >> /etc/rc.d/rc.local ;
+
+### added by /server-migration/bash-misc/rc.local.bsh
+if  [  ! -d /var/lock/bash ]; then
+        mkdir   --verbose /var/lock/bash        ;       ## 2016-07-25
+fi
+### end of added by /server-migration/bash-misc/rc.local.bsh
+
+END_OF_RC_LOCAL
+
+systemctl reload  rc-local ;
+systemctl start   rc-local ;
+systemctl restart rc-local ;
+systemctl status  rc-local ;
+
+#
+#
