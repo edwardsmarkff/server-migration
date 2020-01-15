@@ -14,7 +14,11 @@
 
 dnf  --assumeyes  module install nodejs:10  ;
 dnf               module list    nodejs     ;
-node -v
+
+which node;
+node --version ;
+npm  --version ;   ## not sure where this is installed, except at root
+node -v  ;
 
 exit 1;
 
@@ -29,25 +33,9 @@ yum --assumeyes   install   gcc-c++   make  ;
 curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -  ;
 yum  --assumeyes  install  nodejs  ; 
 
-which node;
-node --version ;
-npm  --version ;   ## not sure where this is installed, except at root
-
-##  ===== pm2 === ==  2019-02-19
-npm  remove  pm2@latest  --global;   ## just in case
-npm  install pm2@latest --global ;
-pm2  completion install  ;
-pm2  startup  centos ;   ## reboot stuff
-#pm2  start  \ /home/comptonpeslonline.com/public_html/html5Audio/html5AudioNodeSSH/nodeWaveFormPlayer.js  --   --port 8001   ;
-#pm2   start  /usr/local/bash/monitorProcess.php  --  15 40 30 20 1     ;
-#pm2  start  \ /home/comptonpeslonline.com/public_html/voiceSpiceNode/voiceSpiceNodeServer/voiceSpiceNodeServer.js    --   --port 8000  ;
-#pm2 save ;   ## save to reboot autostart
 
 
 
-#######   D  O   N  E   ###############
-
-exit 1;
 
 ######npm  install npm -g ;
 ######npm  -v  ;
