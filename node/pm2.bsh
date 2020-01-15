@@ -1,0 +1,25 @@
+#! /bin/bash -w
+
+###########################
+#                         #
+#      p m 2 . b s h      #
+#                         #
+###########################
+
+#   2020-01-15  -- initial writing
+
+##  ===== pm2 === ==  2019-02-19
+npm  remove  pm2@latest  --global;   ## just in case
+npm  install pm2@latest --global ;
+pm2  completion install  ;
+pm2  startup  centos ;   ## reboot stuff
+
+/usr/local/bin/pm2  start   /home/comptonpeslonline.com/public_html/comptonPractice/homeworkAssignment/feathersServer              --   --port 8005   ;
+/usr/local/bin/pm2  start   /usr/local/bash/monitorProcess.php                                                                     --   15 40 30 20 1 ;
+/usr/local/bin/pm2  start   /home/comptonpeslonline.com/public_html/html5Audio/html5AudioNodeSSH/nodeWaveFormPlayer.js             --   --port 8001   ;
+/usr/local/bin/pm2  start   /home/comptonpeslonline.com/public_html/voiceSpiceNode/voiceSpiceNodeServer/voiceSpiceNodeServer.js    --   --port 8000   ;
+
+
+#######   D  O   N  E   ###############
+
+exit 1;
