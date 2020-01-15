@@ -16,7 +16,7 @@ dnf  --assumeyes  module install nodejs:10  ;
 dnf               module list    nodejs     ;
 node -v
 
-exit;
+exit 1;
 
 
 
