@@ -53,6 +53,7 @@ for installName in    \
      lsof             \
      mailx            \
      make             \
+     openssl          \
      openssl-devel    \
      popt.i686        \
      wget             \
