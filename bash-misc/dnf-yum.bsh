@@ -76,9 +76,6 @@ systemctl start postfix                 ; ## 2019-12-11
 
 exit 1 ;    ## DONT GO ANY FARTHER IN THIS SCRIPT!
 
-    ## blank line goes here, or line above looses the backslash….
-
-
 
 
 service httpd restart  ;   ## for gd  2015-05-07
