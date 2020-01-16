@@ -1,10 +1,10 @@
 # ! /bin/bash
 
-#     ###################
-#     #                 #
-#     # yum.bsh         #
-#     #                 #
-#     ###################
+#     ########################
+#     #                      #
+#     #  dnf-yum.bsh         #
+#     #                      #
+#     ########################
 
 
 
@@ -77,7 +77,7 @@ systemctl start postfix                 ; ## 2019-12-11
     
 
 
-exit  ;    ## DONT GO ANY FARTHER IN THIS SCRIPT!
+exit 1 ;    ## DONT GO ANY FARTHER IN THIS SCRIPT!
 
     ## blank line goes here, or line above looses the backslash….
 
