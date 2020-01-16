@@ -30,8 +30,12 @@ make fate-rsync SAMPLES=fate-suite/   ;
 make fate       SAMPLES=fate-suite/      ;  
                                    ### csf --start ;  ## put firewall back up !
 make  install ;
+
 which ffmpeg;   ##  /usr/local/bin/ffmpeg
+which ffprobe;   ##  /usr/local/bin/ffprobe
+
 /usr/local/bin/ffmpeg  -version ;
+/usr/local/bin/ffprobe  -version ;  ## 2020-01-16
 
 ###############################
 #                             #
