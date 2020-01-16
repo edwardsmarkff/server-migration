@@ -34,8 +34,6 @@ ls  -l  /home/ftpuser  ;
 ########openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/vsftpd/vsftpd.pem -out /etc/vsftpd/vsftpd.pem  ;
 
 expect <(cat <<'END_OF_OPENSSL'
-	##	creates a service:	messages  (all the defaults)
-	##	written from:	https://docs.feathersjs.com/guides/chat/service.html
 	 
 	set timeout -1
 	
