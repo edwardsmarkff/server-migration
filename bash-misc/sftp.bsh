@@ -31,7 +31,55 @@ chown ftpuser:ftpuser  /home/ftpuser/tester.txt ;
 
 ls  -l  /home/ftpuser  ;
 
-openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/vsftpd/vsftpd.pem -out /etc/vsftpd/vsftpd.pem  ;
+########openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/vsftpd/vsftpd.pem -out /etc/vsftpd/vsftpd.pem  ;
+
+expect <(cat <<'END_OF_OPENSSL'
+	##	creates a service:	messages  (all the defaults)
+	##	written from:	https://docs.feathersjs.com/guides/chat/service.html
+	 
+	set timeout -1
+	
+	set UPARROW	\x1B\[A;
+	set DOWNARROW	\x1B\[B;
+	set SPACE       \x20;
+	set RETURN      \x0d;
+	 
+	spawn	openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/vsftpd/vsftpd.pem -out /etc/vsftpd/vsftpd.pem  ;
+	 
+	expect	-re ".*Country Name (2 letter code).*"
+	send	-- "US${RETURN}"
+			## 
+	 
+	expect	-re ".*State or Province Name (full name).*"
+	send	-- "AZ${RETURN}"
+			##
+	 
+	expect	-re ".*Locality Name (eg, city).*"
+	send	-- "${RETURN}"
+			## 
+	 
+	expect	-re ".*Organization Name (eg, company).*"
+	send	-- "${RETURN}"
+			##
+
+	expect	-re ".*Organizational Unit Name (eg, section).*"
+	send	-- "${RETURN}"
+			##
+
+	expect	-re ".*Common Name (eg, your name or your server's hostname).*"
+	send	-- "${RETURN}"
+			## 
+
+	expect	-re ".*Email Address.*"
+	send	-- "${RETURN}"
+			## 
+
+	expect eof
+
+END_OF_OPENSSL
+)	## end of openssl
+
+ls -l   /etc/vsftpd/vsftpd.pem  ;
 
 sed --in-place  --file=-  /etc/vsftpd/vsftpd.conf  <<END_OF_SED_VSFTPD_CONF ;
 s/anonymous_enable=YES/anonymous_enable=NO/;
