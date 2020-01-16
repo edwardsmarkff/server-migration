@@ -15,9 +15,9 @@
 #   https://systembash.com/evaluating-ftp-servers-proftpd-vs-pureftpd-vs-vsftpd/
 #   https://www.alphahosting.com/blog/tips/installing-and-configuring-pure-ftpd-on-centos-7/
 
-yum  --assumeyes  update;
+dnf  --assumeyes  update;
 
-yum  --assumeyes  install  vsftpd  ;
+dnf  --assumeyes  install  vsftpd  ;
 
 firewall-cmd --permanent --add-port=20-21/tcp   ;
 firewall-cmd --permanent --add-port=30000-31000/tcp  ;
