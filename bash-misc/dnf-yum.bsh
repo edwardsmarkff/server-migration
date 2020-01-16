@@ -35,6 +35,7 @@ for installName in    \
      bind-utils       \
      bzip2-devel      \
      expat-devel      \
+     expect           \
      file             \
      freetype-devel   \
      ftp              \
