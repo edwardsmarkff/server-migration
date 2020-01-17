@@ -64,27 +64,27 @@ expect <(cat <<'END_OF_OPENSSL'
 	 
 	spawn	openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/vsftpd/vsftpd.pem -out /etc/vsftpd/vsftpd.pem  ;
 	 
-	expect	-re ".*Country Name (2 letter code).*"
+	expect	-re ".*Country Name \\\(2 letter code\\\).*"
 	send	-- "US${RETURN}"
 			## 
 	 
-	expect	-re ".*State or Province Name (full name).*"
+	expect	-re ".*State or Province Name \\\(full name\\\).*"
 	send	-- "AZ${RETURN}"
 			##
 	 
-	expect	-re ".*Locality Name (eg, city).*"
+	expect	-re ".*Locality Name \\\(eg, city\\\).*"
 	send	-- "${RETURN}"
 			## 
 	 
-	expect	-re ".*Organization Name (eg, company).*"
+	expect	-re ".*Organization Name \\\(eg, company\\\).*"
 	send	-- "${RETURN}"
 			##
 
-	expect	-re ".*Organizational Unit Name (eg, section).*"
+	expect	-re ".*Organizational Unit Name \\\(eg, section\\\).*"
 	send	-- "${RETURN}"
 			##
 
-	expect	-re ".*Common Name (eg, your name or your server's hostname).*"
+	expect	-re ".*Common Name \\\(eg, your name or your server's hostname\\\).*"
 	send	-- "${RETURN}"
 			## 
 
