@@ -25,7 +25,7 @@ firewall-cmd --reload   ;
 
 adduser ftpuser ;
 
-TEMP_PASSWORD='wallop';
+export TEMP_PASSWORD='wallop';
 expect <(cat <<'END_OF_PASSWD'
 
         set timeout -1
