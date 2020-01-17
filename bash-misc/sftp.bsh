@@ -120,7 +120,7 @@ systemctl  status   sshd        ;
 systemctl  restart  vsftpd      ;
 
 
-echo 'BE SURE TO REMOVE ftpuser when done testing !';
-echo 'userdel ftpuser; ' ;
+echo  -e "\n\nBE SURE TO REMOVE ftpuser when done testing !";
+echo  -e "\nuserdel ftpuser;\n" ;
 
 exit 1;
