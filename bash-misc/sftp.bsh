@@ -35,10 +35,10 @@ expect <(cat <<'END_OF_PASSWD'
         spawn passwd ftpuser ;
 
         expect  -re     ".*Changing password for user ftpuser.*"
-        send    --      "${TEMP_PASSWORD}${RETURN}"
+        send    --      "$env(TEMP_PASSWORD)${RETURN}"
 
         expect  -re     ".*Retype new password.*"
-        send    --      "${TEMP_PASSWORD}${RETURN}"
+        send    --      "$env(TEMP_PASSWORD)${RETURN}"
 
         expect eof
 
