@@ -23,7 +23,7 @@ firewall-cmd --permanent --add-port=20-21/tcp   ;
 firewall-cmd --permanent --add-port=30000-31000/tcp  ;
 firewall-cmd --reload   ;
 
-adduser ftpuser ;
+adduser ftptester ;
 
 export TEMP_PASSWORD='wallop';
 expect <(cat <<'END_OF_PASSWD'
@@ -32,7 +32,7 @@ expect <(cat <<'END_OF_PASSWD'
 
         set RETURN      \x0d;
 
-        spawn passwd ftpuser ;
+        spawn passwd ftptester ;
 
         expect  -re     ".*New password.*"
         send    --      "$env(TEMP_PASSWORD)${RETURN}"
@@ -46,10 +46,10 @@ END_OF_PASSWD
 )
 
 
-echo "test test"  >  /home/ftpuser/tester.txt ;
-chown ftpuser:ftpuser  /home/ftpuser/tester.txt ;
+echo "test test"  >  /home/ftptester/tester.txt ;
+chown ftptester:ftptester  /home/ftptester/tester.txt ;
 
-ls  -l  /home/ftpuser  ;
+ls  -l  /home/ftptester  ;
 
 ########openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/vsftpd/vsftpd.pem -out /etc/vsftpd/vsftpd.pem  ;
 
@@ -121,6 +121,6 @@ systemctl  restart  vsftpd      ;
 
 
 echo  -e "\n\nBE SURE TO REMOVE ftpuser when done testing!  ftpuser will appear active if filezilla is connected.";
-echo  -e "\nuserdel ftpuser;\n" ;
+echo  -e "\nuserdel ftptester;\n" ;
 
 exit 1;
