@@ -24,7 +24,27 @@ firewall-cmd --permanent --add-port=30000-31000/tcp  ;
 firewall-cmd --reload   ;
 
 adduser ftpuser ;
-passwd  ftpuser ;
+
+TEMP_PASSWORD='wallop';
+expect <(cat <<'END_OF_PASSWD'
+
+        set timeout -1
+
+        set RETURN      \x0d;
+
+        spawn passwd ftpuser ;
+
+        expect  -re     ".*Changing password for user ftpuser.*"
+        send    --      "${TEMP_PASSWORD}${RETURN}"
+
+        expect  -re     ".*Retype new password.*"
+        send    --      "${TEMP_PASSWORD}${RETURN}"
+
+        expect eof
+
+END_OF_PASSWD
+)
+
 
 echo "test test"  >  /home/ftpuser/tester.txt ;
 chown ftpuser:ftpuser  /home/ftpuser/tester.txt ;
@@ -98,5 +118,9 @@ END_OF_SSHD_CONFIG
 systemctl  restart  sshd        ;
 systemctl  status   sshd        ;
 systemctl  restart  vsftpd      ;
+
+
+echo 'BE SURE TO REMOVE ftpuser when done testing !';
+echo 'userdel ftpuser; ' ;
 
 exit 1;
