@@ -120,7 +120,7 @@ systemctl  status   sshd        ;
 systemctl  restart  vsftpd      ;
 
 
-echo  -e "\n\nBE SURE TO REMOVE ftpuser when done testing !";
+echo  -e "\n\nBE SURE TO REMOVE ftpuser when done testing!  ftpuser will appear active if filezilla is connected.";
 echo  -e "\nuserdel ftpuser;\n" ;
 
 exit 1;
