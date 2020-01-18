@@ -157,40 +157,6 @@ change dashboard--->settings--->DomainMapping IP number (not sure if this is tot
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=====  create a remote mariadb user ===
-DROP DATABASE IF EXISTS  `yasser`                               ;
-
-GRANT ALL ON `yasser`.* TO 'yasser'@'%'                 ;
-        -- make sure we have a name to delete!
---DROP USER 'yasser'@'*'                                ;
-CREATE USER 'yasser'@'%' IDENTIFIED BY 'wolframhempel';
-
-GRANT ALL ON `yasser`.* TO 'yasser'@'%'                 \
-IDENTIFIED BY 'wolframhempel' WITH MAX_QUERIES_PER_HOUR 0               \
-MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0                ;
-
-# DROP DATABASE `yasser`                                        ;
-CREATE DATABASE IF NOT EXISTS `yasser`                  ;
-
-GRANT ALL PRIVILEGES ON `yasser`.* TO 'yasser'@'%'      ;
-
-# mysql  --host=162.216.114.36 --user=yasser  --password=wolframhempel    yasser    ;
 =================================
 
 ====   (OBSOLETE
