@@ -15,15 +15,16 @@
 #                 #
 ###################
 
-### added by /server-migration/root-init.bsh
+
 cat  <<END_OF_VIMRC   >~/.vimrc  ;
-set showmode             “   2016-02-19 from ‘initial setup’
-set showmatch           “   2016-02-19 from ‘initial setup’
-set tabstop=8           “   2016-02-19 from ‘initial setup’
-set shiftwidth=8        “   2016-02-19 from ‘initial setup’
-set history=10000     “   2016-02-19 from ‘initial setup’
-syntax enable;           “   2016-02-19 from ‘initial setup’
-### end added by /server-migration/root-init.bsh
+" added by /server-migration/root-init.bsh
+set showmode            "   2016-02-19 from ‘initial setup’
+set showmatch           "   2016-02-19 from ‘initial setup’
+set tabstop=8           "   2016-02-19 from ‘initial setup’
+set shiftwidth=8        "   2016-02-19 from ‘initial setup’
+set history=10000       "   2016-02-19 from ‘initial setup’
+syntax enable;          "   2016-02-19 from ‘initial setup’
+" end added by /server-migration/root-init.bsh
 
 END_OF_VIMRC
 cat ~/.vimrc ;
