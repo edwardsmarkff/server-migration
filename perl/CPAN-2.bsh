@@ -49,7 +49,7 @@ for cpanName in                      \
       URI                            \
       HTML::Element                  \
       XML::TreeBuilder               \
-      ML::Writer                     \
+      XML::Writer                    \
 
 do
     echo '######################################'                ;
