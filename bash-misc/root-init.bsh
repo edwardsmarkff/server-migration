@@ -41,8 +41,8 @@ cat  <<END_OF_BASHRC >>  ~/.bashrc  ;
 
 ### added by /server-migration/root-init.bsh
 
-echo ‘welcome to kvm50 -- setting vi as your default editor’;
-echo "setting custom values in .bashrc" ## 2018-02-21
+echo ‘Welcome to KVM276 -- setting vi as your default editor’;
+echo -e "\nSetting custom values in .bashrc\n\n" ## 2018-02-21
 
 export LD_LIBRARY_PATH="/usr/local/lib/"                       ;      ## 2016-04-24
 export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:/root/perl5"  ;
