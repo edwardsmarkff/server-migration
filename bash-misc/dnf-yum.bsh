@@ -57,6 +57,7 @@ for installName in    \
      openssl          \
      openssl-devel    \
      popt.i686        \
+     python3          \
      sshpass          \
      wget             \
      xz               \
