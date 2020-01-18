@@ -57,6 +57,7 @@ for installName in    \
      openssl          \
      openssl-devel    \
      popt.i686        \
+     sshpass          \
      wget             \
      xz               \
      zlib-devel       \
