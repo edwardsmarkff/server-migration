@@ -59,9 +59,13 @@ do
     su fakeperluser --command "perl -W -M${cpanName} -e 1 ; "   ;
 done;
 
+
 /usr/bin/cpan -i     File                           ;
 su fakeperluser --command "perl  -W  -e  'use File::Basename ; ' ;  "
 
+
+###  https://rt.cpan.org/Public/Bug/Display.html?id=125457
+###  add  127.0.0.1  mail.alma.ch     to /etc/hosts if this fails!
 /usr/bin/cpan -i     Mail::Sendmail                 ;   ## time consuming.....    
 su fakeperluser --command "perl  -W  -e  'use Mail::Sendmail; ' ;  "
 
