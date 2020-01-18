@@ -150,9 +150,6 @@ change dashboard--->settings--->DomainMapping IP number (not sure if this is tot
 ## dont forget jQuery ! (?)
  rsync --verbose --archive  --rsh=ssh  /usr/local/jquery/   root@edwardsmarkf.info:/usr/local/jquery/
 
-&
-/etc/init.d/morphboxNode  start  &              ## 2014-06-10 - start the morphboxNode
-
 
 
 
