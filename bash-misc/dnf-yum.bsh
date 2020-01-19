@@ -59,6 +59,8 @@ for installName in    \
      openssl-devel    \
      popt.i686        \
      python3          \
+     sendmail         \
+     sendmail-cf      \
      sshpass          \
      wget             \
      xz               \
