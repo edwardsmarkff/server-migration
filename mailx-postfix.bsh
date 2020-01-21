@@ -40,8 +40,28 @@ smtp_sasl_tls_security_options = noanonymous                       \\
 
 END_OF_SED
 
+
 mkdir --verbose /etc/postfix/sasl/ ;
 
+
 cat <<END_OF_SASL_PASSWORD  >  /etc/postfix/sasl_passwd  ;  ## notice only ONE arrow
-[smtp.gmail.com]:587 noreply@comptonpeslonline.com:!Marbles!87!Bunny!
+[smtp.gmail.com]:587 noreply@comptonpeslonline.com:${cryptedPassword}
 END_OF_SASL_PASSWORD
+
+postmap    -v  /etc/postfix/sasl/sasl_passwd       ;
+
+chown root:postfix /etc/postfix/sasl/sasl_passwd*  ;
+chmod 600 /etc/postfix/sasl/sasl_passwd*           ;
+
+systemctl reload postfix                           ;
+
+cat << END_OF_SCRIPT ;
+
+echo "This is a test." | mail   -v  -s "test message"  mark@edwardsmark.com ;
+echo 'please work This is a test.' | mail -v  -s 'This Subject' -r 'Marky<mark@comptonpeslonline.com>'  mark@edwardsmark.com
+
+END_OF_SCRIPT
+
+#
+
+
