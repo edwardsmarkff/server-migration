@@ -45,11 +45,11 @@ echo ‘Welcome to KVM276 -- setting vi as your default editor’;
 echo -e "\nSetting custom values in .bashrc\n\n" ## 2018-02-21
 
 export LD_LIBRARY_PATH="/usr/local/lib/"                       ;      ## 2016-04-24
-export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:/root/perl5"  ;
-export PERL_MB_OPT="--install_base /root/perl5"                ;
-export PERL_MM_OPT="INSTALL_BASE=/root/perl5"                  ;
-export PERL5LIB="/root/perl5/lib/perl5:$PERL5LIB"              ;
-export PATH="/root/perl5/bin:$PATH"                            ;
+##export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:/root/perl5"  ;   ## comment out until AFTER perl install!
+##export PERL_MB_OPT="--install_base /root/perl5"                ;   ## 2020-01-21
+##export PERL_MM_OPT="INSTALL_BASE=/root/perl5"                  ;
+##export PERL5LIB="/root/perl5/lib/perl5:$PERL5LIB"              ;
+##export PATH="/root/perl5/bin:$PATH"                            ;
 
 set  -o  vi;
 alias vi='/usr/bin/vim';  ## 2016-02-19
