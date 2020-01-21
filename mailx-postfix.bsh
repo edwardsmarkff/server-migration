@@ -10,12 +10,27 @@
 #  https://www.linode.com/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/
 # 
 #  first step is to 'obtain' the 'two-factor-authorization Generated app password' value.  normally this is just a matter
-#  of authorizating two-factor sign-in in 'security',  but with the google g-suite accounts, you must first click the 
-#  google-apps button (nine dots, three rows of three, upper right side ) scroll down, and select "Admin" with the green gear
-#  then select "Security - Configure security settings"
+#  of authorizating two-factor sign-in in 'security',  but with the google g-suite accounts, the following is necessary:
 #
+#     1 - click the google-apps button (nine dots, three rows of three, upper right side ) scroll down, and select 
+#         "Admin" with the green gear
+#
+#     2 - select "Security - Configure security settings".  
+#
+#     3 - authorize two-factor authentication
+#    
+#     4 - create a new login "app":
+#
+#         -- tiny-gear-symbol (top right corner) -->> settings -->> account (tab)
+#         -- 'Google account settings'
+#         -- Security (left side)
+#         -- app password   -->>  select app (dropdown)  -->> other
+#         -- name 'Postfix', and get new password         
 
-cryptedPassword='ekjkprkuciakizhi';
+
+emailAddress='noreply@comptonpeslonline.com'    ;
+cryptedPassword='NEW PASSWORD'                  ;
+
 
 thisScript=${basename "$0"};
 
@@ -47,7 +62,7 @@ mkdir --verbose /etc/postfix/sasl/ ;
 
 
 cat <<END_OF_SASL_PASSWORD  >  /etc/postfix/sasl_passwd  ;  ## notice only ONE arrow
-[smtp.gmail.com]:587 noreply@comptonpeslonline.com:${cryptedPassword}
+[smtp.gmail.com]:587 ${emailAddress}:${cryptedPassword}
 END_OF_SASL_PASSWORD
 
 postmap    -v  /etc/postfix/sasl/sasl_passwd                 ;
