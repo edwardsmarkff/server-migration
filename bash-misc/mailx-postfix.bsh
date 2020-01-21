@@ -87,7 +87,7 @@ END_OF_SCRIPT
 exit 1;
 #
 #
-#  honorable mention:
+#  honorable mention:  (and maybe IDEA for having multiple email SMTP accounts?)
 #  https://obrienlabs.net/mailx-send-linux-email-gmail/
 
 #    cat <<END_OF_MAIL_RC  >>  /etc/mail.rc ;
@@ -106,6 +106,8 @@ exit 1;
 #  echo -e "Mail body text" | mailx -A marksGmail -s "Mail subject"  mark@edwardsmark.com ;
 #
 #  mail -A gmail  mark@edwardsmark.com ;
+#
+#
 #
 #
 ## from john q @ interserver  2020-01-20:
