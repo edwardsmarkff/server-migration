@@ -80,7 +80,7 @@ systemctl status postfix                                     ;
 cat << END_OF_SCRIPT ;
 
 echo "This is a test." | mail   -v  -s "test message"  mark@edwardsmark.com ;
-echo 'please work This is a test.' | mail -v  -s 'This Subject' -r 'Marky<mark@comptonpeslonline.com>'  mark@edwardsmark.com
+echo 'please work This is a test.' | mail -v  -s 'This Subject' -r 'MarkyBoy<mark@comptonpeslonline.com>'  mark@edwardsmark.com
 
 END_OF_SCRIPT
 
