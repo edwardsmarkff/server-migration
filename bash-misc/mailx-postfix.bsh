@@ -8,6 +8,9 @@
 
 #
 #  https://www.linode.com/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/
+#  https://easyengine.io/tutorials/linux/ubuntu-postfix-gmail-smtp/
+#  http://www.freekb.net/Article?id=1015
+
 # 
 #  first step is to 'obtain' the 'two-factor-authorization Generated app password' value.  normally this is just a matter
 #  of authorizating two-factor sign-in in 'security',  but with the google g-suite accounts, the following is necessary:
@@ -81,6 +84,30 @@ echo 'please work This is a test.' | mail -v  -s 'This Subject' -r 'Marky<mark@c
 
 END_OF_SCRIPT
 
+exit 1;
 #
+#
+#  honorable mention:
+#  https://obrienlabs.net/mailx-send-linux-email-gmail/
+
+#    cat <<END_OF_MAIL_RC  >>  /etc/mail.rc ;
+#      account marksGmail {
+#          set smtp-use-starttls
+#          set ssl-verify=ignore
+#          set smtp-auth=login
+#          set smtp=smtp://smtp.gmail.com:587
+#          set from="noreply@comptonpeslonline.com"
+#          set smtp-auth-user=noreply@comptonpeslonline.com
+#          set smtp-auth-password="!Marbles!87!Bunny!"
+#          set ssl-verify=ignore
+#      }
+# END_OF_MAIL_RC
+#                    ## notice  -A marksGmail  - uses account name
+#  echo -e "Mail body text" | mailx -A marksGmail -s "Mail subject"  mark@edwardsmark.com ;
+#
+#  mail -A gmail  mark@edwardsmark.com ;
+#
+
+
 
 
