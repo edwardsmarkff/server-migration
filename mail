@@ -1,0 +1,17 @@
+#! /bin/bash
+
+###################
+#                 #
+#      mail       #
+#                 #
+###################
+
+#
+#  https://www.linode.com/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/
+# 
+#  first step is to 'obtain' the 'two-factor-authorization Generated app password' value.  
+#
+#
+
+dnf  --assumeyes   install  mailx  postfix   cyrus-sasl-plain   ;
+
