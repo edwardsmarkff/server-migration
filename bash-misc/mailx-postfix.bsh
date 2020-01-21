@@ -35,7 +35,7 @@ emailAddress='noreply@comptonpeslonline.com'    ;
 cryptedPassword='NEW PASSWORD'                  ;
 
 
-thisScript=${basename "$0"};
+thisScript=$(basename "$0");
 
 dnf  --assumeyes   install      \
           mailx                 \
@@ -45,7 +45,7 @@ dnf  --assumeyes   install      \
 
 
 sed --in-place  --file=-      /etc/postfix/main.cf   <<END_OF_SED ;
-s?smtp_tls_CAfile = /etc/pki/tls/certs/ca-bundle.crt?#smtp_tls_CAfile = /etc/pki/tls/certs/ca-bundle.crt comment out by ${thisScript}?
+s?smtp_tls_CAfile = /etc/pki/tls/certs/ca-bundle.crt?###  smtp_tls_CAfile = /etc/pki/tls/certs/ca-bundle.crt - removed by ${thisScript}?
 \$a\
                                                                    \\
     ## added by ${thisScript}                                      \\
