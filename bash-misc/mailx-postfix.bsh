@@ -68,7 +68,8 @@ cat <<END_OF_SASL_PASSWORD  >  /etc/postfix/sasl/sasl_passwd  ;  ## notice only 
 [smtp.gmail.com]:587 ${emailAddress}:${cryptedPassword}
 END_OF_SASL_PASSWORD
 
-postmap    -v  /etc/postfix/sasl/sasl_passwd                 ;
+### https://www.ringingliberty.com/2015/12/28/postfix-rcpt-to-temporary-lookup-failure/
+postmap    -v  /etc/postfix/sasl/sasl_passwd                 ;  
 
 chown --verbose root:postfix /etc/postfix/sasl/sasl_passwd*  ;
 chmod --verbose 600 /etc/postfix/sasl/sasl_passwd*           ;
