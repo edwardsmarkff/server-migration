@@ -9,8 +9,10 @@
 #
 #  https://www.linode.com/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/
 # 
-#  first step is to 'obtain' the 'two-factor-authorization Generated app password' value.  
-#
+#  first step is to 'obtain' the 'two-factor-authorization Generated app password' value.  normally this is just a matter
+#  of authorizating two-factor sign-in in 'security',  but with the google g-suite accounts, you must first click the 
+#  google-apps button (nine dots, three rows of three, upper right side ) scroll down, and select "Admin" with the green gear
+#  then select "Security - Configure security settings"
 #
 
 cryptedPassword='ekjkprkuciakizhi';
