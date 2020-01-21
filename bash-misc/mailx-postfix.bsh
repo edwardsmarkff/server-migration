@@ -89,7 +89,7 @@ exit 1;
 #
 #  honorable mention:  (and maybe IDEA for having multiple email SMTP accounts?)
 #  https://obrienlabs.net/mailx-send-linux-email-gmail/
-
+#
 #    cat <<END_OF_MAIL_RC  >>  /etc/mail.rc ;
 #      account marksGmail {
 #          set smtp-use-starttls
@@ -98,7 +98,7 @@ exit 1;
 #          set smtp=smtp://smtp.gmail.com:587
 #          set from="noreply@comptonpeslonline.com"
 #          set smtp-auth-user=noreply@comptonpeslonline.com
-#          set smtp-auth-password="!Marbles!87!Bunny!"
+#          set smtp-auth-password="NEW PASSWORD"
 #          set ssl-verify=ignore
 #      }
 # END_OF_MAIL_RC
