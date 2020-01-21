@@ -1,0 +1,47 @@
+#! /bin/bash
+
+###########################
+#                         #
+#      mailx-postfix      #
+#                         #
+###########################
+
+#
+#  https://www.linode.com/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/
+# 
+#  first step is to 'obtain' the 'two-factor-authorization Generated app password' value.  
+#
+#
+
+cryptedPassword='ekjkprkuciakizhi';
+
+thisScript=${basename "$0"};
+
+dnf  --assumeyes   install      \
+          mailx                 \
+          postfix               \
+          cyrus-sasl-plain      \
+          ;
+
+
+sed --in-place  --file=-      /etc/postfix/main.cf   <<END_OF_SED ;
+s?smtp_tls_CAfile = /etc/pki/tls/certs/ca-bundle.crt?#smtp_tls_CAfile = /etc/pki/tls/certs/ca-bundle.crt comment out by ${thisScript}?
+\$a\
+                                                                   \\
+    ## added by ${thisScript}                                      \\
+relayhost = [smtp.gmail.com]:587                                   \\
+smtp_use_tls = yes                                                 \\
+smtp_sasl_auth_enable = yes                                        \\
+smtp_sasl_password_maps = hash:/etc/postfix/sasl/sasl_passwd       \\
+smtp_tls_CAfile = /etc/ssl/certs/ca-bundle.crt                     \\
+smtp_sasl_security_options = noanonymous                           \\
+smtp_sasl_tls_security_options = noanonymous                       \\
+   ## end added by ${thisScript}                                   \\
+
+END_OF_SED
+
+mkdir --verbose /etc/postfix/sasl/ ;
+
+cat <<END_OF_SASL_PASSWORD  >  /etc/postfix/sasl_passwd  ;  ## notice only ONE arrow
+[smtp.gmail.com]:587 noreply@comptonpeslonline.com:!Marbles!87!Bunny!
+END_OF_SASL_PASSWORD
