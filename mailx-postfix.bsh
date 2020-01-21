@@ -50,12 +50,14 @@ cat <<END_OF_SASL_PASSWORD  >  /etc/postfix/sasl_passwd  ;  ## notice only ONE a
 [smtp.gmail.com]:587 noreply@comptonpeslonline.com:${cryptedPassword}
 END_OF_SASL_PASSWORD
 
-postmap    -v  /etc/postfix/sasl/sasl_passwd       ;
+postmap    -v  /etc/postfix/sasl/sasl_passwd                 ;
 
-chown root:postfix /etc/postfix/sasl/sasl_passwd*  ;
-chmod 600 /etc/postfix/sasl/sasl_passwd*           ;
+chown --verbose root:postfix /etc/postfix/sasl/sasl_passwd*  ;
+chmod --verbose 600 /etc/postfix/sasl/sasl_passwd*           ;
 
-systemctl reload postfix                           ;
+systemctl reload postfix                                     ;
+systemctl status postfix                                     ;
+
 
 cat << END_OF_SCRIPT ;
 
