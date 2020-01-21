@@ -107,7 +107,14 @@ exit 1;
 #
 #  mail -A gmail  mark@edwardsmark.com ;
 #
-
+#
+## from john q @ interserver  2020-01-20:
+## sendmail in the past was bloated and had security issues. I actually have not used it in a long time 
+## because there are so many replacements (exim , postfix for example)
+##
+## Postfix is good
+##
+## mailx - I really only use it for calling mail in shell scripts or sending tests.
 
 
 
