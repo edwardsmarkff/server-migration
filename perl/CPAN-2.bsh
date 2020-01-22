@@ -11,19 +11,19 @@
 useradd fakeperluser ;
 
 /usr/bin/cpan    -i       DBI                      ;   ## 2016-07-24
-su fakeperluser --command "perl -W -e  'use DBI ; ' ;"
+su fakeperluser --command "perl -W -e  'use DBI ; ' ;"        ;
 
 
 /usr/bin/cpan    -i       Devel::CheckLib          ;   ## 2019-04-05 - added for DBD::mysql
-su fakeperluser --command "perl -W  -e  'use Devel::CheckLib ; ' ;"
+su fakeperluser --command "perl -W  -e  'use Devel::CheckLib ; ' ;"        ;
 
 
 /usr/bin/cpan    -i       DBD::mysql               ;   ## 2016-07-24
-su fakeperluser --command "perl -W  -e  'use DBD::mysql ; ' ;"
+su fakeperluser --command "perl -W  -e  'use DBD::mysql ; ' ;"        ;
 
 
 sudo /usr/bin/cpan    -i       Net::SSLeay               ;            ## prompts for a ‘n’
-su fakeperluser --command "perl -W  -e  'use Net::SSLeay; ' ;  "
+su fakeperluser --command "perl -W  -e  'use Net::SSLeay; ' ;  "        ;
 
 ### if URL complains, enter   perl -MCPAN -e shell   o conf commit   ;
 ### o conf prerequisites_policy follow   ## stop prompting for answers!
@@ -61,13 +61,13 @@ done;
 
 
 /usr/bin/cpan -i     File                           ;
-su fakeperluser --command "perl  -W  -e  'use File::Basename ; ' ;  "
+su fakeperluser --command "perl  -W  -e  'use File::Basename ; ' ;  "        ;
 
 
 ###  https://rt.cpan.org/Public/Bug/Display.html?id=125457
 ###  add  127.0.0.1  mail.alma.ch     to /etc/hosts if this fails!
 /usr/bin/cpan -i     Mail::Sendmail                 ;   ## time consuming.....    
-su fakeperluser --command "perl  -W  -e  'use Mail::Sendmail; ' ;  "
+su fakeperluser --command "perl  -W  -e  'use Mail::Sendmail; ' ;  "        ;
 
 userdel fakeperluser ;
 
