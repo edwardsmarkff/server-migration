@@ -19,7 +19,10 @@ chmod +x /usr/local/bin/composer ;
 
 
 useradd fakephpuser ;
-
 su fakephpuser --command "/usr/local/bin/composer -V ; "    ;
-
 userdel fakephpuser ;
+
+exit 1;
+
+#
+#
