@@ -28,6 +28,17 @@ yum clean all   ;    ## 2013-05-15
 
 dnf config-manager --set-enabled PowerTools ;  ## 2020-01-08
 
+
+                        ## required for php 8+  ## moved from php module 2020-01-22
+                        
+dnf  --assumeyes  install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm ;
+rpm --query --all | grep epel ;
+
+dnf  --assumeyes  install https://rpms.remirepo.net/enterprise/remi-release-8.rpm ;
+rpm --query --all  | grep remi ;
+
+
+
 for installName in    \
      ant              \
      automake         \
