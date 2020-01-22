@@ -17,6 +17,8 @@
 13) /node/node.bsh  &  /node/pm2.bsh
 14) visudo
 
+30) /bash-misc/mailx-postfix.bsh
+
 50) copy over all crontab jobs
 
 80) install fail2ban  (??)
