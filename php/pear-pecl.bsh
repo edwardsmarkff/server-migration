@@ -18,8 +18,9 @@ for peclName in \
       propro    \
 
 do
-    echo "############################################';
+    echo '############################################';
     echo -e "\nInstalling ${peclName}!\n"  ;
+    echo '############################################';
     pecl install  ${peclName}       ;
     cat   <<END_OF_PHP_INI >> /etc/php.ini     ;
 
