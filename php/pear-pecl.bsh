@@ -8,6 +8,9 @@
 
 #   2020-01-01   - extracted from  php.bsh (?)
 
+
+thisScript=$(basename "$0")  ;
+
 pear version ;
 
 for peclName in \
@@ -19,7 +22,7 @@ do
     pecl install  ${peclName}       ;
     cat   <<END_OF_PHP_INI >> /etc/php.ini     ;
 
-; added by pear-pecl.bsh script 2020-01-13
+; added by ${thisScript} 2020-01-13
 extension=${peclName}
 ;
 
@@ -28,3 +31,5 @@ END_OF_PHP_INI
 done
 
 exit 1;
+#
+#
