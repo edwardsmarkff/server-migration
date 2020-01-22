@@ -17,4 +17,9 @@ curl -sS https://getcomposer.org/installer | php ;
 mv -v composer.phar /usr/local/bin/composer  ;
 chmod +x /usr/local/bin/composer ;
 
-/usr/local/bin/composer -V ;
+
+useradd fakephpuser ;
+
+su fakephpuser --command "/usr/local/bin/composer -V ; "    ;
+
+userdel fakephpuser ;
