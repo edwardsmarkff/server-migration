@@ -2,9 +2,9 @@
 ## on old box:
 
 nice  nohup  find  /usr/local/lib/php   /home/  -name  '*.php'   -type f  > ~/list-of-php-scripts.txt   &
-nice  nohup  find  /usr/local/lib/php   /home/  -name  '*.php'   -type f  > ~/list-of-php-scripts.txt   &
 
-tar -vcf /mark/phpTar.tar --list  list-of-php-scripts.txt ;    ## did not work for some reason
+########tar -vcf /mark/phpTar.tar --list  list-of-php-scripts.txt ;    ## did not work for some reason
+
 tar -cf  /mark/phpTar.tar -T      list-of-php-scripts.txt ;
 
 ## on new box:
