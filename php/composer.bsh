@@ -1,5 +1,11 @@
 #!  /bin/bash
 
+#######################
+#                     #
+#    composer.bsh     #
+#                     #
+#######################
+
 #   2019-09-04
 
 #   written from  https://tecadmin.net/install-php-composer-on-centos/
