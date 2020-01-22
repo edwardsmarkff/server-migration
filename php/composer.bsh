@@ -10,7 +10,7 @@
 
 #   written from  https://tecadmin.net/install-php-composer-on-centos/
 
-yum --assumeyes  install  curl ;
+dnf   --assumeyes  install  curl ;
 
 curl -sS https://getcomposer.org/installer | php ;
 
