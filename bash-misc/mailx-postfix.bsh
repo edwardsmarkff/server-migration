@@ -66,7 +66,9 @@ mkdir --verbose /etc/postfix/sasl/ ;
 cat <<END_OF_SASL_PASSWORD  >  /etc/postfix/sasl/sasl_passwd  ;  ## notice only ONE arrow
 
 ####  added by ${thisScript}
-#####  passwords also go in  /usr/local/lib/php/PhpMailerSecurity.php
+#####  passwords also go in  /usr/local/lib/php/SMTPMailer.php
+#####  passwords also go in  /usr/local/lib/php/PhpMailerSecurity.php  (???)
+
 [smtp.gmail.com]:587 ${emailAddress}:${cryptedPassword}
 ####  end added by ${thisScript}
 
