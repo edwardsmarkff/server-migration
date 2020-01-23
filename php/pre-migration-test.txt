@@ -17,4 +17,4 @@ find  . -name '*.php'  -type f  -exec php -l  {}  \;   ;    ## php lint test (no
 
 ###  php7mar test:     ## 2020-01-13
 git clone https://github.com/Alexia/php7mar  ;
-find  . -name '*.php'  -type f  -exec php ~/php7mar/mar.php -f='{};  \;   ;   
+find  . -name '*.php'  -type f  -exec php ~/php7mar/mar.php -f={};  \;   ;   
