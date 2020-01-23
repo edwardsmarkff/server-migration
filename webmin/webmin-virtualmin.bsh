@@ -31,7 +31,7 @@
 
 mkdir   ~/webmin/  &&  cd  ~/webmin/ ;
 wget   https://prdownloads.sourceforge.net/webadmin/webmin-1.941.tar.gz ;
-gzip -d  ./webmin*  &&   tar -xvf  ./webmin*  &&  cd  ./webmin* ;
+gzip -d  ./webmin*  &&   tar -xvf  ./webmin*  &&  cd  ./webmin-1.941 ;
 ./setup.sh ;
 
 
