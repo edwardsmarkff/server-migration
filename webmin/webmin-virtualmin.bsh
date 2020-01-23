@@ -17,7 +17,7 @@
 
 
 ##           ! ! ! ! see customization notes here:   ! ! ! ! !
-##http://www.edwardsmark.com/textpattern/articles/133/virtualmin-customizations
+##http://edwardsmark.com/textpattern/articles/133/virtualmin-customizations
 
 ###    Dont forget to install   ddos-deflate……….  2016-04-20
 
@@ -30,7 +30,7 @@
 #############
 
 mkdir   ~/webmin/  &&  cd  ~/webmin/ ;
-wget   https://prdownloads.sourceforge.net/webadmin/webmin-1.930.tar.gz
+wget   https://prdownloads.sourceforge.net/webadmin/webmin-1.941.tar.gz
 gzip -d  ./webmin*  &&   tar -xvf  ./webmin*  &&  cd  ./webmin* ;
 ./setup.sh ;
 
