@@ -1,11 +1,11 @@
 #! /bin/bash
 #
 #
-################################
-#                              #
-#     webmin/virtualmin        #
-#                              #
-################################
+##################################
+#                                #
+#     webmin / virtualmin        #
+#                                #
+##################################
 
 ##verified 2016-01-29
 
@@ -23,14 +23,14 @@
 
 ###=====  virtualmin/webmin installation ==============
 
-#############
-#           #
-#  webmin   #
-#           #
-#############
+###################
+#                 #
+#     webmin      #
+#                 #
+###################
 
 mkdir   ~/webmin/  &&  cd  ~/webmin/ ;
-wget   https://prdownloads.sourceforge.net/webadmin/webmin-1.941.tar.gz
+wget   https://prdownloads.sourceforge.net/webadmin/webmin-1.941.tar.gz ;
 gzip -d  ./webmin*  &&   tar -xvf  ./webmin*  &&  cd  ./webmin* ;
 ./setup.sh ;
 
