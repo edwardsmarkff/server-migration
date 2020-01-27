@@ -32,6 +32,7 @@
 mkdir   ~/webmin/  &&  cd  ~/webmin/ ;
 wget   https://prdownloads.sourceforge.net/webadmin/webmin-1.941.tar.gz ;
 gzip -d  ./webmin*  &&   tar -xvf  ./webmin*  &&  cd  ./webmin-1.941 ;
+chmod 600   ./setup.sh  ;
 ./setup.sh ;
 
 
@@ -44,7 +45,7 @@ gzip -d  ./webmin*  &&   tar -xvf  ./webmin*  &&  cd  ./webmin-1.941 ;
 cd ~ ;
 mkdir   ~/virtualmin/  &&  cd  ~/virtualmin/ ;
 curl  http://software.virtualmin.com/gpl/scripts/install.sh  >  install.sh  ;
-chmod 755   ./install.sh  ;
+chmod 600   ./install.sh  ;
 ./install.sh  ; 
 
 exit 1;
