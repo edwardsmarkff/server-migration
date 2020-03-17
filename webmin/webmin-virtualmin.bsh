@@ -22,7 +22,7 @@
 
 export PASSWORD=virtualminRocks;   ## be sure to change this!
 
-dnd  --assumeyes  update                    ;   ## always good practice!
+dnf  --assumeyes  update                    ;   ## always good practice!
 dnf  --assumeyes  install wget  expect      ;
 
 dnf  module  list perl                               ;  ## is this installed by default???
