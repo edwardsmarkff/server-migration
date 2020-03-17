@@ -27,7 +27,27 @@ dnf  --assumeyes  install wget  expect      ;
 
 dnf  module  list perl                               ;  ## is this installed by default???
 dnf  module  --assumeyes   install perl:5.26         ;  ## thought this was installed by default????
+dnf                        install perl-CPAN         ;
 dnf          --assumeyes   install perl-open.noarch  ;  ## may or may not be required(?)  
+
+expect <(cat <<'END_OF_CPAN'
+	 
+	set timeout -1
+	
+	set UPARROW	\x1B\[A;
+	set DOWNARROW	\x1B\[B;
+	set SPACE	\x20;
+	set RETURN	\x0d;
+	 
+	spawn  perl -MCPAN -e shell ;
+install Authen::PAM
+exit
+expect eof
+
+END_OF_CPAN
+)	## end of cpan
+
+
 
 ###=====  virtualmin/webmin installation ==============
 
@@ -87,7 +107,7 @@ expect <(cat <<'END_OF_SETUP_SH'
 expect eof
 
 END_OF_SETUP_SH
-)	## end of feathers generate app
+)	## end of setup.sh
 
 
 cat >   /lib/systemd/system/webmin.service  <<END_OF_WEBMIN_SERVICE ;
@@ -141,7 +161,7 @@ expect <(cat <<'END_OF_INSTALL_SH'
 	expect eof
 
 END_OF_INSTALL_SH
-)	## end of feathers generate app
+)	## end of virtualmin  install.sh
 
 
 exit 1;
