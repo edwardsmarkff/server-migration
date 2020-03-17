@@ -7,19 +7,20 @@
 #                                #
 ##################################
 
-##verified 2016-01-29
-
-## 2019-08-28 - updated to webmin 1.930
-
 ### 2016-07-18 - “ulimit” can be manually added to php5.fcgi  (probably php5.cgi as well)
 ###            ulimit -u 10               ## maximum number of processes
 ###            ulimit -v 34816          ##   Maximum size per process   (this example 34 megabytes)
+
+## 2019-08-28 - updated to webmin 1.930
+## 2020-03-17 - added expect and upgraded to centos-8
 
 
 ##           ! ! ! ! see customization notes here:   ! ! ! ! !
 ##http://edwardsmark.com/textpattern/articles/133/virtualmin-customizations
 
 ###    Dont forget to install   ddos-deflate……….  2016-04-20
+
+export PASSWORD=virtualminRocks;   ## be sure to change this!
 
 dnf  --assumeyes  install wget  expect  ;
 
@@ -69,18 +70,19 @@ expect <(cat <<'END_OF_SETUP_SH'
 	send -- "${RETURN}"
 			## (default 10000)
 	 
-	expect -re ".*Full path to perl.*"
+	expect -re ".*Login name.*"
 	send -- "${RETURN}"
-			## (default /usr/bin/perl)
-	expect -re ".*Full path to perl.*"
-	send -- "${RETURN}"
-			## (default /usr/bin/perl)
-	 	 	 
+			## (default admin)
 
-	expect -re ".*Which testing framework do you prefer?.*"		
-        send -- "${RETURN}"
-	                ## defaults to Mocha + assert
+	expect -re ".*Login password.*"
+	send -- "$env(PASSWORD)${RETURN}"
 
+	expect -re ".*Password again.*"
+	send -- "$env(PASSWORD)${RETURN}"
+	
+	expect -re ".*Usse SSL.*"
+	send -- "y${RETURN}"
+			##  send 'y'
 
 expect eof
 
