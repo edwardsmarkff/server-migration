@@ -40,14 +40,20 @@ expect <(cat <<'END_OF_CPAN'
 	set RETURN	\x0d;
 	 
 	spawn  perl -MCPAN -e shell ;
-install Authen::PAM
-exit
+	
+	expect -re ".*Would you like to configure as much as possible automatically.*"
+	send -- "${RETURN}"
+			## default: [yes]
+
+	expect -re "^cpan\[1]> "
+	send -- "exit${RETURN}"
+
 expect eof
 
 END_OF_CPAN
 )	## end of cpan
 
-
+/usr/bin/cpan    -i     Authen::PAM   ;
 
 ###=====  virtualmin/webmin installation ==============
 
