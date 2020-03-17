@@ -30,8 +30,6 @@ dnf  module  --assumeyes   install perl:5.26         ;  ## thought this was inst
 dnf                        install perl-CPAN         ;
 dnf          --assumeyes   install perl-open.noarch  ;  ## may or may not be required(?)  
 
-
-
 PERL_MM_USE_DEFAULT=1 cpan -i CPAN  ;  ## initialize cpan for first run
 /usr/bin/cpan    -i     Authen::PAM   ;
 
