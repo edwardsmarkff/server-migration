@@ -21,7 +21,13 @@
 
 ###    Dont forget to install   ddos-deflate……….  2016-04-20
 
+dnf  --assumeyes  install wget  expect  ;
+
+dnf  module  list perl ;                        ## is this installed by default???
+dnf  module  --assumeyes   install perl:5.26 ;  ## thought this was installed by default????
+
 ###=====  virtualmin/webmin installation ==============
+
 
 ###################
 #                 #
@@ -32,8 +38,54 @@
 mkdir   ~/webmin/  &&  cd  ~/webmin/ ;
 wget   https://prdownloads.sourceforge.net/webadmin/webmin-1.941.tar.gz ;
 gzip -d  ./webmin*  &&   tar -xvf  ./webmin*  &&  cd  ./webmin-1.941 ;
-chmod 500   ./setup.sh  ;
-./setup.sh ;
+chmod --verbose 500   ./setup.sh  ;
+
+expect <(cat <<'END_OF_SETUP_SH'
+	#	generates an application, taking ALL the defaults
+	#	written from https://docs.feathersjs.com/guides/chat/creating.html
+	 
+	set timeout -1
+	
+	set UPARROW	\x1B\[A;
+	set DOWNARROW	\x1B\[B;
+	set SPACE	\x20;
+	set RETURN	\x0d;
+	 
+	spawn ./setup.sh   ;
+	
+	expect -re ".*Config file directory.*"
+	send -- "${RETURN}"
+			## default: [/etc/webmin]
+	 
+	expect -re ".*Log file directory.*"
+	send -- "${RETURN}"
+			## default: [/var/webmin]
+	 
+	expect -re ".*Full path to perl.*"
+	send -- "${RETURN}"
+			## (default /usr/bin/perl)
+			
+	expect -re ".*Web server port.*"
+	send -- "${RETURN}"
+			## (default 10000)
+	 
+	expect -re ".*Full path to perl.*"
+	send -- "${RETURN}"
+			## (default /usr/bin/perl)
+	expect -re ".*Full path to perl.*"
+	send -- "${RETURN}"
+			## (default /usr/bin/perl)
+	 	 	 
+
+	expect -re ".*Which testing framework do you prefer?.*"		
+        send -- "${RETURN}"
+	                ## defaults to Mocha + assert
+
+
+expect eof
+
+END_OF_SETUP_SH
+)	## end of feathers generate app
 
 
 #################
