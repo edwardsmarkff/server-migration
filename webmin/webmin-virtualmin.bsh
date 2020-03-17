@@ -30,29 +30,9 @@ dnf  module  --assumeyes   install perl:5.26         ;  ## thought this was inst
 dnf                        install perl-CPAN         ;
 dnf          --assumeyes   install perl-open.noarch  ;  ## may or may not be required(?)  
 
-expect <(cat <<'END_OF_CPAN'
-	 
-	set timeout -1
-	
-	set UPARROW	\x1B\[A;
-	set DOWNARROW	\x1B\[B;
-	set SPACE	\x20;
-	set RETURN	\x0d;
-	 
-	spawn  perl -MCPAN -e shell ;
-	
-	expect -re ".*Would you like to configure as much as possible automatically.*"
-	send -- "${RETURN}"
-			## default: [yes]
 
-	expect -re "^cpan\[1]> "
-	send -- "exit${RETURN}"
 
-expect eof
-
-END_OF_CPAN
-)	## end of cpan
-
+PERL_MM_USE_DEFAULT=1 cpan -i CPAN  ;  ## initialize cpan for first run
 /usr/bin/cpan    -i     Authen::PAM   ;
 
 ###=====  virtualmin/webmin installation ==============
@@ -271,4 +251,31 @@ language-800.info	MX - Mail Server	1 ASPMX.L.GOOGLE.COM.	ASPMX.L.GOOGLE.COM
 ### ARCHIVES:
 ##wget http://prdownloads.sourceforge.net/webadmin/webmin-1.760.tar.gz ;
 ##wget http://sourceforge.net/projects/webadmin/files/webmin/1.630/webmin-1.630.tar.gz/download  ;
+
+
+
+
+
+#expect <(cat <<'END_OF_CPAN'
+#	 
+#	set timeout -1
+#	
+#	set UPARROW	\x1B\[A;
+#	set DOWNARROW	\x1B\[B;
+#	set SPACE	\x20;
+#	set RETURN	\x0d;
+#	 
+#	spawn  perl -MCPAN -e shell ;
+#	
+#	expect -re ".*Would you like to configure as much as possible automatically.*"
+#	send -- "${RETURN}"
+#			## default: [yes]
+#
+#	expect -re "^cpan\[1]> "
+#	send -- "exit${RETURN}"
+#
+#expect eof
+#
+#END_OF_CPAN
+#)	## end of cpan
 
