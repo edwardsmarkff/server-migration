@@ -25,8 +25,9 @@ export PASSWORD=virtualminRocks;   ## be sure to change this!
 dnd  --assumeyes  update                    ;   ## always good practice!
 dnf  --assumeyes  install wget  expect      ;
 
-dnf  module  list perl ;                        ## is this installed by default???
-dnf  module  --assumeyes   install perl:5.26 ;  ## thought this was installed by default????
+dnf  module  list perl                               ;  ## is this installed by default???
+dnf  module  --assumeyes   install perl:5.26         ;  ## thought this was installed by default????
+dnf          --assumeyes   install perl-open.noarch  ;  ## may or may not be required(?)  
 
 ###=====  virtualmin/webmin installation ==============
 
@@ -43,8 +44,6 @@ gzip -d  ./webmin*  &&   tar -xvf  ./webmin*  &&  cd  ./webmin-1.941 ;
 chmod --verbose 500   ./setup.sh  ;
 
 expect <(cat <<'END_OF_SETUP_SH'
-	#	generates an application, taking ALL the defaults
-	#	written from https://docs.feathersjs.com/guides/chat/creating.html
 	 
 	set timeout -1
 	
@@ -91,6 +90,24 @@ END_OF_SETUP_SH
 )	## end of feathers generate app
 
 
+cat >   /lib/systemd/system/webmin.service  <<END_OF_WEBMIN_SERVICE ;
+[Unit]
+Description=Webmin
+
+[Service]
+ExecStart=/etc/webmin/start
+ExecStop=/etc/webmin/stop
+Type=forking
+PIDFile=/var/webmin/miniserv.pid
+
+[Install]
+WantedBy=multi-user.target
+
+END_OF_WEBMIN_SERVICE
+
+systemctl   enable  webmin.service ;
+
+
 #################
 #               #
 #  virtualmin   #
@@ -100,8 +117,31 @@ END_OF_SETUP_SH
 cd ~ ;
 mkdir   ~/virtualmin/  &&  cd  ~/virtualmin/ ;
 curl  http://software.virtualmin.com/gpl/scripts/install.sh  >  install.sh  ;
-chmod 500   ./install.sh  ;
-./install.sh  ; 
+chmod --verbose  500   ./install.sh  ;
+
+expect <(cat <<'END_OF_INSTALL_SH'
+	 
+	set timeout -1
+	
+	set UPARROW	\x1B\[A;
+	set DOWNARROW	\x1B\[B;
+	set SPACE	\x20;
+	set RETURN	\x0d;
+	 
+	spawn ./install.sh  ; 
+	
+	expect -re ".*Continue.*"
+	send -- "y${RETURN}"
+	
+	expect -re ".*Really Continue.*"
+	send -- "y${RETURN}"
+
+	
+	expect eof
+
+END_OF_INSTALL_SH
+)	## end of feathers generate app
+
 
 exit 1;
 
