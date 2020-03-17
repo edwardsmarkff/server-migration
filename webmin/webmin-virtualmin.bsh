@@ -81,7 +81,7 @@ expect <(cat <<'END_OF_SETUP_SH'
 	expect -re ".*Password again.*"
 	send -- "$env(PASSWORD)${RETURN}"
 	
-	expect -re ".*Usse SSL.*"
+	expect -re ".*Use SSL.*"
 	send -- "y${RETURN}"
 			##  send 'y'
 
