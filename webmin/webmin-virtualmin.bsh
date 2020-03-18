@@ -23,7 +23,7 @@
 export PASSWORD=virtualminRocks;   ## be sure to change this!
 
 dnf  --assumeyes  update                    ;   ## always good practice!
-dnf  --assumeyes  install wget  expect      ;
+dnf  --assumeyes  install wget  gcc pam-devel expect      ;
 
 dnf  module  list perl                               ;  ## is this installed by default???
 dnf  module  --assumeyes   install perl:5.26         ;  ## thought this was installed by default????
