@@ -50,6 +50,9 @@ chmod --verbose 500   ./setup.sh  ;
 ############sed --in-place  --expression='s/\*-linux/& redhat-linux/'  ./init/module.info  ;
 ### change line 449 of setup.sh:
 ##  initsupp=`grep "^os_support=" "$srcdir/init/module.info" | sed -e 's/os_support=//g' | grep ${os_type#*-}`
+## change ./setup.pl line 529:
+###                  print START "exec '$wadir/miniserv.pl' $config_directory/miniserv.conf\n";
+###                  print START "perl '$wadir/miniserv.pl' $config_directory/miniserv.conf\n";
 
 expect <(cat <<'END_OF_SETUP_SH'
 	 
