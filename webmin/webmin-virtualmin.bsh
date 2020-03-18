@@ -47,6 +47,10 @@ wget   https://prdownloads.sourceforge.net/webadmin/webmin-1.941.tar.gz ;
 gzip -d  ./webmin*  &&   tar -xvf  ./webmin*  &&  cd  ./webmin-1.941 ;
 chmod --verbose 500   ./setup.sh  ;
 
+############sed --in-place  --expression='s/\*-linux/& redhat-linux/'  ./init/module.info  ;
+### change line 449 of setup.sh:
+##  initsupp=`grep "^os_support=" "$srcdir/init/module.info" | sed -e 's/os_support=//g' | grep ${os_type#*-}`
+
 expect <(cat <<'END_OF_SETUP_SH'
 	 
 	set timeout -1
@@ -87,6 +91,10 @@ expect <(cat <<'END_OF_SETUP_SH'
 	expect -re ".*Use SSL.*"
 	send -- "y${RETURN}"
 			##  send 'y'
+			
+	expect -re ".*Start Webmin at boot time.*"
+	send -- "y${RETURN}"
+			## send 'y'
 
 expect eof
 
