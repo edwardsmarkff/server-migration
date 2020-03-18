@@ -105,21 +105,6 @@ END_OF_SETUP_SH
 )	## end of setup.sh
 
 
-cat >   /lib/systemd/system/webmin.service  <<END_OF_WEBMIN_SERVICE ;
-    [Unit]
-    Description=Webmin
-
-    [Service]
-    ExecStart=/etc/webmin/start
-    ExecStop=/etc/webmin/stop
-    Type=forking
-    PIDFile=/var/webmin/miniserv.pid
-
-    [Install]
-    WantedBy=multi-user.target
-END_OF_WEBMIN_SERVICE
-
-ls -l  /lib/systemd/system/webmin.service  ;
  
 systemctl   enable  webmin.service ;
 
@@ -264,6 +249,22 @@ language-800.info	MX - Mail Server	1 ASPMX.L.GOOGLE.COM.	ASPMX.L.GOOGLE.COM
 
 
 
+
+#cat >   /lib/systemd/system/webmin.service  <<END_OF_WEBMIN_SERVICE ;
+#    [Unit]
+##    Description=Webmin
+#
+#    [Service]
+#    ExecStart=/etc/webmin/start
+#    ExecStop=/etc/webmin/stop
+#    Type=forking
+#    PIDFile=/var/webmin/miniserv.pid
+#
+#    [Install]
+##    WantedBy=multi-user.target
+#END_OF_WEBMIN_SERVICE
+#
+#ls -l  /lib/systemd/system/webmin.service  ;
 
 #expect <(cat <<'END_OF_CPAN'
 #	 
