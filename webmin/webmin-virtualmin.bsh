@@ -116,8 +116,8 @@ systemctl   enable  webmin.service ;
 #################
 
 cd ~ ;
-mkdir   ~/virtualmin/  &&  cd  ~/virtualmin/ ;
-curl  http://software.virtualmin.com/gpl/scripts/install.sh  >  install.sh  ;
+mkdir  --verbose  /usr/local/virtualmin/  &&  cd  /usr/local/virtualmin/ ;
+curl  http://software.virtualmin.com/gpl/scripts/install.sh  >  ./install.sh  ;
 chmod --verbose  500   ./install.sh  ;
 
 expect <(cat <<'END_OF_INSTALL_SH'
