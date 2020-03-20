@@ -116,9 +116,9 @@ systemctl   enable  webmin.service ;
 #################
 
 cd ~ ;
-mkdir  --verbose  /usr/local/virtualmin/  &&  cd  /usr/local/virtualmin/ ;
-curl  http://software.virtualmin.com/gpl/scripts/install.sh  >  ./install.sh  ;
-chmod --verbose  500   ./install.sh  ;
+##mkdir  --verbose  /usr/local/virtualmin/  &&  cd  /usr/local/virtualmin/ ;
+curl  http://software.virtualmin.com/gpl/scripts/install.sh  >  ./virtualmin-install.sh  ;
+chmod --verbose  500   ./virtualmin-install.sh  ;
 
 expect <(cat <<'END_OF_INSTALL_SH'
 	 
@@ -129,7 +129,7 @@ expect <(cat <<'END_OF_INSTALL_SH'
 	set SPACE	\x20;
 	set RETURN	\x0d;
 	 
-	spawn ./install.sh  ; 
+	spawn ./virtualmin-install.sh  ; 
 	
 	expect -re ".*Continue.*"
 	send -- "y${RETURN}"
