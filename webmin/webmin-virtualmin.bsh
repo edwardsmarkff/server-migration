@@ -48,7 +48,7 @@ gzip -d  ./webmin*  &&   tar -xvf  ./webmin*  &&  cd  ./webmin-1.941 ;
 chmod --verbose 500   ./setup.sh  ;
 
 ############sed --in-place  --expression='s/\*-linux/& redhat-linux/'  ./init/module.info  ;
-### change line 449 of setup.sh:
+### change line 449 of setup.sh:    https://github.com/webmin/webmin/pull/1218
 ##  initsupp=`grep "^os_support=" "$srcdir/init/module.info" | sed -e 's/os_support=//g' | grep ${os_type#*-}`
 ## change ./setup.pl line 529:
 ###                  print START "exec '$wadir/miniserv.pl' $config_directory/miniserv.conf\n";
