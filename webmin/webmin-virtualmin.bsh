@@ -20,6 +20,12 @@
 
 ###    Dont forget to install   ddos-deflate……….  2016-04-20
 
+sudo setenforce permissive ; ## this is a simple workaround but it does not survive reboot.
+
+###   change /etc/selinux/config
+###    ###SELINUX=enforcing
+###    SELINUX=permissive
+
 export PASSWORD=virtualminRocks;   ## be sure to change this!
 
 dnf  --assumeyes  update                    ;   ## always good practice!
@@ -45,6 +51,7 @@ PERL_MM_USE_DEFAULT=1 cpan -i CPAN  ;  ## initialize cpan for first run
 mkdir --verbose  /usr/local/webmin/  &&  cd  /usr/local/webmin/ ;
 wget   https://prdownloads.sourceforge.net/webadmin/webmin-1.941.tar.gz ;
 gzip -d  ./webmin*  &&   tar -xvf  ./webmin*  &&  cd  ./webmin-1.941 ;
+chown  -R  root:root  ../webmin-1.941';
 chmod --verbose 500   ./setup.sh  ;
 
 ############sed --in-place  --expression='s/\*-linux/& redhat-linux/'  ./init/module.info  ;
