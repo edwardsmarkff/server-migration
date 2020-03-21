@@ -20,7 +20,7 @@
 
 ###    Dont forget to install   ddos-deflate……….  2016-04-20
 
-sudo setenforce permissive ; ## this is a simple workaround but it does not survive reboot.
+sudo setenforce permissive ; ## this is a simple workaround but it does not survive reboot! ! !
 
 ###   change /etc/selinux/config
 ###    ###SELINUX=enforcing
@@ -50,9 +50,13 @@ PERL_MM_USE_DEFAULT=1 cpan -i CPAN  ;  ## initialize cpan for first run
 
 mkdir --verbose  /usr/local/webmin/  &&  cd  /usr/local/webmin/ ;
 wget   https://prdownloads.sourceforge.net/webadmin/webmin-1.941.tar.gz ;
-gzip -d  ./webmin*  &&   tar -xvf  ./webmin*  &&  cd  ./webmin-1.941 ;
-chown  -R  root:root  ../webmin-1.941';
-chmod --verbose 500   ./setup.sh  ;
+gzip -d  ./webmin*   			;
+tar -xvf  ./webmin*  			;
+rm --verbose *.tar   			;
+chown  -R  root:root  ./webmin*		;
+cd  ./webmin*	 			;
+
+chmod --verbose 500   ./setup.sh	;
 
 ############sed --in-place  --expression='s/\*-linux/& redhat-linux/'  ./init/module.info  ;
 ### change line 449 of setup.sh:    https://github.com/webmin/webmin/pull/1218
@@ -60,6 +64,8 @@ chmod --verbose 500   ./setup.sh  ;
 ## change ./setup.pl line 529:
 ###                  print START "exec '$wadir/miniserv.pl' $config_directory/miniserv.conf\n";
 ###                  print START "perl '$wadir/miniserv.pl' $config_directory/miniserv.conf\n";
+
+
 
 expect <(cat <<'END_OF_SETUP_SH'
 	 
@@ -110,6 +116,10 @@ expect eof
 
 END_OF_SETUP_SH
 )	## end of setup.sh
+
+###   vi /usr/lib/systemd/system/webmin.service ;
+###      #PIDFile=/var/webmin/miniserv.pid
+###      ExecStartPost=/bin/sh -c 'umask 022; pgrep miniserv > /var/webmin/webmin.pid'
 
 
  
