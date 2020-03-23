@@ -52,11 +52,11 @@ PERL_MM_USE_DEFAULT=1 cpan -i CPAN  ;  ## initialize cpan for first run
 
 mkdir --verbose  /usr/local/webmin/  &&  cd  /usr/local/webmin/ ;
 wget   https://prdownloads.sourceforge.net/webadmin/webmin-${WEBMIN_VERSION}.tar.gz ;
-gzip -d  ./webmin*   			;
-tar -xvf  ./webmin*  			;
-rm --verbose *.tar   			;
-chown  -R  root:root  ./webmin*		;
-cd  ./webmin*	 			;
+gzip -d  ./webmin-${WEBMIN_VERSION}.tar.gz   			;
+tar -xvf  ./webmin-${WEBMIN_VERSION}.tar  			;
+rm --verbose ./webmin-${WEBMIN_VERSION}.tar   			;
+chown  -R  root:root  ./webmin-${WEBMIN_VERSION}		;
+cd  ./webmin-${WEBMIN_VERSION}	 				;
 
 chmod --verbose 500   ./setup.sh	;
 
