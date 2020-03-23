@@ -23,6 +23,7 @@
 WEBMIN_VERSION='1.941'	;
 
 sudo setenforce permissive ; ## this is a simple workaround but it does not survive reboot! ! !
+sudo getenforce ;   ## double-check
 
 ###   change /etc/selinux/config
 ###    ###SELINUX=enforcing
