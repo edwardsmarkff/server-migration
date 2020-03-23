@@ -41,7 +41,26 @@ dnf                        install perl-CPAN         ;
 dnf          --assumeyes   install perl-open.noarch  ;  ## may or may not be required(?)  
 
 PERL_MM_USE_DEFAULT=1 cpan -i CPAN  ;  ## initialize cpan for first run
-/usr/bin/cpan    -i     Authen::PAM   ;   ##   use   cpanm   instead ??????
+
+expect <(cat <<'END_OF_CPAN_PAM'
+	 
+	set timeout -1
+	
+	set UPARROW	\x1B\[A;
+	set DOWNARROW	\x1B\[B;
+	set SPACE	\x20;
+	set RETURN	\x0d;
+	 
+	spawn /usr/bin/cpan    -i     Authen::PAM   ;   ##   use   cpanm   instead ??????
+
+	expect -re ".*Password.*"
+	send -- "${RETURN}" 		## optionally include the root password here, be careful!
+
+	expect eof
+
+END_OF_CPAN_PAM
+)	## end of setup.sh
+
 
 ###=====  virtualmin/webmin installation ==============
 
