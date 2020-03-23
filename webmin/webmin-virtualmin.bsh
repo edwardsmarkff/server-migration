@@ -55,6 +55,7 @@ expect <(cat <<'END_OF_CPAN_PAM'
 
 	expect -re ".*Password.*"
 	send -- "${RETURN}" 		## optionally include the root password here, be careful!
+					## i am not sure why leaving the root password out seems to matter?
 
 	expect eof
 
