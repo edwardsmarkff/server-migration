@@ -45,6 +45,15 @@ PERL_MM_USE_DEFAULT=1 cpan -i CPAN  ;  ## initialize cpan for first run
 
 ###=====  virtualmin/webmin installation ==============
 
+dnf  --assumeyes install  httpd  mod_ssl  ;
+systemctl  enable   httpd  ;
+systemctl  restart   httpd  ;
+systemctl  status    httpd  ;
+echo "this is a test" > /var/www/html/index.html ;
+echo "visit your domain name now and look for the index.html file results in browser";
+
+firewall-cmd --zone=public --add-port=10000/tcp --permanent  ;  firewall-cmd --reload  ;
+
 
 ###################
 #                 #
