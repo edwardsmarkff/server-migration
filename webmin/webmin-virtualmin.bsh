@@ -21,6 +21,7 @@
 ###    Dont forget to install   ddos-deflate……….  2016-04-20
 
 WEBMIN_VERSION='1.941'	;
+export PASSWORD=virtualminRocks;   ## be sure to change this!   -- this is exported for 'expect' usage.
 
 sudo setenforce permissive ; ## this is a simple workaround but it does not survive reboot! ! !
 sudo getenforce ;   ## double-check
@@ -29,7 +30,7 @@ sudo getenforce ;   ## double-check
 ###    ###SELINUX=enforcing
 ###    SELINUX=permissive
 
-export PASSWORD=virtualminRocks;   ## be sure to change this!
+
 
 dnf  --assumeyes  update                    ;   ## always good practice!
 dnf  --assumeyes  install wget  gcc pam-devel expect      ;
