@@ -171,7 +171,8 @@ systemctl status webmin.service ;   ## double check
 #               #
 #################
 
-systemctl  stop firewalld     ;   ### required for virtualmin install ?? 
+systemctl  stop   firewalld     ;   ### required for virtualmin install ?? 
+systemctl  status firewalld     ;
 
 cd ~ ;
 ##mkdir  --verbose  /usr/local/virtualmin/  &&  cd  /usr/local/virtualmin/ ;
