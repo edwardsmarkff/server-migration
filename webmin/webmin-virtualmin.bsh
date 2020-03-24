@@ -53,7 +53,8 @@ expect <(cat <<'END_OF_CPAN_PAM'
 	spawn /usr/bin/cpan    -i     Authen::PAM   ;   ##   use   cpanm   instead ??????
 
 	expect -re ".*Password.*"
-	send -- "$env(ROOT_PASSWORD)${RETURN}"
+	send -- "${RETURN}"
+	#send -- "$env(ROOT_PASSWORD)${RETURN}"
 		 		## optionally include the root password here, be careful!
 				## i am not sure why leaving the root password out seems to matter?
 
