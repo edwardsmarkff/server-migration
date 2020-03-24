@@ -69,7 +69,7 @@ END_OF_CPAN_PAM
 dnf  --assumeyes install  httpd  mod_ssl  ;
 systemctl  enable   httpd  ;
 systemctl  restart   httpd  ;
-systemctl  status    httpd  ;
+systemctl  status   --no-pager --full  httpd  ;
 echo "this is a test" > /var/www/html/index.html ;
 echo "visit your domain name now and look for the index.html file results in browser";
 
@@ -158,9 +158,8 @@ END_OF_SETUP_SH
 kill -9 $(pgrep miniserv; )  ##  kill the one started by the installation process
 systemctl enable webmin.service ;
 systemctl stop webmin.service ;    ## just in case....
-systemctl status webmin.service ;
 systemctl start webmin.service ;
-systemctl status webmin.service ;   ## double check
+systemctl status  --no-pager --full webmin.service ;   ## double check
 
 
 
@@ -174,7 +173,7 @@ systemctl status webmin.service ;   ## double check
 
 systemctl  stop   firewalld     ;   ### required for virtualmin install ?? 
 kill -9 $(pgrep firewalld; )     ;
-systemctl  status firewalld     ;
+systemctl  --no-pager --full  status firewalld     ;
 
 cd ~ ;
 
