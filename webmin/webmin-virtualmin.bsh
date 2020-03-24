@@ -20,8 +20,9 @@
 
 ###    Dont forget to install   ddos-deflate……….  2016-04-20
 
-WEBMIN_VERSION='1.941'	;
-export PASSWORD=virtualminRocks;   ## be sure to change this!   -- this is exported for 'expect' usage.
+WEBMIN_VERSION='1.941'			;
+export ROOT_PASSWORD=''			;	## not sure if this is really needed or not, but perl-pam asks for it
+export WEBMIN_PASSWORD=virtualminRocks	;	## be sure to change this!   -- this is exported for 'expect' usage.
 
 sudo setenforce permissive ; ## this is a simple workaround but it does not survive reboot! ! !
 sudo getenforce ;   ## double-check
@@ -29,8 +30,6 @@ sudo getenforce ;   ## double-check
 ###   change /etc/selinux/config
 ###    ###SELINUX=enforcing
 ###    SELINUX=permissive
-
-
 
 dnf  --assumeyes  update                    ;   ## always good practice!
 dnf  --assumeyes  install wget  gcc pam-devel expect      ;
@@ -54,8 +53,9 @@ expect <(cat <<'END_OF_CPAN_PAM'
 	spawn /usr/bin/cpan    -i     Authen::PAM   ;   ##   use   cpanm   instead ??????
 
 	expect -re ".*Password.*"
-	send -- "${RETURN}" 		## optionally include the root password here, be careful!
-					## i am not sure why leaving the root password out seems to matter?
+	send -- "$env(ROOT_PASSWORD)${RETURN}"
+		 		## optionally include the root password here, be careful!
+				## i am not sure why leaving the root password out seems to matter?
 
 	expect eof
 
@@ -132,10 +132,10 @@ expect <(cat <<'END_OF_SETUP_SH'
 			## (default admin)
 
 	expect -re ".*Login password.*"
-	send -- "$env(PASSWORD)${RETURN}"
+	send -- "$env(WEBMIN_PASSWORD)${RETURN}"
 
 	expect -re ".*Password again.*"
-	send -- "$env(PASSWORD)${RETURN}"
+	send -- "$env(WEBMIN_PASSWORD)${RETURN}"
 	
 	expect -re ".*Use SSL.*"
 	send -- "y${RETURN}"
