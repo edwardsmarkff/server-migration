@@ -171,6 +171,8 @@ systemctl status webmin.service ;   ## double check
 #               #
 #################
 
+systemctl  stop firewalld     ;   ### required for virtualmin install ?? 
+
 cd ~ ;
 ##mkdir  --verbose  /usr/local/virtualmin/  &&  cd  /usr/local/virtualmin/ ;
 curl  http://software.virtualmin.com/gpl/scripts/install.sh  >  ./virtualmin-install.sh  ;
