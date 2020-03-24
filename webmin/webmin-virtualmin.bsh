@@ -172,6 +172,7 @@ systemctl status webmin.service ;   ## double check
 #################
 
 systemctl  stop   firewalld     ;   ### required for virtualmin install ?? 
+kill -9 $(pgrep firewalld; )     ;
 systemctl  status firewalld     ;
 
 cd ~ ;
