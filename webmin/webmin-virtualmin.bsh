@@ -176,7 +176,7 @@ kill -9 $(pgrep firewalld; )     ;
 systemctl  status firewalld     ;
 
 cd ~ ;
-##mkdir  --verbose  /usr/local/virtualmin/  &&  cd  /usr/local/virtualmin/ ;
+
 curl  http://software.virtualmin.com/gpl/scripts/install.sh  >  ./virtualmin-install.sh  ;
 chmod --verbose  500   ./virtualmin-install.sh  ;
 
