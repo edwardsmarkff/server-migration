@@ -7,9 +7,6 @@
 #                                #
 ##################################
 
-### 2016-07-18 - “ulimit” can be manually added to php5.fcgi  (probably php5.cgi as well)
-###            ulimit -u 10               ## maximum number of processes
-###            ulimit -v 34816          ##   Maximum size per process   (this example 34 megabytes)
 
 ## 2019-08-28 - updated to webmin 1.930
 ## 2020-03-17 - added expect and upgraded to centos-8
@@ -203,6 +200,11 @@ END_OF_INSTALL_SH
 
 
 exit 1;
+
+### 2016-07-18 - “ulimit” can be manually added to php5.fcgi  (probably php5.cgi as well)
+###            ulimit -u 10               ## maximum number of processes
+###            ulimit -v 34816          ##   Maximum size per process   (this example 34 megabytes)
+
 
 (note - we may not need “sed: if the symbolic links are set from the php7 install section)
 curl  http://software.virtualmin.com/gpl/scripts/install.sh                               \
