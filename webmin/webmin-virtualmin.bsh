@@ -151,17 +151,7 @@ expect eof
 END_OF_SETUP_SH
 )	## end of setup.sh
 
-###   vi /usr/lib/systemd/system/webmin.service ;
-###      #PIDFile=/var/webmin/miniserv.pid
-###      ExecStartPost=/bin/sh -c 'umask 022; pgrep miniserv > /var/webmin/webmin.pid'
-
-kill -9 $(pgrep miniserv; )  ##  kill the one started by the installation process
 systemctl enable webmin.service ;
-systemctl stop webmin.service ;    ## just in case....
-systemctl start webmin.service ;
-systemctl status  --no-pager --full webmin.service ;   ## double check
-
-
 
 
 
@@ -171,9 +161,17 @@ systemctl status  --no-pager --full webmin.service ;   ## double check
 #               #
 #################
 
-systemctl  stop   firewalld     ;   ### required for virtualmin install ?? 
-kill -9 $(pgrep firewalld; )     ;
-systemctl  --no-pager --full  status firewalld     ;
+
+if  [ $(pgrep miniserv;) ]
+then
+    echo 'killing minserv.';
+    kill -9 $(pgrep miniserv; )     ;     ##  kill the one started by the installation process
+else
+    echo 'miniserv not current running.';
+fi; 
+systemctl stop webmin.service ;    ## just in case....
+systemctl start webmin.service ;
+systemctl status  --no-pager --full webmin.service ;   ## double check
 
 cd ~ ;
 
@@ -349,3 +347,6 @@ language-800.info	MX - Mail Server	1 ASPMX.L.GOOGLE.COM.	ASPMX.L.GOOGLE.COM
 #END_OF_CPAN
 #)	## end of cpan
 
+
+################systemctl  stop   firewalld     ;   ### required for virtualmin install ?? 
+################systemctl  --no-pager --full  status firewalld     ;
