@@ -1,0 +1,49 @@
+#!  /bin/bash
+
+##  2020-03-26 - rewrite using rpm
+
+##  http://www.webmin.com/rpm.html
+
+
+
+    1  cd
+    2  set -o vi
+dnf --assumeyes install perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect  ;
+dnf --assumeyes install wget    ;
+ cat  >  /etc/yum.repos.d/webmin.repo  <<END_OF_REPO;
+[Webmin]
+name=Webmin Distribution Neutral
+#baseurl=https://download.webmin.com/download/yum
+mirrorlist=https://download.webmin.com/download/yum/mirrorlist
+enabled=1
+END_OF_REPO
+
+wget https://download.webmin.com/jcameron-key.asc  ;
+rpm --import jcameron-key.asc   ;
+dnf  --assumeyes  install webmin ;
+/etc/webmin/stop ;  # this might not do anything?
+kill -9 $(pgrep miniserv;)     ;   ##  ??? this seems to still be required...?
+systemctl  enable  webmin.service;
+systemctl  stop webmin.service;
+systemctl  start webmin.service;
+systemctl  status  webmin.service;
+
+
+##### or run manually:
+
+
+dnf --assumeyes install wget perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect ;
+
+wget http://prdownloads.sourceforge.net/webadmin/webmin-1.941-1.noarch.rpm ;
+
+rpm -U webmin-1.941-1.noarch.rpm ;
+./setup.sh ;
+kill -9 $(pgrep miniserv;)     ;   ##  ??? this seems to still be required...?
+systemctl  enable  webmin.service;
+systemctl  stop webmin.service;
+systemctl  start webmin.service;
+
+
+
+
+
