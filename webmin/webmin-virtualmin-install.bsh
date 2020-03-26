@@ -10,8 +10,7 @@
 #                      #
 ########################
 
-    1  cd
-    2  set -o vi
+
 dnf --assumeyes install perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect  ;
 dnf --assumeyes install wget    ;
  cat  >  /etc/yum.repos.d/webmin.repo  <<END_OF_REPO;
