@@ -182,7 +182,8 @@ else
 fi; 
 
 /etc/webmin/stop  ;
-systemctl restart webmin.service ;
+systemctl stop  webmin.service ;
+systemctl start webmin.service ;
 systemctl status  --no-pager --full webmin.service ;   ## double check
 
 cd ~ ;
@@ -216,7 +217,9 @@ END_OF_INSTALL_SH
 ###  TEMPORARILY run this twice until https://github.com/webmin/webmin/pull/1222 is resolved!
 
 /etc/webmin/stop  ;
-systemctl restart webmin.service ;
+systemctl stop webmin.service ;
+systemctl stop webmin.service ;
+systemctl status  --no-pager --full webmin.service ;   ## double check
 
 expect <(cat <<'END_OF_INSTALL_SH'
 	 
