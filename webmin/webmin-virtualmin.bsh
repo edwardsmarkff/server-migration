@@ -96,7 +96,12 @@ chmod --verbose 500   ./setup.sh	;
 ###                  print START "exec '$wadir/miniserv.pl' $config_directory/miniserv.conf\n";
 ###                  print START "perl '$wadir/miniserv.pl' $config_directory/miniserv.conf\n";
 
+### https://github.com/webmin/webmin/pull/1218
+sed  --in-place   --expression='s/grep \$os_type`$/grep ${os_type#*-}`/;'         /usr/local/webmin/webmin-1.941/setup.sh  ;
 
+##  https://github.com/webmin/webmin/pull/1222
+sed  --in-place   --expression="s/&print_tempfile(CFILE, \"PIDFile=\$pidfile\\\n\") if (\$pidfile);/\&print_tempfile(CFILE, \"ExecStartPost=\/bin\/sh -c 'umask 022; pgrep miniserv > \/var\/webmin\/webmin.pid'\") if ($pidfile);/;" \
+	/usr/local/webmin/webmin-1.941/init/init-lib.pl ;
 
 expect <(cat <<'END_OF_SETUP_SH'
 	 
