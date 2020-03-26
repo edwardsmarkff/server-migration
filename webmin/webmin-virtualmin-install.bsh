@@ -55,6 +55,8 @@ systemctl  start webmin.service;
 #                     #
 #######################
 
+## https://www.virtualmin.com/download.html
+
 wget http://software.virtualmin.com/gpl/scripts/install.sh ;
 chmod --verbose  700   ./install.sh ;
 ./install.sh ;     ## may have to run this twice
