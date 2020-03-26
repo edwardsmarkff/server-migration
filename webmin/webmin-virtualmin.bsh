@@ -203,6 +203,7 @@ expect <(cat <<'END_OF_INSTALL_SH'
 END_OF_INSTALL_SH
 )	## end of virtualmin  install.sh
 
+###  TEMPORARILY run this twice until https://github.com/webmin/webmin/pull/1222 is resolved!
 
 /etc/webmin/restart  ;
 
