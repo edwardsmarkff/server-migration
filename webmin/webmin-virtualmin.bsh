@@ -204,6 +204,35 @@ END_OF_INSTALL_SH
 )	## end of virtualmin  install.sh
 
 
+/etc/webmin/restart  ;
+
+expect <(cat <<'END_OF_INSTALL_SH'
+	 
+	set timeout -1
+	
+	set UPARROW	\x1B\[A;
+	set DOWNARROW	\x1B\[B;
+	set SPACE	\x20;
+	set RETURN	\x0d;
+	 
+	spawn ./virtualmin-install.sh  ; 
+	
+	expect -re ".*Continue.*"
+	send -- "y${RETURN}"
+	
+	expect -re ".*Really Continue.*"
+	send -- "y${RETURN}"
+
+	
+	expect eof
+
+END_OF_INSTALL_SH
+)	## end of virtualmin  install.sh
+
+
+
+
+
 exit 1;
 
 ### 2016-07-18 - “ulimit” can be manually added to php5.fcgi  (probably php5.cgi as well)
