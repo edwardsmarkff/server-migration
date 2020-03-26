@@ -163,7 +163,12 @@ systemctl enable webmin.service ;
 #               #
 #################
 
-
+for pid in $(ps aux  | grep  miniserv  | grep perl | sed -e 's/ * / /;' | cut -f 2 -d " ") ; 
+do
+    echo 'killing ' $pid;
+    kill -9 $pid; 
+done;
+	## sometimes pgrep does not work!
 if  [ $(pgrep miniserv;) ]
 then
     echo 'killing minserv.';
@@ -171,6 +176,7 @@ then
 else
     echo 'miniserv not current running.';
 fi; 
+
 systemctl stop webmin.service ;    ## just in case....
 systemctl start webmin.service ;
 systemctl status  --no-pager --full webmin.service ;   ## double check
