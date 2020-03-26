@@ -1,3 +1,161 @@
+
+### 2016-07-18 - “ulimit” can be manually added to php5.fcgi  (probably php5.cgi as well)
+###            ulimit -u 10               ## maximum number of processes
+###            ulimit -v 34816          ##   Maximum size per process   (this example 34 megabytes)
+
+
+(note - we may not need “sed: if the symbolic links are set from the php7 install section)
+curl  http://software.virtualmin.com/gpl/scripts/install.sh                               \
+| sed -e  's/ php-/ php70w-/g; s/ php / php-70w /g; s/ php5/ php70w/g; '   	\
+>  install.sh                                                                                                      ;
+ chmod 755   ./install.sh  ;
+./install.sh  ;  ## this step took a LONG LONG LONG time !  possibly over several hours, believe it or not
+
+/etc/init.d/webmin restart  ;    ## 2015-06-30
+
+exit;  ## 2015-10-15
+notice where log files now go (for example)
+ ls -ltr  /var/log/virtualmin/comptonpeslonline.com_error_log
+
+
+====csf firewall ===
+http://download.configserver.com/csf/install.txt
+
+https://www.bitronictech.net/knowledgebase/10088/Installing-CSF-on-Webmin.html
+In webmin, follow this route:
+Webmin > Webmin Configuration > Webmin Modules >
+From local file > /etc/csf/csfwebmin.tgz > Install Module
+in /etc/csf/csf/conf change the following:
+TESTING = “0”
+RESTRICT_SYSLOG = "3"    ## on line 69
+
+
+
+====  marks virtualmin/webmin  custom setup   ========
+
+System Settings -> Virtualmin Config -> Defaults for new Domains -- and make sure that "Domain name style in username" is set to "Full Domain Name", and that "Include domain name in usernames" is set to "Always".'   (http://www.virtualmin.com/node/22647)
+
+Webmin-->Servers-->PostfixMailServer-->OtherGeneralOptions   - set "Address that receives bcc of each message"
+
+
+==== mod_qos  2014-03-20  =========
+
+add these two lines to  /etc/httpd/conf/httpd.conf   file:
+QS_LocRequestLimitMatch ^/wp-login.php 10
+QS_LocRequestPerSecLimitMatch ^/wp-login.php 1
+
+
+
+
+==========to run virtualmin/webmin on an android device:
+
+http://www.webmin.com/mobile.html
+
+http://download.webmin.com/download/virtualmin/virtual-server-mobile-2.3.wbt.gz
+1 - Download the appropriate theme package above. If you installed Webmin from an RPM, get the RPM - if from a Debian package, get the theme in the same format.
+2 - Login to Webmin, and go to Webmin -> Webmin Configuration -> Webmin Modules.
+3 - Install the downloaded file.
+4 - Go back to the Webmin Configuration module, and click on Mobile Device Options.
+5 - Select the Virtualmin Mobile Theme from the Theme for mobile browsers menu, and click Save.
+
+to install new modules:  (2012-06-10)
+http://www.webmin.com/plugins.html
+http://www.webmin.com/standard.html
+http://www.blogsweek.com/wp-menubar-3-documentation/
+
+==== to restart webmin: =======
+
+ /etc/init.d/webmin (re)start
+
+
+================ virtualmin ftp =======
+ftp username/password:
+# adduser -c 'FTP USER Tom' -m tom
+# passwd tom
+
+(virtualmin ftp needed this command: -2012-10-11)
+cd  /lib/security   ;
+ln -s pam_unix.so pam_stack.so  ;
+http://fixx.co.za/?p=367
+ftp logfiles:  In /var/log/secure (sometimes additional data is in /var/log/messages)
+
+
+
+
+
+=== virtualmin google mx records ======
+
+http://www.virtualmin.com/node/22464#comment-101604  (2012-06-11)
+Choose the virtual server you wish to edit, then go to Server Configuration > DNS Records. At the bottom of the page, choose MX - Mail Server from the select box and then click on 'Create Record of Type'.
+
+Enter the record name, which will be your domain name, leave the cache as default, set the priority according to your mail server requirements (if there is just one mx record then just use 5), in Mail Server Hostname, enter your MX record and then hit Save.
+
+language-800.info	MX - Mail Server	1 ASPMX.L.GOOGLE.COM.	ASPMX.L.GOOGLE.COM
+	language-800.info	MX - Mail Server	5 ALT1.ASPMX.L.GOOGLE.COM.	ALT1.ASPMX.L.GOOGLE.COM.
+	language-800.info	MX - Mail Server	5 ALT2.ASPMX.L.GOOGLE.COM.	
+	language-800.info	MX - Mail Server	10 ASPMX2.GOOGLEMAIL.COM.	
+	language-800.info	MX - Mail Server	10 ASPMX3.GOOGLEMAIL.COM.
+
+***notice where log files now go (for example)
+ ls -ltr  /var/log/virtualmin/comptonpeslonline.com_error_log
+
+
+### ARCHIVES:
+##wget http://prdownloads.sourceforge.net/webadmin/webmin-1.760.tar.gz ;
+##wget http://sourceforge.net/projects/webadmin/files/webmin/1.630/webmin-1.630.tar.gz/download  ;
+
+
+
+
+
+#cat >   /lib/systemd/system/webmin.service  <<END_OF_WEBMIN_SERVICE ;
+#    [Unit]
+##    Description=Webmin
+#
+#    [Service]
+#    ExecStart=/etc/webmin/start
+#    ExecStop=/etc/webmin/stop
+#    Type=forking
+#    PIDFile=/var/webmin/miniserv.pid
+#
+#    [Install]
+##    WantedBy=multi-user.target
+#END_OF_WEBMIN_SERVICE
+#
+#ls -l  /lib/systemd/system/webmin.service  ;
+
+#expect <(cat <<'END_OF_CPAN'
+#	 
+#	set timeout -1
+#	
+#	set UPARROW	\x1B\[A;
+#	set DOWNARROW	\x1B\[B;
+#	set SPACE	\x20;
+#	set RETURN	\x0d;
+#	 
+#	spawn  perl -MCPAN -e shell ;
+#	
+#	expect -re ".*Would you like to configure as much as possible automatically.*"
+#	send -- "${RETURN}"
+#			## default: [yes]
+#
+#	expect -re "^cpan\[1]> "
+#	send -- "exit${RETURN}"
+#
+#expect eof
+#
+#END_OF_CPAN
+#)	## end of cpan
+
+
+################systemctl  stop   firewalld     ;   ### required for virtualmin install ?? 
+################systemctl  --no-pager --full  status firewalld     ;
+
+##################################################################################
+##################################################################################
+##################################################################################
+FAILED INSTALLATION BELOW -- it worked but switching over to rpm works far better:
+
 #! /bin/bash
 #
 #
@@ -245,159 +403,5 @@ END_OF_INSTALL_SH
 )	## end of virtualmin  install.sh
 
 
-
-
-
 exit 1;
 
-### 2016-07-18 - “ulimit” can be manually added to php5.fcgi  (probably php5.cgi as well)
-###            ulimit -u 10               ## maximum number of processes
-###            ulimit -v 34816          ##   Maximum size per process   (this example 34 megabytes)
-
-
-(note - we may not need “sed: if the symbolic links are set from the php7 install section)
-curl  http://software.virtualmin.com/gpl/scripts/install.sh                               \
-| sed -e  's/ php-/ php70w-/g; s/ php / php-70w /g; s/ php5/ php70w/g; '   	\
->  install.sh                                                                                                      ;
- chmod 755   ./install.sh  ;
-./install.sh  ;  ## this step took a LONG LONG LONG time !  possibly over several hours, believe it or not
-
-/etc/init.d/webmin restart  ;    ## 2015-06-30
-
-exit;  ## 2015-10-15
-notice where log files now go (for example)
- ls -ltr  /var/log/virtualmin/comptonpeslonline.com_error_log
-
-
-====csf firewall ===
-http://download.configserver.com/csf/install.txt
-
-https://www.bitronictech.net/knowledgebase/10088/Installing-CSF-on-Webmin.html
-In webmin, follow this route:
-Webmin > Webmin Configuration > Webmin Modules >
-From local file > /etc/csf/csfwebmin.tgz > Install Module
-in /etc/csf/csf/conf change the following:
-TESTING = “0”
-RESTRICT_SYSLOG = "3"    ## on line 69
-
-
-
-====  marks virtualmin/webmin  custom setup   ========
-
-System Settings -> Virtualmin Config -> Defaults for new Domains -- and make sure that "Domain name style in username" is set to "Full Domain Name", and that "Include domain name in usernames" is set to "Always".'   (http://www.virtualmin.com/node/22647)
-
-Webmin-->Servers-->PostfixMailServer-->OtherGeneralOptions   - set "Address that receives bcc of each message"
-
-
-==== mod_qos  2014-03-20  =========
-
-add these two lines to  /etc/httpd/conf/httpd.conf   file:
-QS_LocRequestLimitMatch ^/wp-login.php 10
-QS_LocRequestPerSecLimitMatch ^/wp-login.php 1
-
-
-
-
-==========to run virtualmin/webmin on an android device:
-
-http://www.webmin.com/mobile.html
-
-http://download.webmin.com/download/virtualmin/virtual-server-mobile-2.3.wbt.gz
-1 - Download the appropriate theme package above. If you installed Webmin from an RPM, get the RPM - if from a Debian package, get the theme in the same format.
-2 - Login to Webmin, and go to Webmin -> Webmin Configuration -> Webmin Modules.
-3 - Install the downloaded file.
-4 - Go back to the Webmin Configuration module, and click on Mobile Device Options.
-5 - Select the Virtualmin Mobile Theme from the Theme for mobile browsers menu, and click Save.
-
-to install new modules:  (2012-06-10)
-http://www.webmin.com/plugins.html
-http://www.webmin.com/standard.html
-http://www.blogsweek.com/wp-menubar-3-documentation/
-
-==== to restart webmin: =======
-
- /etc/init.d/webmin (re)start
-
-
-================ virtualmin ftp =======
-ftp username/password:
-# adduser -c 'FTP USER Tom' -m tom
-# passwd tom
-
-(virtualmin ftp needed this command: -2012-10-11)
-cd  /lib/security   ;
-ln -s pam_unix.so pam_stack.so  ;
-http://fixx.co.za/?p=367
-ftp logfiles:  In /var/log/secure (sometimes additional data is in /var/log/messages)
-
-
-
-
-
-=== virtualmin google mx records ======
-
-http://www.virtualmin.com/node/22464#comment-101604  (2012-06-11)
-Choose the virtual server you wish to edit, then go to Server Configuration > DNS Records. At the bottom of the page, choose MX - Mail Server from the select box and then click on 'Create Record of Type'.
-
-Enter the record name, which will be your domain name, leave the cache as default, set the priority according to your mail server requirements (if there is just one mx record then just use 5), in Mail Server Hostname, enter your MX record and then hit Save.
-
-language-800.info	MX - Mail Server	1 ASPMX.L.GOOGLE.COM.	ASPMX.L.GOOGLE.COM
-	language-800.info	MX - Mail Server	5 ALT1.ASPMX.L.GOOGLE.COM.	ALT1.ASPMX.L.GOOGLE.COM.
-	language-800.info	MX - Mail Server	5 ALT2.ASPMX.L.GOOGLE.COM.	
-	language-800.info	MX - Mail Server	10 ASPMX2.GOOGLEMAIL.COM.	
-	language-800.info	MX - Mail Server	10 ASPMX3.GOOGLEMAIL.COM.
-
-***notice where log files now go (for example)
- ls -ltr  /var/log/virtualmin/comptonpeslonline.com_error_log
-
-
-### ARCHIVES:
-##wget http://prdownloads.sourceforge.net/webadmin/webmin-1.760.tar.gz ;
-##wget http://sourceforge.net/projects/webadmin/files/webmin/1.630/webmin-1.630.tar.gz/download  ;
-
-
-
-
-
-#cat >   /lib/systemd/system/webmin.service  <<END_OF_WEBMIN_SERVICE ;
-#    [Unit]
-##    Description=Webmin
-#
-#    [Service]
-#    ExecStart=/etc/webmin/start
-#    ExecStop=/etc/webmin/stop
-#    Type=forking
-#    PIDFile=/var/webmin/miniserv.pid
-#
-#    [Install]
-##    WantedBy=multi-user.target
-#END_OF_WEBMIN_SERVICE
-#
-#ls -l  /lib/systemd/system/webmin.service  ;
-
-#expect <(cat <<'END_OF_CPAN'
-#	 
-#	set timeout -1
-#	
-#	set UPARROW	\x1B\[A;
-#	set DOWNARROW	\x1B\[B;
-#	set SPACE	\x20;
-#	set RETURN	\x0d;
-#	 
-#	spawn  perl -MCPAN -e shell ;
-#	
-#	expect -re ".*Would you like to configure as much as possible automatically.*"
-#	send -- "${RETURN}"
-#			## default: [yes]
-#
-#	expect -re "^cpan\[1]> "
-#	send -- "exit${RETURN}"
-#
-#expect eof
-#
-#END_OF_CPAN
-#)	## end of cpan
-
-
-################systemctl  stop   firewalld     ;   ### required for virtualmin install ?? 
-################systemctl  --no-pager --full  status firewalld     ;
