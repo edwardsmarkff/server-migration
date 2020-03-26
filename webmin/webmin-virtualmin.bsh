@@ -99,9 +99,11 @@ chmod --verbose 500   ./setup.sh	;
 ### https://github.com/webmin/webmin/pull/1218
 sed  --in-place   --expression='s/grep \$os_type`$/grep ${os_type#*-}`/;'         /usr/local/webmin/webmin-1.941/setup.sh  ;
 
-##  https://github.com/webmin/webmin/pull/1222
-sed  --in-place   --expression="s/&print_tempfile(CFILE, \"PIDFile=\$pidfile\\\n\") if (\$pidfile);/\&print_tempfile(CFILE, \"ExecStartPost=\/bin\/sh -c 'umask 022; pgrep miniserv > \/var\/webmin\/webmin.pid'\") if (\$pidfile);/;" \
-	/usr/local/webmin/webmin-1.941/init/init-lib.pl ;
+######  https://github.com/webmin/webmin/pull/1222
+#######sed  --in-place   --expression="s/&print_tempfile(CFILE, \"PIDFile=\$pidfile\\\n\") if (\$pidfile);/\&print_tempfile(CFILE, \"ExecStartPost=\/bin\/sh -c 'umask 022; pgrep miniserv > \/var\/webmin\/webmin.pid'\") if (\$pidfile);/;" \
+#######	/usr/local/webmin/webmin-1.941/init/init-lib.pl ;
+
+
 
 expect <(cat <<'END_OF_SETUP_SH'
 	 
@@ -154,6 +156,8 @@ END_OF_SETUP_SH
 )	## end of setup.sh
 
 systemctl enable webmin.service ;
+/etc/webmin/stop  ;   ## must manually stop after initial install.
+systemctl restart webmin.service ;
 
 
 
@@ -177,8 +181,8 @@ else
     echo 'miniserv not current running.';
 fi; 
 
-systemctl stop webmin.service ;    ## just in case....
-systemctl start webmin.service ;
+/etc/webmin/stop  ;
+systemctl restart webmin.service ;
 systemctl status  --no-pager --full webmin.service ;   ## double check
 
 cd ~ ;
@@ -211,7 +215,8 @@ END_OF_INSTALL_SH
 
 ###  TEMPORARILY run this twice until https://github.com/webmin/webmin/pull/1222 is resolved!
 
-/etc/webmin/restart  ;
+/etc/webmin/stop  ;
+systemctl restart webmin.service ;
 
 expect <(cat <<'END_OF_INSTALL_SH'
 	 
