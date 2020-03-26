@@ -4,7 +4,11 @@
 
 ##  http://www.webmin.com/rpm.html
 
-
+########################
+#                      #
+#    Webmin            #
+#                      #
+########################
 
     1  cd
     2  set -o vi
@@ -45,5 +49,13 @@ systemctl  start webmin.service;
 
 
 
+#######################
+#                     #
+#   Virtualmin        #
+#                     #
+#######################
 
+wget http://software.virtualmin.com/gpl/scripts/install.sh ;
+chmod --verbose  700   ./install.sh ;
+./install.sh ;     ## may have to run this twice
 
