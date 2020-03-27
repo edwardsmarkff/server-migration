@@ -11,6 +11,14 @@
 ########################
 
 
+sudo setenforce permissive ; ## this is a simple workaround but it does not survive reboot! ! !
+sudo getenforce ;   ## double-check
+
+###   change /etc/selinux/config
+###    ###SELINUX=enforcing
+###    SELINUX=permissive
+
+
 dnf --assumeyes install perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect  ;
 dnf --assumeyes install wget    ;
  cat  >  /etc/yum.repos.d/webmin.repo  <<END_OF_REPO;
