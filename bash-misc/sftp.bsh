@@ -17,7 +17,7 @@
 
 dnf  --assumeyes  update;
 
-dnf  --assumeyes  install  vsftpd  ;
+dnf  --assumeyes  install  expect vsftpd  ;
 
 firewall-cmd --permanent --add-port=20-21/tcp   ;
 firewall-cmd --permanent --add-port=30000-31000/tcp  ;
