@@ -7,7 +7,8 @@
 #     #####################
 
 #   2019-04-04  -- moved from googledocs
-#
+#   2020-05-24  --	supposedly when using sftp, we do not need vsftpd or any other since sftp is 
+#   			part of openSSH, supposedly!
 # 
 ## written from:  https://linuxize.com/post/how-to-setup-ftp-server-with-vsftpd-on-centos-7/
 #
