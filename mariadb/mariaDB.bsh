@@ -10,13 +10,14 @@
 #
 #   2019-08-28 - 10.4.1 to 10.4.7
 #   2020-01-08 -- minor changes, added back in the my.cnf files and password
+#   2020-08-19 -- went back to 10.3 because of an installation error with the c-connector
 
 ##  written from  https://tecadmin.net/install-mariadb-centos8/
 
 cat << EOF > /etc/yum.repos.d/mariadb.repo  ;
 [mariadb]
 name = MariaDB
-baseurl = http://yum.mariadb.org/10.4/rhel8-amd64
+baseurl = http://yum.mariadb.org/10.3/rhel8-amd64
 gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 EOF
@@ -67,9 +68,11 @@ sudo touch                             /var/log/mariadb.err.log;	## 2019-10-09
 sudo chown  --verbose   mysql:mysql    /var/log/mariadb.err.log;	## 2019-10-09
 ls -l                                  /var/log/mariadb.err.log;        ## 2020-01-10
 
+dnf  -y  install   mariadb-connector-c-devel ;  ## 2020-08-19 - testing if this works with current release!
+
 echo '';
 echo 'be sure to run  mysql_secure_installation and set root password as well!'
-echo '';
+echo 'and make SURE mariadb-connector-c-devel works too.';
 echo '';
 
 exit 1;
