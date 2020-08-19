@@ -17,7 +17,7 @@
 cat << EOF > /etc/yum.repos.d/mariadb.repo  ;
 [mariadb]
 name = MariaDB
-baseurl = http://yum.mariadb.org/10.3/rhel8-amd64
+baseurl = http://yum.mariadb.org/10.5/rhel8-amd64
 gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 EOF
@@ -68,7 +68,7 @@ sudo touch                             /var/log/mariadb.err.log;	## 2019-10-09
 sudo chown  --verbose   mysql:mysql    /var/log/mariadb.err.log;	## 2019-10-09
 ls -l                                  /var/log/mariadb.err.log;        ## 2020-01-10
 
-dnf  -y  install   mariadb-connector-c-devel ;  ## 2020-08-19 - testing if this works with current release!
+dnf  -y  remove   mariadb-connector-c-devel ;  ## 2020-08-19 - testing if this works with current release!
 
 echo '';
 echo 'be sure to run  mysql_secure_installation and set root password as well!'
