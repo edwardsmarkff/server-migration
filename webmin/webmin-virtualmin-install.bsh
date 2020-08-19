@@ -1,6 +1,7 @@
 #!  /bin/bash
 
 ##  2020-03-26 - rewrite using rpm
+##  2020-08-19 - upgrading to 1.954
 
 ##  http://www.webmin.com/rpm.html
 
@@ -47,7 +48,8 @@ systemctl  status --no-pager --full  webmin.service;
 
 dnf --assumeyes install wget perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect ;
 
-wget http://prdownloads.sourceforge.net/webadmin/webmin-1.941-1.noarch.rpm ;
+##wget http://prdownloads.sourceforge.net/webadmin/webmin-1.941-1.noarch.rpm ;
+wget https://prdownloads.sourceforge.net/webadmin/webmin-1.954-1.noarch.rpm
 
 rpm -U webmin-1.941-1.noarch.rpm ;
 ./setup.sh ;
