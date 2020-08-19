@@ -49,9 +49,10 @@ systemctl  status --no-pager --full  webmin.service;
 dnf --assumeyes install wget perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect ;
 
 ##wget http://prdownloads.sourceforge.net/webadmin/webmin-1.941-1.noarch.rpm ;
+#rpm -U webmin-1.941-1.noarch.rpm ;
 wget https://prdownloads.sourceforge.net/webadmin/webmin-1.954-1.noarch.rpm
+rpm -U webmin-1.954-1.noarch.rpm ;
 
-rpm -U webmin-1.941-1.noarch.rpm ;
 ./setup.sh ;
 kill -9 $(pgrep miniserv;)     ;   ##  ??? this seems to still be required...?
 systemctl  enable  webmin.service;
