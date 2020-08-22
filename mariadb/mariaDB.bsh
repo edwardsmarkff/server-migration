@@ -11,13 +11,14 @@
 #   2019-08-28 - 10.4.1 to 10.4.7
 #   2020-01-08 -- minor changes, added back in the my.cnf files and password
 #   2020-08-19 -- went back to 10.3 because of an installation error with the c-connector
+#   2020-08-22 -- changed from redhat rpm to centos
 
 ##  written from  https://tecadmin.net/install-mariadb-centos8/
 
 cat << EOF > /etc/yum.repos.d/mariadb.repo  ;
 [mariadb]
 name = MariaDB
-baseurl = https://yum.mariadb.org/10.3/rhel8-amd64
+baseurl = https://yum.mariadb.org/10.3/centos8-amd64/
 gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 EOF
