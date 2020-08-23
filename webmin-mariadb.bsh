@@ -7,7 +7,9 @@
 
 sudo su ;  
 cd ;
-dnf --assumeyes  update ;   dnf --assumeyes install wget ;
+
+dnf --assumeyes  update ;   
+dnf --assumeyes install wget ;
 
 
    #################
@@ -27,9 +29,9 @@ END_OF_REPO
 
 sudo dnf makecache ;
 
-sudo setenforce Permissive ; ## this is a simple workaround but it does not survive reboot! ! !
-echo 0 >/selinux/enforce  ;  ## a permanent way
-sudo getenforce ;            ## double-check !!
+sudo /sbin/setenforce Permissive ; ## this is a simple workaround but it does not survive reboot! ! !
+echo 0  > /selinux/enforce  ;  ## a permanent way to set it after the reboot
+sudo /sbin/getenforce ;            ## double-check !!
 
 wget https://download.webmin.com/jcameron-key.asc  ;
 rpm --import jcameron-key.asc   ;
