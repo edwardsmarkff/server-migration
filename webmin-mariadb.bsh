@@ -1,0 +1,79 @@
+#!  /bin/bash
+#
+#   webmin-mariadb.bsh    2020-08-23
+#   
+#   unfortunatly, webmin-virtualmin appears to "insist" on installing MariaDB 10.3 - so the easiest
+#   workaround is to just let it install 10.3, then remove it and install 10.5
+
+sudo su ;  
+cd ;
+dnf --assumeyes  update ;   dnf --assumeyes install wget ;
+
+
+   #################
+   #               #
+   #    webmin     #
+   #               #
+   #################
+
+
+cat  >  /etc/yum.repos.d/webmin.repo  <<END_OF_REPO;
+[Webmin]
+name=Webmin Distribution Neutral
+#baseurl=https://download.webmin.com/download/yum
+mirrorlist=https://download.webmin.com/download/yum/mirrorlist
+enabled=1
+END_OF_REPO
+
+sudo dnf makecache ;
+
+sudo setenforce Permissive ; ## this is a simple workaround but it does not survive reboot! ! !
+echo 0 >/selinux/enforce  ;  ## a permanent way
+sudo getenforce ;            ## double-check !!
+
+wget https://download.webmin.com/jcameron-key.asc  ;
+rpm --import jcameron-key.asc   ;
+dnf  --assumeyes  install webmin ;
+
+wget http://software.virtualmin.com/gpl/scripts/install.sh ;
+chmod --verbose  700   ./install.sh ;
+./install.sh ;     ## may have to run this twice
+
+dnf --assumeyes  update ;  ##   double-check
+
+
+   #################
+   #               #
+   #    MariaDB    #
+   #               #
+   #################
+
+dnf --assumeyes   remove  mariadb-connector-c-devel ;   ##  just in case....!!
+
+systemctl   stop   mariadb.service   ;
+/etc/rc.d/init.d/webmin stop  ;   ##  https://stackoverflow.com/questions/51578269/cant-restart-webmin-status-2
+dnf  --assumeyes  remove mariadb-server ;
+curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash  ;
+dnf --assumeyes  install MariaDB-server MariaDB-client   ;
+systemctl   start   mariadb.service  ;
+systemctl --no-pager  status   mariadb.service  ;
+
+/bin/mysql -V;
+
+
+#############################
+#                           #
+#      finish installation  #
+#                           #
+##############################
+
+/etc/rc.d/init.d/webmin stop  ;
+systemctl start  webmin.service    ;
+systemctl --no-pager  status  webmin.service   ;
+
+
+passwd ;  ## [re]set the root password for initial login since 'admin' is no longer created by default
+
+#######ip nbr: 10000
+
+exit;
