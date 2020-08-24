@@ -7,6 +7,7 @@
 #########################################
 
 # upgraded from 0.1.10 to 0.2  2019-02-20
+# 2020-08-24 - needed to add path for some bizarre reason
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/  ;
 export LIBPATH=/usr/local/lib/   ;
@@ -27,8 +28,8 @@ make     &&     make check   ;  make install ;
 curl  https://people.xiph.org/~giles/2012/opus/detodos.opus > detodos.opus ;   
 
 ##  opus example
-/usr/local/bin/opusdec  detodos.opus   detodos.wav ;
-/usr/local/bin/opusenc  detodos.wav  detodos2.opus ;  ## test step repeated at the end
+/usr/local/bin/opusdec  ~/INSTALL_FFmpeg/test/detodos.opus   ~/INSTALL_FFmpeg/test/detodos.wav ;
+/usr/local/bin/opusenc  ~/INSTALL_FFmpeg/test/detodos.wav  ~/INSTALL_FFmpeg/test/detodos2.opus ;  ## test step repeated at the end
 
 
 ###########################################
