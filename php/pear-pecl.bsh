@@ -32,6 +32,8 @@ END_OF_PHP_INI
 
 done
 
+pear  config-set  php_ini     /etc/php.ini  
+
 exit 1;
 #
 #
