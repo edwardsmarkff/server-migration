@@ -58,6 +58,8 @@ curl  https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg \
    >     ~/INSTALL_FFmpeg/test/example.ogg  ;
 curl  https://people.xiph.org/~giles/2012/opus/detodos.opus   \
    > ~/INSTALL_FFmpeg/test/detodos.opus ;
+curl  https://dl.espressif.com/dl/audio/ff-16b-1c-44100hz.opus   \
+   > ~/INSTALL_FFmpeg/test/detodos2.opus ;
 
 
 ###############################
