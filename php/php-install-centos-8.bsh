@@ -9,24 +9,38 @@
 
 #   2019-04-01  migrated from googledocs
 #   2019-11-14 - rewrote for centos 8 php 7.4.1
+#   2020-08-24 - re-rewrote for centos 8  php 7.4.9
 
 ##   DONT EVER USE WEBTATIC!  use remi/epel instead   ! ! ! 
 
-############################  rewritten from https://www.cloudbooklet.com/install-php-7-4-on-centos-8-or-rhel-8/
-#  rewritten from https://www.tecmint.com/install-php-on-centos-8/
+
+
+## https://www.linuxtechi.com/install-php-on-centos-8-rhel-8/
+
+dnf --assumeyes  install epel-release   ;
+dnf  --assumeyes  install https://rpms.remirepo.net/enterprise/remi-release-8.rpm ;
+
+dnf module list php  ;
+
+dnf --assumeyes  module enable php:remi-7.4  ;
+
+
+
+        ############################  rewritten from https://www.cloudbooklet.com/install-php-7-4-on-centos-8-or-rhel-8/
+        #  rewritten from https://www.tecmint.com/install-php-on-centos-8/
 
 dnf config-manager --set-enabled PowerTools ;    ## these are repeated from dnf-yum.bsh
 dnf  --assumeyes  install dnf-utils ;            ## these are repeated from dnf-yum.bsh
 
-dnf  --assumeyes  install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm ;
+        ########  dnf  --assumeyes  install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm ;
 
-rpm --query --all | grep epel ;
+        ########  rpm --query --all | grep epel ;
 
-dnf  --assumeyes  install https://rpms.remirepo.net/enterprise/remi-release-8.rpm ;
+        ########  dnf  --assumeyes  install https://rpms.remirepo.net/enterprise/remi-release-8.rpm ;
 
-rpm --query --all  | grep remi ;
+        ########  rpm --query --all  | grep remi ;
  
-dnf   --assumeyes  module enable php:remi-7.4 ;
+        ########  dnf   --assumeyes  module enable php:remi-7.4 ;
 
 for installName in          \
               php            \
