@@ -5,9 +5,7 @@
 #   unfortunatly, webmin-virtualmin appears to "insist" on installing MariaDB 10.3 - so the easiest
 #   workaround is to just let it install 10.3, then remove it and install 10.5
 
-#  2020-08-27  -- obsolete
-
-exit;
+#  2020-08-27  -- this also installs MariaDB.
 
 
 cd ;
