@@ -12,6 +12,10 @@
 #   2020-01-08 -- minor changes, added back in the my.cnf files and password
 #   2020-08-19 -- went back to 10.3 because of an installation error with the c-connector
 #   2020-08-22 -- changed from redhat rpm to centos
+#   2020--8-27 --  DISABLED SINCE VIRTUALMIN NEEDS TO INSTALL MariaDB ! ! 
+
+
+exit;
 
 ##  written from  https://tecadmin.net/install-mariadb-centos8/
 
