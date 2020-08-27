@@ -10,6 +10,11 @@
 #   2020-05-24  --	we do not really need vsftpd or any other since sftp is 
 #   			part of openSSH!
 #   2020-05-25  -- is this script even required anymore  ? ? ? ? ? ? ? ? 
+#   2020-08-27	-- disable script since openssh does everything we need now
+
+exit;
+
+
 
 # 
 ## written from:  https://linuxize.com/post/how-to-setup-ftp-server-with-vsftpd-on-centos-7/
