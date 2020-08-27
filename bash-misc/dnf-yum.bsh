@@ -12,6 +12,7 @@
 
 ##  2019-12-11  - added dnf postfix and maix    -- NOTICE THAT dnf is replacing yum!
 ##  2020-01-08  - added a few new dnf commands
+##  2020-08-27  - removed yum-complete-transaction
 
 
 yum clean all ;  ## 2016-12-31 - required for MariaDB
@@ -24,7 +25,7 @@ dnf   --assumeyes  install  iptables-services   net-tools  ;   ## 2015-07-01
 
 yum clean all   ;    ## 2013-05-15
 
-/usr/sbin/yum-complete-transaction --cleanup-only   ;    ## 2013-05-15
+###########################/usr/sbin/yum-complete-transaction --cleanup-only   ;    ## 2013-05-15
 
 dnf config-manager --set-enabled PowerTools ;  ## 2020-01-08
 
