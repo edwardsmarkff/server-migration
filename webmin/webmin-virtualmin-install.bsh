@@ -3,6 +3,12 @@
 ##  2020-03-26 - rewrite using rpm
 ##  2020-08-19 - upgrading to 1.954
 
+## 2020-08-27  -- now obsolete 
+
+exit;
+
+
+
 ##  http://www.webmin.com/rpm.html
 
 ########################
