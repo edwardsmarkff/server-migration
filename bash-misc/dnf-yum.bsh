@@ -13,6 +13,7 @@
 ##  2019-12-11  - added dnf postfix and maix    -- NOTICE THAT dnf is replacing yum!
 ##  2020-01-08  - added a few new dnf commands
 ##  2020-08-27  - removed yum-complete-transaction
+##  2020-08-28  - added vim (really??)
 
 
 yum clean all ;  ## 2016-12-31 - required for MariaDB
@@ -74,6 +75,7 @@ for installName in    \
      sendmail         \
      sendmail-cf      \
      sshpass          \
+     vim              \
      wget             \
      xz               \
      zlib-devel       \
