@@ -11,6 +11,7 @@
 ##    2020-09-07    - getting tar file from different soruce
 ##                  -- a few missing steps - disable old firewall & start new csf
 ##                      https://www.howtoforge.com/tutorial/install-and-configure-csf-config-server-firewall-on-centos-7/
+##                 to get working on webmin:   https://bobcares.com/blog/csf-firewall-webmin/#comment-75375
 
 mkdir  ~/csf  && cd   ~/csf  ;
 wget   https://download.configserver.com/csf.tgz  ;
