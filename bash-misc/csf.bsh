@@ -11,7 +11,7 @@
 ##    2020-09-07    - getting tar file from different soruce
 
 mkdir  ~/csf  && cd   ~/csf  ;
-wget   https://www.configserver.com/free/csf.tgz  ;
+wget   https://download.configserver.com/csf.tgz  ;
 tar -xzf csf.tgz  ;
 cd  csf  ;
 sh  install.sh ;
