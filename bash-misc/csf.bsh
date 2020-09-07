@@ -9,6 +9,8 @@
 
 ##    2020-01-15    - moved from README to its own script
 ##    2020-09-07    - getting tar file from different soruce
+##                  -- a few missing steps - disable old firewall & start new csf
+##                      https://www.howtoforge.com/tutorial/install-and-configure-csf-config-server-firewall-on-centos-7/
 
 mkdir  ~/csf  && cd   ~/csf  ;
 wget   https://download.configserver.com/csf.tgz  ;
