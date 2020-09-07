@@ -7,6 +7,7 @@
 #     2020-09-07  -- new version ImageMagick-7.0.10-29.tar.gz
 #                       Magic-Wand is now "orphaned" as per:
 #                       https://github.com/ImageMagick/MagickWandForPHP/issues/2
+#                       dnf -y  install ghostscript     freetype   
 
 
 export  PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/  ;
@@ -20,9 +21,10 @@ yum remove ImageMagick-devel
 yum --assumeyes update; ## start with everything up-2-date
 #####yum  --assumeyes  install  php   php-devel  ;
 #####yum  --assumeyes  install php-pear  ;
-yum --assumeyes  install  gcc gcc-c++ bzip2-devel freetype-devel libjpeg-devel ;
-yum --assumeyes install  libpng-devel libtiff-devel libungif-devel zlib-devel freetype-devel ;
-yum --assumeyes install automake autoconf libtool  ;
+dnf --assumeyes  install  gcc gcc-c++ bzip2-devel freetype-devel libjpeg-devel ;
+dnf --assumeyes install  libpng-devel libtiff-devel libungif-devel zlib-devel freetype-devel ;
+dnf --assumeyes install automake autoconf libtool  ;
+dnf --assumeyes  install ghostscript   freetype ;     ## 2020-09-07
 
 chkconfig  httpd on ;
 service httpd  start;
