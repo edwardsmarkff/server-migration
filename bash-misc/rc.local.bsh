@@ -6,6 +6,10 @@
 #                       #
 #########################
 
+##  2020-09-07  -- possibly OBSOLETE by centos-8 ? ? ? ? ? ? 
+
+exit ;
+
 cat <<END_OF_RC_LOCAL  >> /etc/rc.d/rc.local ;
 
 ### added by /server-migration/bash-misc/rc.local.bsh
