@@ -10,7 +10,7 @@
 ##    2020-01-15    - moved from README to its own script
 
 mkdir  ~/csf  && cd   ~/csf  ;
-wget   http://www.configserver.com/free/csf.tgz  ;
+wget   https://www.configserver.com/free/csf.tgz  ;
 tar -xzf csf.tgz  ;
 cd  csf  ;
 sh  install.sh ;
