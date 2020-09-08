@@ -27,8 +27,9 @@ dnf  --assumeyes  install  ghostscript   freetype ;     ## 2020-09-07
 dnf  --assumeyes  install  ImageMagick-devel ;          ## 2020-09-07
 dnf  --assumeyes  install  php-pecl-imagick-devel ;     ## 2020-09-07
 
-chkconfig  httpd on ;
-service httpd  start;
+chkconfig  httpd on   ;
+systemctl  start   httpd   ;
+systemctl  status  httpd   ;
 
 
 echo '<?php phpinfo(); ?>' > /var/www/html/phpinfo.php ;
