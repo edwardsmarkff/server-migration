@@ -19,19 +19,58 @@ yum remove ImageMagick
 yum remove ImageMagick-devel
 
 yum --assumeyes update; ## start with everything up-2-date
-#####yum  --assumeyes  install  php   php-devel  ;
-#####yum  --assumeyes  install php-pear  ;
-dnf --assumeyes  install  gcc gcc-c++ bzip2-devel freetype-devel libjpeg-devel ;
-dnf --assumeyes install  libpng-devel libtiff-devel libungif-devel zlib-devel freetype-devel ;
-dnf --assumeyes install automake autoconf libtool  ;
-dnf --assumeyes  install ghostscript   freetype ;     ## 2020-09-07
+
+dnf  --assumeyes  install  gcc gcc-c++ bzip2-devel freetype-devel libjpeg-devel ;
+dnf  --assumeyes  install  libpng-devel libtiff-devel libungif-devel zlib-devel freetype-devel ;
+dnf  --assumeyes  install  automake autoconf libtool  ;
+dnf  --assumeyes  install  ghostscript   freetype ;     ## 2020-09-07
+dnf  --assumeyes  install  ImageMagick-devel ;          ## 2020-09-07
+dnf  --assumeyes  install  php-pecl-imagick-devel ;     ## 2020-09-07
+
 
 chkconfig  httpd on ;
 service httpd  start;
-####/etc/init.d/httpd  restart ;  (2015-05-10 - not working on centos7)
+
 
 echo '<?php phpinfo(); ?>' > /var/www/html/phpinfo.php ;
 echo 'please try  http://127.0.0.1/phpinfo.php   in your browser!';
+
+
+cat > /var/www/html/helloworld.php  <<END ;
+<?php
+            /* Create a new imagick object */
+      $im = new Imagick();
+            /* Create new image. This will be used as fill pattern */
+      $im->newPseudoImage(50, 50, "gradient:red-black");
+            /* Create imagickdraw object */
+      $draw = new ImagickDraw();
+            /* Start a new pattern called "gradient" */
+      $draw->pushPattern('gradient', 0, 0, 50, 50);
+            /* Composite the gradient on the pattern */
+      $draw->composite(Imagick::COMPOSITE_OVER, 0, 0, 50, 50, $im);
+            /* Close the pattern */
+      $draw->popPattern();
+            /* Use the pattern called "gradient" as the fill */
+      $draw->setFillPatternURL('#gradient');
+            /* Set font size to 52 */
+      $draw->setFontSize(52);
+            /* Annotate some text */
+      $draw->annotation(20, 50, "Hello World!");
+            /* Create a new canvas object and a white image */
+      $canvas = new Imagick();
+      $canvas->newImage(350, 70, "white");
+            /* Draw the ImagickDraw on to the canvas */
+      $canvas->drawImage($draw);
+            /* 1px black border around the image */
+      $canvas->borderImage('black', 1, 1);
+            /* Set the format to PNG */
+      $canvas->setImageFormat('png');
+            /* Output the image */
+      header("Content-Type: image/png");
+      echo $canvas;
+?>
+END
+
 
 echo ‘###################’
 echo ‘#                 #’
@@ -39,94 +78,42 @@ echo ‘#   ImageMagick   #’
 echo ‘#                 #’
 echo ‘###################’
 
-cd ~;
-mkdir ./ImageMagick/ ;
-cd ./ImageMagick/ ;
+dnf --assumeyes  install  ImageMagicl  ImageMagick-devel  ImageMagick-c++ ImageMagick-c++-devel ImageMagick-doc  ImageMagick-perl ;
 
-###  download from here:  http://www.imagemagick.org/download/releases/    2015-05-09
-##curl  http://www.imagemagick.org/download/ImageMagick-6.9.2-4.tar.gz  (2015-12-11)
-##curl  http://www.imagemagick.org/download/ImageMagick-6.9.2-8.tar.gz  | tar -xzf  -;  (2019-08-01)
-curl http://www.imagemagick.org/download/ImageMagick-7.0.10-29.tar.gz   | tar -xzf  -   ;
-##wget http://www.imagemagick.org/download/ImageMagick-7.0.8-58.tar.gz   ;
+####  cd ~;
+####  mkdir ./ImageMagick/ ;
+####  cd ./ImageMagick/ ;
 
-cd   ./ImageMagick*  ;
-./configure --prefix=/opt/imagemagick \
-      --enable-shared \
-      --with-perl \
-      --without-pango\
-       --with-threads \
-      --with-magick_plus_plus  ;   ##    !!!  2015-08-18- added without-pango (whatever that is)
-make && make check && make install ;    ## VERY TIME CONSUMING!
+####  ###  download from here:  http://www.imagemagick.org/download/releases/    2015-05-09
+####  ##curl  http://www.imagemagick.org/download/ImageMagick-6.9.2-8.tar.gz  | tar -xzf  -;  (2019-08-01)
+####  curl http://www.imagemagick.org/download/ImageMagick-7.0.10-29.tar.gz   | tar -xzf  -   ;
+
+####  cd   ./ImageMagick*  ;
+####  ./configure --prefix=/opt/imagemagick \
+####        --enable-shared \
+####        --with-perl \
+####      --without-pango\
+####       --with-threads \
+####        --with-magick_plus_plus  ;   ##    !!!  2015-08-18- added without-pango (whatever that is)
+####  make && make check && make install ;    ## VERY TIME CONSUMING!
 
 /opt/imagemagick/bin/magick  -version  ;  ## mandatory !
 
-/opt/imagemagick/bin/convert -version ;   ## optional but do it anyways
-if [[ $? != 0 ]]; then 
-        echo ‘bad result of convert version!’; exit $?; 
-else
-        echo “success in convert version ! !” ;
-fi
-
-/opt/imagemagick/bin/identify  -version ;  ## ditto
-if [[ $? != 0 ]]; then 
-       echo ‘bad status of identify!’ ;    exit $?; 
-else
-        echo “success in identify version ! !” ;
-fi
-
-
+####  /opt/imagemagick/bin/convert -version ;   ## optional but do it anyways
+####  if [[ $? != 0 ]]; then 
+####          echo ‘bad result of convert version!’; exit $?; 
+####  else
+####          echo “success in convert version ! !” ;
+####  fi
+####
+####  /opt/imagemagick/bin/identify  -version ;  ## ditto
+####  if [[ $? != 0 ]]; then 
+####         echo ‘bad status of identify!’ ;    exit $?; 
+####  else
+####          echo “success in identify version ! !” ;
+####  fi
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-echo ‘################################################################’
-echo ‘#                                                              #’
-echo ‘#        php  imagick                                          #’
-echo ‘#             warning!  be careful which version you choose!   #’
-echo ‘#                                                              #’
-echo ‘################################################################’
-
-cd ~
-mkdir  imagick ;
-cd  imagick ;
-
-### get from here:  https://pecl.php.net/package/imagick  2015-05-09
-### https://pecl.php.net/get/imagick-3.1.0RC2.tgz  (tested and working 2015-05-09)
-### https://pecl.php.net/get/imagick-3.1.0RC3.tgz
-### https://pecl.php.net/get/imagick-3.1.2.tgz
-### https://pecl.php.net/get/imagick-3.2.0RC1.tgz
-### https://pecl.php.net/get/imagick-3.3.0RC1.tgz
-### curl  http://pecl.php.net/get/imagick-3.1.0RC2.tgz  | tar -zxf  - ;
-########curl  http://pecl.php.net/get/imagick-3.3.0.tgz  | tar -zxf  - ;
-curl  http://pecl.php.net/get/imagick    | tar -zxf  - ;
-
-cd ./imagick* ;
-
-ln -s  /opt/imagemagick/include/ImageMagick-6/  \
-         /opt/imagemagick/include/ImageMagick  ; ## added 2015-10-08
-phpize ;
-./configure --with-imagick=/opt/imagemagick ;
-make && make test && make install ;
 
 
 echo ‘##################################’
@@ -137,7 +124,7 @@ echo ‘##################################’
 
 cat >> /etc/php.d/imagick.ini  <<END ;
 extension=imagick.so
-extension=magickwand.so
+#################################################extension=magickwand.so
 END
 
 cat >>/var/www/html/.htaccess   <<END ;
@@ -184,3 +171,28 @@ exit 1;
 
 ########          echo '<?php $x = NewMagickWand(); echo "OK!"; ?>' > /var/www/html/testMagickWand.php ;
 ########          echo 'also try   http://127.0.0.1/testMagickWand.php  in your browser!';
+
+echo ‘################################################################’
+echo ‘#                                                              #’
+echo ‘#        php  imagick                                          #’
+echo ‘#             warning!  be careful which version you choose!   #’
+echo ‘#                                                              #’
+echo ‘################################################################’
+
+
+######            cd ~
+######            mkdir  imagick ;
+######            cd  imagick ;
+
+######            ### get from here:  https://pecl.php.net/package/imagick  2015-05-09
+######            ########curl  http://pecl.php.net/get/imagick-3.3.0.tgz  | tar -zxf  - ;
+######            curl  http://pecl.php.net/get/imagick    | tar -zxf  - ;
+
+######            cd ./imagick* ;
+
+######            ln -s  /opt/imagemagick/include/ImageMagick-6/  \
+######               /opt/imagemagick/include/ImageMagick  ; ## added 2015-10-08
+######            phpize ;
+######            ./configure --with-imagick=/opt/imagemagick ;
+######            make && make test && make install ;
+
