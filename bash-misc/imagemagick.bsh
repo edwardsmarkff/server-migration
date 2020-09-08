@@ -57,7 +57,7 @@ cat > /var/www/html/helloworld.php  <<END ;
             /* Start a new pattern called "gradient" */
       \$draw->pushPattern('gradient', 0, 0, 50, 50);
             /* Composite the gradient on the pattern */
-      \$draw->composite(Imagick::COMPOSITE_OVER, 0, 0, 50, 50, $im);
+      \$draw->composite(Imagick::COMPOSITE_OVER, 0, 0, 50, 50, \$im);
             /* Close the pattern */
       \$draw->popPattern();
             /* Use the pattern called "gradient" as the fill */
