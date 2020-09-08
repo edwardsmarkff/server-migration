@@ -70,7 +70,7 @@ cat > /var/www/html/helloworld.php  <<END ;
       \$canvas = new Imagick();
       \$canvas->newImage(350, 70, "white");
             /* Draw the ImagickDraw on to the canvas */
-      \$canvas->drawImage($draw);
+      \$canvas->drawImage(\$draw);
             /* 1px black border around the image */
       \$canvas->borderImage('black', 1, 1);
             /* Set the format to PNG */
