@@ -1,7 +1,9 @@
 #!  /bin/bash
 #           imagemagick.bsh
 #
+
 ## MAKE SURE CORRECT PHP VERSION IS INSTALLED   F-I-R-S-T ! ! ! ! !
+php --version ;
 
 #  http://forum.directadmin.com/showthread.php?t=44449
 #
@@ -146,8 +148,7 @@ END
 ################END
 
 
-service httpd  restart;     ## turn on the php-magick interface into apache
-
+ssytemctl  httpd  restart;     ## turn on the php-magick interface into apache
 
 echo 'please try  http://127.0.0.1/phpinfo.php   in your browser once again!';
 echo 'be sure to look for both the magick section AND the magicwand section near the bottom!!';
