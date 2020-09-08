@@ -2,8 +2,7 @@
 #           imagemagick.bsh
 #
 
-## MAKE SURE CORRECT PHP VERSION IS INSTALLED   F-I-R-S-T ! ! ! ! !
-php --version ;
+
 
 #  http://forum.directadmin.com/showthread.php?t=44449
 #
@@ -11,6 +10,15 @@ php --version ;
 #                       Magic-Wand is now "orphaned" as per:
 #                       https://github.com/ImageMagick/MagickWandForPHP/issues/2
 #                       dnf -y  install ghostscript     freetype   
+
+
+## MAKE SURE CORRECT PHP VERSION IS INSTALLED   F-I-R-S-T ! ! ! ! !
+php --version ;
+if [[ $? != 0 ]]; then 
+   echo ‘bad result of convert version!’; exit $?; 
+else
+   echo “success in convert version ! !” ;
+fi
 
 
 export  PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/  ;
@@ -27,9 +35,9 @@ dnf  --assumeyes  install  libpng-devel libtiff-devel libungif-devel zlib-devel 
 dnf  --assumeyes  install  automake autoconf libtool  ;
 dnf  --assumeyes  install  ghostscript   freetype ;     ## 2020-09-07
 dnf  --assumeyes  install  ImageMagick-devel ;          ## 2020-09-07
-dnf  --assumeyes  install  php-pecl-imagick-devel ;     ## 2020-09-07
 
-chkconfig  httpd on   ;
+
+chkconfig  httpd   on   ;
 systemctl  start   httpd   ;
 systemctl  status  httpd   ;
 
@@ -80,49 +88,14 @@ echo ‘#   ImageMagick   #’
 echo ‘#                 #’
 echo ‘###################’
 
-dnf --assumeyes  install   ImageMagick             \
-                           ImageMagick-devel       \
-                           ImageMagick-c++         \
-                           ImageMagick-c++-devel   \
-                           ImageMagick-doc         \
+dnf --assumeyes  install   ImageMagick              \
+                           ImageMagick-devel        \
+                           ImageMagick-c++          \
+                           ImageMagick-c++-devel    \
+                           ImageMagick-doc          \
                            ImageMagick-perl         \
+                           php-pecl-imagick-devel   \
                            ;
-
-
-                        ####  cd ~;
-                        ####  mkdir ./ImageMagick/ ;
-                        ####  cd ./ImageMagick/ ;
-
-                        ####  ###  download from here:  http://www.imagemagick.org/download/releases/    2015-05-09
-                        ####  ##curl  http://www.imagemagick.org/download/ImageMagick-6.9.2-8.tar.gz  | tar -xzf  -;  (2019-08-01)
-                        ####  curl http://www.imagemagick.org/download/ImageMagick-7.0.10-29.tar.gz   | tar -xzf  -   ;
-
-                        ####  cd   ./ImageMagick*  ;
-                        ####  ./configure --prefix=/opt/imagemagick \
-                        ####        --enable-shared \
-                        ####        --with-perl \
-                        ####      --without-pango\
-                        ####       --with-threads \
-                        ####        --with-magick_plus_plus  ;   ##    !!!  2015-08-18- added without-pango (whatever that is)
-                        ####  make && make check && make install ;    ## VERY TIME CONSUMING!
-
-/opt/imagemagick/bin/magick  -version  ;  ## mandatory !
-
-                        ####  /opt/imagemagick/bin/convert -version ;   ## optional but do it anyways
-                        ####  if [[ $? != 0 ]]; then 
-                        ####          echo ‘bad result of convert version!’; exit $?; 
-                        ####  else
-                        ####          echo “success in convert version ! !” ;
-                        ####  fi
-
-                        ####  /opt/imagemagick/bin/identify  -version ;  ## ditto
-                        ####  if [[ $? != 0 ]]; then 
-                        ####         echo ‘bad status of identify!’ ;    exit $?; 
-                        ####  else
-                        ####          echo “success in identify version ! !” ;
-                        ####  fi
-
-
 
 echo ‘##################################’
 echo ‘#                                #’
@@ -142,12 +115,6 @@ php_flag display_errors on
 php_value error_reporting 6143
 END
 
-
-################pecl install imagick <<END;  ## this actually requires a blank answer!
-################
-################END
-
-
 ssytemctl  httpd  restart;     ## turn on the php-magick interface into apache
 
 echo 'please try  http://127.0.0.1/phpinfo.php   in your browser once again!';
@@ -157,11 +124,52 @@ echo 'and please try  http://127.0.0.1/helloworld.php too.';
 exit 1;
 
 
-########echo ‘#####################################’
-########echo ‘#                                   #’
-########echo ‘#      MagicWandForPhp              #’
-########echo ‘#                                   #’
-########echo ‘#####################################’
+echo ‘###################’
+echo ‘#                 #’
+echo ‘#   ImageMagick   #’
+echo ‘#                 #’
+echo ‘###################’
+
+
+                        ####  cd ~;
+                        ####  mkdir ./ImageMagick/ ;
+                        ####  cd ./ImageMagick/ ;
+
+                        ####  ###  download from here:  http://www.imagemagick.org/download/releases/    2015-05-09
+                        ####  ##curl  http://www.imagemagick.org/download/ImageMagick-6.9.2-8.tar.gz  | tar -xzf  -;  (2019-08-01)
+                        ####  curl http://www.imagemagick.org/download/ImageMagick-7.0.10-29.tar.gz   | tar -xzf  -   ;
+
+                        ####  cd   ./ImageMagick*  ;
+                        ####  ./configure --prefix=/opt/imagemagick \
+                        ####        --enable-shared \
+                        ####        --with-perl \
+                        ####      --without-pango\
+                        ####       --with-threads \
+                        ####        --with-magick_plus_plus  ;   ##    !!!  2015-08-18- added without-pango (whatever that is)
+                        ####  make && make check && make install ;    ## VERY TIME CONSUMING!
+
+                        ####        /opt/imagemagick/bin/magick  -version  ;  ## mandatory !
+
+                        ####  /opt/imagemagick/bin/convert -version ;   ## optional but do it anyways
+                        ####  if [[ $? != 0 ]]; then 
+                        ####          echo ‘bad result of convert version!’; exit $?; 
+                        ####  else
+                        ####          echo “success in convert version ! !” ;
+                        ####  fi
+
+                        ####  /opt/imagemagick/bin/identify  -version ;  ## ditto
+                        ####  if [[ $? != 0 ]]; then 
+                        ####         echo ‘bad status of identify!’ ;    exit $?; 
+                        ####  else
+                        ####          echo “success in identify version ! !” ;
+                        ####  fi
+
+
+########                echo ‘#####################################’
+########                echo ‘#                                   #’
+########                echo ‘#      MagicWandForPhp              #’
+########                echo ‘#                                   #’
+########                echo ‘#####################################’
 
 
 ########          ################  2019-08-01  yum install ImageMagick ImageMagick-devel pcre-devel   ## ??????
