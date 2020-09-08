@@ -115,7 +115,7 @@ php_flag display_errors on
 php_value error_reporting 6143
 END
 
-ssytemctl  httpd  restart;     ## turn on the php-magick interface into apache
+systemctl   restart  httpd  ;     ## turn on the php-magick interface into apache
 
 echo 'please try  http://127.0.0.1/phpinfo.php   in your browser once again!';
 echo 'be sure to look for both the magick section AND the magicwand section near the bottom!!';
