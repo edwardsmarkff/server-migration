@@ -15,9 +15,9 @@
 ## MAKE SURE CORRECT PHP VERSION IS INSTALLED   F-I-R-S-T ! ! ! ! !
 php --version ;
 if [[ $? != 0 ]]; then 
-   echo ‘bad result of convert version!’; exit $?; 
+   echo ‘no PHP installed!’; exit $?; 
 else
-   echo “success in convert version ! !” ;
+   echo “php installed ! !” ;
 fi
 
 
