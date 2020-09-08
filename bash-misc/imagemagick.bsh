@@ -32,9 +32,9 @@ yum --assumeyes update; ## start with everything up-2-date
 
 dnf  --assumeyes  install  gcc gcc-c++ bzip2-devel freetype-devel libjpeg-devel ;
 dnf  --assumeyes  install  libpng-devel libtiff-devel libungif-devel zlib-devel freetype-devel ;
-dnf  --assumeyes  install  automake autoconf libtool  ;
-dnf  --assumeyes  install  ghostscript   freetype ;     ## 2020-09-07
-dnf  --assumeyes  install  ImageMagick-devel ;          ## 2020-09-07
+dnf  --assumeyes  install  automake autoconf libtool     ;
+dnf  --assumeyes  install  ghostscript   freetype        ;     ## 2020-09-07
+dnf  --assumeyes  install  ImageMagick ImageMagick-devel ;          ## 2020-09-07
 
 
 chkconfig  httpd   on   ;
