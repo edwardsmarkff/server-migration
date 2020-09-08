@@ -78,7 +78,14 @@ echo ‘#   ImageMagick   #’
 echo ‘#                 #’
 echo ‘###################’
 
-dnf --assumeyes  install  ImageMagicl  ImageMagick-devel  ImageMagick-c++ ImageMagick-c++-devel ImageMagick-doc  ImageMagick-perl ;
+dnf --assumeyes  install   ImageMagick             \
+                           ImageMagick-devel       \
+                           ImageMagick-c++         \
+                           ImageMagick-c++-devel   \
+                           ImageMagick-doc         \
+                           ImageMagick-perl         \
+                           ;
+
 
                         ####  cd ~;
                         ####  mkdir ./ImageMagick/ ;
