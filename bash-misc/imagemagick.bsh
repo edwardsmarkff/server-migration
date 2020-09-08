@@ -105,7 +105,6 @@ echo ‘##################################’
 
 cat >> /etc/php.d/imagick.ini  <<END ;
 extension=imagick.so
-#################################################extension=magickwand.so
 END
 
 cat >>/var/www/html/.htaccess   <<END ;
@@ -124,12 +123,12 @@ echo 'and please try  http://127.0.0.1/helloworld.php too.';
 exit 1;
 
 
-echo ‘###################’
-echo ‘#                 #’
-echo ‘#   ImageMagick   #’
-echo ‘#                 #’
-echo ‘###################’
 
+                        ####  echo ‘###################’
+                        ####  echo ‘#                 #’
+                        ####  echo ‘#   ImageMagick   #’
+                        ####  echo ‘#                 #’
+                        ####  echo ‘###################’
 
                         ####  cd ~;
                         ####  mkdir ./ImageMagick/ ;
@@ -186,12 +185,12 @@ echo ‘###################’
 ########          echo '<?php $x = NewMagickWand(); echo "OK!"; ?>' > /var/www/html/testMagickWand.php ;
 ########          echo 'also try   http://127.0.0.1/testMagickWand.php  in your browser!';
 
-echo ‘################################################################’
-echo ‘#                                                              #’
-echo ‘#        php  imagick                                          #’
-echo ‘#             warning!  be careful which version you choose!   #’
-echo ‘#                                                              #’
-echo ‘################################################################’
+########          echo ‘################################################################’
+########          echo ‘#                                                              #’
+########          echo ‘#        php  imagick                                          #’
+########          echo ‘#             warning!  be careful which version you choose!   #’
+########          echo ‘#                                                              #’
+########          echo ‘################################################################’
 
 
 ######            cd ~
