@@ -94,8 +94,10 @@ dnf --assumeyes  install   ImageMagick              \
                            ImageMagick-c++-devel    \
                            ImageMagick-doc          \
                            ImageMagick-perl         \
-                           php-pecl-imagick-devel   \
                            ;
+
+dnf  --assumeyes  install  php72-php-pecl-imagick-devel     ;  ## for php72 obviously!
+                          
 
 echo ‘##################################’
 echo ‘#                                #’
@@ -103,11 +105,10 @@ echo ‘#       final setup              #’
 echo ‘#                                #’
 echo ‘##################################’
 
-cat >> /etc/php.d/imagick.ini  <<END ;
-extension=imagick.so
-END
 
 
+pecl install imagick ;   ## required for some reason?
+  
 systemctl   restart  httpd  ;     ## turn on the php-magick interface into apache
 
 echo 'please try  http://127.0.0.1/phpinfo.php   in your browser once again!';
@@ -116,7 +117,9 @@ echo 'and please try  http://127.0.0.1/helloworld.php too.';
 
 exit 1;
 
-
+                        ####cat >> /etc/php.d/imagick.ini  <<END ;
+                        ####extension=imagick.so
+                        ####END
 
                         ####        this causes some phps to error out, prolly depending on how php is installed (?)
                         ####  cat >>/var/www/html/.htaccess   <<END ;
