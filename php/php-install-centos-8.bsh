@@ -33,15 +33,7 @@ dnf --assumeyes  module enable php:remi-7.2  ;   ## 2020-09-09 - changed from 7.
 dnf config-manager --set-enabled PowerTools ;    ## these are repeated from dnf-yum.bsh
 dnf  --assumeyes  install dnf-utils ;            ## these are repeated from dnf-yum.bsh
 
-        ########  dnf  --assumeyes  install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm ;
 
-        ########  rpm --query --all | grep epel ;
-
-        ########  dnf  --assumeyes  install https://rpms.remirepo.net/enterprise/remi-release-8.rpm ;
-
-        ########  rpm --query --all  | grep remi ;
- 
-        ########  dnf   --assumeyes  module enable php:remi-7.4 ;
 
 for installName in          \
               php            \
@@ -80,6 +72,12 @@ php --version ;
 
 exit 1 ;
 
+
+        ########  dnf  --assumeyes  install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm ;
+        ########  rpm --query --all | grep epel ;
+        ########  dnf  --assumeyes  install https://rpms.remirepo.net/enterprise/remi-release-8.rpm ;
+        ########  rpm --query --all  | grep remi ;
+        ########  dnf   --assumeyes  module enable php:remi-7.4 ;
 
 ########################### OBSOLETE AS OF 5.2  yum  install php-json ;   ##  ???
 
