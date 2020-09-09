@@ -5,7 +5,7 @@ nice  nohup  find  /usr/local/lib/php   /home/  -name  '*.php'   -type f  > ~/li
 
 ########tar -vcf /mark/phpTar.tar --list  list-of-php-scripts.txt ;    ## did not work for some reason
 
-tar -cf  /mark/phpTar.tar -T      list-of-php-scripts.txt ;
+tar -cf  /home/mark/phpTar.tar -T      list-of-php-scripts.txt ;
 
 ## on new box:
 sftp  -P  12345   marky@edwardsmarky.com  ;
