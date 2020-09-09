@@ -107,12 +107,6 @@ cat >> /etc/php.d/imagick.ini  <<END ;
 extension=imagick.so
 END
 
-cat >>/var/www/html/.htaccess   <<END ;
-php_flag log_errors on
-php_value error_log  /var/www/html/errors.log
-php_flag display_errors on
-php_value error_reporting 6143
-END
 
 systemctl   restart  httpd  ;     ## turn on the php-magick interface into apache
 
@@ -123,6 +117,14 @@ echo 'and please try  http://127.0.0.1/helloworld.php too.';
 exit 1;
 
 
+
+                        ####        this causes some phps to error out, prolly depending on how php is installed (?)
+                        ####  cat >>/var/www/html/.htaccess   <<END ;
+                        ####  php_flag log_errors on
+                        ####  php_value error_log  /var/www/html/errors.log
+                        ####  php_flag display_errors on
+                        ####  php_value error_reporting 6143
+                        ####  END
 
                         ####  echo ‘###################’
                         ####  echo ‘#                 #’
