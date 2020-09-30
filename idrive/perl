@@ -1,0 +1,7 @@
+544, 694, removed the sym link suppression:
+
+ grep mark  Backup_Script.pl
+
+elsif( 0 #-l $item # File is a symbolic link #          ## changed by mark 2020-09-30
+                        elsif( 0 #-l $temp # File is a symbolic link #          ## changed by mark 2020-09-30
+
