@@ -6,6 +6,9 @@
 #                         #
 ###########################
 
+#  include mail.rc part too ! ! ! ! !
+
+
 #
 #  https://www.linode.com/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/
 #  https://easyengine.io/tutorials/linux/ubuntu-postfix-gmail-smtp/
