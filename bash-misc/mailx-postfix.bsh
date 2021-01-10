@@ -16,7 +16,10 @@
 #  of authorizating two-factor sign-in in 'security',  but with the google g-suite accounts, the following is necessary:
 #
 #     1 - click the google-apps button (nine dots, three rows of three, upper right side ) scroll down, and select 
-#         "Admin" with the green gear
+#         "Admin" with the green gear  
+#                  OR JUST CLICK HERE:   https://myaccount.google.com/security  
+#                  (be sure to be in the correct email acccount)
+#                                               
 #
 #     2 - select "Security - Configure security settings".  
 #
@@ -25,14 +28,26 @@
 #     4 - create a new login "app":
 #
 #         -- tiny-gear-symbol (top right corner) -->> settings -->> account (tab)
+#                 or just click HERE:   https://security.google.com/settings/security/apppasswords
 #         -- 'Google account settings'
 #         -- Security (left side)
 #         -- app password   -->>  select app (dropdown)  -->> other
-#         -- name 'Postfix', and get new password         
-
-
+#         -- name 'Postfix', and get new password        
+#              or just follow THIS:
+#              #  https://www.linode.com/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/
+#
+#
+#
 emailAddress='noreply@comptonpeslonline.com'    ;
-cryptedPassword='NEW PASSWORD'                  ;
+cryptedPassword='NEW_PASSWORD_HERE'             ;
+
+if [[ $cryptedPassword = "NEW_PASSWORD_HERE" ]]
+then
+    echo "fill in the password!";
+    exit;
+else
+    echo "password set, continuing";
+fi
 
 
 thisScript=$(basename "$0");
