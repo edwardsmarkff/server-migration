@@ -6,14 +6,12 @@
 #                         #
 ###########################
 
-#  include mail.rc part too ! ! ! ! !
-
-
+#                       2021-01-11  include mail.rc
 #
+#       written from:
 #  https://www.linode.com/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/
 #  https://easyengine.io/tutorials/linux/ubuntu-postfix-gmail-smtp/
 #  http://www.freekb.net/Article?id=1015
-
 # 
 #  first step is to 'obtain' the 'two-factor-authorization Generated app password' value.  normally this is just a matter
 #  of authorizating two-factor sign-in in 'security',  but with the google g-suite accounts, the following is necessary:
@@ -42,6 +40,7 @@
 #
 #
 emailAddress='noreply@comptonpeslonline.com'    ;
+#
 cryptedPassword='NEW_PASSWORD_HERE'             ;
 
 if [[ $cryptedPassword = "NEW_PASSWORD_HERE" ]]
@@ -66,7 +65,7 @@ sed --in-place  --file=-      /etc/postfix/main.cf   <<END_OF_SED ;
 s?smtp_tls_CAfile = /etc/pki/tls/certs/ca-bundle.crt?###  smtp_tls_CAfile = /etc/pki/tls/certs/ca-bundle.crt - removed by ${thisScript}?
 \$a\
                                                                    \\
-    ## added by ${thisScript}                                      \\
+    ##  $(date;) --  added by ${thisScript}                        \\
 relayhost = [smtp.gmail.com]:587                                   \\
 smtp_use_tls = yes                                                 \\
 smtp_sasl_auth_enable = yes                                        \\
@@ -74,7 +73,7 @@ smtp_sasl_password_maps = hash:/etc/postfix/sasl/sasl_passwd       \\
 smtp_tls_CAfile = /etc/ssl/certs/ca-bundle.crt                     \\
 smtp_sasl_security_options = noanonymous                           \\
 smtp_sasl_tls_security_options = noanonymous                       \\
-   ## end added by ${thisScript}                                   \\
+   ##  $(date;) --  end added by ${thisScript}                     \\
 
 END_OF_SED
 
@@ -83,16 +82,17 @@ mkdir --verbose /etc/postfix/sasl/ ;
 
 cat <<END_OF_SASL_PASSWORD  >  /etc/postfix/sasl/sasl_passwd  ;  ## notice only ONE arrow
 
-####  added by ${thisScript}
+####   $(date;) --  added by ${thisScript}
 #####  passwords also go in  /usr/local/lib/php/SMTPMailer.php
 #####  passwords also go in  /usr/local/lib/php/PhpMailerSecurity.php  (?????????????????????????????????)
 
 [smtp.gmail.com]:587 ${emailAddress}:${cryptedPassword}
-####  end added by ${thisScript}
+####  $(date;) --   end added by ${thisScript}
 
 END_OF_SASL_PASSWORD
 
 cat <<END_OF_MAIL_RC  >>  /etc/mail.rc ;    ## 2020-01-11
+####   $(date;) --  added by ${thisScript}
 account gmailSMTP-noreply {
         set smtp-use-starttls
         set ssl-verify=ignore
@@ -105,6 +105,7 @@ account gmailSMTP-noreply {
         set ssl-verify=ignore
         #############   ??   set nss-config-dir=/home/comptonpeslonline.com/gmailCerts/
 }
+####  $(date;) --  end of added by ${thisScript}
 END_OF_MAIL_RC
 
 
