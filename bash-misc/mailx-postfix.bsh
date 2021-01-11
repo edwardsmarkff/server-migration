@@ -18,26 +18,26 @@
 #  first step is to 'obtain' the 'two-factor-authorization Generated app password' value.  normally this is just a matter
 #  of authorizating two-factor sign-in in 'security',  but with the google g-suite accounts, the following is necessary:
 #
-#     1 - click the google-apps button (nine dots, three rows of three, upper right side ) scroll down, and select 
-#         "Admin" with the green gear  
-#                  OR JUST CLICK HERE:   https://myaccount.google.com/security  
-#                  (be sure to be in the correct email acccount)
+#     
+#     1 - click here:  https://myaccount.google.com/security   (be sure to be in the correct email acccount)
+#          or click the google-apps button (nine dots, three rows of three, upper right side ) scroll down, and select 
+#         "Admin" with the green gear   IF ITS AVAILABLE, it was NOT available 2021-01-10)
 #                                               
-#
 #     2 - select "Security - Configure security settings".  
 #
 #     3 - authorize two-factor authentication
 #    
-#     4 - create a new login "app":
+#     4 - create a new login "app" - follow this:
+#           https://www.linode.com/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/
 #
+#         or follow this if available:  (it was NOT available 2021-01-10 )
 #         -- tiny-gear-symbol (top right corner) -->> settings -->> account (tab)
 #                 or just click HERE:   https://security.google.com/settings/security/apppasswords
 #         -- 'Google account settings'
 #         -- Security (left side)
 #         -- app password   -->>  select app (dropdown)  -->> other
 #         -- name 'Postfix', and get new password        
-#              or just follow THIS:
-#              #  https://www.linode.com/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/
+#              or just 
 #
 #
 #
@@ -49,7 +49,7 @@ then
     echo "fill in the password!";
     exit;
 else
-    echo "password set, continuing";
+    echo "Password propertly set, continuing.....!";
 fi
 
 
@@ -92,9 +92,24 @@ cat <<END_OF_SASL_PASSWORD  >  /etc/postfix/sasl/sasl_passwd  ;  ## notice only 
 
 END_OF_SASL_PASSWORD
 
+cat <<END_OF_MAIL_RC  >>  /etc/mail.rc ;    ## 2020-01-11
+account gmailSMTP-noreply {
+        set smtp-use-starttls
+        set ssl-verify=ignore
+        set smtp-auth=login
+        set smtp=smtp://smtp.gmail.com:587
+        set smtp-auth-user=${emailAddress}
+                ## unencrypted password also used at:   /usr/local/lib/php/SMTPMailerSecurity.php
+                ## unencrypted password created at https://myaccount.google.com/u/2/apppasswords?rapt=AEjHLxxxxxxxxxxxxxxxxxxxxx
+        set smtp-auth-password=${cryptedPassword}
+        set ssl-verify=ignore
+        #############   ??   set nss-config-dir=/home/comptonpeslonline.com/gmailCerts/
+}
+END_OF_MAIL_RC
+
 
 ### https://www.ringingliberty.com/2015/12/28/postfix-rcpt-to-temporary-lookup-failure/
-postmap    -v  /etc/postfix/sasl/sasl_passwd                 ;  
+postmap    -v  /etc/postfix/sasl/sasl_passwd                 ;  ##  2021-01-10
 
 chown --verbose root:postfix /etc/postfix/sasl/sasl_passwd*  ;
 chmod --verbose 600 /etc/postfix/sasl/sasl_passwd*           ;
@@ -110,8 +125,17 @@ cat << END_OF_SCRIPT ;
 
 ## try these:
 echo "This is a test from ${thisScript}." | mail   -v  -s "test message"  mark@edwardsmark.com ;
+
 echo 'please work This is a test from ${thisScript}.' | \
         mail -v  -s 'This Subject' -r 'MarkyBoy<mark@comptonpeslonline.com>'  mark@edwardsmark.com ;
+        
+echo 'test using -A gmailSMTP-noreply'                                                                  \\
+ |  /usr/bin/mailx                                                                                      \\
+    -v                                                                                                  \\
+    -A  gmailSMTP-noreply                                                                               \\
+    -s "sent directly from mailx.pl using perl mailx.pl command$(echo "\\nContent-type: text/html")"    \\
+    -c info@englishwithoutaccent.com mark@edwardsmark.com                                               \\
+    ;
 
 END_OF_SCRIPT
 
@@ -127,9 +151,9 @@ exit 1;
 #          set ssl-verify=ignore
 #          set smtp-auth=login
 #          set smtp=smtp://smtp.gmail.com:587
-#          set from="noreply@comptonpeslonline.com"
-#          set smtp-auth-user=noreply@comptonpeslonline.com
-#          set smtp-auth-password="NEW PASSWORD"
+#          set from="${emailAddress}"
+#          set smtp-auth-user=${emailAddress}
+#          set smtp-auth-password=${cryptedPassword}
 #          set ssl-verify=ignore
 #      }
 # END_OF_MAIL_RC
