@@ -118,8 +118,9 @@ chmod --verbose 600 /etc/postfix/sasl/sasl_passwd*           ;
       ##   https://www.linode.com/community/questions/11614/unable-to-sendmail-via-postfix-on-ubuntu-server
 mkfifo /var/spool/postfix/public/pickup                      ;
 
-systemctl reload postfix                                     ;
-systemctl status postfix                                     ;
+systemctl reload  postfix                                     ;
+systemctl restart postfix                                     ;
+systemctl status  postfix                                     ;
 
 
 cat << END_OF_SCRIPT ;
