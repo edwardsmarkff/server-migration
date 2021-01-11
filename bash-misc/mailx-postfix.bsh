@@ -124,11 +124,15 @@ systemctl status postfix                                     ;
 
 cat << END_OF_SCRIPT ;
 
-## try these:
-echo "This is a test from ${thisScript}." | mail   -v  -s "test message"  mark@edwardsmark.com ;
+## please try these:
 
-echo 'please work This is a test from ${thisScript}.' | \
-        mail -v  -s 'This Subject' -r 'MarkyBoy<mark@comptonpeslonline.com>'  mark@edwardsmark.com ;
+echo "This is a test from ${thisScript} -- $(date;)."                                            \\
+  | mail   -v  -s "test message"  mark@edwardsmark.com                                           \\
+  ;
+
+echo 'please work This is a test from ${thisScript}-- $(date;).'                                 \\
+  | mail -v  -s 'This Subject' -r 'MarkyBoy<mark@comptonpeslonline.com>'  mark@edwardsmark.com   \\
+  ;
         
 echo 'test using -A gmailSMTP-noreply'                                                                  \\
  |  /usr/bin/mailx                                                                                      \\
