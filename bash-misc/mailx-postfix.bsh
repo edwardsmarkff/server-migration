@@ -91,6 +91,14 @@ cat <<END_OF_SASL_PASSWORD  >  /etc/postfix/sasl/sasl_passwd  ;  ## notice only 
 
 END_OF_SASL_PASSWORD
 
+
+### https://www.ringingliberty.com/2015/12/28/postfix-rcpt-to-temporary-lookup-failure/
+postmap    -v  /etc/postfix/sasl/sasl_passwd                 ;  ##  2021-01-10
+
+chown --verbose root:postfix /etc/postfix/sasl/sasl_passwd*  ;
+chmod --verbose 600 /etc/postfix/sasl/sasl_passwd*           ;
+
+
 cat <<END_OF_MAIL_RC  >>  /etc/mail.rc ;    ## 2020-01-11
 ####   $(date;) --  added by ${thisScript}
 account gmailSMTP-noreply {
@@ -107,13 +115,6 @@ account gmailSMTP-noreply {
 }
 ####  $(date;) --  end of added by ${thisScript}
 END_OF_MAIL_RC
-
-
-### https://www.ringingliberty.com/2015/12/28/postfix-rcpt-to-temporary-lookup-failure/
-postmap    -v  /etc/postfix/sasl/sasl_passwd                 ;  ##  2021-01-10
-
-chown --verbose root:postfix /etc/postfix/sasl/sasl_passwd*  ;
-chmod --verbose 600 /etc/postfix/sasl/sasl_passwd*           ;
 
       ##   https://www.linode.com/community/questions/11614/unable-to-sendmail-via-postfix-on-ubuntu-server
 mkfifo /var/spool/postfix/public/pickup                      ;
