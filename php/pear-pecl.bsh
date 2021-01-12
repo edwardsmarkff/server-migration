@@ -8,6 +8,13 @@
 
 #   2020-01-01   - extracted from  php.bsh (?)
 
+#   2021-01-12    - these are now installed via:
+#         dnf -y install  php74-php-pecl-propro-devel  php74-php-pecl-propro ;
+#         dnf   install  php74-php-pecl-imagick-devel  php74-php-pecl-imagick ;
+#         dnf  install  php74-php-pecl-raphf ;
+
+exit;
+
 
 thisScript=$(basename "$0")  ;
 
