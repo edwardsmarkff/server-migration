@@ -136,12 +136,12 @@ echo 'please work This is a test from ${thisScript}-- $(date;).'                
   | mailx -v -s 'This Subject' -r 'MarkyBoy<mark@comptonpeslonline.com>'  mark@edwardsmark.com   \\
   ;
         
-echo 'test using -A gmailSMTP-noreply'                                                                  \\
- |  /usr/bin/mailx                                                                                      \\
-    -v                                                                                                  \\
-    -A  gmailSMTP-noreply                                                                               \\
-    -s "sent directly from mailx.pl using perl mailx.pl command\$(echo -e "\\nContent-type: text/html")" \\
-    -c info@englishwithoutaccent.com mark@edwardsmark.com                                               \\
+echo 'test using -A gmailSMTP-noreply'                                                                      \\
+ |  /usr/bin/mailx                                                                                          \\
+    -v                                                                                                      \\
+    -A  gmailSMTP-noreply                                                                                   \\
+    -s "sent directly from mailx.pl using perl mailx.pl command\$(echo -e "\\r\\nContent-type: text/html")" \\
+    -c info@englishwithoutaccent.com mark@edwardsmark.com                                                   \\
     ;
 
 END_OF_SCRIPT
