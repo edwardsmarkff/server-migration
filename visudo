@@ -5,6 +5,8 @@
 #                   #
 ##################### 
 
+2021-02-12  this step is CRITICAL to getting the node.js voiceSpiceNodeServerProxy program to work properly!
+
 using the command "visudo" just add the following:
 
 ## 2016-02-28 Defaults    requiretty   COMMENT THIS OUT ! ! ! 
