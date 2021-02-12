@@ -9,10 +9,10 @@ using the command "visudo" just add the following:
 
 ## 2016-02-28 Defaults    requiretty   COMMENT THIS OUT ! ! ! 
 
-## 2016-02-19
+## 2016-02-19     added by /edwardsmarkf/server-migration/visudo
 comptonpeslonline.com   ALL=(ALL)         NOPASSWD: /bin/mkdir,/bin/chown,/bin/mv,/usr/bin/file
 
-## 2016-02-19
+## 2016-02-19     added by /edwardsmarkf/server-migration/visudo
 comptonpeslonline.com   ALL=(ALL:ALL)   NOPASSWD:       /usr/sbin/csf
 comptonpeslonline.com   ALL=(ALL:ALL)   NOPASSWD:       /bin/sh
 
