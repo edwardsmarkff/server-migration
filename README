@@ -83,8 +83,17 @@ echo "/usr/bin/php-cgi"   >>  /etc/csf/csf.pignore  ;
 
 /etc/resolv.conf :
 nameserver 66.45.228.250
+nameserver 8.8.8.8
 nameserver 127.0.0.1
 
+####  https://www.interserver.net/forum/threads/strange-error-message-sending-email-on-kvm275.20548/
+  # I use
+  # nameserver 69.10.54.252
+  # nameserver 66.45.251.218
+  # nameserver 64.20.34.50
+  # nameserver 66.45.228.250
+  # nameserver 1.1.1.1
+  # nameserver 8.8.8.8
 
 
 
