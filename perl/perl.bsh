@@ -94,7 +94,7 @@ su mark --command "perl -e  'use Net::SSLeay; ' ;  "
 /usr/bin/cpan    -i       Crypt::Lite                    ;
 /usr/bin/cpan    -i       DBI                            ;
 /usr/bin/cpan    -i       Data::Dumper                   ;
-/usr/bin/cpan    -i       Data::JavaScript               ;
+/usr/bin/cpan    -i       Data::JavaScript               ;  ## time comsuming....
 /usr/bin/cpan    -i       Devel::CheckLib                ;
 /usr/bin/cpan    -i       URI::Escape::JavaScript        ;
 /usr/bin/cpan    -i       File                           ;
