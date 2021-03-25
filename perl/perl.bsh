@@ -98,6 +98,7 @@ su mark --command "perl -e  'use Net::SSLeay; ' ;  "
 /usr/bin/cpan    -i       Devel::CheckLib                ;
 /usr/bin/cpan    -i       URI::Escape::JavaScript        ;
 /usr/bin/cpan    -i       File                           ;
+/usr/bin/cpan    -i       GD                             ;
 /usr/bin/cpan    -i       JSON                           ;
 /usr/bin/cpan    -i       LWP                            ;
 /usr/bin/cpan    -i       Mail::Sendmail                 ;   ## time consuming.....
@@ -113,33 +114,32 @@ exit 1;
 ## run this NOT as root:
 
 su mark --command "perl <<EOP2  ;
+    use  CGI                        ;
+    use  Crypt::Lite                ;
+    use  Cwd                        ;
+    use  Data::Dumper               ;
+    use  Data::JavaScript           ;
     use  DBI                        ;
     use  Devel::CheckLib            ;
     use  DBD::mysql                 ;
-    use  Template::Stash::XS        ;
-    use  Net::SSLeay                ;
-    use  YAML                       ;
-    use  Test::More                 ;
     use  Exporter                   ;
     use  FCGI                       ;
-    use  CGI                        ;
-    use  Cwd                        ;
-    use  Crypt::Lite                ;
-    use  DBI                        ;
-    use  Data::Dumper               ;
-    use  Data::JavaScript           ;
-    use  URI::Escape                ;
     use  File::Basename             ;
     use  File::stat                 ;
+    use  HTML::Element              ;
     use  JSON                       ;
     use  LWP                        ;
+    use  Net::SSLeay                ;
+    use  Template::Stash::XS        ;
+    use  Test::More                 ; 
     ################################use  Mail::Sendmail             ;
     use  Spreadsheet::ParseExcel    ;
     use  Template                   ;
     use  URI                        ;
-    use  HTML::Element              ;
+    use  URI::Escape                ;
     use  XML::TreeBuilder           ;
     use  XML::Writer                ;
+    use  YAML                       ;
     print  'Test script executes successfully!';
 EOP2
 "
