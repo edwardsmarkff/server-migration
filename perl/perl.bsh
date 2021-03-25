@@ -84,30 +84,29 @@ su mark --command "perl -e  'use Net::SSLeay; ' ;  "
 ### o conf prerequisites_policy follow   ## stop prompting for answers!
 ### o conf prerequisites_policy ask      ## go back to prompting for answers!
 
-/usr/bin/cpan    -i       GD                             ;   ## 2019-12-10
-/usr/bin/cpan    -i       YAML                           ;
-/usr/bin/cpan    -i       Test::More                     ;
-/usr/bin/cpan    -i       Exporter                       ;
-/usr/bin/cpan    -i       FCGI                           ;
 /usr/bin/cpan    -i       CGI                            ;
-/usr/bin/cpan    -i       Cwd                            ;
 /usr/bin/cpan    -i       Crypt::Lite                    ;
-/usr/bin/cpan    -i       DBI                            ;
+/usr/bin/cpan    -i       Cwd                            ;
 /usr/bin/cpan    -i       Data::Dumper                   ;
 /usr/bin/cpan    -i       Data::JavaScript               ;  ## time comsuming....
+/usr/bin/cpan    -i       DBI                            ;
 /usr/bin/cpan    -i       Devel::CheckLib                ;
-/usr/bin/cpan    -i       URI::Escape::JavaScript        ;
+/usr/bin/cpan    -i       Exporter                       ;
+/usr/bin/cpan    -i       FCGI                           ;
 /usr/bin/cpan    -i       File                           ;
-/usr/bin/cpan    -i       GD                             ;
+/usr/bin/cpan    -i       GD                             ;   ## 2019-12-10
+/usr/bin/cpan    -i       HTML::Element                  ;
 /usr/bin/cpan    -i       JSON                           ;
 /usr/bin/cpan    -i       LWP                            ;
 /usr/bin/cpan    -i       Mail::Sendmail                 ;   ## time consuming.....
 /usr/bin/cpan    -i       Spreadsheet::ParseExcel        ;
 /usr/bin/cpan    -i       Template                       ;
+/usr/bin/cpan    -i       Test::More                     ;
 /usr/bin/cpan    -i       URI                            ;
-/usr/bin/cpan    -i       HTML::Element                  ;
+/usr/bin/cpan    -i       URI::Escape::JavaScript        ;
 /usr/bin/cpan    -i       XML::TreeBuilder               ;
 /usr/bin/cpan    -i       XML::Writer                    ;
+/usr/bin/cpan    -i       YAML                           ;
 
 exit 1; 
 
