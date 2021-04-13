@@ -1,7 +1,11 @@
 
-https://www.linuxquestions.org/questions/showthread.php?p=6239936#post6239936
+  ## fstab
+  ##
+  ##  written 2021-04-13
+  
+### my question:  https://www.linuxquestions.org/questions/showthread.php?p=6239936#post6239936
 
-mount --bind /home /var/www ;
+mount --bind /home /var/www ;    ### from joe cooper @ virtualmin
 umount /var/www/   ;   ## just in case
 
 
@@ -21,3 +25,32 @@ mount --all  ;  ## to see results  using  --fake does  NOT work!
 grub2-mkconfig --version  ;  ##  grub2-mkconfig (GRUB) 2.03
 
 grub2-mkconfig --output=/boot/grub2/grub.cfg*    *  ;  
+
+
+##  https://unix.stackexchange.com/questions/198590/what-is-a-bind-mount
+##  https://linuxize.com/post/how-to-mount-and-unmount-file-systems-in-linux/
+
+httpd.conf:
+
+####DocumentRoot "/var/www/html"        2021-03-23 per Joe Cooper
+
+   /etc/httpd/conf/httpd.conf :
+#
+# Relax access to content within /var/www.
+#
+<Directory "/var/www">
+    AllowOverride None
+    # Allow open access:
+    Require all granted
+</Directory>
+
+<VirtualHost 104.218.50.87:80>    (ALSO IN :443)
+.............
+ScriptAlias /cgi-bin/ /var/www/comptonpeslonline.com/cgi-bin/
+...............
+<Directory /var/www/comptonpeslonline.com/cgi-bin>
+###allow from all
+        AllowOverride All Options=ExecCGI,Includes,IncludesNOEXEC,Indexes,MultiViews,SymLinksIfOwnerMatch
+        AddHandler cgi-script .cgi  .pl  .sh
+        Require all granted
+</Directory>
