@@ -4,6 +4,14 @@ https://www.linuxquestions.org/questions/showthread.php?p=6239936#post6239936
 mount --bind /home /var/www ;
 umount /var/www/   ;   ## just in case
 
-  mount -a  ;  ## to see results
+  mount --all  ;  ## to see results  using  --fake does  NOT work!
   
-  does fstab need to be "compiled" ??
+  does fstab need to be "compiled" ??  probably not
+
+the following lines are added to   /etc/fstab:
+
+##      mount --bind /home /var/www     ;
+##      umount /var/www/                ;
+#       2021-04-12 - this is specifically to get perl-cgi working again
+/home /var/www none bind
+#
