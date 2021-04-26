@@ -2,6 +2,7 @@
 ##  changing port 22 to 19575 
 
 https://help.liquidweb.com/s/article/Changing-Your-SSH-Port-with-the-Command-Line
+https://manage.cloudminister.com/index.php?rp=/knowledgebase/117/What-is-SSH-how-to-change-ssh-port-and-implement-ssh-hardening-on-centos-7-server-with-CWP.html
 
 
 vi  /etc/csf/csf.conf  ;  ## change 22 to 19575
