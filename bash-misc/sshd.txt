@@ -1,0 +1,32 @@
+
+##  changing port 22 to 19575 
+
+https://help.liquidweb.com/s/article/Changing-Your-SSH-Port-with-the-Command-Line
+
+
+vi  /etc/csf/csf.conf  ;  ## change 22 to 19575
+
+TCP_IN = "20,21,19575,25,53,80,110,143,443,465,587,993,995
+
+# Allow outgoing TCP ports
+TCP_OUT = "20,19575,25,53,80,110,113,443,465,587,993,995
+
+##PORTS_sshd = "22"
+PORTS_sshd = "19575"
+
+
+
+vim /etc/ssh/sshd_config ;
+ 
+#Port 22
+Port 19575
+
+
+csf  --stop ; csf  --start ;  csf --enable ;
+ 
+systemctl stop csf.service ;  systemctl  start csf.service ;  systemctl  status  csf.service ;
+
+systemctl stop  sshd.service ;  systemctl start  sshd.service ;  systemctl status  sshd.service ;
+
+
+
