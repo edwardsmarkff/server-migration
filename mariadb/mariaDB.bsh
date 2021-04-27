@@ -37,7 +37,7 @@ sudo dnf --assumeyes install MariaDB-server MariaDB-client --disablerepo=AppStre
 systemctl status mariadb  ;
 
 mysql -V  ;			## version number
-mysqld --print-defaults  ;	## print what the starting arguments at startup
+mysql --print-defaults  ;	## print what the starting arguments at startup
 
 cat  <<END > /etc/my.cnf   ;
 ## the following was added from mariaDB.bsh installation script 2020-01-09
