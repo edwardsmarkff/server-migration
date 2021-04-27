@@ -39,7 +39,7 @@ systemctl status mariadb  ;
 mysql -V  ;			## version number
 mysql --print-defaults  ;	## print what the starting arguments at startup
 
-cat  <<END > /etc/my.cnf   ;
+cat  <<END   >> /etc/my.cnf   ;
 ## the following was added from mariaDB.bsh installation script 2020-01-09
 [server]
 sql_mode=NO_ENGINE_SUBSTITUTION
