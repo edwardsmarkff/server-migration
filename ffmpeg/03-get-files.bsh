@@ -53,11 +53,11 @@ git clone https://code.videolan.org/videolan/x264.git  ~/INSTALL_FFmpeg/INSTALL_
 curl              https://www.ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2      \
       > ~/INSTALL_FFmpeg/INSTALL_FFmpeg/ffmpeg-snapshot.tar.bz2  ;
 
-curl  http://www.music.helsinki.fi/tmt/opetus/uusmedia/esim/a2002011001-e02.wav \
+curl  https://opus-codec.org/static/examples/samples/speech_12kbps_mb.wav \
     >    ~/INSTALL_FFmpeg/test/bat-guano.wav ; 
 curl  https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg \
    >     ~/INSTALL_FFmpeg/test/example.ogg  ;
-curl  https://people.xiph.org/~giles/2012/opus/detodos.opus   \
+curl  https://opus-codec.org/static/examples/ehren-paper_lights-96.opus   \
    > ~/INSTALL_FFmpeg/test/detodos.opus ;
 curl  https://dl.espressif.com/dl/audio/ff-16b-1c-44100hz.opus   \
    > ~/INSTALL_FFmpeg/test/detodos2.opus ;
