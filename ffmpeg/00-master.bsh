@@ -1,0 +1,21 @@
+#! /bin/bash -w
+#
+# run this ONLY if you are SURE everything works!
+
+bash   01-initial.bsh		;
+bash   02-directories.bsh	;
+bash   03-get-files.bsh		;
+bash   04-file-sizes.bsh	;
+bash   05-bzip2.bsh		;
+bash   06-yasm.bsh		;
+bash   07-flac.bsh		;
+bash   08-libogg.bsh		;
+bash   09-libvorbis.bsh		;
+bash   10-opus.bsh		;
+bash   11-libopus.bsh		;
+bash   12-opusfile.bsh		;
+bash   13-opustools.bsh		;
+bash   14-lame.bsh		;
+bash   15-x264.bsh		;
+bash   16-ffmpeg.bsh		;
+bash   99-test.bsh		
