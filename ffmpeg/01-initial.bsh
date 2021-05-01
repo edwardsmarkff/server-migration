@@ -7,6 +7,7 @@
 ###########################
 
 ##  2019-02-23 -- added openssl and openssl-devel
+##  2021-05-01 -- added python38 for RockyLinux
 
 # run these from either the command line or this entire script.
 ###  .   export.bsh  ##  notice the DOT at the beginning of the line, not ‘bash’
@@ -26,6 +27,7 @@ dnf  --assumeyes  install   \
     make                    \
     openssl                 \
     openssl-devel           \
+    python38                \
     xz                      \
     ;
 
