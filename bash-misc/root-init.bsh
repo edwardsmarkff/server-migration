@@ -43,7 +43,8 @@ cat  <<END_OF_BASHRC >>  ~/.bashrc  ;
 
 echo ‘Welcome to KVM276 -- setting vi as your default editor’;
 echo -e "\nSetting custom values in .bashrc\n\n" ## 2018-02-21
-/usr/bin/dmesg --console-level 1 ;      ## 2021-05-13
+/usr/bin/dmesg --console-level 1 ;      ## 2021-05-13 - suppress the firewall messages on the interserver tignt-VNC
+
 
 export LD_LIBRARY_PATH="/usr/local/lib/"                       ;      ## 2016-04-24
 ##export PERL_LOCAL_LIB_ROOT="$PERL_LOCAL_LIB_ROOT:/root/perl5"  ;   ## comment out until AFTER perl install!
