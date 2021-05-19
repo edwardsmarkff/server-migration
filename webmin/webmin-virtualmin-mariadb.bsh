@@ -39,6 +39,12 @@ wget https://download.webmin.com/jcameron-key.asc  ;
 rpm --import jcameron-key.asc   ;
 dnf  --assumeyes  install webmin ;
 
+##TEMPORARY - wget https://raw.githubusercontent.com/virtualmin/virtualmin-install/master/virtualmin-install.sh;
+###   change vm_version=7 to    vm_version=6
+#
+#
+exit;  ## TEMPORARY!
+
 wget http://software.virtualmin.com/gpl/scripts/install.sh ;
 chmod --verbose  700   ./install.sh ;
 ./install.sh ;     ## may have to run this twice
