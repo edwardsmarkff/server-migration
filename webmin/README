@@ -10,3 +10,6 @@ RESTRICT_SYSLOG = "3"   ## 2021-05-13 change "0" to "3" in order to avoid this e
 and be sure to check:
 /var/lib/csf/csf.tempban
 /var/lib/csf/csf.tempallow
+
+2021-05-19 - consider ONLY installing virtualmin as per:
+        https://forum.virtualmin.com/t/minor-issue-with-google-vm-rocky-linux/110750/3
