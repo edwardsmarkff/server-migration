@@ -6,9 +6,18 @@
 #   workaround is to just let it install 10.3, then remove it and install 10.5
 
 #  2020-08-27  -- this also installs MariaDB.
-#  2021-05-20  -- disable script instead run   https://www.virtualmin.com/download.html
+#  2021-05-27  -- ONLY install virtualmin: (let virtualmin install webmin)   https://www.virtualmin.com/download.html
+
+wget http://software.virtualmin.com/gpl/scripts/install.sh  ;
+
+chmod  700  install.sh ;
+
+./install.sh ;
 
 exit;
+
+################################################################################################
+################################################################################################
 
 
 cd ;
