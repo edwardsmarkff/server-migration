@@ -13,6 +13,9 @@ and be sure to check:
 
 2021-04-07 -  minor change for testing RockyLinux:
         https://forum.virtualmin.com/t/rocky-linux-is-alive/110740/4
+        install from here:   https://raw.githubusercontent.com/virtualmin/virtualmin-install/master/virtualmin-install.sh
+            and change *vm_version=7* to  *vm_version=6*
+        testing only!
         
 2021-05-19 - consider ONLY installing virtualmin as per:
         https://forum.virtualmin.com/t/minor-issue-with-google-vm-rocky-linux/110750/3
