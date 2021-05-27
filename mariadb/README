@@ -1,0 +1,9 @@
+
+2021-05-27:  it turns out the best way to install Mariadb is to let Virtualmin/Webmin install it, then update it like this:
+
+
+https://mariadb.com/docs/deploy/upgrade-community-server-cs105-centos8/
+
+this file MAY need to be edited for RL:   https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
+
+
