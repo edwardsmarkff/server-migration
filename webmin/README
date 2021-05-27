@@ -11,5 +11,8 @@ and be sure to check:
 /var/lib/csf/csf.tempban
 /var/lib/csf/csf.tempallow
 
+2021-04-07 -  minor change for testing RockyLinux:
+        https://forum.virtualmin.com/t/rocky-linux-is-alive/110740/4
+        
 2021-05-19 - consider ONLY installing virtualmin as per:
         https://forum.virtualmin.com/t/minor-issue-with-google-vm-rocky-linux/110750/3
