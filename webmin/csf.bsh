@@ -11,14 +11,13 @@
 ##                  -- a few missing steps - disable old firewall & start new csf
 ##                      https://www.howtoforge.com/tutorial/install-and-configure-csf-config-server-firewall-on-centos-7/
 ##                 to get working on webmin:   https://bobcares.com/blog/csf-firewall-webmin/#comment-75375
-##    2021-05-28    -- fixed minor error with path name
 
 mkdir  ~/csf  && cd   ~/csf  ;
 wget   https://download.configserver.com/csf.tgz  ;
 tar -xzf csf.tgz  ;
 cd  csf  ;
-sh  install.sh ;
-perl  /etc/csf/csf/csftest.pl ;
+sh  install.sh ;   ## 2021-05-28 - dont skip this one~!
+perl  /etc/csf/csftest.pl ;
 sh /etc/csf/remove_apf_bfd.sh  ;
 
 exit 1;
