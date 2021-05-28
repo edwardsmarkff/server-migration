@@ -1,6 +1,16 @@
 #! /bin/bash -w
 #
 # run this ONLY if you are SURE everything works!
+#   2021-05-28 - added prompt
+
+while true; do
+    read -p "Is everything working properly?" yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
 bash   01-initial.bsh		;
 bash   02-directories.bsh	;
