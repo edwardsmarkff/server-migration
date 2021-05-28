@@ -1,4 +1,12 @@
 
+2021-05-28:   https://mariadb.com/kb/en/no-rocky-linux-support-yet/+comments/5249
+
+When running the mariadb_repo_setup script, you can tell it what OS and version to use and then it will skip trying to detect the OS you are running:
+
+./mariadb_repo_setup --os-type=rhel --os-version=8
+
+
+
 2021-05-27:  it turns out the best way to install Mariadb is to let Virtualmin/Webmin install it, then update it like this:
 
 
