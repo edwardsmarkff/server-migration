@@ -17,5 +17,7 @@ and be sure to check:
             and change *vm_version=7* to  *vm_version=6*
         testing only!
         
-2021-05-19 - consider ONLY installing virtualmin as per:
+2021-05-19 - ONLY install virtualmin as per:
         https://forum.virtualmin.com/t/minor-issue-with-google-vm-rocky-linux/110750/3
+        
+2021-06-01  - to get CSF to display in WebMin:  https://doxfer.webmin.com/Webmin/ConfigServer_Security_%26_Firewall
