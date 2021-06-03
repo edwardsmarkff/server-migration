@@ -14,4 +14,18 @@ https://mariadb.com/docs/deploy/upgrade-community-server-cs105-centos8/
 
 this file MAY need to be edited for RL:   https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
 
+2021-06-03: to gain MysqlWorkbench access, edit  /etc/my.cnf.d/serfver.cnf  and change :
+
+bind-address = 127.0.0.1
+-to-
+bind-address = 0.0.0.0
+
+alternatively:
+
+skip-networking=0
+skip-bind-address
+
+      https://webdock.io/en/docs/how-guides/database-guides/how-enable-remote-access-your-mariadbmysql-database
+      https://mariadb.com/kb/en/configuring-mariadb-for-remote-client-access/
+
 
