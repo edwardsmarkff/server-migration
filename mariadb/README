@@ -1,4 +1,8 @@
 
+2021-06-14:    issue probably from installing on RockyLinux
+                  mysql_upgrade - --user=root  --password=MYPASSWORDGOESHERE ;
+                  https://stackoverflow.com/questions/27918764/cannot-load-from-mysql-proc-the-table-is-probably-corrupted
+               
 2021-05-28:   https://mariadb.com/kb/en/no-rocky-linux-support-yet/+comments/5249
 
 When running the mariadb_repo_setup script, you can tell it what OS and version to use and then it will skip trying to detect the OS you are running:
