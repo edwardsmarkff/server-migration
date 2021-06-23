@@ -2,10 +2,11 @@
 
 ## 2019-11-13 - ran on centos-7/8 successfully.
 
-0) /bash-misc/root-init.bsh
-1) /bash-misc/yum-dnf.bsh 
+0) bash -vx  ./bash-misc/root-init.bsh
+1) bash -vx  ./bash-misc/dnf-yum.bsh 
 2) ffmpeg 
-3) Mariadb (do before perl and php)
+3) INSTALL VIRTUALMIN !!  
+3a) Mariadb UPGRADE (LET VIRTUALMIN INSTALL PHP, let github install PERL  ## do before perl and php)
 5) perl/CPAN
 6) php
 7) /bash-misc/imagemagick
