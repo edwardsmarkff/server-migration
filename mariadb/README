@@ -10,7 +10,9 @@
 
 When running the mariadb_repo_setup script, you can tell it what OS and version to use and then it will skip trying to detect the OS you are running:
 
-./mariadb_repo_setup --os-type=rhel --os-version=8
+./mariadb_repo_setup --os-type=rhel --os-version=8  ;
+
+./mariadb_repo_setup --os-type=rhel --os-version=8      --mariadb-server-version="mariadb-10.5"  ;
 
 
 
