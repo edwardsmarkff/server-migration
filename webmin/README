@@ -21,3 +21,11 @@ and be sure to check:
         https://forum.virtualmin.com/t/minor-issue-with-google-vm-rocky-linux/110750/3
         
 2021-06-01  - to get CSF to display in WebMin:  https://doxfer.webmin.com/Webmin/ConfigServer_Security_%26_Firewall
+
+2021-06-23  - be sure to stop webmin
+  /etc/init.d/webmin  stop;
+   ps -ef  | grep  perl ; ## manually kill any remaining webmin jobs
+  systemctl  enable   webmin.service;
+  systemctl  start    webmin.service;
+  systemctl  status   webmin.service;
+  
