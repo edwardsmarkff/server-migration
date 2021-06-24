@@ -116,6 +116,10 @@ pecl install imagick ;
 
 echo "extension=imagick.so" > /etc/php.d/20-imagick.ini  ;  ## 2021-06-24 - added from 
                                                             ##    https://itzgeek.com/post/how-to-install-imagemagick-and-php-imagick-on-centos-8-rhel-8/
+                                                            ##    this step MAY cause problems!
+                                                            ##    to test:
+                                                            
+php -m | grep imagick   ;     ## if this causes errors, remove "/etc/php.d/20-imagick.ini"  above!
 
   
 systemctl   restart  httpd.service  ;     ## turn on the php-magick interface into apache
