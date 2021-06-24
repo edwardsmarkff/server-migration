@@ -1,3 +1,10 @@
 
 centos-8:
 dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+
+to UPDATE from 7.2 (virtualim favorite version) to 7.4:  (2021-06-24)
+
+  dnf  module  reset php    ;
+  dnf module enable  php:7.4   ;
+  dnf  update  php\*    ;
+
