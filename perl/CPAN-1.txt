@@ -19,8 +19,9 @@ perl -MCPAN -e shell ;   #run once for initialization and testing
 perl -MCPAN -e shell  'o conf prerequisites_policy follow;  '   ;
 perl -MCPAN -e shell  'o conf commit'      ;
 
-perl -MCPAN -e shell  'install CPAN'      ;   ## 2020-01-13
-perl -MCPAN -e shell  'reload CPAN'      ;    ## 2020-01-13
+/usr/bin/cpan   ;  ## 2021-06-25
+   install CPAN
+   reload CPAN
 
 /usr/bin/cpan    -i   -f  Template::Stash::XS      ;             ## prompts for *TWO* "y" replies (?)
 
