@@ -46,7 +46,7 @@ echo '<?php phpinfo(); ?>' > /var/www/html/phpinfo.php ;
 echo 'please try  http://127.0.0.1/phpinfo.php   in your browser!';
 
 ##  https://www.php.net/manual/en/imagick.examples-1.php
-cat > /var/www/html/helloworld.php  <<END ;
+cat > /var/www/html/helloImageMagick.php  <<END ;
 <?php
             /* Create a new imagick object */
       \$im = new Imagick();
@@ -65,7 +65,7 @@ cat > /var/www/html/helloworld.php  <<END ;
             /* Set font size to 52 */
       \$draw->setFontSize(52);
             /* Annotate some text */
-      \$draw->annotation(20, 50, "Hello World!");
+      \$draw->annotation(20, 50, "Hello ImageMagick!");
             /* Create a new canvas object and a white image */
       \$canvas = new Imagick();
       \$canvas->newImage(350, 70, "white");
@@ -126,7 +126,7 @@ systemctl   restart  httpd.service  ;     ## turn on the php-magick interface in
 
 echo 'please try  http://127.0.0.1/phpinfo.php   in your browser once again!';
 echo 'be sure to look for both the magick section AND the magicwand section near the bottom!!';
-echo 'and please try  http://127.0.0.1/helloworld.php too.';
+echo 'and please try  http://127.0.0.1/helloImageMagick.php too.';
 
 exit 1;
 
