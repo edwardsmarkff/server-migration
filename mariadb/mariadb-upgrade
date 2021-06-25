@@ -1,4 +1,4 @@
-#! /usr/bash
+#! /usr/bin/bash
 
 ####https://mariadb.com/docs/deploy/upgrade-community-server-cs105-centos8/
 
@@ -15,9 +15,13 @@ wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup  ;
 chmod +x mariadb_repo_setup  ;
  
 ./mariadb_repo_setup --os-type=rhel --os-version=8      --mariadb-server-version="mariadb-10.5"  ;   ## 2021-06-23
+                             ## --os-type is only until MariaDB starts to support RockyLinux
  
 dnf --assumeyes  install   mariadb-server    mariadb-backup  ;
  
 systemctl start mariadb.service ;
- 
- 
+
+
+
+
+exit ;
