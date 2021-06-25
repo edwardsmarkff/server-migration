@@ -1,17 +1,23 @@
+#! /usr/bash
 
+####https://mariadb.com/docs/deploy/upgrade-community-server-cs105-centos8/
 
-https://mariadb.com/docs/deploy/upgrade-community-server-cs105-centos8/
-
- systemctl stop mariadb.service ;
+systemctl stop mariadb.service ;
  
- dnf  remove "MariaDB-*"   ;
+dnf  --assumeyes remove "MariaDB-*"   ;
  
- dnf  remove   remove galera-4  galera ;
+dnf  --assumeyes remove   remove galera-4  galera ;
  
- rpm --query --all | grep -i -E "mariadb|galera"  ;  ## double-check to make sure all has been removed.
+rpm --query --all | grep -i -E "mariadb|galera"  ;  ## double-check to make sure all has been removed.
  
- wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup  ;
+wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup  ;
   
- chmod +x mariadb_repo_setup  ;
+chmod +x mariadb_repo_setup  ;
+ 
+./mariadb_repo_setup --os-type=rhel --os-version=8      --mariadb-server-version="mariadb-10.5"  ;   ## 2021-06-23
+ 
+dnf --assumeyes  install   mariadb-server    mariadb-backup  ;
+ 
+systemctl start mariadb.service ;
  
  
