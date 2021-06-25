@@ -1,6 +1,9 @@
 #! /usr/bin/bash
 
-####https://mariadb.com/docs/deploy/upgrade-community-server-cs105-centos8/
+####  written entirely from:  https://mariadb.com/docs/deploy/upgrade-community-server-cs105-centos8/
+
+###  2021-05-28:   https://mariadb.com/kb/en/no-rocky-linux-support-yet/+comments/5249
+
 
 systemctl stop mariadb.service ;
  
@@ -14,6 +17,7 @@ wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup  ;
   
 chmod +x mariadb_repo_setup  ;
  
+ ###  When running the mariadb_repo_setup script, you can tell it what OS and version to use and then it will skip trying to detect the OS you are running:
 ./mariadb_repo_setup --os-type=rhel --os-version=8      --mariadb-server-version="mariadb-10.5"  ;   ## 2021-06-23
                              ## --os-type is only until MariaDB starts to support RockyLinux
  
@@ -25,3 +29,7 @@ systemctl start mariadb.service ;
 
 
 exit ;
+
+
+
+
