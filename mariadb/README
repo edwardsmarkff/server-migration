@@ -6,9 +6,6 @@
               also include port 3306 in csf.conf  under TCP_IN   !
               
                
-
-
-
 2021-05-27:  it turns out the best way to install Mariadb is to let Virtualmin/Webmin install it, then update it like this:
 
 
