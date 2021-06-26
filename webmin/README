@@ -1,4 +1,4 @@
-
+/etc/resolv.conf  :  may need to add "nameserver  127.0.0.1#  -- 2021-06-25
 
 /etc/csf/csf.conf :
 
