@@ -1,4 +1,4 @@
-/etc/resolv.conf  :  may need to add "nameserver  127.0.0.1#  -- 2021-06-25
+/etc/resolv.conf  :  may need to add "nameserver  127.0.0.1" as instructed by webmin website console page #  -- 2021-06-25
                         ## https://www.virtualmin.com/node/17165
 
 /etc/csf/csf.conf :
@@ -9,7 +9,7 @@ RESTRICT_SYSLOG = "3"   ## 2021-05-13 change "0" to "3" in order to avoid this e
                     
 /etc/csf/csf.conf    ##  https://globedrill.com/warning-testing-mode-is-enabled-not-forget-disable-configuration/
 
-##  Change the line TESTING = “1” to TESTING = “0”
+##  Change the line TESTING = “1” to TESTING = “0”    ## 2021-06-25
 
 also manually restart ldf.service if the "failed" indicator comes on in the webmin website console.
 
