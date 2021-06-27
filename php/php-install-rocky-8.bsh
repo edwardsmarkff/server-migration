@@ -30,6 +30,8 @@
         #  rewritten from https://www.tecmint.com/install-php-on-centos-8/
 
 dnf config-manager --set-enabled PowerTools ;    ## these are repeated from dnf-yum.bsh
+dnf install dnf-plugins-core ;                   ##  https://serverfault.com/questions/997896/how-to-enable-powertools-repository-in-centos-8
+dnf config-manager --set-enabled powertools ;    ##  https://serverfault.com/questions/997896/how-to-enable-powertools-repository-in-centos-8
 dnf  --assumeyes  install dnf-utils ;            ## these are repeated from dnf-yum.bsh
 
 
