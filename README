@@ -2,21 +2,18 @@
 
 ## 2019-11-13 - ran on centos-7/8 successfully.
 
-0) bash -vx  ./bash-misc/root-init.bsh
-1) bash -vx  ./bash-misc/dnf-yum.bsh 
-2) ffmpeg 
-3) INSTALL VIRTUALMIN !!  
-3a) Mariadb UPGRADE (LET VIRTUALMIN INSTALL PHP, let github install PERL  ## do before perl and php)
-5) perl/CPAN
-6) php
-7) /bash-misc/imagemagick
-8) apache
-9) webmin/virtualmin
-10) /bash-misc/csf.bsh
-11) clamav
-12) /bash-init/rc.local.bsh
-13) /node/node.bsh  &  /node/pm2.bsh
-14) visudo
+01)  bash -vx  ./bash-misc/root-init.bsh
+02)  bash -vx  ./bash-misc/dnf-yum.bsh 
+03)  ffmpeg 
+04)  webmin/virtualmin/csf
+05)  Mariadb UPGRADE (LET VIRTUALMIN INSTALL PHP, let github install PERL  ## do before perl and php)
+06)  perl/CPAN
+07)  php
+08)  /bash-misc/imagemagick
+09)  clamav
+11)  /bash-init/rc.local.bsh
+11)  /node/node.bsh  &  /node/pm2.bsh
+12)  visudo
 
 30) /bash-misc/mailx-postfix.bsh
 
@@ -24,8 +21,6 @@
 
 80) install fail2ban  (??)
 
-90) /bash-init/imagemagick.bsh
-99) /bash-init/sftp.bsh   (do we even need this??)
 
 
 ## new 2016-02-28   -- THIS IS COPIED IN WHEN DIRECTORY IS MOVED!
