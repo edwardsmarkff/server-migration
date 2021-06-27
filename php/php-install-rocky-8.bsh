@@ -110,7 +110,7 @@ php-mbstring  \
 php-pdo  \
 php-pdo_mysql \
 php-pear  \
-php-pecl-raphf  \
+################################php-pecl-raphf  \
 php-process  \
 php-runtime  \
 php-xml  \
