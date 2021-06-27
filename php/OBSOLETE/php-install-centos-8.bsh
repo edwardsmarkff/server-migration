@@ -14,7 +14,7 @@
 
 ##   DONT EVER USE WEBTATIC!  use remi/epel instead   ! ! ! 
 
-
+exit;   ##  webmin does all the installation for us now.
 
 ## https://www.linuxtechi.com/install-php-on-centos-8-rhel-8/
 
