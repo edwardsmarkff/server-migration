@@ -1,4 +1,6 @@
 
+maybe better to SKIP this section entirely since webmin seems to be very "picky" as to what version it is willing to accept.
+
 centos-8:
 dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 
