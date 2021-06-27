@@ -1,10 +1,12 @@
 
-maybe better to SKIP this section entirely since webmin seems to be very "picky" as to what version it is willing to accept.
+##  do this AFTER webmin since webmin seems to be very "picky" as to what version it is willing to accept.
+## or php upgrade to 7.4 AFTER webmin install??  (could be dangerous)
 
-centos-8:
-dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+###  centos-8:
 
-to UPDATE from 7.2 (virtualim favorite version) to 7.4:  (2021-06-24)
+    dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+
+###to UPDATE from 7.2 (virtualim favorite version) to 7.4:  (2021-06-24)
 
   dnf  module  reset php    ;
   dnf module enable  php:7.4   ;
