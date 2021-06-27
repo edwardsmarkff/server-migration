@@ -1,7 +1,9 @@
 #!  /usr/bin/bash -w
 
+
 ## this is just until webmin/virtualmin completely support RL - delete this script afterwards.
 
+##      https://forum.virtualmin.com/t/which-install-script-for-rocky/111183/3
 
 curl https://raw.githubusercontent.com/virtualmin/virtualmin-install/master/virtualmin-install.sh \
         | sed -e ‘s/^vm_version=7$/vm_version=6/’ > virtualmin-install.sh ;
