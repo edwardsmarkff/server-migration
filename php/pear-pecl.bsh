@@ -12,6 +12,7 @@
 #         dnf -y install  php74-php-pecl-propro-devel  php74-php-pecl-propro ;
 #         dnf   install  php74-php-pecl-imagick-devel  php74-php-pecl-imagick ;
 #         dnf  install  php74-php-pecl-raphf ;
+## OBSOLETE ! ! ! ! !
 
 exit;
 
