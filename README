@@ -11,9 +11,9 @@
 07)  php
 08)  /bash-misc/imagemagick
 09)  clamav
-11)  /bash-init/rc.local.bsh
-11)  /node/node.bsh  &  /node/pm2.bsh
-12)  visudo
+
+10)  /node/node.bsh  &  /node/pm2.bsh
+11)  visudo
 
 30) /bash-misc/mailx-postfix.bsh
 
