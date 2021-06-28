@@ -74,6 +74,11 @@ END_OF_PHP_DOT_INI
 
 php --version ;
 
+    #  https://stackoverflow.com/questions/20163746/problems-with-imagick-and-php
+echo "if this mentions some crap about imagic.so, try the following:"   ;
+echo "pecl   uninstall  imagick; " ;
+echo "pecl     instlal  imagick; " ;
+
 exit 1 ;
 
 
