@@ -1,6 +1,8 @@
+#!  /usr/bin/bash  -w
+
 #####clamav #######   -- 2016-02-06  -- moved from README 2019-06-19
 
- mkdir   /var/log/clamav/    ;   ### need this to start the log directory !
+mkdir   --verbose   /var/log/clamav/    ;   ### need this to start the log directory !
 cat  <<END  >  /etc/cron.daily/manual_clamscan ;
 #!/bin/bash                    
 #     written from ‘initial setup’ 2016-02-19   
@@ -17,11 +19,12 @@ END
 chmod  755    /etc/cron.daily/manual_clamscan ;
 cat    /etc/cron.daily/manual_clamscan ;  # display the results
 
- vi  /etc/freshclam.conf ;  ###  2019-06-19 - add theses:
+cat   >>  /etc/freshclam.conf  <<END_OF_FRESHCLAM  ;  ###  2019-06-19 - add theses:
 DatabaseCustomURL http://sigs.interserver.net/interserver256.hdb
 DatabaseCustomURL http://sigs.interserver.net/interservertopline.db
 DatabaseCustomURL http://sigs.interserver.net/shell.ldb
 DatabaseCustomURL http://sigs.interserver.net/whitelist.fp
+END_OF_FRESHCLAM
 
 
 #####end clamav ###############
