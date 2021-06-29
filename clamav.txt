@@ -11,7 +11,7 @@ SCAN_DIR="/home"
 LOG_FILE="/var/log/clamav/manual_clamscan.log"
 LOG_FILE_TMP="/var/log/clamav/manual_clamscan_tmp.log"
 /usr/bin/clamscan --infected --recursive \$SCAN_DIR > \$LOG_FILE_TMP      ;
-cat \$LOG_FILE_TMP |  mailx -r 'edwardsmarkf@gmail.com'  -s 'clamav results!'  \
+cat \$LOG_FILE_TMP |  mailx -r 'edwardsmarkf@gmail.com'  -s 'SERVER-NAME-HERE clamav results!'  \
 mark@edwardsmark.com  ;
 cat \$LOG_FILE_TMP >> \$LOG_FILE ;
 #     written from ‘initial setup’ 2016-02-19       
