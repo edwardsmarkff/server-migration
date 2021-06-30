@@ -22,6 +22,8 @@ perl -MCPAN -e shell  'o conf commit'      ;
 /usr/bin/cpan   ;  ## 2021-06-25
    install CPAN
    reload CPAN
+   
+## if the "install CPAN" takes forever, it might be because of an internal issue with IPV6 that hast to be resolved with the web hosting company!
 
 /usr/bin/cpan    -i   -f  Template::Stash::XS      ;             ## prompts for *TWO* "y" replies (?)
 
