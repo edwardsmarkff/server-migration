@@ -9,16 +9,32 @@
 #   2019-04-04  -- migrated from googledocs
 #   2019-08-28  -- upgraded to version 10.x
 #   2019-12-10  -- migrated to centos-8
+#   2021-06-30  -- migrated to Rocky-Linux!
+
+#   https://tecadmin.net/install-latest-nodejs-on-centos-8/
+
+curl -sL https://rpm.nodesource.com/setup_14.x | sudo -E bash - ;
+
+npm install -g npm@latest ;
+
+exit;
+
+
+ 
 
 #######   https://linuxconfig.org/how-to-install-node-js-on-redhat-8-linux
 
 dnf  --assumeyes  module install nodejs:10  ;
 dnf               module list    nodejs     ;
 
+npm install -g npm@latest ;
+
 which node;
 node --version ;
 npm  --version ;   ## not sure where this is installed, except at root
 node -v  ;
+
+npm -v  ;
 
 exit 1;
 
