@@ -16,7 +16,7 @@ echo Hi | openssl enc -aes-256-cbc -md sha512 -pbkdf2  -a -salt -pass pass:wtf  
 echo U2FsdGVkX1/unoGIGeEzOB+iGM8uLLH0rQzQ3r748es= | openssl enc -aes-256-cbc -md sha512 -pbkdf2  -a -d -salt -pass pass:wtf ;
 ###     Hi
 
-password=''   ;  ## the rabbit last name (lowercase) and the first name (camelCase) and the kitty (camelCamelCase) no spaces
+password=''   ;  ## the rabbit last name (lowercase) and the first name (camelCase) and the kitty from 1974-1992 (camelCamelCase) no spaces
 
 if [ -z "$password" ]
 then
