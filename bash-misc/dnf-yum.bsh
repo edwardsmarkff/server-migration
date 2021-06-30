@@ -94,6 +94,7 @@ dnf --assumeyes  install postfix mailx  ; ## 2019-12-11
 systemctl enable postfix                ; ## 2019-12-11
 systemctl start postfix                 ; ## 2019-12-11
 
+ dnf --assumeyes groupinstall 'Development Tools'  ; ## 2021-06-30
 
 exit 1 ;    ## DONT GO ANY FARTHER IN THIS SCRIPT!
 
