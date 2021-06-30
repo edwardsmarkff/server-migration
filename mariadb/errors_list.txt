@@ -1,3 +1,5 @@
 MarkyEdwards@ exists as the user for the view? why??
 
 practiceLesson seems to be missing a "on update cascade"  ??
+somewhere there is a damaged key...?
+ grep  CASCADE  xxx.sql  | grep -v 'ON DELETE CASCADE ON UPDATE CASCADE'
