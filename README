@@ -27,8 +27,8 @@
 
 
 ## new 2016-02-28   -- THIS IS COPIED IN WHEN DIRECTORY IS MOVED!
-mkdir                                               /home/comptonpeslonline.com/tmpVoiceSpiceFile/   ;
-chmod  755                                          /home/comptonpeslonline.com/tmpVoiceSpiceFile/   ;
+mkdir        --verbose                              /home/comptonpeslonline.com/tmpVoiceSpiceFile/   ;
+chmod  755   --verbose                              /home/comptonpeslonline.com/tmpVoiceSpiceFile/   ;
 chown  comptonpeslonline.com:comptonpeslonline.com  /home/comptonpeslonline.com/tmpVoiceSpiceFile/   ;
 
 
