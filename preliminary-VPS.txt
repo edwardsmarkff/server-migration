@@ -1,0 +1,9 @@
+
+2021-07-09:
+
+Much conflict when installing Rocky-Linux.
+
+solution was to DELETE the "/home" partition and expand the "/" partition, then adjust according to last communication with InterServer:
+
+Ticket #GMF-411-25241  Ah not officially supported. I'd skip it then, lvm or just a straight ext4 or xfs would be easier. LVM only if you plan to use snapshots.
+
