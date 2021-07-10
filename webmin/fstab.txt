@@ -4,6 +4,12 @@
   ##  written 2021-04-13
   
 ### my question:  https://www.linuxquestions.org/questions/showthread.php?p=6239936#post6239936
+#
+# this document is used to get perl to work properly since perl sees the /var/www/html directory  and not /home/ directory!
+
+2021-06-24  - be sure to comment out the following in /etc/httpd/conf/httpd.conf to get perl to work properly:
+        ####DocumentRoot "/var/www/html"        2021-03-23 per Joe Cooper
+        
 
 mount --bind /home /var/www ;    ### from joe cooper @ virtualmin
 umount /var/www/   ;   ## just in case
