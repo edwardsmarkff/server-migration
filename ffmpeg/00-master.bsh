@@ -13,20 +13,20 @@ while true; do
     esac
 done
 
-bash   01-initial.bsh		;
-bash   02-directories.bsh	;
-bash   03-get-files.bsh		;
-bash   04-file-sizes.bsh	;
-bash   05-bzip2.bsh		;
-bash   06-yasm.bsh		;
-bash   07-flac.bsh		;
-bash   08-libogg.bsh		;
-bash   09-libvorbis.bsh		;
-bash   10-opus.bsh		;
-bash   11-libopus.bsh		;
-bash   12-opusfile.bsh		;
-bash   13-opustools.bsh		;
-bash   14-lame.bsh		;
-bash   15-x264.bsh		;
-bash   16-ffmpeg.bsh		;
-bash   99-test.bsh		
+bash -vx   01-initial.bsh	>	01-initial.bsh.log      2>&1    ;
+bash -vx   02-directories.bsh	>       02-directories.bsh.log  2>&1    ;
+bash -vx   03-get-files.bsh	>	03-get-files.bsh.log    2>&1    ;
+bash -vx   04-file-sizes.bsh	>       04-file-sizes.bsh.log   2>&1    ;
+bash -vx   05-bzip2.bsh		>       05-bzip2.bsh.log        2>&1    ;
+bash -vx   06-yasm.bsh		>       06-yasm.bsh.log         2>&1    ;
+bash -vx   07-flac.bsh		>       07-flac.bsh.log         2>&1    ;
+bash -vx   08-libogg.bsh	>	08-libogg.bsh.log       2>&1    ;
+bash -vx   09-libvorbis.bsh	>	09-libvorbis.bsh.log    2>&1    ;
+bash -vx   10-opus.bsh		>       10-opus.bsh.log         2>&1    ;
+bash -vx   11-libopus.bsh	>	11-libopus.bsh.log      2>&1    ;
+bash -vx   12-opusfile.bsh	>	12-opusfile.bsh.log     2>&1    ;
+bash -vx   13-opustools.bsh	>	13-opustools.bsh.log    2>&1    ;
+bash -vx   14-lame.bsh		>       14-lame.bsh.log         2>&1    ;
+bash -vx   15-x264.bsh		>       15-x264.bsh.log         2>&1    ;
+bash -vx   16-ffmpeg.bsh	>	16-ffmpeg.bsh.log       2>&1    ;
+bash -vx   99-test.bsh		>       99-test.bsh.log         2>&1    ;
