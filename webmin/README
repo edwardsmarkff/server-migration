@@ -10,20 +10,12 @@ RESTRICT_SYSLOG = "3"   ## 2021-05-13 change "0" to "3" in order to avoid this e
 
 also manually restart ldf.service if the "failed" indicator comes on in the webmin website console.
 
-and be sure to check:
+and be sure to check these to make sure our IP number did not accidentally get put in:
 /var/lib/csf/csf.tempban
 /var/lib/csf/csf.tempallow
 
-2021-04-07 -  minor change for testing RockyLinux:
-        https://forum.virtualmin.com/t/rocky-linux-is-alive/110740/4
-        install from here:   https://raw.githubusercontent.com/virtualmin/virtualmin-install/master/virtualmin-install.sh
-            and change *vm_version=7* to  *vm_version=6*
-        testing only!
-        
-2021-05-19 - ONLY install virtualmin as per:
-        https://forum.virtualmin.com/t/minor-issue-with-google-vm-rocky-linux/110750/3
-        
-2021-06-01  - to get CSF to display in WebMin:  https://doxfer.webmin.com/Webmin/ConfigServer_Security_%26_Firewall
+2021-06-24  - be sure to comment out the following in /etc/httpd/conf/httpd.conf to get perl to work properly:
+        ####DocumentRoot "/var/www/html"        2021-03-23 per Joe Cooper
 
 2021-06-23  - be sure to stop webmin
   /etc/init.d/webmin  stop;
@@ -32,6 +24,13 @@ and be sure to check:
   systemctl  start    webmin.service;
   systemctl  status   webmin.service;
   
-  2021-06-24  - be sure to comment out the following in /etc/httpd/conf/httpd.conf to get perl to work properly:
-        ####DocumentRoot "/var/www/html"        2021-03-23 per Joe Cooper
-  
+2021-06-01  - to get CSF to display in WebMin:  https://doxfer.webmin.com/Webmin/ConfigServer_Security_%26_Firewall
+
+2021-05-19 - ONLY install virtualmin as per:
+        https://forum.virtualmin.com/t/minor-issue-with-google-vm-rocky-linux/110750/3
+
+2021-04-07 -  minor change for testing RockyLinux:
+        https://forum.virtualmin.com/t/rocky-linux-is-alive/110740/4
+        install from here:   https://raw.githubusercontent.com/virtualmin/virtualmin-install/master/virtualmin-install.sh
+            and change *vm_version=7* to  *vm_version=6*
+        testing only!
