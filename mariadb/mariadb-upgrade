@@ -9,7 +9,7 @@ systemctl stop mariadb.service ;
  
 dnf  --assumeyes remove "MariaDB-*"   ;
  
-dnf  --assumeyes remove   remove galera-4  galera ;
+dnf  --assumeyes remove galera-4  galera ;
  
 rpm --query --all | grep -i -E "mariadb|galera"  ;  ## double-check to make sure all has been removed.
  
