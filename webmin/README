@@ -32,6 +32,6 @@ and be sure to check:
   systemctl  start    webmin.service;
   systemctl  status   webmin.service;
   
-  2021-06-24  - be sure to comment out the following in /etc/httpd/conf/httpd.conf:
+  2021-06-24  - be sure to comment out the following in /etc/httpd/conf/httpd.conf to get perl to work properly:
         ####DocumentRoot "/var/www/html"        2021-03-23 per Joe Cooper
   
