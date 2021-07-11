@@ -1,5 +1,10 @@
 
-run perl.bsh and CPAN-1.txt FIRST! 
+because webmin/virtualmin is not quite ready for rocky-linux, the installation procedure has to change.  normally installing webmin-rpm first is herecy with joe cooper, but he 
+allows it in this specific instance.
+
+BE SURE to run /server-migration/perl/perl.bsh and /server-migration/perl/CPAN-1.txt FIRST! 
+
+otherwise the virtualmin install fails as well as the rpm install (at least it fails on the first go)
 
 ## https://phoenixnap.com/kb/how-to-install-rpm-file-centos-linux
 
