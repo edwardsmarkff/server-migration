@@ -1,0 +1,22 @@
+
+run perl.bsh and CPAN-1.txt FIRST! 
+
+## https://phoenixnap.com/kb/how-to-install-rpm-file-centos-linux
+
+dnf  --assumeyes  install wget ;
+
+wget https://download.webmin.com/download/yum/webmin-1.979-1.noarch.rpm ;
+
+dnf   --assumeyes    localinstall  webmin-1.979-1.noarch.rpm ;  ## (this fails the first time unless CPAN is properly installed)
+
+## check webmin install
+systemctl stop  firewalld.service ;
+
+
+curl https://raw.githubusercontent.com/virtualmin/virtualmin-install/master/virtualmin-install.sh \
+        | sed -e 's/^vm_version=7$/vm_version=6/' > virtualmin-install.sh ;
+
+chmod 700 virtualmin-install.sh ; ## change protections
+
+./virtualmin-install.sh ; ## run script
+
