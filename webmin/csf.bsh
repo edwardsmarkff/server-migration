@@ -40,6 +40,14 @@ systemctl  status --no-pager --full  lfd.service ;  ## Login Failure Daemon
 
 csf --version ;
 
+echo 'to get csf to appear in the webmin menu: '  ;
+echo 'https://doxfer.webmin.com/Webmin/ConfigServer_Security_%26_Firewall' ;
+echo 'Webmin > Webmin Configuration > Webmin Modules >From local file > /usr/local/csf/csfwebmin.tgz > Install Module ';
+
+echo 'https://archive.virtualmin.com/node/56458'  ;
+echo 'The csf listing didn't show up until I hit refresh modules. '; 
+
+
 exit 1;
 
 #
