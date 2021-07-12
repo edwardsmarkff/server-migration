@@ -14,8 +14,6 @@ chmod  700  install.sh ;
 
 ./install.sh ;
 
-firewall-cmd --permanent --zone=public --add-port=10000/tcp ; ## https://doxfer.webmin.com/Webmin/FirewallD
-
 systemctl enable webmin.service ;
 systemctl enable csf.service ;
 systemctl enable ldf.service ;
