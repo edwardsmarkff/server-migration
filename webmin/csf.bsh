@@ -25,6 +25,7 @@ dmesg --console-level 1 ;  ##  https://forum.configserver.com/viewtopic.php?t=71
         
 https://www.howtoforge.com/tutorial/install-and-configure-csf-config-server-firewall-on-centos-7/
 
+   ##   https://www.howtoforge.com/tutorial/install-and-configure-csf-config-server-firewall-on-centos-7/
 systemctl  stop     firewalld.service ;   ## required by csf, but not very well documented.
 systemctl  disable  firewalld.service ;
 
