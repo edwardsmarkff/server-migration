@@ -14,13 +14,15 @@ chmod  700  install.sh ;
 
 ./install.sh ;
 
-systemctl enable webmin.service ;
-systemctl enable csf.service ;
-systemctl enable ldf.service ;
+#####  this is REQUIRED because webmin might go ahead and run OUTSIDE of the sysctmctl command:
+/etc/webmin/stop ;  # this might not do anything?
+kill -9 $(pgrep miniserv;)     ;   ##  ??? this seems to still be required...?
 
-systemctl start webmin.service ;
-systemctl start csf.service ;
-systemctl start ldf.service ;
+systemctl  enable   webmin.service ;
+
+systemctl  start    webmin.service ;
+
+systemctl  status --no-pager --full  webmin.service  ;
 
 exit;
 
