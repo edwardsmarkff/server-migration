@@ -2,21 +2,29 @@
 
 ## 2019-11-13 - ran on centos-7/8 successfully.
 
+00)  ffmpeg (can probably be done anytime but TEST first before starting!)
+
 01)  bash -vx  ./bash-misc/root-init.bsh
 02)  bash -vx  ./bash-misc/dnf-yum.bsh 
-03)  ffmpeg 
+
+03)  perl/CPAN
+
 04)  webmin/virtualmin/csf
+
 05)  Mariadb UPGRADE (LET VIRTUALMIN INSTALL PHP, let github install PERL  ## do before perl and php)
-06)  perl/CPAN
-07)  php
+
+
+
 08)  /bash-misc/imagemagick
 09)  clamav
 
-10)  bash -vx  /node/bash-js.bsh ;
-11) bash -vx  /node/pm2.bsh  ;
+20) /bash-misc/mailx-postfix.bsh
 
+30)  php - may be unnecessary now that webmin "insists" on installing its own favorite php.
 
-30) /bash-misc/mailx-postfix.bsh
+40)  bash -vx  /node/bash-js.bsh ;
+41)  bash -vx  /node/pm2.bsh  ;
+
 
 50) copy over all crontab jobs
 
