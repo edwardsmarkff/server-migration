@@ -29,3 +29,4 @@ perl -MCPAN -e shell  'o conf commit'      ;
 
 perl -e  'use Template::Stash::XS ; '   ;      ## TEST TEST TEST TEST TEST TEST TEST ! ! 
 
+exit;  ###################################################################################################
