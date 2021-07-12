@@ -22,6 +22,12 @@ sh /etc/csf/remove_apf_bfd.sh  ;
 
 dmesg --console-level 1 ;  ##  https://forum.configserver.com/viewtopic.php?t=7147
         ## this command should be included at bootup
+        
+systemctl  enable    csf.service ;
+systemctl  enable    lfd.service ;
+
+systemctl  start     csf.service ;
+systemctl  start     lfd.service ;
 
 exit 1;
 
