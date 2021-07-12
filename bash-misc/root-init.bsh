@@ -54,7 +54,7 @@ export LD_LIBRARY_PATH="/usr/local/lib/"                       ;      ## 2016-04
 ##export PERL5LIB="/root/perl5/lib/perl5:$PERL5LIB"              ;
 ##export PATH="/root/perl5/bin:$PATH"                            ;
 
-set  -o  vi;
+set  -o  vi;  ## may not do anything since this is running as a shell and wont affect the parent
 alias vi='/usr/bin/vim';  ## 2016-02-19
 
 PATH=$PATH:$HOME/bin    ## added by mark 2018-02-21
