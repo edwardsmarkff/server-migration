@@ -21,13 +21,21 @@ perl  /etc/csf/csftest.pl ;
 sh /etc/csf/remove_apf_bfd.sh  ;
 
 dmesg --console-level 1 ;  ##  https://forum.configserver.com/viewtopic.php?t=7147
-        ## this command should be included at bootup
+        ## this command should be included at bootup(?)
         
+https://www.howtoforge.com/tutorial/install-and-configure-csf-config-server-firewall-on-centos-7/
+
+systemctl  stop     firewalld.service ;   ## required by csf, but not very well documented.
+systemctl  disable  firewalld.service ;
+
 systemctl  enable    csf.service ;
-systemctl  enable    lfd.service ;
+systemctl  enable    lfd.service ;   ## Login Failure Daemon
 
 systemctl  start     csf.service ;
-systemctl  start     lfd.service ;
+systemctl  start     lfd.service ;   ## Login Failure Daemon
+
+systemctl  status --no-pager --full  csf.service ;
+systemctl  status --no-pager --full  lfd.service ;  ## Login Failure Daemon
 
 exit 1;
 
