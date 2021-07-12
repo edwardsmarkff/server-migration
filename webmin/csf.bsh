@@ -38,6 +38,8 @@ systemctl  start     lfd.service ;   ## Login Failure Daemon
 systemctl  status --no-pager --full  csf.service ;
 systemctl  status --no-pager --full  lfd.service ;  ## Login Failure Daemon
 
+csf --version ;
+
 exit 1;
 
 #
