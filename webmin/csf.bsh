@@ -26,7 +26,7 @@ dmesg --console-level 1 ;  ##  https://forum.configserver.com/viewtopic.php?t=71
 https://www.howtoforge.com/tutorial/install-and-configure-csf-config-server-firewall-on-centos-7/
 
    ##   https://www.howtoforge.com/tutorial/install-and-configure-csf-config-server-firewall-on-centos-7/
-systemctl  stop     firewalld.service ;   ## required by csf, but not very well documented.
+systemctl  stop     firewalld.service ;   ## required by csf, and not very well documented!!
 systemctl  disable  firewalld.service ;
 
 systemctl  enable    csf.service ;
@@ -38,15 +38,19 @@ systemctl  start     lfd.service ;   ## Login Failure Daemon
 systemctl  status --no-pager --full  csf.service ;
 systemctl  status --no-pager --full  lfd.service ;  ## Login Failure Daemon
 
-csf --version ;
+csf --version ;  csf --version ;
 
-echo 'to get csf to appear in the webmin menu: '  ;
-echo 'https://doxfer.webmin.com/Webmin/ConfigServer_Security_%26_Firewall' ;
-echo 'Webmin > Webmin Configuration > Webmin Modules >From local file > /usr/local/csf/csfwebmin.tgz > Install Module ';
+cat <<END_OF_DISPLAY;
+To get csf to appear in the webmin menu.
 
-echo 'https://archive.virtualmin.com/node/56458'  ;
-echo 'The csf listing didn't show up until I hit refresh modules. '; 
+1) install module in webmin:
+ ## https://doxfer.webmin.com/Webmin/ConfigServer_Security_%26_Firewall
+ Webmin > Webmin Configuration > Webmin Modules >From local file > /usr/local/csf/csfwebmin.tgz > Install Module
 
+2) refresh module page:
+##https://archive.virtualmin.com/node/56458
+  The csf listing didn't show up until I hit refresh modules. 
+END_OF_DISPLAY
 
 exit 1;
 
