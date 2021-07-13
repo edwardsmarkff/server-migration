@@ -29,15 +29,11 @@ chmod 700 virtualmin-install.sh ; ## change protections
 kill -9 $(pgrep miniserv;)     ;   ##  ??? this seems to still be required...?
 
 systemctl enable webmin.service ;
-systemctl enable csf.service ;
-systemctl enable ldf.service ;
 
 systemctl start webmin.service ;
-systemctl start csf.service ;
-systemctl start ldf.service ;
 
 ## csf conflicts with firewalld!
-systemctl stop  firewalld.service ;
+systemctl stop     firewalld.service ;
 systemctl disable  firewalld.service ;
 
 exit;
