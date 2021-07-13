@@ -15,8 +15,6 @@ wget https://download.webmin.com/download/yum/webmin-1.979-1.noarch.rpm ;
 
 dnf   --assumeyes    localinstall  webmin-1.979-1.noarch.rpm ;  ## (this fails the first time unless CPAN is properly installed)
 
-## check webmin install
-systemctl stop  firewalld.service ;
 
 
 curl https://raw.githubusercontent.com/virtualmin/virtualmin-install/master/virtualmin-install.sh \
@@ -30,9 +28,6 @@ chmod 700 virtualmin-install.sh ; ## change protections
 /etc/webmin/stop ;  # this might not do anything?
 kill -9 $(pgrep miniserv;)     ;   ##  ??? this seems to still be required...?
 
-## is this even necessary??
-firewall-cmd --permanent --zone=public --add-port=10000/tcp ; ## https://doxfer.webmin.com/Webmin/FirewallD
-
 systemctl enable webmin.service ;
 systemctl enable csf.service ;
 systemctl enable ldf.service ;
@@ -41,4 +36,11 @@ systemctl start webmin.service ;
 systemctl start csf.service ;
 systemctl start ldf.service ;
 
+## csf conflicts with firewalld!
+systemctl stop  firewalld.service ;
+systemctl disable  firewalld.service ;
+
 exit;
+
+## is this even necessary??
+########firewall-cmd --permanent --zone=public --add-port=10000/tcp ; ## https://doxfer.webmin.com/Webmin/FirewallD
