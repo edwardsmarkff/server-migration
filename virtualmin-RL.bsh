@@ -1,5 +1,7 @@
 #! /bin/bash 
 #
+# this script runs other scripts that prompts for default input in several places!
+#
 # because webmin/virtualmin is not quite ready for rocky-linux, the installation procedure has to change.  normally installing webmin-rpm first is herecy with joe cooper, but he 
 # allows it in this specific instance.
 #
