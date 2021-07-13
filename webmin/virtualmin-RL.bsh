@@ -26,7 +26,12 @@ chmod 700 virtualmin-install.sh ; ## change protections
 
 #####  this is REQUIRED because webmin might go ahead and run OUTSIDE of the sysctmctl command:
 /etc/webmin/stop ;  # this might not do anything?
-kill -9 $(pgrep miniserv;)     ;   ##  ??? this seems to still be required...?
+#####  2021-07-13       kill -9 $(pgrep miniserv;)     ;   ##  ??? this seems to still be required...?
+for procNbr in $(pgrep miniserv) ; 
+do
+        echo "Killing: ${procNbr}" ;
+        kill ${procNbr};
+done ;
 
 systemctl enable webmin.service ;
 
