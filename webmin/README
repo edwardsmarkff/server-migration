@@ -1,8 +1,8 @@
    
 
-manually restart ldf.service if the "failed" indicator comes on in the webmin website console.
+## manually restart ldf.service if the "failed" indicator comes on in the webmin website console.
 
-and be sure to check these to make sure our IP number did not accidentally get put in:
+be sure to check these to make sure our IP number did not accidentally get put in:
 /var/lib/csf/csf.tempban
 /var/lib/csf/csf.tempallow
 
