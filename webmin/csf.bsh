@@ -12,6 +12,7 @@
 ##                      https://www.howtoforge.com/tutorial/install-and-configure-csf-config-server-firewall-on-centos-7/
 ##                 to get working on webmin:   https://bobcares.com/blog/csf-firewall-webmin/#comment-75375
 ##    2021-07-11    - included the 'missing steps' in the documentation
+##    2021-07-13    - included necessary /etc/csf/csf.conf changes. 
 
 mkdir  ~/csf  && cd   ~/csf  ;
 wget   https://download.configserver.com/csf.tgz  ;
@@ -30,6 +31,12 @@ https://www.howtoforge.com/tutorial/install-and-configure-csf-config-server-fire
 systemctl  stop     firewalld.service ;   ## required by csf, and not very well documented!!
 systemctl  disable  firewalld.service ;
 
+sed  --in-place                                                                                                                                                 \
+                --expression='s/TCP_IN = "20,21,22,25,53,80,110,143,443,465,587,993,995"/TCP_IN = "20,21,22,25,53,80,110,143,443,465,587,993,995.10000"/'       \
+                --expression='s/RESTRICT_SYSLOG = "0"/RESTRICT_SYSLOG = "3"/'                                                                                   \
+                --expression='s/TESTING = "1"/TESTING = "0"/'                                                                                                   \
+        /etc/csf/csf.conf ;
+
 systemctl  enable    csf.service ;
 systemctl  enable    lfd.service ;   ## Login Failure Daemon
 
@@ -38,12 +45,6 @@ systemctl  start     lfd.service ;   ## Login Failure Daemon
 
 systemctl  status --no-pager --full  csf.service ;
 systemctl  status --no-pager --full  lfd.service ;  ## Login Failure Daemon
-
-sed  --in-place                                                                                                                                                 \
-                --expression='s/TCP_IN = "20,21,22,25,53,80,110,143,443,465,587,993,995"/TCP_IN = "20,21,22,25,53,80,110,143,443,465,587,993,995.10000"/'       \
-                --expression='s/RESTRICT_SYSLOG = "0"/RESTRICT_SYSLOG = "3"/'                                                                                   \
-                --expression='s/TESTING = "1"/TESTING = "0"/'                                                                                                   \
-        /etc/csf/csf.conf ;
         
 csf --version ;  csf --version ;
 
