@@ -12,7 +12,7 @@
 ##                      https://www.howtoforge.com/tutorial/install-and-configure-csf-config-server-firewall-on-centos-7/
 ##                 to get working on webmin:   https://bobcares.com/blog/csf-firewall-webmin/#comment-75375
 ##    2021-07-11    - included the 'missing steps' in the documentation
-##    2021-07-13    - included necessary /etc/csf/csf.conf changes. 
+##    2021-07-13    - included necessary /etc/csf/csf.conf changes and minor editing changes.
 
 mkdir  ~/csf  && cd   ~/csf  ;
 wget   https://download.configserver.com/csf.tgz  ;
