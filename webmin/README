@@ -1,14 +1,6 @@
-/etc/csf/csf.conf :
+   
 
-add:
-RESTRICT_SYSLOG = "3"   ## 2021-05-13 change "0" to "3" in order to avoid this error message:
-                    ##  *WARNING* RESTRICT_SYSLOG is disabled. See SECURITY WARNING in /etc/csf/csf.conf
-                    
-/etc/csf/csf.conf    ##  https://globedrill.com/warning-testing-mode-is-enabled-not-forget-disable-configuration/
-
-##  Change the line TESTING = “1” to TESTING = “0”    ## 2021-06-25
-
-also manually restart ldf.service if the "failed" indicator comes on in the webmin website console.
+manually restart ldf.service if the "failed" indicator comes on in the webmin website console.
 
 and be sure to check these to make sure our IP number did not accidentally get put in:
 /var/lib/csf/csf.tempban
