@@ -14,8 +14,8 @@ dnf   --assumeyes  install  curl ;
 
 curl -sS https://getcomposer.org/installer | php ;
 
-mv -v composer.phar /usr/local/bin/composer  ;
-chmod +x /usr/local/bin/composer ;
+mv --verbose   composer.phar    /usr/local/bin/composer  ;
+chmod  --verbose +x /usr/local/bin/composer ;
 
 
 useradd fakephpuser ;
