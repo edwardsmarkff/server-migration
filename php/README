@@ -8,7 +8,7 @@
 
 ###to ***UPDATE**** from 7.2 (virtualim favorite version) to 7.4:  (2021-06-24)
 
-  dnf  module  reset php    ;
-  dnf module enable  php:7.4   ;
-  dnf  update  php\*    ;
+  dnf   --assumeyes  module  reset  php        ;
+  dnf   --assumeyes  module enable  php:7.4    ;
+  dnf   --assumeyes  update         php\*      ;
 
