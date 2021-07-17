@@ -9,4 +9,6 @@ dnf   --assumeyes  module enable  php:7.4    ;
 
 dnf   --assumeyes  update         php\*      ;
 
+dnf   --assumeyes  update                    ;   ## required for some reason, wondering if the one above is necessary?
+
 exit; # !!
