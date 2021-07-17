@@ -38,7 +38,6 @@ dnf config-manager --set-enabled powertools ;    ##  https://serverfault.com/que
 dnf  --assumeyes  install dnf-utils ;            ## these are repeated from dnf-yum.bsh
 
 
-
 for installName in          \
               php            \
               php-cli        \
@@ -63,6 +62,9 @@ do
     dnf  --assumeyes  install ${installName} ;
 done;
 
+dnf --assumeyes update ;     ## required to eliminate   PHP Warning:  PHP Startup: Unable to load dynamic library 'zip.so'
+                                ## 2021-07-17
+
 
 sed --debug  --in-place  --file=-  /etc/php.ini  <<END_OF_PHP_DOT_INI ;
 s?;date.timezone =?date.timezone ='America/New_York' ;  2019-04-04 from github php.txt -- added time-zone      ?;
@@ -77,7 +79,7 @@ php --version ;
     #  https://stackoverflow.com/questions/20163746/problems-with-imagick-and-php
 echo "if this mentions some crap about imagic.so, try the following:"   ;
 echo "pecl   uninstall  imagick; " ;
-echo "pecl     instlal  imagick; " ;
+echo "pecl     install  imagick; " ;
 
 exit 1 ;
 
