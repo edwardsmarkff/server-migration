@@ -26,10 +26,12 @@
 41)  bash -vx  /node/pm2.bsh  ;
 
 
+
 50) copy over all crontab jobs
 
 70) install fail2ban  (??)
 
+75) install certbot
 
 80)  visudo  for node processes
 
