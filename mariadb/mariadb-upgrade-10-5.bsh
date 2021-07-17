@@ -7,7 +7,7 @@
 
 systemctl stop mariadb.service ;
  
-dnf  --assumeyes remove "MariaDB-*"   ;
+dnf  --assumeyes remove "mariadb-*"   ;
  
 dnf  --assumeyes remove galera-4  galera ;
  
