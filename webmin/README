@@ -6,6 +6,13 @@ be sure to check these to make sure our IP number did not accidentally get put i
 /var/lib/csf/csf.tempban
 /var/lib/csf/csf.tempallow
 
+2021-07-17 - to get virtualmin to use the FULL domain name and not try to shorten it:
+
+Virtualmin--System_Settings-->Virtualmin_Configuration--Configuration_category-->Defaults_for_new_domains
+https://192.168.100.221:10000/config.cgi?module=virtual-server&section=line2&search=&xnavigation=1
+Include domain name in usernames	Always
+
+
 2021-06-24  - be sure to comment out the following in /etc/httpd/conf/httpd.conf to get perl to work properly:
         ####DocumentRoot "/var/www/html"        2021-03-23 per Joe Cooper
 
