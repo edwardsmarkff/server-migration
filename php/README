@@ -2,7 +2,14 @@
 ##  do ALL this ONLY AFTER webmin since webmin seems to be very "picky" as to what version it is willing to accept.
 ## or php upgrade to 7.4 AFTER webmin install??  (could be dangerous)
 
+2021-07-18 - it appears to be SAFE to upgrade php 7.2 (from virtualmin) to php 7.4
+           - also, only test this:
+                   echo '<?php phpinfo(); ?>' > phpinfo.php ;
+             AFTER installing the first virtualmin VM othewise it appears to fail
+
 ###  centos-8:
 
     dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    
+
 
