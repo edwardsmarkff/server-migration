@@ -27,7 +27,9 @@
 
 
 
-50) copy over all crontab jobs
+50) crontab-reboot-commands
+51) copy over all crontab jobs
+
 
 70) install fail2ban  (??)
 
