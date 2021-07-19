@@ -30,12 +30,30 @@ dnf  --assumeyes remove ImageMagick   ImageMagick-devel  ;
 
 yum --assumeyes update; ## start with everything up-2-date
 
-dnf  --assumeyes  install  gcc gcc-c++ bzip2-devel freetype-devel libjpeg-devel ;
-####  libungif-devel   -- removed becase it was not available, and its difficutl to tell if we need it or not 2021-07-19
-dnf  --assumeyes  install  libpng-devel libtiff-devel zlib-devel freetype-devel ;
-dnf  --assumeyes  install  automake autoconf libtool     ;
-dnf  --assumeyes  install  ghostscript   freetype        ;     ## 2020-09-07
+dnf  --assumeyes  install     \
+               autoconf       \
+               automake       \
+               bzip2-devel    \
+               freetype       \
+               freetype-devel \
+               gcc            \
+               gcc-c++        \
+               ghostscript    \
+               libjpeg-devel  \
+               libpng-devel   \
+               libtiff-devel  \
+               libtool        \
+               zlib-devel     \
+               ;
+
+###dnf  --assumeyes  install  libpng-devel libtiff-devel zlib-devel freetype-devel ;
+###dnf  --assumeyes  install  automake autoconf libtool     ;
+###dnf  --assumeyes  install  ghostscript   freetype        ;     ## 2020-09-07
+
 dnf  --assumeyes  install  ImageMagick ImageMagick-devel ;          ## 2020-09-07
+
+## https://rpmfind.net/linux/rpm2html/search.php?query=libungif-devel
+####  libungif-devel   -- removed becase it was not available, and its difficutl to tell if we need it or not 2021-07-19
 
 
 chkconfig  httpd   on   ;   ## wonder why we need this??
