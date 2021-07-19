@@ -28,7 +28,10 @@ printf "content-type: text/plain\n\n" ;
 date
 END_OF_SHELL
 
-cat perl.pl ;
+chmod  --verbose  755                                          cgiBinTest.sh  ;
+chown  --verbose  comptonpeslonline.com:comptonpeslonline.com  cgiBinTest.sh  ;
+
+cat <<END_OF_PERL_SCRIPT > perlCgiTestScript.pl ;
 print "Content-type:text/html\r\n\r\n";
 print '<html>';
 print '<head>';
@@ -40,5 +43,9 @@ print '</body>';
 print '</html>';
 
 1;
+END_OF_PERL_SCRIPT
+
+chmod  --verbose  755                                          perlCgiTestScript.pl  ;
+chown  --verbose  comptonpeslonline.com:comptonpeslonline.com  perlCgiTestScript.pl  ;
 
 
