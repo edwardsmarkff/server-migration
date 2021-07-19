@@ -22,11 +22,11 @@ steps to compensate:
 
 #!/usr/bin/perl -w
 
-cat shell.sh ;
+cat  <<END > shell.sh ;
 #! /bin/sh
-echo content-type: text/plain
-echo
+echo 'content-type: text/plain';
 date
+END
 
 cat perl.pl ;
 print "Content-type:text/html\r\n\r\n";
