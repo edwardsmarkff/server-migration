@@ -22,9 +22,9 @@ steps to compensate:
 
 #!/usr/bin/perl -w
 
-cat  <<END > shell.sh ;
+cat  <<END_OF_SHELL > cgiBinTest.sh ;
 #! /bin/sh
-echo 'content-type: text/plain';
+printf "content-type: text/plain\n\n" ;
 date
 END
 
