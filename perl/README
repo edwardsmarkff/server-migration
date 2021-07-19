@@ -33,6 +33,7 @@ chown  --verbose  comptonpeslonline.com:comptonpeslonline.com  cgiBinTest.sh  ;
 
 cat <<END_OF_PERL_SCRIPT > perlCgiTestScript.pl ;
 #!/usr/bin/perl -w
+use Template::Stash::XS ;   ## a simple test to see if a 'use' statement is working.
 print "Content-type:text/html\r\n\r\n";
 print '<html>';
 print '<head>';
