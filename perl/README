@@ -53,6 +53,7 @@ chown  --verbose  comptonpeslonline.com:comptonpeslonline.com  perlCgiTestScript
 
 cat <<END_OF_GD_SCRIPT > perlGdTestScript.pl ;
 #!/usr/bin/perl -w
+# https://perlmaven.com/drawing-images-using-gd-simple
 #
 use strict;
 use warnings;
