@@ -51,3 +51,33 @@ chmod  --verbose  755                                          perlCgiTestScript
 chown  --verbose  comptonpeslonline.com:comptonpeslonline.com  perlCgiTestScript.pl  ;
 
 
+cat <<END_OF_GD_SCRIPT > perlGdTestScript.pl ;
+#!/usr/bin/perl -w
+#
+use strict;
+use warnings;
+use GD::Simple;
+
+# create a new image (width, height)
+my $img = GD::Simple->new(200, 100);
+
+# draw a red rectangle with blue borders
+$img->bgcolor('red');
+$img->fgcolor('blue');
+$img->rectangle(10, 10, 50, 50); # (top_left_x, top_left_y, bottom_right_x, bottom_right_y)
+                                 # ($x1, $y1, $x2, $y2)
+
+# convert into png data
+open my $out, '>', 'img.png' or die;
+binmode $out;
+print $out $img->png;
+
+1;
+END_OF_GD_SCRIPT
+
+chmod  --verbose  755                                          perlGdTestScript.pl  ;
+chown  --verbose  comptonpeslonline.com:comptonpeslonline.com  perlGdTestScript.pl  ;
+
+
+
+
