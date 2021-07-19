@@ -26,7 +26,7 @@ cat  <<END_OF_SHELL > cgiBinTest.sh ;
 #! /bin/sh
 printf "content-type: text/plain\n\n" ;
 date
-END
+END_OF_SHELL
 
 cat perl.pl ;
 print "Content-type:text/html\r\n\r\n";
