@@ -116,12 +116,11 @@ echo ‘##################################’
 
 pecl install imagick ;
 
-echo "extension=imagick.so" > /etc/php.d/20-imagick.ini  ;  ## 2021-06-24 - added from 
-                                                            ##    https://itzgeek.com/post/how-to-install-imagemagick-and-php-imagick-on-centos-8-rhel-8/
-                                                            ##    this step MAY cause problems!
-                                                            ##    to test:
-                                                            
-php -m | grep imagick   ;     ## if this causes errors, remove "/etc/php.d/20-imagick.ini"  above!
+echo "extension=imagick.so" >> /etc/php.d/20-imagick.ini  ;  ## 2021-06-24 - added from 
+                                                             ##    https://itzgeek.com/post/how-to-install-imagemagick-and-php-imagick-on-centos-8-rhel-8/
+                                                             ##    this step MAY cause problems!
+                                                             ##    to test do the following::                                              
+php --modules | grep imagick   ;     ## if this causes errors, remove "/etc/php.d/20-imagick.ini"  above!
 
   
 systemctl   restart  httpd.service  ;     ## turn on the php-magick interface into apache
@@ -132,7 +131,14 @@ echo 'and please try  http://127.0.0.1/helloImageMagick.php too.';
 
 exit 1;
 
-                        ####cat >> /etc/php.d/imagick.ini  <<END ;
+
+
+
+
+
+
+
+                   ####cat >> /etc/php.d/imagick.ini  <<END ;
                         ####extension=imagick.so
                         ####END
 
