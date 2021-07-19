@@ -2,7 +2,7 @@ Note that in Centos-8, the suexec is no longer really working.
 
 steps to compensate:
 
-1)  mount --bind /home /var/www ;
+1)  mount  --verbose --bind /home /var/www ;
 
 2) comment out line 122 of httpd.conf:
 ####DocumentRoot "/var/www/html"        2021-03-23 per Joe Cooper
