@@ -17,3 +17,6 @@
 
 ###  unable to get port 10000 to STAY open after a boot:
 @reboot  ( iptables -I INPUT 1 -p tcp --dport 10000 -j ACCEPT ;   )
+
+## per john q @ interserver:
+@reboot /admin/firstbootkvm yes
