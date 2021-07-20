@@ -1,9 +1,0 @@
-
-
-dnf install certbot python3-certbot-apache ;
-  
-certbot --version ;
-  
-certbot   renew  --apache   --dry-run  ;
-  
-certbot  --apache  certonly  --dry-run  --domains   omega-computer.graphics  ;

@@ -1,0 +1,25 @@
+#! /bin/bash
+#
+#         2021-07-20
+#
+#
+## to install certbot:
+
+dnf --assumeyes install epel-release  ;
+
+dnf install certbot python3-certbot-apache ;
+
+which certbot ;
+/usr/bin/certbot --version ;
+
+cat << EOF ;
+## certbot use examples:
+certbot   renew  --apache   --dry-run  ;
+  
+certbot  --apache  certonly  --dry-run  --domains   omega-computer.graphics  ;
+
+certbot   --apache  renew -vvv --dry-run  > dry-run-result.log  2> dry-run-error.log  ;
+EOF
+
+exit 1;
+
