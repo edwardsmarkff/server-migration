@@ -2,6 +2,10 @@
 
 #####clamav #######   -- 2016-02-06  -- moved from README 2019-06-19
 
+## make SURE clamav is installed:
+clamscan --version ;
+/usr/bin/clamscan --version ;
+
 mkdir   --verbose   /var/log/clamav/    ;   ### need this to start the log directory !
 cat  <<END  >  /etc/cron.daily/manual_clamscan ;
 #!/bin/bash                    
