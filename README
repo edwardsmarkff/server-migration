@@ -31,7 +31,7 @@
 51) copy over all crontab jobs
 
 
-70) install fail2ban  (??)
+70) fail2ban-client  --version ;  # make sure faile2ban-client is installed!
 
 75) install certbot
 
