@@ -23,7 +23,7 @@ perl  /etc/csf/csftest.pl ;
 sh /etc/csf/remove_apf_bfd.sh  ;
 
 dmesg --console-level 1 ;  ##  https://forum.configserver.com/viewtopic.php?t=7147
-        ## this command should be included at bootup(?)
+        ## this command is also included in crontab reboot(?)
         
 https://www.howtoforge.com/tutorial/install-and-configure-csf-config-server-firewall-on-centos-7/
 
