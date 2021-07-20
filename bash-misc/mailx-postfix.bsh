@@ -1,7 +1,3 @@
-EDIT - include  cat  /etc/resolv.conf     "nameserver 8.8.8.8"  BEFORE line  "nameserver 127.0.0.1"
-probably a simple sed line - traveling now and i dont want to do this now.....!
-
-
 #! /bin/bash
 
 ###########################
