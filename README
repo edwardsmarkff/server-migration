@@ -13,13 +13,14 @@
 
 05)  Mariadb UPGRADE (LET VIRTUALMIN INSTALL PHP, let github install PERL  ## do before perl and php)
 
+06)  php - may be problematic now that webmin "insists" on installing its own favorite php.
+07)  /php/phpImageMagick.bsh
 
 09)  clamav
 
 20) /bash-misc/mailx-postfix.bsh
 
-30)  php - may be unnecessary now that webmin "insists" on installing its own favorite php.
-31)  /php/phpImageMagick.bsh
+
 
 40)  bash -vx  /node/bash-js.bsh ;
 41)  bash -vx  /node/pm2.bsh  ;
