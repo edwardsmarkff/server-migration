@@ -7,7 +7,7 @@
 
 dnf --assumeyes install epel-release  ;
 
-dnf install certbot python3-certbot-apache ;
+dnf --assumeyes install certbot python3-certbot-apache ;
 
 which certbot ;
 /usr/bin/certbot --version ;
