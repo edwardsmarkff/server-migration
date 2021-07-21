@@ -34,9 +34,10 @@
 #                 or just click HERE:   https://security.google.com/settings/security/apppasswords
 #         -- 'Google account settings'
 #         -- Security (left side)
-#         -- app password   -->>  select app (dropdown)  -->> other
-#         -- name 'Postfix', and get new password        
-#              or just 
+#         -- the top of form should say "App passwords"
+#         -- "Select app" (left side dropdown) --->> select "mail" or "other"
+#         -- "Select device"  --> "Other (custom name)" --> pick a nice name! 
+#         -- "GENERATE" button
 #
 #
 #
