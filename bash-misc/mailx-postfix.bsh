@@ -41,7 +41,11 @@
 #
 #
 #
-emailAddress='noreply@comptonpeslonline.com'    ;
+emailAddress='noreply@comptonpeslonline.com'             ;
+testReceivingEmailAddress='mark@edwardsmark.com'         ;
+testReceivingName='Marky Boy'                            ;
+testReceivingEmailCcAddress='edwardsmarkf@gmail.com'     ;
+
 #
 cryptedPassword='NEW_PASSWORD_HERE'             ;
 
@@ -130,12 +134,14 @@ cat << END_OF_SCRIPT ;
 
 ## please try these:
 
-echo "This is a test from ${thisScript} -- $(date;)."                                            \\
-  | mailx  -v  -s "test message"  mark@edwardsmark.com                                           \\
+echo "This is a test from ${thisScript} -- $(date;)."                                                       \\
+  | mailx  -v  -s "test message"                                                                            \\
+         ${testReceivingEmailAddress}                                                                       \\
   ;
 
-echo 'please work This is a test from ${thisScript}-- $(date;).'                                 \\
-  | mailx -v -s 'This Subject' -r 'MarkyBoy<mark@comptonpeslonline.com>'  mark@edwardsmark.com   \\
+echo 'please work and include the sendor name! This is a test from ${thisScript}-- $(date;).'               \\
+  | mailx -v -s 'This Subject' -r '${testReceivingName}<${emailAddress}>'                                   \\
+          ${testReceivingEmailAddress}                                                                      \\
   ;
         
 echo 'test using -A gmailSMTP-noreply'                                                                      \\
@@ -143,7 +149,8 @@ echo 'test using -A gmailSMTP-noreply'                                          
     -v                                                                                                      \\
     -A  gmailSMTP-noreply                                                                                   \\
     -s "sent directly from mailx.pl using perl mailx.pl command\$(echo -e "\\r\\nContent-type: text/html")" \\
-    -c info@englishwithoutaccent.com mark@edwardsmark.com                                                   \\
+    -c ${testReceivingCcEmailAddress}                                                                       \\
+                ${testReceivingEmailAddress}                                                                \\
     ;
 
 END_OF_SCRIPT
