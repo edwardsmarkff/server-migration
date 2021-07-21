@@ -3,20 +3,25 @@
 
 
 ## 2021-05-13 - suppress the firewall messages on the interserver tignt-VNC
-         ##   https://forum.configserver.com/viewtopic.php?t=7147   
-@reboot  ( /usr/bin/dmesg --console-level 1 ;  )
+         ##   https://forum.configserver.com/viewtopic.php?t=7147
+
+@reboot ( echo -e "\n\nCrontab reboot on: $(date;)"                                                             >> /var/log/crontabReboot.log 2>&1      ;       )
+
+@reboot ( sleep 2 && /usr/bin/dmesg --console-level 1 && echo "Console-level: $(cat /proc/sys/kernel/printk;)"  >> /var/log/crontabReboot.log 2>&1      ;       )
 
 
 ###  from interserver:  way to get perl to run properly 2021-03-23 per Joe Cooper
 ##                      also referenced in ./perl/README
-@reboot   (  mount --verbose --bind /home /var/www ;  )
+@reboot ( sleep 3 && /usr/bin/mount --verbose --bind    /home   /var/www                                        >> /var/log/crontabReboot.log 2>&1      ;       )
 
 ###    the directory  /var/lock keeps getting 'clobbered' after every boot (wondering if we even need the subdirectory??)
-@reboot   ( sleep 30 && mkdir --verbose /var/lock/bash/; )
+@reboot ( sleep 5 && /usr/bin/mkdir  --verbose /var/lock/bash/                          >> /var/log/crontabReboot.log 2>&1      ;       )
 
 
 ###  unable to get port 10000 to STAY open after a boot:
-@reboot  ( iptables --verbose -I INPUT 1 -p tcp --dport 10000 -j ACCEPT ;   )
+@reboot ( sleep 7 && /usr/sbin/iptables --verbose -I INPUT 1 -p tcp --dport 10000 -j ACCEPT                     >> /var/log/crontabReboot.log 2>&1      ;       )
+
+
 
 ## per john q @ interserver:
 @reboot /admin/firstbootkvm yes
