@@ -9,14 +9,14 @@
 
 ###  from interserver:  way to get perl to run properly 2021-03-23 per Joe Cooper
 ##                      also referenced in ./perl/README
-@reboot   (  mount --bind /home /var/www ;  )
+@reboot   (  mount --verbose --bind /home /var/www ;  )
 
 ###    the directory  /var/lock keeps getting 'clobbered' after every boot (wondering if we even need the subdirectory??)
-@reboot   ( sleep 30 && mkdir  /var/lock/bash/; )
+@reboot   ( sleep 30 && mkdir --verbose /var/lock/bash/; )
 
 
 ###  unable to get port 10000 to STAY open after a boot:
-@reboot  ( iptables -I INPUT 1 -p tcp --dport 10000 -j ACCEPT ;   )
+@reboot  ( iptables --verbose -I INPUT 1 -p tcp --dport 10000 -j ACCEPT ;   )
 
 ## per john q @ interserver:
 @reboot /admin/firstbootkvm yes
