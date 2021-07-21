@@ -41,10 +41,15 @@
 #
 #
 #
+cryptedPassword='NEW_PASSWORD_HERE'                      ;
 emailAddress='noreply@comptonpeslonline.com'             ;
+
+   ## for testing only
 testReceivingEmailAddress='mark@edwardsmark.com'         ;
 testReceivingName='Marky Boy'                            ;
 testReceivingEmailCcAddress='edwardsmarkf@gmail.com'     ;
+
+thisScript=$(readlink -f "${BASH_SOURCE[0]}");
 
 #
 cryptedPassword='NEW_PASSWORD_HERE'             ;
