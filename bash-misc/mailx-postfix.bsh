@@ -47,7 +47,7 @@ emailAddress='noreply@comptonpeslonline.com'             ;
    ## for testing only
 testReceivingEmailAddress='mark@edwardsmark.com'         ;
 testReceivingName='Marky Boy'                            ;
-testReceivingEmailCcAddress='edwardsmarkf@gmail.com'     ;
+testReceivingCcEmailAddress='edwardsmarkf@gmail.com'     ;
 
 thisScript=$(readlink -f "${BASH_SOURCE[0]}");
 
