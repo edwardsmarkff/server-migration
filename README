@@ -18,15 +18,15 @@
 
 09)  clamav
 
-20) /bash-misc/mailx-postfix.bsh
+20) ./bash-misc/mailx-postfix.bsh
 
-40)  bash -vx  /node/bash-js.bsh ;
+40)  bash -vx  ./node/bash-js.bsh ;
 
 50) crontab-reboot-commands
 
 60) fail2ban-client  --version ;  # make sure faile2ban-client is installed!  Fail2Ban v0.11.2 at of 2012-07-22
 
-70) install certbot
+70) install ./bash-misc/certbot
 
 80) visudo  for node processes
 
