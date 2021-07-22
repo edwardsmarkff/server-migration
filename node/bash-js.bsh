@@ -19,6 +19,11 @@ dnf  --assumeyes  install nodejs            ;  ## 2021-07-22 - how did we possib
 
 npm install -g npm@latest ;
 
+which node;
+node --version ;
+npm  --version ;   ## not sure where this is installed, except at root
+node -v  ;
+
 exit;
 
 
