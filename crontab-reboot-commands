@@ -1,12 +1,11 @@
 
-2021-07-18  - commands to put into crontab @reboot
+##        2021-07-18  - commands to put into crontab @reboot
 
-
-## 2021-05-13 - suppress the firewall messages on the interserver tignt-VNC
-         ##   https://forum.configserver.com/viewtopic.php?t=7147
 
 @reboot ( echo -e "\n\nCrontab reboot on: $(date;)"                                                             >> /var/log/crontabReboot.log 2>&1      ;       )
 
+## 2021-05-13 - suppress the firewall messages on the interserver tignt-VNC
+##             https://forum.configserver.com/viewtopic.php?t=7147
 @reboot ( sleep 2 && /usr/bin/dmesg --console-level 1 && echo "Console-level: $(cat /proc/sys/kernel/printk;)"  >> /var/log/crontabReboot.log 2>&1      ;       )
 
 
