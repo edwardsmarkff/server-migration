@@ -52,7 +52,6 @@ testReceivingEmailCcAddress='edwardsmarkf@gmail.com'     ;
 thisScript=$(readlink -f "${BASH_SOURCE[0]}");
 
 #
-cryptedPassword='NEW_PASSWORD_HERE'             ;
 
 if [[ $cryptedPassword = "NEW_PASSWORD_HERE" ]]
 then
