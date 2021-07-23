@@ -18,7 +18,10 @@ steps to compensate:
                     Require all granted
             </Directory>
             
-4) test with:  (be sure to set owner correctly!)
+4) test with:  
+
+## be sure to set owner correctly!  
+## chown  --verbose comptonpeslonline.com:comptonpeslonline.com   /home/comptonpeslonline.com/cgi-bin/*.pl;  
 
 #!/usr/bin/perl -w
 
