@@ -1,0 +1,17 @@
+To limit port access to specific IP numbers
+
+1) visit https://whatismyipaddress.com and note ip address
+
+2) REMOVE port ## from /etc/csf/csf.conf
+    TCP_IN = "20,21,25,53,80,110,143,443,465,587,993,995,8000:8010,10000,20000:20004"
+  
+3) add port number to /etc/csf/csf.allow:
+
+tcp|in|d=22|s=99.169.172.33             ##  allowIpAddress.bsh  Sun May 30 12:51:49 EDT 2021
+tcp|out|s=22|d=99.169.172.33            ##  allowIpAddress.bsh  Sun May 30 12:51:49 EDT 2021
+tcp|in|d=3306|s=99.169.172.33           ##  allowIpAddress.bsh  Sun May 30 12:51:49 EDT 2021
+tcp|out|s=3306|d=99.169.172.33          ##  allowIpAddress.bsh  Sun May 30 12:51:49 EDT 2021
+tcp|in|d=10000|s=99.169.172.33          ##  allowIpAddress.bsh  Sun May 30 12:51:49 EDT 2021
+tcp|out|s=10000|d=99.169.172.33         ##  allowIpAddress.bsh  Sun May 30 12:51:49 EDT 2021
+
+4) systemctl  restart  csf.service ;
