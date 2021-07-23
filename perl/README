@@ -23,7 +23,7 @@ steps to compensate:
 ## be sure to set owner correctly!  
 ## chown  --verbose comptonpeslonline.com:comptonpeslonline.com   /home/comptonpeslonline.com/cgi-bin/*.pl;  
 
-#!/usr/bin/perl -w
+
 
 cat  <<END_OF_SHELL > cgiBinTest.sh ;
 #! /bin/sh
