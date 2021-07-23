@@ -6,6 +6,9 @@ steps to compensate:
 
 2) comment out line 122 of httpd.conf:
 ####DocumentRoot "/var/www/html"        2021-03-23 per Joe Cooper
+   (optional)
+   comment out line 496 of "global" ScriptAlias:  (this may need more testing!)
+        ScriptAlias /cgi-bin/ "/var/www/cgi-bin/"
 
 3) change httpd.conf as follows:  (change for both 80 & 443 VM)
 
