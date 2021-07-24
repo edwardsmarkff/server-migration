@@ -6,6 +6,7 @@
 clamscan --version ;
 /usr/bin/clamscan --version ;
 
+## dont forget to change 'SERVER-NAME-HERE' ...!
 mkdir   --verbose   /var/log/clamav/    ;   ### need this to start the log directory !
 cat  <<END  >  /etc/cron.daily/manual_clamscan ;
 #!/bin/bash                    
