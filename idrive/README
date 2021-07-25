@@ -1,0 +1,10 @@
+this references the old idriveutil  and not the new perl version.
+
+https://www.idrive.com/faq_linux#linuxWeb4
+
+If you are a new user,
+    Download the latest script to receive download link for the latest script package.
+    Unzip the package file and go to the scripts folder.
+    Provide an appropriate permission (executable permission) to the scripts.Example: chmod a+x *.pl.
+    Execute 'account_setting.pl' to setup your account and follow the instructions.
+    ????? Execute 'login.pl' to login to your account, if you have not logged in while setting up your account using 'account_setting.pl'.
