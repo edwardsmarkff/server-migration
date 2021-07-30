@@ -1,21 +1,23 @@
 #!  /bin/bash
 
-      wkhtmltopdf.bsh
-      
-      2021-04-13
-      
+##      wkhtmltopdf.bsh
+##      
+##      2021-04-13
+##      
 ##written entirely from:
 ##   https://computingforgeeks.com/install-wkhtmltopdf-wkhtmltoimage-on-centos/
+##    2021-07-30 - had to add two new dnf calls, maybe because of the use of "dnf localinstall" ???
+##
+##
 
-## check version!!
 
-dnf  --assumeyes  install libpng15 ;
-dnf  --assumeyes  install compat-openssl10  ;
+dnf  --assumeyes  install libpng15          ;   ## 2021-07-30
+dnf  --assumeyes  install compat-openssl10  ;   ## 2021-07-30
 
 wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.centos7.x86_64.rpm  ;
 
 dnf  --assumeyes localinstall  ./wkhtmltox-0.12.6-1.centos7.x86_64.rpm  ;   ##   'localinstall' deprecated
 
-wkhtmltopdf --version ;
+wkhtmltopdf --version ;   ## check version!!
 
 rm  -f   ./wkhtmltox-0.12.6-1.centos7.x86_64.rpm  ;
