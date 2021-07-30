@@ -1,7 +1,7 @@
 
 2021-07-09:
 
-Much conflict when installing Rocky-Linux.
+Much conflict when initally installing Rocky-Linux.
 
 solution was to DELETE the "/home" partition and expand the "/" partition, then adjust according to last communication with InterServer:
 
