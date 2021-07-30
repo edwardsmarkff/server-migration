@@ -8,6 +8,44 @@ clamscan --version ;
 
 ## dont forget to change 'SERVER-NAME-HERE' ...!
 mkdir   --verbose   /var/log/clamav/    ;   ### need this to start the log directory !
+
+#!/bin/bash
+#     written from ‘initial setup’ 2016-02-19
+#
+#
+#       2021-01-17      - added server name and used gmailSMTP instead
+#
+#
+SCAN_DIR="/home/"                                               ;
+LOG_FILE="/var/log/clamav/manual_clamscan.log"                  ;
+LOG_FILE_TMP="/var/log/clamav/manual_clamscan_tmp.log"          ;
+VERSION=$(/usr/local/bash/getLinuxVersion.bsh)                  ;       ## 2021-01-17
+RESULTS=$(grep 'Infected files:'  $LOG_FILE_TMP ;       )       ;
+EMAIL_SUBJECT="${VERSION} ${RESULTS}"                           ;
+echo 'Starting clam scan!'                                      ;
+date;
+/usr/bin/clamscan --infected --recursive $SCAN_DIR > $LOG_FILE_TMP      ;
+cat $LOG_FILE_TMP |  mailx -v    -A  gmailSMTP-noreply  -r 'noreply@comptonpeslonline.com'  -s "${EMAIL_SUBJECT}"  mark@edwardsmark.com  ;
+cat $LOG_FILE_TMP >> $LOG_FILE ;
+date;
+#     written from ‘initial setup’ 2016-02-19
+
+
+chmod  755    /etc/cron.daily/manual_clamscan ;
+cat    /etc/cron.daily/manual_clamscan ;  # display the results
+
+cat   >>  /etc/freshclam.conf  <<END_OF_FRESHCLAM  ;  ###  2019-06-19 - add theses:
+DatabaseCustomURL http://sigs.interserver.net/interserver256.hdb
+DatabaseCustomURL http://sigs.interserver.net/interservertopline.db
+DatabaseCustomURL http://sigs.interserver.net/shell.ldb
+DatabaseCustomURL http://sigs.interserver.net/whitelist.fp
+END_OF_FRESHCLAM
+
+
+#####end clamav ###############
+
+exit;
+
 cat  <<END  >  /etc/cron.daily/manual_clamscan ;
 #!/bin/bash                    
 #     written from ‘initial setup’ 2016-02-19   
@@ -21,15 +59,3 @@ mark@edwardsmark.com  ;
 cat \$LOG_FILE_TMP >> \$LOG_FILE ;
 #     written from ‘initial setup’ 2016-02-19       
 END
-chmod  755    /etc/cron.daily/manual_clamscan ;
-cat    /etc/cron.daily/manual_clamscan ;  # display the results
-
-cat   >>  /etc/freshclam.conf  <<END_OF_FRESHCLAM  ;  ###  2019-06-19 - add theses:
-DatabaseCustomURL http://sigs.interserver.net/interserver256.hdb
-DatabaseCustomURL http://sigs.interserver.net/interservertopline.db
-DatabaseCustomURL http://sigs.interserver.net/shell.ldb
-DatabaseCustomURL http://sigs.interserver.net/whitelist.fp
-END_OF_FRESHCLAM
-
-
-#####end clamav ###############
