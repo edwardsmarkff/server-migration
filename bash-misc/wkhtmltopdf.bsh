@@ -9,8 +9,13 @@
 
 ## check version!!
 
+dnf  --assumeyes  install libpng15 ;
+dnf  --assumeyes  install compat-openssl10  ;
+
 wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.centos7.x86_64.rpm  ;
 
-sudo yum localinstall wkhtmltox-0.12.6-1.centos7.x86_64.rpm  ;   ##   'localinstall' deprecated
+dnf  --assumeyes localinstall  ./wkhtmltox-0.12.6-1.centos7.x86_64.rpm  ;   ##   'localinstall' deprecated
 
 wkhtmltopdf --version ;
+
+rm  -f   ./wkhtmltox-0.12.6-1.centos7.x86_64.rpm  ;
