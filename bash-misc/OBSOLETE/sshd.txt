@@ -1,4 +1,7 @@
 
+###  2021-07-30 this is now obsolete since we can now only allow port 22 access from specific IP numbers as per "allowIpAddress.bsh" script!
+
+
 ##  changing port 22 to 19575 
 
 https://help.liquidweb.com/s/article/Changing-Your-SSH-Port-with-the-Command-Line
