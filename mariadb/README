@@ -2,6 +2,7 @@
 2021-06-14:    issue probably from installing on RockyLinux
                   mysql_upgrade - --user=root  --password=MYPASSWORDGOESHERE ;
                   https://stackoverflow.com/questions/27918764/cannot-load-from-mysql-proc-the-table-is-probably-corrupted
+                  https://stackoverflow.com/questions/56564410/tables-could-not-be-fetched-error-loading-schema-content  2021-07-30
                   
               also include port 3306 in csf.conf  under TCP_IN   !
               
