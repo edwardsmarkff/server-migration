@@ -14,15 +14,23 @@ npm  install pm2@latest --global ;
 pm2  completion install  ;
 pm2  startup  centos ;   ## reboot stuff
 
-## 2021-07-31:
-/usr/bin/pm2  start       /home/comptonpeslonline.com/public_html/html5Audio/html5AudioNode/nodeWaveFormPlayer.js                    --   --port 20001 --proxy proxyPort20001  ;
+## 2021-08-01:
+#! /bin/bash
+#
+#       pm2Startup.bsh          2021-02-05
+#
+#
+/usr/bin/pm2  start    /home/comptonpeslonline.com/public_html/html5Audio/html5AudioNode/nodeWaveFormPlayer.js                    --name  'NodeWaveForm'          -- --port 20001 --proxy proxyPort20001  ;
+#
+/usr/bin/pm2  start    /home/comptonpeslonline.com/public_html/voiceSpiceNode/voiceSpiceNodeServer/voiceSpiceNodeServerProxy.js   --name  'VoiceSpiceServer'      -- --port 20002 --proxy proxyPort20002  ;
+#
+/usr/bin/pm2  start    /home/comptonpeslonline.com/public_html/comptonPractice/homeworkAssignment/feathersServer                  --name  'HomeworkAssignment'    -- --port 20003 --proxy proxyPort20003  ;
+#
+#
+#
+exit 1;
 
-/usr/bin/pm2  start     /home/comptonpeslonline.com/public_html/voiceSpiceNode/voiceSpiceNodeServer/voiceSpiceNodeServerProxy.js     --   --port 20002 --proxy proxyPort20002  ;
 
-/usr/bin/pm2  start     /home/comptonpeslonline.com/public_html/comptonPractice/homeworkAssignment/feathersServer                    --   --port 20003 --proxy proxyPort20003  ;
-
-
-exit; 
 
 ## OBSOLETE BELOW:
 
