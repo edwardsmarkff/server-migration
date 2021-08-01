@@ -9,7 +9,7 @@ be sure to check these to make sure our IP number did not accidentally get put i
 2021-07-17 - to get virtualmin to use the FULL domain name and not try to shorten it:
     ###  http://www.edwardsmark.com/textpattern/articles/133/virtualmin-customizations
 Virtualmin--System_Settings-->Virtualmin_Configuration--Configuration_category-->Defaults_for_new_domains
-https://XXX.XXX>.XXX.XXX:10000/config.cgi?module=virtual-server&section=line2&search=&xnavigation=1
+https://XXX.XXX.XXX.XXX:10000/config.cgi?module=virtual-server&section=line2&search=&xnavigation=1
 Include domain name in usernames:	Always
 
 
