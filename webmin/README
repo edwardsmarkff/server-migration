@@ -10,7 +10,7 @@ be sure to check these to make sure our IP number did not accidentally get put i
     ###  http://www.edwardsmark.com/textpattern/articles/133/virtualmin-customizations
 Virtualmin--System_Settings-->Virtualmin_Configuration--Configuration_category-->Defaults_for_new_domains
 https://XXX.XXX>.XXX.XXX:10000/config.cgi?module=virtual-server&section=line2&search=&xnavigation=1
-Include domain name in usernames	Always
+Include domain name in usernames:	Always
 
 
 2021-06-24  - be sure to comment out the following in /etc/httpd/conf/httpd.conf to get perl to work properly:
