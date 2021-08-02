@@ -152,7 +152,7 @@ echo 'test using -A gmailSMTP-noreply'                                          
  |  /usr/bin/mailx                                                                                          \\
     -v                                                                                                      \\
     -A  gmailSMTP-noreply                                                                                   \\
-    -s "sent directly from mailx.pl using perl mailx.pl command\$(echo -e "\\r\\nContent-type: text/html")" \\
+    -s "sent directly from mail command\$(echo -e "\\r\\nContent-type: text/html")"                         \\
     -c ${testReceivingCcEmailAddress}                                                                       \\
                 ${testReceivingEmailAddress}                                                                \\
     ;
