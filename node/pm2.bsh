@@ -24,8 +24,7 @@ pm2  startup  centos ;   ## reboot stuff
 #
 /usr/bin/pm2  start    /home/comptonpeslonline.com/public_html/voiceSpiceNode/voiceSpiceNodeServer/voiceSpiceNodeServerProxy.js   --name  'VoiceSpiceServer'      -- --port 20002 --proxy proxyPort20002  ;
 #
-/usr/bin/pm2  start    /home/comptonpeslonline.com/public_html/comptonPractice/homeworkAssignment/feathersServer     
-          --cwd   /home/comptonpeslonline.com/public_html/comptonPractice/homeworkAssignment/feathersServer                       --name  'HomeworkAssignment'    -- --port 20003 --proxy proxyPort20003  ;
+/usr/bin/pm2  start   ./  --cwd  /home/comptonpeslonline.com/public_html/comptonPractice/homeworkAssignment/feathersServer        --name  'HomeworkAssignment'    -- --port 20003 --proxy proxyPort20003  ;
 #
 #
 #
