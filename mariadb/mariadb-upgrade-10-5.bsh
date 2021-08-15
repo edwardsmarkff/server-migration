@@ -3,7 +3,7 @@
 ####  written entirely from:  https://mariadb.com/docs/deploy/upgrade-community-server-cs105-centos8/
 
 ###  2021-05-28:   https://mariadb.com/kb/en/no-rocky-linux-support-yet/+comments/5249
-
+##  2021-08-15 - since we are now letting virtualmin install mariadb, there are "missing" installs!
 
 systemctl stop mariadb.service ;
  
@@ -27,6 +27,9 @@ systemctl enable mariadb.service ;  ## not sure if this is really necessary?
 
 systemctl start mariadb.service ;
 
+dnf  -y  install MariaDB-devel                ;  ## 2021-08-15
+dnf  -y  install  mariadb-connector-c-devel   ;  ## 2021-08-15
+ 
 exit ;
 
 
