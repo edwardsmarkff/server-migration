@@ -140,17 +140,17 @@ cat << END_OF_SCRIPT ;
 ## please try these:
 
 echo "This is a test from ${thisScript} -- $(date;)."                                                       \\
-  | mailx  -v  -s "test message"                                                                            \\
+  \| mailx  -v  -s "test message"                                                                            \\
          ${testReceivingEmailAddress}                                                                       \\
   ;
 
 echo 'please work and include the sendor name! This is a test from ${thisScript}-- $(date;).'               \\
-  | mailx -v -s 'This Subject' -r '${testReceivingName}<${emailAddress}>'                                   \\
+  \| mailx -v -s 'This Subject' -r '${testReceivingName}<${emailAddress}>'                                   \\
           ${testReceivingEmailAddress}                                                                      \\
   ;
         
 echo 'test using -A gmailSMTP-noreply'                                                                      \\
- |  /usr/bin/mailx                                                                                          \\
+ \|  /usr/bin/mailx                                                                                          \\
     -v                                                                                                      \\
     -A  gmailSMTP-noreply                                                                                   \\
     -s "sent directly from mail command\$(echo -e "\\r\\nContent-type: text/html")"                         \\
